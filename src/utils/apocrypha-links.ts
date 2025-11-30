@@ -18,43 +18,43 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
   // Deuterocanonical Books (Catholic/Orthodox Tradition)
   'Tobit': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=Book+of+Tobit+{chapter}',
+    pathPattern: '?search=Tobit+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/tobit.html'
   },
   'Judith': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=Book+of+Judith+{chapter}',
+    pathPattern: '?search=Judith+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/judith.html'
   },
   'Wisdom of Solomon': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=Book+of+Wisdom+{chapter}',
+    pathPattern: '?search=Wisdom+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/wisdom.html'
   },
   'Sirach': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=Sirach+{chapter}',
+    pathPattern: '?search=Sirach+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/sirach.html'
   },
   'Baruch': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=Book+of+Baruch+{chapter}',
+    pathPattern: '?search=Baruch+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/baruch.html'
   },
   '1 Maccabees': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=1+Maccabees+{chapter}',
+    pathPattern: '?search=1+Maccabees+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/1maccabees.html'
   },
   '2 Maccabees': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: 'search/?version=NABRE&interface=print&search=2+Maccabees+{chapter}',
+    pathPattern: '?search=2+Maccabees+{chapter}&version=NABRE',
     requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/2maccabees.html'
   },
