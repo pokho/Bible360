@@ -41,9 +41,9 @@
 				{
 					name: 'Apocrypha & Pseudepigrapha',
 					key: 'apocrypha',
-					methodology: 'Academic chronological approach through Deuterocanonical, Pseudepigrapha, and Early Christian writings',
+					methodology: 'Comprehensive academic chronological journey through 365 days of Deuterocanonical texts, Old Testament Pseudepigrapha, Apostolic Fathers, and New Testament Apocrypha with scholarly dating and mainstream academic consensus',
 					totalDays: 365,
-					apocryphaSupport: 'Complete (Academic)',
+					apocryphaSupport: 'Complete Academic Coverage (Scholarly References)',
 					color: '#e67e22'
 				},
 				{

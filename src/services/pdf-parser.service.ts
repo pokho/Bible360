@@ -8,6 +8,11 @@ export interface ParsedReadingPlan {
       book: string;
       chapters: string;
     }>;
+    historicalContext?: {
+      period: string;
+      approximateDate: string;
+      description: string;
+    };
   }>;
   metadata: {
     totalDays: number;

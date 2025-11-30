@@ -76,6 +76,25 @@ export interface ProgressTracking {
   progressPercentage: number;
 }
 
+// Enhanced interfaces for apocrypha-specific data structures
+export interface ApocryphaReading extends DailyReading {
+  textType: 'deuterocanonical' | 'pseudepigraphal' | 'nt-apocrypha' | 'patristic' | 'gnostic';
+  datingConfidence: 'high' | 'medium' | 'low' | 'scholarly-debate';
+  sourceTradition: 'catholic' | 'orthodox' | 'protestant' | 'academic' | 'manuscript-evidence';
+  scholarlyReferences: string[];
+  excerptIndicator?: boolean;
+}
+
+export interface EnhancedHistoricalContext extends HistoricalContext {
+  textType: string;
+  datingConfidence: string;
+  scholarlyDisputes?: string[];
+  culturalContext: string;
+  theologicalThemes: string[];
+  archaeologicalEvidence?: string[];
+  parallelCanonicalTexts?: string[];
+}
+
 export interface ChronologicalComparison {
   providers: string[];
   comparisonDate: Date;

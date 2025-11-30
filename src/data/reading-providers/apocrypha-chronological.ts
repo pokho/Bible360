@@ -1,4 +1,4 @@
-import { ReadingPlan } from '../../types/reading-plans';
+import type { ReadingPlan } from '../../types/reading-plans';
 
 export class ApocryphaReadingProvider {
   generateApocryphaPlan(): ReadingPlan {
