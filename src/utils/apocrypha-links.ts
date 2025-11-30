@@ -71,36 +71,36 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://sacred-texts.com/bib/apo/esdr002.htm'
   },
 
-  // Old Testament Pseudepigrapha
+  // Old Testament Pseudepigrapha (Note: Many use Sacred Texts as primary since ECW doesn't have them)
   '1 Enoch': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: '1enoch.html',
+    baseUrl: 'https://sacred-texts.com/bib/eno/',
+    pathPattern: 'index.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/eno/index.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   '2 Enoch': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: '2enoch.html',
+    baseUrl: 'https://sacred-texts.com/bib/eno/',
+    pathPattern: 'index.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/eno/index.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   'Jubilees': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'jubilees.html',
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: 'jubilees.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/apo/jubilees.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   'Testament of the Twelve Patriarchs': {
     baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'testament.htm',
+    pathPattern: 'patriarchs.html',
     requiresChapter: false,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/testamen.htm'
   },
   'Psalms of Solomon': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'psalmsolomon.html',
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: 'psalm151.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/apo/psalm151.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
 
   // New Testament Apocrypha
@@ -124,7 +124,7 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
   },
   'Gospel of Philip': {
     baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'philip.html',
+    pathPattern: 'gospelphilip.html',
     requiresChapter: false,
     fallbackUrl: 'https://sacred-texts.com/chr/gphilip.htm'
   },
