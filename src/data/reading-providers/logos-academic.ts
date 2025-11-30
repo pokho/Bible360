@@ -823,7 +823,7 @@ export class LogosAcademicProvider {
         historicalContext: {
           period: 'Wilderness Census',
           approximateDate: '1406 BC',
-          description: 'Second generation preparation - New census counting faithful remnant, land distribution preparing for conquest, and daughters' inheritance rights protecting family continuity'
+          description: 'Second generation preparation - New census counting faithful remnant, land distribution preparing for conquest, and daughters\' inheritance rights protecting family continuity'
         }
       },
       {
@@ -2551,7 +2551,7 @@ export class LogosAcademicProvider {
         passages: [{ book: 'Isaiah', chapters: '61-63' }],
         historicalContext: {
           period: 'Messiah\'s Mission',
-          approximateDate: 'c. 700 BC (prophetic),
+          approximateDate: 'c. 700 BC (prophetic)',
           description: 'Messiah\'s ministry announced - Jesus reading Isaiah 61 in synagogue, day of vengeance and comfort, divine warrior returning'
         }
       },
@@ -2561,7 +2561,7 @@ export class LogosAcademicProvider {
         passages: [{ book: 'Isaiah', chapters: '64-66' }],
         historicalContext: {
           period: 'New Creation',
-          approximateDate: 'c. 700 BC (prophetic),
+          approximateDate: 'c. 700 BC (prophetic)',
           description: 'Prayer for restoration and new creation - God tearing heavens, new heavens and new earth, all nations worshiping God'
         }
       },
@@ -3165,7 +3165,7 @@ export class LogosAcademicProvider {
         passages: [{ book: 'Zechariah', chapters: '13-14' }],
         historicalContext: {
           period: 'Messianic Kingdom',
-          approximateDate: 'c. 520 BC (prophetic),
+          approximateDate: 'c. 520 BC (prophetic)',
           description: 'Final purification and coming - Fountain opened for sin, Messiah return to Mount of Olives, living waters flowing'
         }
       },
@@ -3851,6 +3851,7 @@ export class LogosAcademicProvider {
           description: 'All things new - Christ glorified, seven churches addressed, tribulation judgments, Christ\'s victorious return, New Jerusalem, eternity with God'
         }
       }
+    ];
 
     return {
       dailyReadings,

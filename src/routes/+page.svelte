@@ -73,7 +73,7 @@
 				{
 					name: 'Logos Academic',
 					key: 'logos',
-					methodology: 'Conservative dating, historical-critical approach',
+					methodology: 'Conservative dating with historical-critical approach and scholarly academic methodology for comprehensive study.',
 					totalDays: logosPlan.metadata.totalDays,
 					apocryphaSupport: 'Full (Catholic/Orthodox)',
 					color: '#3498db'
@@ -81,26 +81,26 @@
 				{
 					name: 'Blue Letter Bible',
 					key: 'blb',
-					methodology: 'Conservative evangelical scholarship',
+					methodology: 'Conservative evangelical scholarship with traditional young-earth creationist timeline and chronological reading plan.',
 					totalDays: blbPlan.metadata.totalDays,
 					apocryphaSupport: 'None (Protestant)',
 					color: '#9b59b6'
 				},
 				{
-					name: 'Apocrypha & Pseudepigrapha',
-					key: 'apocrypha',
-					methodology: 'Comprehensive academic chronological journey through Deuterocanonical texts, Old Testament Pseudepigrapha, and New Testament Apocrypha with scholarly dating',
-					totalDays: apocryphaPlan.metadata.totalDays,
-					apocryphaSupport: 'Complete Academic Coverage (Scholarly References)',
-					color: '#e67e22'
-				},
-				{
 					name: 'Biblehub Chronological',
 					key: 'biblehub',
-					methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history',
+					methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history.',
 					totalDays: biblehubPlan.metadata.totalDays,
 					apocryphaSupport: 'None (Protestant)',
 					color: '#27ae60'
+				},
+				{
+					name: 'Apocrypha & Pseudepigrapha',
+					key: 'apocrypha',
+					methodology: 'Comprehensive academic chronological journey through Deuterocanonical texts, Old Testament Pseudepigrapha, and New Testament Apocrypha with scholarly dating.',
+					totalDays: apocryphaPlan.metadata.totalDays,
+					apocryphaSupport: 'Complete Academic Coverage (Scholarly References)',
+					color: '#e67e22'
 				}
 			];
 

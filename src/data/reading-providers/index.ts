@@ -6,7 +6,7 @@ export const providerConfigurations: ProviderConfiguration[] = [
   {
     id: 'blue-letter-bible',
     name: 'Blue Letter Bible',
-    description: 'Traditional conservative chronological reading plan with young-earth creationist timeline and Deuterocanonical support.',
+    description: 'Conservative evangelical scholarship with traditional young-earth creationist timeline and chronological reading plan.',
     methodology: {
       datingSystem: 'young-earth',
       jobPlacement: 'early-genesis',
@@ -56,12 +56,12 @@ export const providerConfigurations: ProviderConfiguration[] = [
   {
     id: 'logos',
     name: 'Logos Academic',
-    description: 'Academic flexibility with multiple dating systems, scholarly resources, and comprehensive Apocrypha integration.',
+    description: 'Conservative dating with historical-critical approach and scholarly academic methodology for comprehensive study.',
     methodology: {
       datingSystem: 'academic',
       jobPlacement: 'custom',
-      gospelIntegration: 'custom',
-      psalmsDistribution: 'thematic',
+      gospelIntegration: 'synoptic',
+      psalmsDistribution: 'historical',
       apocryphaInclusion: {
         includeDeuterocanonical: true,
         includeNTApocrypha: true,
@@ -75,6 +75,56 @@ export const providerConfigurations: ProviderConfiguration[] = [
       'Visual timeline tools',
       'Comprehensive Apocrypha support (OT & NT)',
       'User-customizable frameworks'
+    ],
+    isDefault: false
+  },
+  {
+    id: 'apocrypha',
+    name: 'Apocrypha & Pseudepigrapha',
+    description: 'Comprehensive academic chronological journey through Deuterocanonical texts, Old Testament Pseudepigrapha, and New Testament Apocrypha with scholarly dating.',
+    methodology: {
+      datingSystem: 'academic',
+      jobPlacement: 'custom',
+      gospelIntegration: 'custom',
+      psalmsDistribution: 'custom',
+      apocryphaInclusion: {
+        includeDeuterocanonical: true,
+        includeNTApocrypha: true,
+        denominationalPreference: 'academic',
+        intertestamentalPlacement: 'integrated'
+      }
+    },
+    features: [
+      'Complete Deuterocanonical collection',
+      'Old Testament Pseudepigrapha integration',
+      'New Testament Apocrypha selection',
+      'Scholarly historical dating',
+      'Academic commentary and context'
+    ],
+    isDefault: false
+  },
+  {
+    id: 'biblehub-chronological',
+    name: 'Biblehub Chronological',
+    description: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history.',
+    methodology: {
+      datingSystem: 'conservative',
+      jobPlacement: 'early-genesis',
+      gospelIntegration: 'historical',
+      psalmsDistribution: 'event-based',
+      apocryphaInclusion: {
+        includeDeuterocanonical: false,
+        includeNTApocrypha: false,
+        denominationalPreference: 'protestant',
+        intertestamentalPlacement: 'historical-gap'
+      }
+    },
+    features: [
+      'Traditional Hebrew chronology',
+      'Chapter-by-chapter progression',
+      'Event-based Psalms distribution',
+      'Historical timeline integration',
+      'Complete biblical history coverage'
     ],
     isDefault: false
   }

@@ -38,6 +38,7 @@ export interface BiblePassage {
   isApocryphal?: boolean;
   testament: 'old' | 'new' | 'apocryphal';
   parallelEvents?: string[];
+  href?: string; // Optional href for clickable links
 }
 
 export interface HistoricalContext {

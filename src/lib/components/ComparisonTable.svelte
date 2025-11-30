@@ -18,9 +18,13 @@
 								  passage.testament === 'new' ? 'new' :
 								  passage.testament === 'apocryphal' ? 'apocryphal' : '';
 
+			const passageContent = passage.href
+				? `<a href="${passage.href}" target="_blank" rel="noopener" class="passage-link">${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}</a>`
+				: `<span>${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}</span>`;
+
 			return `
 				<div class="passage">
-					<span class="book">${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}</span>
+					<span class="book">${passageContent}</span>
 					<span class="testament ${testamentClass}">${getTestamentLabel(passage.testament)}</span>
 				</div>
 			`;
@@ -161,5 +165,16 @@
 	.reading-context p {
 		margin: 0;
 		color: #495057;
+	}
+
+	.passage-link {
+		color: #007bff;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.passage-link:hover {
+		text-decoration: underline;
+		color: #0056b3;
 	}
 </style>
