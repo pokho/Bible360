@@ -815,6 +815,413 @@ const biblehubChronologicalEvents: DailyReading[] = [
 	}
 ];
 
+// Correct Logos reading plan data extracted from https://www.logos.com/grow/nook-chronological-bible-reading-plan/
+const logosChronologicalReadings: DailyReading[] = [
+	{
+		day: 1,
+		date: 'Day 1',
+		passages: [
+			{ book: 'Genesis', chapterStart: 1, chapterEnd: 3, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Creation Era',
+			approximateDate: 'c. 4000 BC',
+			description: 'The Creation and the Fall - Creation of the universe, humanity, and the entry of sin'
+		},
+		readingTimeMinutes: 25
+	},
+	{
+		day: 2,
+		date: 'Day 2',
+		passages: [
+			{ book: 'Genesis', chapterStart: 4, chapterEnd: 7, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Early Humanity',
+			approximateDate: 'c. 3900 BC',
+			description: 'Cain and Abel, the line of Cain, and the wickedness that provokes God\'s wrath'
+		},
+		readingTimeMinutes: 20
+	},
+	{
+		day: 3,
+		date: 'Day 3',
+		passages: [
+			{ book: 'Genesis', chapterStart: 8, chapterEnd: 11, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Post-Flood Era',
+			approximateDate: 'c. 2500 BC',
+			description: 'The Great Flood subsides, Noah\'s covenant, and the Tower of Babel'
+		},
+		readingTimeMinutes: 22
+	},
+	{
+		day: 4,
+		date: 'Day 4',
+		passages: [
+			{ book: 'Job', chapterStart: 1, chapterEnd: 5, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s suffering begins - The testing of Job\'s faith and the first cycle of dialogue'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 5,
+		date: 'Day 5',
+		passages: [
+			{ book: 'Job', chapterStart: 6, chapterEnd: 9, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s suffering continues - The second cycle of dialogue with friends'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 6,
+		date: 'Day 6',
+		passages: [
+			{ book: 'Job', chapterStart: 10, chapterEnd: 13, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s response and the third cycle of dialogue with friends'
+		},
+		readingTimeMinutes: 17
+	},
+	{
+		day: 7,
+		date: 'Day 7',
+		passages: [
+			{ book: 'Job', chapterStart: 14, chapterEnd: 16, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s final response and the speeches of Eliphaz and Bildad'
+		},
+		readingTimeMinutes: 15
+	},
+	{
+		day: 8,
+		date: 'Day 8',
+		passages: [
+			{ book: 'Job', chapterStart: 17, chapterEnd: 20, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s lament continues and the final words of Zophar and Eliphaz'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 9,
+		date: 'Day 9',
+		passages: [
+			{ book: 'Job', chapterStart: 21, chapterEnd: 23, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s final defense and the response of Eliphaz'
+		},
+		readingTimeMinutes: 14
+	},
+	{
+		day: 10,
+		date: 'Day 10',
+		passages: [
+			{ book: 'Job', chapterStart: 24, chapterEnd: 28, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Bildal\'s final speech, Job\'s discourse on wisdom, and his continued defense'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 11,
+		date: 'Day 11',
+		passages: [
+			{ book: 'Job', chapterStart: 29, chapterEnd: 31, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Job\'s final words and the Elihu\'s speeches begin'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 12,
+		date: 'Day 12',
+		passages: [
+			{ book: 'Job', chapterStart: 32, chapterEnd: 34, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Elihu continues his discourse and Job prepares for God\'s response'
+		},
+		readingTimeMinutes: 15
+	},
+	{
+		day: 13,
+		date: 'Day 13',
+		passages: [
+			{ book: 'Job', chapterStart: 35, chapterEnd: 37, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'Elihu concludes and God speaks to Job from the whirlwind'
+		},
+		readingTimeMinutes: 14
+	},
+	{
+		day: 14,
+		date: 'Day 14',
+		passages: [
+			{ book: 'Job', chapterStart: 38, chapterEnd: 39, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'God continues His discourse on creation and the natural world'
+		},
+		readingTimeMinutes: 15
+	},
+	{
+		day: 15,
+		date: 'Day 15',
+		passages: [
+			{ book: 'Job', chapterStart: 40, chapterEnd: 42, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: 'c. 2100 BC',
+			description: 'God concludes His discourse, Job repents, and God restores Job\'s fortunes'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 16,
+		date: 'Day 16',
+		passages: [
+			{ book: 'Genesis', chapterStart: 12, chapterEnd: 15, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2091 BC',
+			description: 'God\'s call to Abram, the journey to Egypt, and the Abrahamic covenant'
+		},
+		readingTimeMinutes: 20
+	},
+	{
+		day: 17,
+		date: 'Day 17',
+		passages: [
+			{ book: 'Genesis', chapterStart: 16, chapterEnd: 18, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2085 BC',
+			description: 'Hagar and Ishmael, the covenant of circumcision, and the destruction of Sodom'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 18,
+		date: 'Day 18',
+		passages: [
+			{ book: 'Genesis', chapterStart: 19, chapterEnd: 21, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2080 BC',
+			description: 'Lot\'s escape, Abraham and Abimelech, and the birth of Isaac'
+		},
+		readingTimeMinutes: 17
+	},
+	{
+		day: 19,
+		date: 'Day 19',
+		passages: [
+			{ book: 'Genesis', chapterStart: 22, chapterEnd: 24, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2070 BC',
+			description: 'The binding of Isaac, Sarah\'s death, and the marriage of Isaac and Rebekah'
+		},
+		readingTimeMinutes: 19
+	},
+	{
+		day: 20,
+		date: 'Day 20',
+		passages: [
+			{ book: 'Genesis', chapterStart: 25, chapterEnd: 26, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2060 BC',
+			description: 'Abraham\'s death, Jacob and Esau, and Isaac among the Philistines'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 21,
+		date: 'Day 21',
+		passages: [
+			{ book: 'Genesis', chapterStart: 27, chapterEnd: 29, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2050 BC',
+			description: 'Jacob obtains Esau\'s blessing, Jacob\'s dream at Bethel, and Jacob meets Rachel'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 22,
+		date: 'Day 22',
+		passages: [
+			{ book: 'Genesis', chapterStart: 30, chapterEnd: 31, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2045 BC',
+			description: 'Jacob\'s family grows, Jacob flees from Laban, and prepares to meet Esau'
+		},
+		readingTimeMinutes: 17
+	},
+	{
+		day: 23,
+		date: 'Day 23',
+		passages: [
+			{ book: 'Genesis', chapterStart: 32, chapterEnd: 34, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2040 BC',
+			description: 'Jacob wrestles with God, reconciles with Esau, and the incident at Shechem'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 24,
+		date: 'Day 24',
+		passages: [
+			{ book: 'Genesis', chapterStart: 35, chapterEnd: 37, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Patriarchal Era',
+			approximateDate: '2035 BC',
+			description: 'Jacob returns to Bethel, Benjamin is born, and Joseph\'s dreams'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 25,
+		date: 'Day 25',
+		passages: [
+			{ book: 'Genesis', chapterStart: 38, chapterEnd: 40, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Era',
+			approximateDate: '2000 BC',
+			description: 'Judah and Tamar, Joseph in Potiphar\'s house, and Joseph interprets dreams'
+		},
+		readingTimeMinutes: 17
+	},
+	{
+		day: 26,
+		date: 'Day 26',
+		passages: [
+			{ book: 'Genesis', chapterStart: 41, chapterEnd: 42, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Era',
+			approximateDate: '1995 BC',
+			description: 'Joseph rises to power in Egypt and his brothers come to buy grain'
+		},
+		readingTimeMinutes: 18
+	},
+	{
+		day: 27,
+		date: 'Day 27',
+		passages: [
+			{ book: 'Genesis', chapterStart: 43, chapterEnd: 45, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Era',
+			approximateDate: '1990 BC',
+			description: 'Joseph\'s brothers return, Joseph reveals himself, and Jacob moves to Egypt'
+		},
+		readingTimeMinutes: 19
+	},
+	{
+		day: 28,
+		date: 'Day 28',
+		passages: [
+			{ book: 'Genesis', chapterStart: 46, chapterEnd: 47, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Era',
+			approximateDate: '1985 BC',
+			description: 'Jacob\'s family settles in Egypt and Joseph administers during famine'
+		},
+		readingTimeMinutes: 16
+	},
+	{
+		day: 29,
+		date: 'Day 29',
+		passages: [
+			{ book: 'Genesis', chapterStart: 48, chapterEnd: 50, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Era',
+			approximateDate: '1980 BC',
+			description: 'Jacob blesses Joseph\'s sons, Jacob\'s final blessings, and Jacob\'s death'
+		},
+		readingTimeMinutes: 17
+	},
+	{
+		day: 30,
+		date: 'Day 30',
+		passages: [
+			{ book: 'Exodus', chapterStart: 1, chapterEnd: 3, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Bondage',
+			approximateDate: '1525 BC',
+			description: 'Israel\'s oppression in Egypt, the birth of Moses, and Moses flees to Midian'
+		},
+		readingTimeMinutes: 15
+	},
+	{
+		day: 31,
+		date: 'Day 31',
+		passages: [
+			{ book: 'Exodus', chapterStart: 4, chapterEnd: 6, testament: 'old' }
+		],
+		historicalContext: {
+			period: 'Egyptian Bondage',
+			approximateDate: '1445 BC',
+			description: 'Moses called at the burning bush, returns to Egypt, and first confrontation with Pharaoh'
+		},
+		readingTimeMinutes: 16
+	}
+];
+
 // Sample readings for other providers (maintaining previous data for now)
 const sampleReadings: DailyReading[] = biblehubChronologicalEvents.slice(0, 7);
 
@@ -829,13 +1236,7 @@ function createReadingPlansStore() {
 		},
 		logos: {
 			provider: 'logos',
-			dailyReadings: sampleReadings.map((reading, index) => ({
-				...reading,
-				passages: reading.passages.map(passage => ({
-					...passage,
-					chapterEnd: passage.chapterEnd || passage.chapterStart + 1
-				}))
-			})),
+			dailyReadings: logosChronologicalReadings,
 			color: '#3498db',
 			sourceUrl: 'https://www.logos.com/grow/nook-chronological-bible-reading-plan/'
 		},
