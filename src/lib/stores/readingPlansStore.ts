@@ -1228,12 +1228,6 @@ const sampleReadings: DailyReading[] = biblehubChronologicalEvents.slice(0, 7);
 // Create a sample store for demonstration
 function createReadingPlansStore() {
 	const { subscribe, set, update } = writable({
-		esv: {
-			provider: 'esv',
-			dailyReadings: sampleReadings,
-			color: '#e74c3c',
-			sourceUrl: 'https://www.esv.org/resources/reading-plans/chronological/'
-		},
 		logos: {
 			provider: 'logos',
 			dailyReadings: logosChronologicalReadings,

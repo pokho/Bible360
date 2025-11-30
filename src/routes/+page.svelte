@@ -23,14 +23,6 @@
 			// Create a more detailed structure for the legend
 			allReadingProviders = [
 				{
-					name: 'ESV Chronological',
-					key: 'esv',
-					methodology: 'Young-earth creationism, literal historical approach',
-					totalDays: 365,
-					apocryphaSupport: 'None (Protestant)',
-					color: '#e74c3c'
-				},
-				{
 					name: 'Logos Academic',
 					key: 'logos',
 					methodology: 'Conservative dating, historical-critical approach',
@@ -98,12 +90,12 @@
 		monthDays = Array.from({ length: endDay - startDay + 1 }, (_, i) => startDay + i);
 	}
 
-	function selectMonth(month: number) {
+	function selectMonth(month) {
 		currentMonth = month;
 		updateMonthDays();
 	}
 
-	function getMonthLabel(month: number) {
+	function getMonthLabel(month) {
 		return `Month ${month}`;
 	}
 </script>
@@ -183,7 +175,6 @@
 	<div class="source-attribution">
 		<p>Reading plans based on data from:</p>
 		<div class="source-links">
-			<a href="https://www.esv.org/resources/reading-plans/chronological/" target="_blank" rel="noopener">ESV.org</a>
 			<a href="https://www.logos.com/grow/nook-chronological-bible-reading-plan/" target="_blank" rel="noopener">Logos.com</a>
 			<a href="https://www.blueletterbible.org/dailyreading/" target="_blank" rel="noopener">BlueLetterBible.org</a>
 			<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener">Biblehub</a>
