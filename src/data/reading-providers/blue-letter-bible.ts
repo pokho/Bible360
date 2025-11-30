@@ -1,42 +1,275 @@
 import type { ReadingPlan, DailyReading, BiblePassage, HistoricalContext, PlanMetadata } from '../../types/reading-plans';
-import { PDFParserService } from '../../services/pdf-parser.service';
-import type { ParsedReadingPlan } from '../../services/pdf-parser.service';
-import { generateBiblehubHref } from '../../utils/biblehub-utils';
+import { generateBiblehubHref } from '../../utils/biblehub-utils.js';
 
 export class BlueLetterBibleProvider {
-  private pdfParserService: PDFParserService;
+  readonly name = 'Blue Letter Bible';
+  readonly key = 'blb';
+  readonly description = 'Chronological reading plan from Blue Letter Bible ministry';
+  readonly color = '#1E40AF';
 
-  constructor() {
-    this.pdfParserService = PDFParserService.getInstance();
+  // Parse chapter range like "Gen 1-3" or "Psa 11, 59"
+  private parseChapters(text: string): string[] {
+    if (!text) return [];
+
+    // Handle special cases with multiple books separated by " / "
+    if (text.includes(' / ')) {
+      return text.split(' / ');
+    }
+
+    return [text];
+  }
+
+  // Convert chapter notation to chapter numbers
+  private getChapterNumbers(chapterText: string): { start: number; end?: number }[] {
+    const chapters: { start: number; end?: number }[] = [];
+
+    // Handle comma-separated chapters (e.g., "Psa 11, 59")
+    if (chapterText.includes(',')) {
+      const chapterParts = chapterText.split(',').map(s => s.trim());
+      chapterParts.forEach(part => {
+        if (part.includes('-')) {
+          const [start, end] = part.split('-').map(n => parseInt(n.trim()));
+          chapters.push({ start, end });
+        } else {
+          const chapter = parseInt(part.trim());
+          if (!isNaN(chapter)) {
+            chapters.push({ start: chapter });
+          }
+        }
+      });
+    } else if (chapterText.includes('-')) {
+      // Handle range (e.g., "Gen 1-3")
+      const [start, end] = chapterText.split('-').map(n => parseInt(n.trim()));
+      chapters.push({ start, end });
+    } else {
+      // Handle single chapter
+      const chapter = parseInt(chapterText.trim());
+      if (!isNaN(chapter)) {
+        chapters.push({ start: chapter });
+      }
+    }
+
+    return chapters;
+  }
+
+  // Extract book name from chapter text
+  private extractBookName(chapterText: string): string {
+    // Remove chapter numbers and special characters
+    const bookName = chapterText.replace(/^(\w+\s*\w*)\s*\d.*$/, '$1').trim();
+    return bookName;
+  }
+
+  getTestament(book: string): 'old' | 'new' | 'apocryphal' {
+    const otBooks = ['Gen', 'Exo', 'Lev', 'Num', 'Deu', 'Jos', 'Jdg', 'Rth', '1Sa', '2Sa', '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr', 'Neh', 'Est', 'Job', 'Psa', 'Pro', 'Ecc', 'Sng', 'Isa', 'Jer', 'Lam', 'Eze', 'Dan', 'Hos', 'Joe', 'Amo', 'Oba', 'Jon', 'Mic', 'Nah', 'Hab', 'Zep', 'Hag', 'Zec', 'Mal'];
+    const ntBooks = ['Mat', 'Mar', 'Luk', 'Jhn', 'Act', 'Rom', '1Co', '2Co', 'Gal', 'Eph', 'Phl', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm', 'Heb', 'Jas', '1Pe', '2Pe', '1Jo', '2Jo', '3Jo', 'Jde', 'Rev'];
+
+    const bookPrefix = this.extractBookName(book);
+    if (otBooks.some(ot => bookPrefix.startsWith(ot))) return 'old';
+    if (ntBooks.some(nt => bookPrefix.startsWith(nt))) return 'new';
+    return 'old'; // Default to Old Testament
+  }
+
+  isApocryphal(book: string): boolean {
+    // Blue Letter Bible plan doesn't include apocryphal books
+    return false;
   }
 
   async loadReadingPlan(pdfBuffer?: Buffer): Promise<ReadingPlan> {
-    let parsedPlan: ParsedReadingPlan;
+    // Official Blue Letter Bible chronological reading plan
+    const readings = [
+      "Gen 1-3", "Gen 4-7", "Gen 8-11", "Job 1-5", "Job 6-9", "Job 10-13", "Job 14-16", "Job 17-20",
+      "Job 21-23", "Job 24-28", "Job 29-31", "Job 32-34", "Job 35-37", "Job 38-39", "Job 40-42",
+      "Gen 12-15", "Gen 16-18", "Gen 19-21", "Gen 22-24", "Gen 25-26", "Gen 27-29", "Gen 30-31",
+      "Gen 32-34", "Gen 35-37", "Gen 38-40", "Gen 41-42", "Gen 43-45", "Gen 46-47", "Gen 48-50",
+      "Exo 1-3", "Exo 4-6", "Exo 7-9", "Exo 10-12", "Exo 13-15", "Exo 16-18", "Exo 19-21", "Exo 22-24",
+      "Exo 25-27", "Exo 28-29", "Exo 30-32", "Exo 33-35", "Exo 36-38", "Exo 39-40", "Lev 1-4", "Lev 5-7",
+      "Lev 8-10", "Lev 11-13", "Lev 14-15", "Lev 16-18", "Lev 19-21", "Lev 22-23", "Lev 24-25", "Lev 26-27",
+      "Num 1-2", "Num 3-4", "Num 5-6", "Num 7", "Num 8-10", "Num 11-13", "Num 14-15", "Num 16-17",
+      "Num 18-20", "Num 21-22", "Num 23-25", "Num 26-27", "Num 28-30", "Num 31-32", "Num 33-34", "Num 35-36",
+      "Deu 1-2", "Deu 3-4", "Deu 5-7", "Deu 8-10", "Deu 11-13", "Deu 14-16", "Deu 17-20", "Deu 21-23",
+      "Deu 24-27", "Deu 28-29", "Deu 30-31", "Deu 32-34 / Psa 90", "Jos 1-4", "Jos 5-8", "Jos 9-11",
+      "Jos 12-15", "Jos 16-18", "Jos 19-21", "Jos 22-24", "Jdg 1-2", "Jdg 3-5", "Jdg 6-7", "Jdg 8-9",
+      "Jdg 10-12", "Jdg 13-15", "Jdg 16-18", "Jdg 19-21", "Rth 1-4", "1Sa 1-3", "1Sa 4-8", "1Sa 9-12",
+      "1Sa 13-14", "1Sa 15-17", "1Sa 18-20 / Psa 11, 59", "1Sa 21-24 / Psa 91", "Psa 7, 27, 31, 34, 52",
+      "Psa 56, 120, 140-142", "1Sa 25-27", "Psa 17, 35, 54, 63", "1Sa 28-31 / Psa 18", "Psa 121, 123-125, 128-130",
+      "2Sa 1-4", "Psa 6, 8-10, 14, 16, 19, 21", "1Ch 1-2", "Psa 43-45, 49, 84-85, 87", "1Ch 3-5",
+      "Psa 73, 77-78", "1Ch 6", "Psa 81, 88, 92-93", "1Ch 7-10", "Psa 102-104", "2Sa 5 / 1Ch 11-12",
+      "Psa 133", "Psa 106-107", "1Ch 13-16", "Psa 1-2, 15, 22-24, 47, 68", "Psa 89, 96, 100-101, 105, 132",
+      "2Sa 6-7 / 1Ch 17", "Psa 25, 29, 33, 36, 39", "2Sa 8-9 / 1Ch 18", "Psa 50, 53, 60, 75",
+      "2Sa 10 / 1Ch 19 / Psa 20", "Psa 65-67, 69-70", "2Sa 11-12 / 1Ch 20", "Psa 32, 51, 86, 122",
+      "2Sa 13-15", "Psa 3-4, 12-13, 28, 55", "2Sa 16-18", "Psa 26, 40, 58, 61-62, 64", "2Sa 19-21",
+      "Psa 5, 38, 41-42", "2Sa 22-23 / Psa 57", "Psa 95, 97-99", "2Sa 24 / 1Ch 21-22 / Psa 30",
+      "Psa 108-110", "1Ch 23-25", "Psa 131, 138-139, 143-145", "1Ch 26-29 / Psa 127", "Psa 111-118",
+      "1Ki 1-2 / Psa 37, 71, 94", "Psa 119", "1Ki 3-4", "2Ch 1 / Psa 72", "Sng 1-8", "Pro 1-3",
+      "Pro 4-6", "Pro 7-9", "Pro 10-12", "Pro 13-15", "Pro 16-18", "Pro 19-21", "Pro 22-24",
+      "1Ki 5-6 / 2Ch 2-3", "1Ki 7 / 2Ch 4", "1Ki 8 / 2Ch 5", "2Ch 6-7 / Psa 136", "Psa 134, 146-150",
+      "1Ki 9 / 2Ch 8", "Pro 25-26", "Pro 27-29", "Ecc 1-6", "Ecc 7-12", "1Ki 10-11 / 2Ch 9", "Pro 30-31",
+      "1Ki 12-14", "2Ch 10-12", "1Ki 15 / 2Ch 13-16", "1Ki 16 / 2Ch 17", "1Ki 17-19", "1Ki 20-21",
+      "1Ki 22 / 2Ch 18", "2Ch 19-23", "Oba 1 / Psa 82-83", "2Ki 1-4", "2Ki 5-8", "2Ki 9-11",
+      "2Ki 12-13 / 2Ch 24", "2Ki 14 / 2Ch 25", "Jon 1-4", "2Ki 15 / 2Ch 26", "Isa 1-4", "Isa 5-8",
+      "Amo 1-5", "Amo 6-9", "2Ch 27 / Isa 9-12", "Mic 1-7", "2Ch 28 / 2Ki 16-17", "Isa 13-17", "Isa 18-22",
+      "Isa 23-27", "2Ki 18 / 2Ch 29-31 / Psa 48", "Hos 1-7", "Hos 8-14", "Isa 28-30", "Isa 31-34",
+      "Isa 35-36", "Isa 37-39 / Psa 76", "Isa 40-43", "Isa 44-48", "2Ki 19 / Psa 46, 80, 135",
+      "Isa 49-53", "Isa 54-58", "Isa 59-63", "Isa 64-66", "2Ki 20-21 / 2Ch 32-33", "Nah 1-3",
+      "2Ki 22-23 / 2Ch 34-35", "Zep 1-3", "Jer 1-3", "Jer 4-6", "Jer 7-9", "Jer 10-13", "Jer 14-17",
+      "Jer 18-22", "Jer 23-25", "Jer 26-29", "Jer 30-31", "Jer 32-34", "Jer 35-37", "Jer 38-40 / Psa 74, 79",
+      "2Ki 24-25 / 2Ch 36", "Hab 1-3", "Jer 41-45", "Jer 46-48", "Jer 49-50", "Jer 51-52", "Lam 1-2",
+      "Lam 3-5", "Eze 1-4", "Eze 5-8", "Eze 9-12", "Eze 13-15", "Eze 16-17", "Eze 18-20", "Eze 21-22",
+      "Eze 23-24", "Eze 25-27", "Eze 28-30", "Eze 31-33", "Eze 34-36", "Eze 37-39", "Eze 40-42",
+      "Eze 43-45", "Eze 46-48", "Dan 1-3", "Dan 4-6", "Dan 7-9", "Dan 10-12", "Ezr 1-3", "Ezr 4-6 / Psa 137",
+      "Hag 1-2", "Zec 1-4", "Zec 5-9", "Zec 10-14", "Est 1-5", "Est 6-10", "Ezr 7-10", "Neh 1-5",
+      "Neh 6-7", "Neh 8-10", "Neh 11-13 / Psa 126", "Mal 1-4", "Luk 1 / Jhn 1", "Mat 1 / Luk 2",
+      "Mat 2", "Mat 3 / Mar 1 / Luk 3", "Mat 4 / Luk 5-5", "Jhn 2-4", "Mat 8 / Mar 2", "Jhn 5",
+      "Mat 12 / Mar 3 / Luk 6", "Mat 5-7", "Mat 9 / Luk 7", "Mat 11", "Luk 11", "Mat 13 / Luk 8",
+      "Mar 4-5", "Mat 10", "Mat 14 / Mar 6 / Luk 9", "Jhn 6", "Mat 15 / Mar 7", "Mat 16 / Mar 8",
+      "Mat 17 / Mar 9", "Mat 18", "Jhn 7-8", "Jhn 9-10", "Luk 10", "Luk 12-13", "Luk 14-15",
+      "Luk 16-17", "Jhn 11", "Luk 18", "Mat 19 / Mar 10", "Mat 20-21", "Luk 19", "Mar 11 / Jhn 12",
+      "Mat 22 / Mar 12", "Mat 23 / Luk 20-21", "Mar 13", "Mat 24", "Mat 25", "Mat 26 / Mar 14",
+      "Luk 22 / Jhn 13", "Jhn 14-17", "Mat 27 / Mar 15", "Luk 23 / Jhn 18-19", "Mat 28 / Mar 16",
+      "Luk 24 / Jhn 20-21", "Act 1-3", "Act 4-6", "Act 7-8", "Act 9-10", "Act 11-12", "Act 13-14",
+      "Jas 1-5", "Act 15-16", "Gal 1-3", "Gal 4-6", "Act 17", "1Th 1-5 / 2Th 1-3", "Act 18-19",
+      "1Co 1-4", "1Co 5-8", "1Co 9-11", "1Co 12-14", "1Co 15-16", "2Co 1-4", "2Co 5-9", "2Co 10-13",
+      "Rom 1-3", "Rom 4-7", "Rom 8-10", "Rom 11-13", "Rom 14-16", "Act 20-23", "Act 24-26",
+      "Act 27-28", "Col 1-4 / Phm 1", "Eph 1-6", "Phl 1-4", "1Ti 1-6", "Tit 1-3", "1Pe 1-5",
+      "Heb 1-6", "Heb 7-10", "Heb 11-13", "2Ti 1-4", "2Pe 1-3 / Jde 1", "1Jo 1-5", "2Jo 1 / 3Jo 1",
+      "Rev 1-5", "Rev 6-11", "Rev 12-18", "Rev 19-22"
+    ];
 
-    if (pdfBuffer) {
-      parsedPlan = await this.pdfParserService.parseBlueLetterBiblePlan(pdfBuffer);
-    } else {
-      // Use our comprehensive 90-day reading plan
-      parsedPlan = this.getCompleteReadingPlan();
-    }
+    const dailyReadings: DailyReading[] = readings.map((reading, index) => {
+      const day = index + 1;
+      const date = new Date(2025, 0, day); // Starting January 1, 2025
 
-    return this.convertToReadingPlan(parsedPlan);
-  }
+      // Handle multiple books in one reading (e.g., "2Sa 24 / 1Ch 21-22 / Psa 30")
+      const bookReadings = this.parseChapters(reading);
+      const passages = [];
 
-  private convertToReadingPlan(parsedPlan: ParsedReadingPlan): ReadingPlan {
-    const dailyReadings: DailyReading[] = parsedPlan.dailyReadings.map((reading, index) => ({
-      day: reading.day,
-      date: reading.date,
-      passages: this.convertPassages(reading.passages),
-      readingTimeMinutes: this.calculateReadingTime(reading.passages),
-      apocryphaIncluded: this.hasApocrypha(reading.passages),
-      historicalContext: reading.historicalContext
-    }));
+      bookReadings.forEach(bookReading => {
+        const bookName = this.extractBookName(bookReading);
+        const chapterNumbers = this.getChapterNumbers(bookReading.replace(bookName, '').trim());
+
+        chapterNumbers.forEach(chapterRange => {
+          const passage: BiblePassage = {
+            book: bookName,
+            chapterStart: chapterRange.start,
+            chapterEnd: chapterRange.end || chapterRange.start,
+            testament: this.getTestament(bookName),
+            isApocryphal: this.isApocryphal(bookName)
+          };
+
+          // Add href as a non-standard property for the template
+          (passage as any).href = generateBiblehubHref(bookName, chapterRange.start);
+
+          passages.push(passage);
+        });
+      });
+
+      // Determine historical context based on reading content
+      let historicalContext;
+      const bookNames = passages.map(p => p.book);
+
+      if (bookNames.includes('Gen') || bookNames.includes('Job')) {
+        historicalContext = {
+          period: 'Primeval History',
+          approximateDate: 'c. 2000-1800 BCE',
+          description: 'Creation, patriarchal narratives, and early human history'
+        };
+      } else if (bookNames.includes('Exo') || bookNames.includes('Lev')) {
+        historicalContext = {
+          period: 'Exodus and Law',
+          approximateDate: 'c. 1445-1400 BCE',
+          description: 'Deliverance from Egypt, Sinai covenant, and sacrificial system'
+        };
+      } else if (bookNames.includes('Num') || bookNames.includes('Deu')) {
+        historicalContext = {
+          period: 'Wilderness Wanderings',
+          approximateDate: 'c. 1400-1350 BCE',
+          description: 'Desert journey, covenant renewal, and preparation for conquest'
+        };
+      } else if (bookNames.includes('Jos') || bookNames.includes('Jdg') || bookNames.includes('Rth')) {
+        historicalContext = {
+          period: 'Conquest and Judges',
+          approximateDate: 'c. 1350-1050 BCE',
+          description: 'Canaan conquest, tribal settlement, and period of the judges'
+        };
+      } else if (bookNames.some(b => b.includes('Sa'))) {
+        historicalContext = {
+          period: 'United Monarchy',
+          approximateDate: 'c. 1050-930 BCE',
+          description: 'Samuel, Saul, and David\'s reigns, establishment of the monarchy'
+        };
+      } else if (bookNames.some(b => b.includes('Ki') || b.includes('Ch'))) {
+        historicalContext = {
+          period: 'Divided Kingdom',
+          approximateDate: 'c. 930-586 BCE',
+          description: 'Kingdom division, prophets, and eventual exile'
+        };
+      } else if (bookNames.includes('Ezr') || bookNames.includes('Neh') || bookNames.includes('Est')) {
+        historicalContext = {
+          period: 'Post-Exilic Period',
+          approximateDate: 'c. 538-400 BCE',
+          description: 'Return from exile, temple rebuilding, and restoration'
+        };
+      } else if (bookNames.some(b => ['Mat', 'Mar', 'Luk', 'Jhn'].includes(b))) {
+        historicalContext = {
+          period: 'Life of Christ',
+          approximateDate: 'c. 4 BCE-30 CE',
+          description: 'Jesus Christ\'s life, ministry, death, and resurrection'
+        };
+      } else if (bookNames.includes('Act')) {
+        historicalContext = {
+          period: 'Early Church',
+          approximateDate: 'c. 30-70 CE',
+          description: 'Pentecost, apostolic ministry, and church expansion'
+        };
+      } else if (bookNames.some(b => ['Rom', '1Co', '2Co', 'Gal', 'Eph', 'Phl', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm'].includes(b))) {
+        historicalContext = {
+          period: 'Pauline Epistles',
+          approximateDate: 'c. 50-68 CE',
+          description: 'Paul\'s letters to churches and individuals, Christian theology and practice'
+        };
+      } else if (bookNames.includes('Heb') || bookNames.includes('Jas') || bookNames.some(b => ['1Pe', '2Pe', '1Jo', '2Jo', '3Jo', 'Jde'].includes(b))) {
+        historicalContext = {
+          period: 'General Epistles',
+          approximateDate: 'c. 60-95 CE',
+          description: 'Letters to scattered believers, Christian faith and perseverance'
+        };
+      } else if (bookNames.includes('Rev')) {
+        historicalContext = {
+          period: 'Apocalypse',
+          approximateDate: 'c. 95 CE',
+          description: 'Prophecy of end times, final victory, and eternal kingdom'
+        };
+      } else {
+        historicalContext = {
+          period: 'Wisdom and Prophecy',
+          approximateDate: 'Various',
+          description: 'Scriptural wisdom and prophetic messages'
+        };
+      }
+
+      return {
+        day,
+        date: date.toISOString().split('T')[0],
+        passages,
+        readingTimeMinutes: Math.max(15, passages.length * 8), // Minimum 15 minutes, 8 minutes per passage
+        historicalContext
+      };
+    });
+
+    const metadata: PlanMetadata = {
+      title: 'Blue Letter Bible Chronological Reading Plan',
+      description: 'Official chronological Bible reading plan from Blue Letter Bible ministry',
+      totalDays: 365,
+      averageReadingTime: 20,
+      language: 'English',
+      version: '1.0',
+      sourceUrl: 'https://www.blueletterbible.org/dailyreading/'
+    };
 
     return {
       provider: 'blue-letter-bible',
       methodology: {
-        datingSystem: 'young-earth',
+        datingSystem: 'conservative',
         jobPlacement: 'early-genesis',
         gospelIntegration: 'immediate',
         psalmsDistribution: 'historical',
@@ -48,932 +281,7 @@ export class BlueLetterBibleProvider {
         }
       },
       dailyReadings,
-      metadata: {
-        title: 'Blue Letter Bible Enhanced Chronological Reading Plan',
-        description: 'Conservative evangelical chronological reading plan with comprehensive historical context and theological insight, following a young-earth creationist timeline with enhanced educational value.',
-        totalDays: parsedPlan.metadata.totalDays,
-        averageReadingTime: 20,
-        language: 'English',
-        version: '2.0 Enhanced',
-        sourceUrl: 'https://blueletterbible.org'
-      }
-    };
-  }
-
-  private convertPassages(passages: Array<{ book: string; chapters: string }>): BiblePassage[] {
-    return passages.map(passage => {
-      const chapters = passage.chapters.split('-');
-      const chapterStart = parseInt(chapters[0]);
-      const chapterEnd = chapters.length > 1 ? parseInt(chapters[1]) : undefined;
-
-      return {
-        book: passage.book,
-        chapterStart,
-        chapterEnd: chapterEnd || chapterStart,
-        testament: this.getTestament(passage.book),
-        isApocryphal: this.isApocryphal(passage.book),
-        href: generateBiblehubHref(passage.book, chapterStart)
-      };
-    });
-  }
-
-  private getTestament(book: string): 'old' | 'new' | 'apocryphal' {
-    const oldTestamentBooks = [
-      'Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy', 'Joshua', 'Judges', 'Ruth',
-      '1 Samuel', '2 Samuel', '1 Kings', '2 Kings', '1 Chronicles', '2 Chronicles',
-      'Ezra', 'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs', 'Ecclesiastes',
-      'Song of Solomon', 'Isaiah', 'Jeremiah', 'Lamentations', 'Ezekiel', 'Daniel',
-      'Hosea', 'Joel', 'Amos', 'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk',
-      'Zephaniah', 'Haggai', 'Zechariah', 'Malachi'
-    ];
-
-    const newTestamentBooks = [
-      'Matthew', 'Mark', 'Luke', 'John', 'Acts', 'Romans', '1 Corinthians', '2 Corinthians',
-      'Galatians', 'Ephesians', 'Philippians', 'Colossians', '1 Thessalonians',
-      '2 Thessalonians', '1 Timothy', '2 Timothy', 'Titus', 'Philemon', 'Hebrews',
-      'James', '1 Peter', '2 Peter', '1 John', '2 John', '3 John', 'Jude', 'Revelation'
-    ];
-
-    if (oldTestamentBooks.includes(book)) return 'old';
-    if (newTestamentBooks.includes(book)) return 'new';
-    return 'apocryphal';
-  }
-
-  private isApocryphal(book: string): boolean {
-    const apocryphalBooks = [
-      'Tobit', 'Judith', 'Wisdom', 'Sirach', 'Baruch', '1 Maccabees', '2 Maccabees',
-      '1 Esdras', '2 Esdras', 'Prayer of Manasseh', 'Additions to Esther', 'Additions to Daniel'
-    ];
-
-    return apocryphalBooks.includes(book);
-  }
-
-  private calculateReadingTime(passages: Array<{ book: string; chapters: string }>): number {
-    // Estimate reading time based on number of chapters
-    let totalChapters = 0;
-    passages.forEach(passage => {
-      const chapters = passage.chapters.split('-');
-      const start = parseInt(chapters[0]);
-      const end = chapters.length > 1 ? parseInt(chapters[1]) : start;
-      totalChapters += (end - start + 1);
-    });
-
-    // Average reading time: ~5 minutes per chapter
-    return Math.max(10, totalChapters * 5);
-  }
-
-  private hasApocrypha(passages: Array<{ book: string; chapters: string }>): boolean {
-    return passages.some(passage => this.isApocryphal(passage.book));
-  }
-
-  private getHistoricalContext(day: number, passages: Array<{ book: string; chapters: string }>): HistoricalContext | undefined {
-    const book = passages[0]?.book;
-
-    // Basic historical context mapping
-    const contextMap: Record<string, HistoricalContext> = {
-      'Genesis': {
-        period: 'Primeval History',
-        approximateDate: '4004-2000 BC',
-        description: 'Creation, patriarchal period, and early human history'
-      },
-      'Job': {
-        period: 'Patriarchal Era',
-        approximateDate: '2000-1800 BC',
-        description: 'Wisdom literature from the time of the patriarchs'
-      },
-      'Exodus': {
-        period: 'Egyptian Exodus',
-        approximateDate: '1446 BC',
-        description: 'Israelite deliverance from Egypt and wilderness wanderings'
-      },
-      'Matthew': {
-        period: 'Life of Christ',
-        approximateDate: 'AD 26-30',
-        description: 'Birth, ministry, death, and resurrection of Jesus Christ'
-      },
-      'Luke': {
-        period: 'Life of Christ',
-        approximateDate: 'AD 26-30',
-        description: 'Gospel account emphasizing the historical accuracy of Christ\'s life'
-      },
-      'Acts': {
-        period: 'Early Church',
-        approximateDate: 'AD 30-60',
-        description: 'Birth and expansion of the early Christian church'
-      },
-      'Revelation': {
-        period: 'Apostolic Age',
-        approximateDate: 'AD 95',
-        description: 'Apostolic visions concerning end times and the new creation'
-      }
-    };
-
-    return contextMap[book];
-  }
-
-  private getCompleteReadingPlan(): ParsedReadingPlan {
-    // Complete 365-day chronological reading plan based on Blue Letter Bible PDF
-    // Aligned with the official BLB Daily Bible Reading Plan - Chronological
-
-    const dailyReadings = [
-      // January (Days 1-31): Creation and Early History
-      {
-        day: 1,
-        date: '2025-01-01',
-        passages: [{ book: 'Genesis', chapters: '1-2' }],
-        historicalContext: {
-          period: 'Creation Week',
-          approximateDate: 'c. 4000 BC',
-          description: 'The six days of creation and the formation of the universe, culminating in God\'s creation of humanity in His image'
-        }
-      },
-      {
-        day: 2,
-        date: '2025-01-02',
-        passages: [{ book: 'Genesis', chapters: '3-4' }],
-        historicalContext: {
-          period: 'The Fall',
-          approximateDate: 'c. 4000 BC',
-          description: 'The Fall of Man and the entry of sin into the world through Adam and Eve\'s disobedience; Cain\'s murder of Abel demonstrates sin\'s rapid progression'
-        }
-      },
-      {
-        day: 3,
-        date: '2025-01-03',
-        passages: [{ book: 'Genesis', chapters: '5-6' }],
-        historicalContext: {
-          period: 'Pre-Flood Era',
-          approximateDate: 'c. 3000-2500 BC',
-          description: 'The genealogies from Adam to Noah and the increasing wickedness that provokes God\'s judgment through the Great Flood'
-        }
-      },
-      {
-        day: 4,
-        date: '2025-01-04',
-        passages: [{ book: 'Genesis', chapters: '7-9' }],
-        historicalContext: {
-          period: 'The Flood',
-          approximateDate: 'c. 2500 BC',
-          description: 'The Great Flood as God\'s judgment on human wickedness, with Noah\'s preservation of humanity and animal life through the ark'
-        }
-      },
-      {
-        day: 5,
-        date: '2025-01-05',
-        passages: [{ book: 'Genesis', chapters: '10-11' }],
-        historicalContext: {
-          period: 'Post-Flood Era',
-          approximateDate: 'c. 2500-2200 BC',
-          description: 'The Table of Nations and the Tower of Babel, showing the spread of humanity and God\'s judgment on human pride'
-        }
-      },
-      {
-        day: 6,
-        date: '2025-01-06',
-        passages: [{ book: 'Genesis', chapters: '12-14' }],
-        historicalContext: {
-          period: 'Patriarchal Era',
-          approximateDate: 'c. 2091-2084 BC',
-          description: 'God\'s call to Abram and the beginning of the Abrahamic covenant; Abram\'s journey to Canaan and his separation from Lot'
-        }
-      },
-      {
-        day: 7,
-        date: '2025-01-07',
-        passages: [{ book: 'Genesis', chapters: '15-17' }],
-        historicalContext: {
-          period: 'Covenant Establishment',
-          approximateDate: 'c. 2081-2067 BC',
-          description: 'God establishes His covenant with Abram, promises numerous descendants, and institutes circumcision as the sign of the covenant'
-        }
-      },
-      {
-        day: 8,
-        date: '2025-01-08',
-        passages: [{ book: 'Genesis', chapters: '18-19' }],
-        historicalContext: {
-          period: 'Sodom and Gomorrah',
-          approximateDate: 'c. 2067 BC',
-          description: 'God\'s judgment on the wicked cities of Sodom and Gomorrah; Lot\'s deliverance and the destruction of the cities'
-        }
-      },
-      {
-        day: 9,
-        date: '2025-01-09',
-        passages: [{ book: 'Genesis', chapters: '20-21' }],
-        historicalContext: {
-          period: 'Patriarchal Journeys',
-          approximateDate: 'c. 2067-2066 BC',
-          description: 'Abraham\'s journeys in Gerar and Negev; the birth of Isaac fulfilling God\'s promise of a son in Abraham\'s old age'
-        }
-      },
-      {
-        day: 10,
-        date: '2025-01-10',
-        passages: [{ book: 'Genesis', chapters: '22-23' }],
-        historicalContext: {
-          period: 'Testing and Provision',
-          approximateDate: 'c. 2054-2045 BC',
-          description: 'The testing of Abraham\'s faith through the binding of Isaac; Sarah\'s death and Abraham\'s purchase of the cave of Machpelah'
-        }
-      },
-      {
-        day: 11,
-        date: '2025-01-11',
-        passages: [{ book: 'Genesis', chapters: '24-25' }],
-        historicalContext: {
-          period: 'Isaac\'s Marriage',
-          approximateDate: 'c. 2045-2025 BC',
-          description: 'Abraham\'s servant finds Rebekah as a wife for Isaac; Abraham\'s death and Isaac\'s establishment in Canaan'
-        }
-      },
-      {
-        day: 12,
-        date: '2025-01-12',
-        passages: [{ book: 'Genesis', chapters: '26-27' }],
-        historicalContext: {
-          period: 'Isaac and Jacob',
-          approximateDate: 'c. 2025-2007 BC',
-          description: 'Isaac\'s life in Canaan and Jacob\'s deception to obtain Esau\'s blessing; Jacob\'s flight to Mesopotamia'
-        }
-      },
-      {
-        day: 13,
-        date: '2025-01-13',
-        passages: [{ book: 'Genesis', chapters: '28-30' }],
-        historicalContext: {
-          period: 'Jacob at Bethel',
-          approximateDate: 'c. 2007-2000 BC',
-          description: 'Jacob\'s dream at Bethel and his service to Laban; his marriages to Leah and Rachel and the birth of his children'
-        }
-      },
-      {
-        day: 14,
-        date: '2025-01-14',
-        passages: [{ book: 'Genesis', chapters: '31-33' }],
-        historicalContext: {
-          period: 'Jacob\'s Return',
-          approximateDate: 'c. 2000-1990 BC',
-          description: 'Jacob\'s return to Canaan, his reconciliation with Esau, and his settlement at Shechem'
-        }
-      },
-      {
-        day: 15,
-        date: '2025-01-15',
-        passages: [{ book: 'Genesis', chapters: '34-36' }],
-        historicalContext: {
-          period: 'Shechem Incident',
-          approximateDate: 'c. 1990-1985 BC',
-          description: 'The incident at Shechem involving Dinah; Jacob\'s move to Bethel and the death of Rachel'
-        }
-      },
-      {
-        day: 16,
-        date: '2025-01-16',
-        passages: [{ book: 'Genesis', chapters: '37-39' }],
-        historicalContext: {
-          period: 'Joseph\'s Early Life',
-          approximateDate: 'c. 1985-1980 BC',
-          description: 'Joseph\'s dreams, his betrayal by his brothers, and his rise to prominence in Egypt despite false accusations'
-        }
-      },
-      {
-        day: 17,
-        date: '2025-01-17',
-        passages: [{ book: 'Genesis', chapters: '40-41' }],
-        historicalContext: {
-          period: 'Joseph\'s Rise',
-          approximateDate: 'c. 1995 BC',
-          description: 'Joseph interprets dreams in prison and rises to become second-in-command in Egypt, preparing for the coming famine'
-        }
-      },
-      {
-        day: 18,
-        date: '2025-01-18',
-        passages: [{ book: 'Genesis', chapters: '42-44' }],
-        historicalContext: {
-          period: 'Joseph\'s Brothers',
-          approximateDate: 'c. 1990 BC',
-          description: 'Joseph\'s brothers come to Egypt for grain; Joseph tests them and reveals his identity, beginning the family reconciliation'
-        }
-      },
-      {
-        day: 19,
-        date: '2025-01-19',
-        passages: [{ book: 'Genesis', chapters: '45-47' }],
-        historicalContext: {
-          period: 'Family Reconciliation',
-          approximateDate: 'c. 1990-1985 BC',
-          description: 'Joseph forgives his brothers and brings his family to Egypt; Jacob blesses Pharaoh and settles in Goshen'
-        }
-      },
-      {
-        day: 20,
-        date: '2025-01-20',
-        passages: [{ book: 'Genesis', chapters: '48-50' }],
-        historicalContext: {
-          period: 'Jacob\'s Final Blessings',
-          approximateDate: 'c. 1980 BC',
-          description: 'Jacob blesses Joseph\'s sons and gives prophetic blessings to each of his twelve tribes before his death'
-        }
-      },
-      {
-        day: 21,
-        date: '2025-01-21',
-        passages: [{ book: 'Exodus', chapters: '1-2' }],
-        historicalContext: {
-          period: 'Egyptian Bondage',
-          approximateDate: 'c. 1525 BC',
-          description: 'The Israelites multiply in Egypt and Pharaoh\'s oppression begins; Moses\' birth and preservation in the Nile River'
-        }
-      },
-      {
-        day: 22,
-        date: '2025-01-22',
-        passages: [{ book: 'Exodus', chapters: '3-4' }],
-        historicalContext: {
-          period: 'Moses\' Calling',
-          approximateDate: 'c. 1445 BC',
-          description: 'God calls Moses from the burning bush, reveals His name "I AM," and commissions Moses to deliver Israel from Egypt'
-        }
-      },
-      {
-        day: 23,
-        date: '2025-01-23',
-        passages: [{ book: 'Exodus', chapters: '5-7' }],
-        historicalContext: {
-          period: 'Confrontation with Pharaoh',
-          approximateDate: 'c. 1445 BC',
-          description: 'Moses and Aaron confront Pharaoh; God begins the plagues against Egypt demonstrating His power over false gods'
-        }
-      },
-      {
-        day: 24,
-        date: '2025-01-24',
-        passages: [{ book: 'Exodus', chapters: '8-10' }],
-        historicalContext: {
-          period: 'The Plagues',
-          approximateDate: 'c. 1445 BC',
-          description: 'God sends devastating plagues upon Egypt, each demonstrating His superiority over Egyptian gods and Pharaoh\'s hard-heartedness'
-        }
-      },
-      {
-        day: 25,
-        date: '2025-01-25',
-        passages: [{ book: 'Exodus', chapters: '11-13' }],
-        historicalContext: {
-          period: 'The Passover',
-          approximateDate: 'c. 1445 BC',
-          description: 'The final plague and the establishment of Passover; Israel\'s departure from Egypt and the beginning of the Exodus'
-        }
-      },
-      {
-        day: 26,
-        date: '2025-01-26',
-        passages: [{ book: 'Exodus', chapters: '14-15' }],
-        historicalContext: {
-          period: 'Red Sea Crossing',
-          approximateDate: 'c. 1445 BC',
-          description: 'God parts the Red Sea, allowing Israel to escape from the Egyptian army; the song of deliverance and celebration'
-        }
-      },
-      {
-        day: 27,
-        date: '2025-01-27',
-        passages: [{ book: 'Exodus', chapters: '16-18' }],
-        historicalContext: {
-          period: 'Wilderness Journey',
-          approximateDate: 'c. 1445-1444 BC',
-          description: 'God provides manna and water in the wilderness; Jethro advises Moses on leadership and the establishment of judges'
-        }
-      },
-      {
-        day: 28,
-        date: '2025-01-28',
-        passages: [{ book: 'Exodus', chapters: '19-20' }],
-        historicalContext: {
-          period: 'Mount Sinai',
-          approximateDate: 'c. 1444 BC',
-          description: 'Israel arrives at Mount Sinai; God gives the Ten Commandments and establishes His covenant with the nation'
-        }
-      },
-      {
-        day: 29,
-        date: '2025-01-29',
-        passages: [{ book: 'Exodus', chapters: '21-23' }],
-        historicalContext: {
-          period: 'The Law',
-          approximateDate: 'c. 1444 BC',
-          description: 'God gives detailed laws concerning justice, property, worship, and social relationships; the covenant is confirmed'
-        }
-      },
-      {
-        day: 30,
-        date: '2025-01-30',
-        passages: [{ book: 'Exodus', chapters: '24-25' }],
-        historicalContext: {
-          period: 'Tabernacle Instructions',
-          approximateDate: 'c. 1444 BC',
-          description: 'Moses on Mount Sinai receives detailed instructions for the Tabernacle; the covenant is ratified with blood'
-        }
-      },
-      {
-        day: 31,
-        date: '2025-01-31',
-        passages: [{ book: 'Exodus', chapters: '26-28' }],
-        historicalContext: {
-          period: 'Tabernacle Construction',
-          approximateDate: 'c. 1444 BC',
-          description: 'Detailed instructions for the Tabernacle construction, priestly garments, and the consecration of priests'
-        }
-      },
-      // Days 32-48: Enhanced Historical Context (continuing the pattern)
-      {
-        day: 32,
-        date: '2025-02-01',
-        passages: [{ book: 'Genesis', chapters: '38-40' }],
-        historicalContext: {
-          period: 'Patriarchal Period',
-          approximateDate: 'c. 2000 BC',
-          description: 'Judah\'s moral failure with Tamar highlights the need for redemption; Joseph\'s integrity in Potiphar\'s house and God-given ability to interpret dreams demonstrates God\'s sovereignty over human circumstances, setting up divine providence for Israel\'s preservation in Egypt'
-        }
-      },
-      {
-        day: 33,
-        date: '2025-02-02',
-        passages: [{ book: 'Genesis', chapters: '41-42' }],
-        historicalContext: {
-          period: 'Egyptian Era',
-          approximateDate: 'c. 1995 BC',
-          description: 'Joseph\'s dramatic rise from prisoner to prime minister demonstrates God\'s providential care; his brothers\' journey to Egypt begins the fulfillment of Jacob\'s prophecy that his family will bow before him, while Joseph\'s forgiveness and restoration showcase Christ-like forgiveness and divine reconciliation'
-        }
-      },
-      {
-        day: 34,
-        date: '2025-02-03',
-        passages: [{ book: 'Genesis', chapters: '43-45' }],
-        historicalContext: {
-          period: 'Egyptian Era',
-          approximateDate: 'c. 1990 BC',
-          description: 'Joseph\'s dramatic revelation to his brothers demonstrates divine forgiveness and reconciliation; the brothers\' remorse and Joseph\'s gracious welcome showcase God\'s redemptive plan, while Jacob\'s impending move to Egypt fulfills the Abrahamic promise of becoming a great nation in a foreign land'
-        }
-      },
-      {
-        day: 35,
-        date: '2025-02-04',
-        passages: [{ book: 'Genesis', chapters: '46-47' }],
-        historicalContext: {
-          period: 'Egyptian Era',
-          approximateDate: 'c. 1985 BC',
-          description: 'Jacob\'s family settles in the fertile land of Goshen, establishing the Hebrew presence in Egypt; Joseph\'s wise administration preserves both Egyptians and Israelites during the prolonged famine, demonstrating God\'s providential care and blessing through faithful stewardship in foreign lands'
-        }
-      },
-      {
-        day: 36,
-        date: '2025-02-05',
-        passages: [{ book: 'Genesis', chapters: '48-50' }],
-        historicalContext: {
-          period: 'Egyptian Era',
-          approximateDate: 'c. 1980 BC',
-          description: 'Jacob\'s final blessings reflect prophetic insight into each tribe\'s future, with particular emphasis on Judah\'s royal line and Joseph\'s fruitfulness; his death in Egypt marks the end of the patriarchal period but assures the continuation of God\'s covenant promises through his descendants in the land of Egypt'
-        }
-      },
-      {
-        day: 37,
-        date: '2025-02-06',
-        passages: [{ book: 'Exodus', chapters: '1-3' }],
-        historicalContext: {
-          period: 'Egyptian Bondage',
-          approximateDate: 'c. 1525 BC',
-          description: 'The Israelites multiply rapidly under Egyptian oppression, prompting Pharaoh\'s decree to kill Hebrew male infants; Moses\' miraculous preservation and adoption into the Egyptian royal household sets the stage for his future role as deliverer, while his flight to Midian after killing an Egyptian shows his human limitations before divine calling'
-        }
-      },
-      {
-        day: 38,
-        date: '2025-02-07',
-        passages: [{ book: 'Exodus', chapters: '4-6' }],
-        historicalContext: {
-          period: 'Egyptian Bondage',
-          approximateDate: 'c. 1445 BC',
-          description: 'The burning bush encounter reveals God\'s holy name "I AM" and divine plan for deliverance; Moses\' divine commission at Mount Sinai demonstrates God\'s power to work through reluctant servants, while the initial confrontation with Pharaoh establishes the epic struggle between Yahweh and the Egyptian gods, setting the stage for the ten plagues'
-        }
-      },
-      {
-        day: 39,
-        date: '2025-02-08',
-        passages: [{ book: 'Exodus', chapters: '7-10' }],
-        historicalContext: {
-          period: 'The Exodus',
-          approximateDate: 'c. 1446 BC',
-          description: 'The final plagues demonstrate Yahweh\'s supremacy over all Egyptian deities, culminating in the devastating Passover that strikes every Egyptian household; the establishment of Passover as an eternal memorial and the Israelites\' preparation for hasty departure highlight themes of divine judgment, redemption through blood, and God\'s faithfulness to His covenant promises'
-        }
-      },
-      // Days 40-50: Continued chronological reading with historical context
-      {
-        day: 40,
-        date: '2025-02-09',
-        passages: [{ book: 'Exodus', chapters: '11-13' }],
-        historicalContext: {
-          period: 'The Passover',
-          approximateDate: 'c. 1445 BC',
-          description: 'The establishment of Passover as God\'s final judgment on Egypt and His deliverance of Israel; the blood of the lamb as a type of Christ\'s sacrifice and the beginning of the Exodus journey'
-        }
-      },
-      {
-        day: 41,
-        date: '2025-02-10',
-        passages: [{ book: 'Exodus', chapters: '14-15' }],
-        historicalContext: {
-          period: 'Red Sea Crossing',
-          approximateDate: 'c. 1445 BC',
-          description: 'God parts the Red Sea, demonstrating His absolute power over nature and nations; the destruction of the Egyptian army and Israel\'s song of deliverance establish themes of divine salvation and worship'
-        }
-      },
-      {
-        day: 42,
-        date: '2025-02-11',
-        passages: [{ book: 'Exodus', chapters: '16-18' }],
-        historicalContext: {
-          period: 'Wilderness Provision',
-          approximateDate: 'c. 1445-1444 BC',
-          description: 'God\'s miraculous provision of manna and water demonstrates His faithful care; Jethro\'s wisdom in establishing judges shows the importance of godly leadership and delegation'
-        }
-      },
-      {
-        day: 43,
-        date: '2025-02-12',
-        passages: [{ book: 'Exodus', chapters: '19-20' }],
-        historicalContext: {
-          period: 'Mount Sinai',
-          approximateDate: 'c. 1444 BC',
-          description: 'Israel arrives at Mount Sinai where God establishes His covenant; the giving of the Ten Commandments provides the foundation for biblical law and moral absolutes'
-        }
-      },
-      {
-        day: 44,
-        date: '2025-02-13',
-        passages: [{ book: 'Exodus', chapters: '21-23' }],
-        historicalContext: {
-          period: 'The Covenant Laws',
-          approximateDate: 'c. 1444 BC',
-          description: 'God provides comprehensive laws covering justice, property, worship, and relationships; these laws establish a society built on divine principles rather than human wisdom'
-        }
-      },
-      {
-        day: 45,
-        date: '2025-02-14',
-        passages: [{ book: 'Exodus', chapters: '24-26' }],
-        historicalContext: {
-          period: 'Tabernacle Covenant',
-          approximateDate: 'c. 1444 BC',
-          description: 'The covenant is ratified with blood and detailed instructions for the Tabernacle are given; this demonstrates God\'s desire to dwell among His people and the importance of worship according to His specifications'
-        }
-      },
-      {
-        day: 46,
-        date: '2025-02-15',
-        passages: [{ book: 'Exodus', chapters: '27-29' }],
-        historicalContext: {
-          period: 'Priestly Instructions',
-          approximateDate: 'c. 1444 BC',
-          description: 'Detailed instructions for the priesthood and sacrificial system establish the mediatorial role between God and humanity; these prefigure Christ\'s high priesthood and perfect sacrifice'
-        }
-      },
-      {
-        day: 47,
-        date: '2025-02-16',
-        passages: [{ book: 'Exodus', chapters: '30-31' }],
-        historicalContext: {
-          period: 'Tabernacle Completion',
-          approximateDate: 'c. 1444 BC',
-          description: 'The Tabernacle is completed and the glory of God fills it; this demonstrates God\'s approval of proper worship and His desire to be present among His people according to His design'
-        }
-      },
-      {
-        day: 48,
-        date: '2025-02-17',
-        passages: [{ book: 'Exodus', chapters: '32-34' }],
-        historicalContext: {
-          period: 'The Golden Calf',
-          approximateDate: 'c. 1444 BC',
-          description: 'Israel\'s rapid idolatry demonstrates human tendency to compromise; Moses\' intercession shows Christ-like mediation and God\'s mercy combined with His justice'
-        }
-      },
-      {
-        day: 49,
-        date: '2025-02-18',
-        passages: [{ book: 'Exodus', chapters: '35-37' }],
-        historicalContext: {
-          period: 'Tabernacle Construction',
-          approximateDate: 'c. 1444 BC',
-          description: 'The people generously give materials and skilled craftsmen build the Tabernacle; this demonstrates the proper response to God\'s presence and the importance of excellence in serving God'
-        }
-      },
-      {
-        day: 50,
-        date: '2025-02-19',
-        passages: [{ book: 'Exodus', chapters: '38-40' }],
-        historicalContext: {
-          period: 'Tabernacle Completion',
-          approximateDate: 'c. 1444 BC',
-          description: 'The Tabernacle is completed and set up according to God\'s exact specifications; the cloud of God\'s presence guides Israel, demonstrating divine leadership and the importance of following God\'s guidance'
-        }
-      },
-      // February (Days 32-59): Exodus and Leviticus
-      {
-        day: 32,
-        date: '2025-02-01',
-        passages: [{ book: 'Exodus', chapters: '1-3' }],
-        historicalContext: {
-          period: 'Egyptian Bondage',
-          approximateDate: 'c. 1525 BC',
-          description: 'Israelite multiplication in Egypt, Moses\' birth and preservation, call at burning bush'
-        }
-      },
-      {
-        day: 33,
-        date: '2025-02-02',
-        passages: [{ book: 'Exodus', chapters: '4-6' }],
-        historicalContext: {
-          period: 'Moses\' Calling',
-          approximateDate: 'c. 1445 BC',
-          description: 'Moses called, returns to Egypt, confrontation with Pharaoh begins'
-        }
-      },
-      {
-        day: 34,
-        date: '2025-02-03',
-        passages: [{ book: 'Exodus', chapters: '7-9' }],
-        historicalContext: {
-          period: 'The Plagues Begin',
-          approximateDate: 'c. 1445 BC',
-          description: 'First plagues against Egypt, Aaron\'s rod becomes serpent, river turns to blood'
-        }
-      },
-      {
-        day: 35,
-        date: '2025-02-04',
-        passages: [{ book: 'Exodus', chapters: '10-12' }],
-        historicalContext: {
-          period: 'Passover Established',
-          approximateDate: 'c. 1445 BC',
-          description: 'Final plagues, Passover instituted, Israel departs Egypt'
-        }
-      },
-      {
-        day: 36,
-        date: '2025-02-05',
-        passages: [{ book: 'Exodus', chapters: '13-15' }],
-        historicalContext: {
-          period: 'Red Sea Crossing',
-          approximateDate: 'c. 1445 BC',
-          description: 'Crossing Red Sea, destruction of Egyptian army, song of deliverance'
-        }
-      },
-      {
-        day: 37,
-        date: '2025-02-06',
-        passages: [{ book: 'Exodus', chapters: '16-18' }],
-        historicalContext: {
-          period: 'Wilderness Provision',
-          approximateDate: 'c. 1445-1444 BC',
-          description: 'Manna and quail provided, water from rock, Jethro advises Moses'
-        }
-      },
-      {
-        day: 38,
-        date: '2025-02-07',
-        passages: [{ book: 'Exodus', chapters: '19-21' }],
-        historicalContext: {
-          period: 'Sinai Covenant',
-          approximateDate: 'c. 1444 BC',
-          description: 'Israel at Sinai, Ten Commandments given, covenant laws established'
-        }
-      },
-      {
-        day: 39,
-        date: '2025-02-08',
-        passages: [{ book: 'Exodus', chapters: '22-24' }],
-        historicalContext: {
-          period: 'Covenant Laws',
-          approximateDate: 'c. 1444 BC',
-          description: 'Social justice laws, Sabbath regulations, covenant confirmation'
-        }
-      },
-      {
-        day: 40,
-        date: '2025-02-09',
-        passages: [{ book: 'Exodus', chapters: '25-27' }],
-        historicalContext: {
-          period: 'Tabernacle Instructions',
-          approximateDate: 'c. 1444 BC',
-          description: 'Detailed instructions for Tabernacle construction and furnishings'
-        }
-      },
-      {
-        day: 41,
-        date: '2025-02-10',
-        passages: [{ book: 'Exodus', chapters: '28-30' }],
-        historicalContext: {
-          period: 'Priesthood Established',
-          approximateDate: 'c. 1444 BC',
-          description: 'Priestly garments, consecration, census, offerings'
-        }
-      },
-      {
-        day: 42,
-        date: '2025-02-11',
-        passages: [{ book: 'Exodus', chapters: '31-33' }],
-        historicalContext: {
-          period: 'Golden Calf Rebellion',
-          approximateDate: 'c. 1444 BC',
-          description: 'Sabbath command, golden calf incident, Moses intercedes, God\'s presence'
-        }
-      },
-      {
-        day: 43,
-        date: '2025-02-12',
-        passages: [{ book: 'Exodus', chapters: '34-36' }],
-        historicalContext: {
-          period: 'Covenant Renewal',
-          approximateDate: 'c. 1444 BC',
-          description: 'New tablets, Moses radiant, free-will offerings, Tabernacle construction begins'
-        }
-      },
-      {
-        day: 44,
-        date: '2025-02-13',
-        passages: [{ book: 'Exodus', chapters: '37-39' }],
-        historicalContext: {
-          period: 'Tabernacle Construction',
-          approximateDate: 'c. 1444 BC',
-          description: 'Ark and furnishings completed, priestly garments made, Tabernacle assembled'
-        }
-      },
-      {
-        day: 45,
-        date: '2025-02-14',
-        passages: [{ book: 'Exodus', chapters: '40' }, { book: 'Leviticus', chapters: '1-3' }],
-        historicalContext: {
-          period: 'Tabernacle Completed',
-          approximateDate: 'c. 1444 BC',
-          description: 'Tabernacle filled with God\'s glory, sacrificial system instituted'
-        }
-      },
-      {
-        day: 46,
-        date: '2025-02-15',
-        passages: [{ book: 'Leviticus', chapters: '4-6' }],
-        historicalContext: {
-          period: 'Sacrificial Laws',
-          approximateDate: 'c. 1444 BC',
-          description: 'Sin offerings, guilt offerings, priestly consecration completed'
-        }
-      },
-      {
-        day: 47,
-        date: '2025-02-16',
-        passages: [{ book: 'Leviticus', chapters: '7-9' }],
-        historicalContext: {
-          period: 'Priestly Duties',
-          approximateDate: 'c. 1444 BC',
-          description: 'Fellowship offerings, priests\' portion, eighth day consecration'
-        }
-      },
-      {
-        day: 48,
-        date: '2025-02-17',
-        passages: [{ book: 'Leviticus', chapters: '10-12' }],
-        historicalContext: {
-          period: 'Priesthood Established',
-          approximateDate: 'c. 1444 BC',
-          description: 'Nadab and Abihu judged, clean and unclean laws, childbirth purification'
-        }
-      },
-      {
-        day: 49,
-        date: '2025-02-18',
-        passages: [{ book: 'Leviticus', chapters: '13-15' }],
-        historicalContext: {
-          period: 'Purity Laws',
-          approximateDate: 'c. 1444 BC',
-          description: 'Leprosy laws, purification rituals, bodily discharge regulations'
-        }
-      },
-      {
-        day: 50,
-        date: '2025-02-19',
-        passages: [{ book: 'Leviticus', chapters: '16-18' }],
-        historicalContext: {
-          period: 'Day of Atonement',
-          approximateDate: 'c. 1444 BC',
-          description: 'Yom Kippur ceremony, forbidden sexual practices, holiness requirements'
-        }
-      },
-      {
-        day: 51,
-        date: '2025-02-20',
-        passages: [{ book: 'Leviticus', chapters: '19-21' }],
-        historicalContext: {
-          period: 'Social Holiness',
-          approximateDate: 'c. 1444 BC',
-          description: 'Love your neighbor, various laws, priestly conduct, feasts of Israel'
-        }
-      },
-      {
-        day: 52,
-        date: '2025-02-21',
-        passages: [{ book: 'Leviticus', chapters: '22-24' }],
-        historicalContext: {
-          period: 'Priestly Requirements',
-          approximateDate: 'c. 1444 BC',
-          description: 'Priestly purity, appointed feasts, blasphemy judgment, Sabbath years'
-        }
-      },
-      {
-        day: 53,
-        date: '2025-02-22',
-        passages: [{ book: 'Leviticus', chapters: '25-27' }],
-        historicalContext: {
-          period: 'Jubilee and Blessings',
-          approximateDate: 'c. 1444 BC',
-          description: 'Year of Jubilee, blessings for obedience, curses for disobedience, vows and tithes'
-        }
-      },
-
-      // March (Days 54-84): Numbers and Deuteronomy
-      {
-        day: 54,
-        date: '2025-02-23',
-        passages: [{ book: 'Numbers', chapters: '1-3' }],
-        historicalContext: {
-          period: 'Wilderness Organization',
-          approximateDate: 'c. 1444 BC',
-          description: 'Israelite census, tribal arrangements, Levitical duties'
-        }
-      },
-      {
-        day: 55,
-        date: '2025-02-24',
-        passages: [{ book: 'Numbers', chapters: '4-6' }],
-        historicalContext: {
-          period: 'Levitical Service',
-          approximateDate: 'c. 1444 BC',
-          description: 'Kohathite duties, Nazirite vow, testing of unfaithful wife'
-        }
-      },
-      {
-        day: 56,
-        date: '2025-02-25',
-        passages: [{ book: 'Numbers', chapters: '7-9' }],
-        historicalContext: {
-          period: 'Dedication and Passover',
-          approximateDate: 'c. 1444 BC',
-          description: 'Tabernacle dedication, tribal offerings, second Passover'
-        }
-      },
-      {
-        day: 57,
-        date: '2025-02-26',
-        passages: [{ book: 'Numbers', chapters: '10-12' }],
-        historicalContext: {
-          period: 'Wilderness Journey',
-          approximateDate: 'c. 1443 BC',
-          description: 'Silver trumpets, wilderness movement, manna complaints, Moses\' leadership'
-        }
-      },
-      {
-        day: 58,
-        date: '2025-02-27',
-        passages: [{ book: 'Numbers', chapters: '13-15' }],
-        historicalContext: {
-          period: 'Spies and Rebellion',
-          approximateDate: 'c. 1443 BC',
-          description: 'Spies scout Canaan, negative report, rebellion against Moses, judgment'
-        }
-      },
-      {
-        day: 59,
-        date: '2025-02-28',
-        passages: [{ book: 'Numbers', chapters: '16-18' }],
-        historicalContext: {
-          period: 'Leadership Challenges',
-          approximateDate: 'c. 1443 BC',
-          description: 'Korah rebellion, Aaron\'s rod buds, priestly and Levitical duties'
-        }
-      },
-
-      // Continue through the complete year... (Due to space, I'm showing the pattern - need to extend to 365 days)
-      // This would continue with all remaining books chronologically through Revelation
-
-    ];
-
-    return {
-      dailyReadings,
-      metadata: {
-        totalDays: 365,
-        source: 'Blue Letter Bible Daily Chronological Reading Plan'
-      }
+      metadata
     };
   }
 }
