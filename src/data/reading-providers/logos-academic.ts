@@ -3852,7 +3852,7 @@ export class LogosAcademicProvider {
           approximateDate: 'AD 95',
           description: 'All things new - Christ glorified, seven churches addressed, tribulation judgments, Christ\'s victorious return, New Jerusalem, eternity with God'
         }
-      }
+      },
     ];
 
     return {

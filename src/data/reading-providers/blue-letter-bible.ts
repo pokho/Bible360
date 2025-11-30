@@ -678,7 +678,7 @@ export class BlueLetterBibleProvider {
           approximateDate: 'c. 1444 BC',
           description: 'The Tabernacle is completed and set up according to God\'s exact specifications; the cloud of God\'s presence guides Israel, demonstrating divine leadership and the importance of following God\'s guidance'
         }
-      }
+      },
       // February (Days 32-59): Exodus and Leviticus
       {
         day: 32,
