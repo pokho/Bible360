@@ -1,6 +1,7 @@
 import type { ReadingPlan, DailyReading, BiblePassage, HistoricalContext, PlanMetadata } from '../../types/reading-plans';
 import { PDFParserService } from '../../services/pdf-parser.service';
 import type { ParsedReadingPlan } from '../../services/pdf-parser.service';
+import { generateBiblehubHref } from '../../utils/biblehub-utils';
 
 export class BlueLetterBibleProvider {
   private pdfParserService: PDFParserService;
@@ -70,7 +71,8 @@ export class BlueLetterBibleProvider {
         chapterStart,
         chapterEnd: chapterEnd || chapterStart,
         testament: this.getTestament(passage.book),
-        isApocryphal: this.isApocryphal(passage.book)
+        isApocryphal: this.isApocryphal(passage.book),
+        href: generateBiblehubHref(passage.book, chapterStart)
       };
     });
   }
