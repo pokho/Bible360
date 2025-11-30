@@ -91,13 +91,8 @@
 			<tr>
 				<th>Day</th>
 				<th>
-					<a href="https://www.esv.org/resources/reading-plans/chronological/" target="_blank" rel="noopener" class="provider-link">
-						ESV Chronological
-					</a>
-				</th>
-				<th>
 					<a href="https://www.logos.com/grow/nook-chronological-bible-reading-plan/" target="_blank" rel="noopener" class="provider-link">
-						Logos Chronological
+						Logos Academic
 					</a>
 				</th>
 				<th>
@@ -120,7 +115,6 @@
 		</thead>
 		<tbody>
 			{#each sortedDays as day}
-				{@const esvReading = plans.esv?.dailyReadings.find(r => r.day === day)}
 				{@const logosReading = plans.logos?.dailyReadings.find(r => r.day === day)}
 				{@const blbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
 				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
@@ -130,9 +124,6 @@
 				<tr class="day-row">
 					<td class="day-cell">
 						<strong>Day {day}</strong>
-					</td>
-					<td class="plan-cell plan-esv">
-						{@html esvReading ? renderPlanReading(esvReading, plans.esv) : '<span class="no-reading">No reading</span>'}
 					</td>
 					<td class="plan-cell plan-logos">
 						{@html logosReading ? renderPlanReading(logosReading, plans.logos) : '<span class="no-reading">No reading</span>'}
