@@ -1,0 +1,288 @@
+.daily-reading {
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.daily-reading.active {
+  border-color: #3498db;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+}
+
+.daily-reading.completed {
+  border-color: #27ae60;
+  background: #f8fff9;
+}
+
+.daily-reading.compact {
+  border-left: 4px solid #3498db;
+}
+
+.reading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.reading-header:hover {
+  background: #f8f9fa;
+}
+
+.reading-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.day-number {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.reading-date {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.reading-time {
+  background: #ecf0f1;
+  color: #34495e;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.reading-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.complete-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.complete-btn:hover {
+  background: #229954;
+}
+
+.completed-badge {
+  background: #27ae60;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.expand-btn {
+  background: #bdc3c7;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 2rem;
+}
+
+.expand-btn:hover {
+  background: #95a5a6;
+}
+
+.reading-content {
+  border-top: 1px solid #e1e8ed;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.reading-content.collapsed {
+  max-height: 0;
+}
+
+.reading-content.expanded {
+  max-height: 1000px;
+}
+
+.passages {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.passage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.passage:hover {
+  background: #e9ecef;
+  transform: translateX(2px);
+}
+
+.passage-text {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.testament-badge {
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.apocrypha-indicator {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+.historical-context {
+  padding: 1rem;
+  background: #f0f8ff;
+  border-left: 4px solid #3498db;
+}
+
+.historical-context h4 {
+  margin: 0 0 0.75rem 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.context-content p {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.context-content strong {
+  color: #2c3e50;
+}
+
+.parallel-events {
+  margin-top: 0.75rem;
+}
+
+.parallel-events ul {
+  margin: 0.25rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.parallel-events li {
+  margin-bottom: 0.25rem;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+.reading-notes {
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.reading-notes h4 {
+  margin: 0 0 0.75rem 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.reading-notes textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.reading-notes textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.reading-features {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.feature-badge {
+  background: #ecf0f1;
+  color: #34495e;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.feature-badge.apocrypha {
+  background: #f4ecf7;
+  color: #8e44ad;
+}
+
+.feature-badge.chapters {
+  background: #e8f6f3;
+  color: #16a085;
+}
+
+.compact .reading-content {
+  display: none;
+}
+
+.compact .reading-header {
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .reading-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .reading-actions {
+    align-self: flex-end;
+  }
+
+  .reading-info {
+    gap: 0.5rem;
+  }
+
+  .passage {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .historical-context,
+  .reading-notes,
+  .reading-features {
+    padding: 0.75rem;
+  }
+}

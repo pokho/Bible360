@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head> <meta charset="utf-8"> <title>Bible360 - Chronological Bible Reading Plans</title> <meta name="description" content="Multi-provider chronological Bible reading plans with Blue Letter Bible, ESV, and Logos methodologies"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="theme-color" content="#3498db"> <!-- Open Graph / Facebook --> <meta property="og:type" content="website"> <meta property="og:title" content="Bible360 - Chronological Bible Reading Plans"> <meta property="og:description" content="Compare and follow different chronological approaches to reading through the Bible"> <meta property="og:image" content="/assets/icon-256.png"> <!-- Twitter --> <meta property="twitter:card" content="summary_large_image"> <meta property="twitter:title" content="Bible360 - Chronological Bible Reading Plans"> <meta property="twitter:description" content="Compare and follow different chronological approaches to reading through the Bible"> <meta property="twitter:image" content="/assets/icon.svg"> <link rel="icon" href="/assets/icon.svg" type="image/svg+xml"> <link rel="apple-touch-icon" href="/assets/icon.svg"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"> <script type="module" src="/build/bible360.esm.js" data-stencil></script> <script nomodule="" src="/build/bible360.js" data-stencil></script> </head> <body> <app-root></app-root> <script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  // auto-unregister service worker during dev mode
+  navigator.serviceWorker.getRegistration().then(function(registration) {
+    if (registration) {
+      registration.unregister().then(function() { location.reload(true) });
+    }
+  });
+}
+</script></body></html>

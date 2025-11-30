@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bible360 Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .test { color: #3498db; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <div class="test">Bible360 Component Test</div>
+  <app-root></app-root>
+
+  <script type="module">
+    import { AppRoot } from './www/build/index.esm.js';
+
+    // Test if the component is available
+    console.log('AppRoot component:', AppRoot);
+
+    // Try to manually create the component
+    customElements.define('app-root', AppRoot);
+
+    console.log('Component defined:', customElements.get('app-root'));
+  </script>
+</body>
+</html>

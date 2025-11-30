@@ -1,0 +1,18 @@
+.test-wrapper {
+  padding: 2rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.test-wrapper h2 {
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.test-notice {
+  background: #e74c3c;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
