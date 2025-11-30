@@ -1,71 +1,88 @@
 <script lang="ts">
 	import ComparisonTable from '$lib/components/ComparisonTable.svelte';
+	import { readingPlans } from '$lib/stores/readingPlansStore';
 	import { onMount } from 'svelte';
 
-	
-	$: allReadingProviders = [];
-	$: allDays = new Set();
+	$: plans = {};
 	$: sortedDays = [];
+	$: allReadingProviders = [];
 
-	onMount(() => {
-		// We'll initialize reading providers here after we create them
-		initializeReadingProviders();
+	onMount(async () => {
+		// Load actual reading plan data
+		await loadReadingPlans();
 	});
 
-	function initializeReadingProviders() {
-		// This will be implemented once we migrate the reading providers
-		// For now, we'll create a placeholder structure
-		allReadingProviders = [
-			{
-				name: 'ESV Chronological',
-				key: 'esv',
-				methodology: 'Young-earth creationism, literal historical approach',
-				totalDays: 365,
-				apocryphaSupport: 'None (Protestant)',
-				readings: []
-			},
-			{
-				name: 'Logos Academic',
-				key: 'logos',
-				methodology: 'Conservative dating, historical-critical approach',
-				totalDays: 365,
-				apocryphaSupport: 'Full (Catholic/Orthodox)',
-				readings: []
-			},
-			{
-				name: 'Blue Letter Bible',
-				key: 'blb',
-				methodology: 'Conservative evangelical scholarship',
-				totalDays: 365,
-				apocryphaSupport: 'None (Protestant)',
-				readings: []
-			},
-			{
-				name: 'Apocrypha & Pseudepigrapha',
-				key: 'apocrypha',
-				methodology: 'Academic chronological approach through Deuterocanonical, Pseudepigrapha, and Early Christian writings',
-				totalDays: 365,
-				apocryphaSupport: 'Complete (Academic)',
-				readings: []
-			},
-			{
-				name: 'Biblehub Chronological',
-				key: 'biblehub',
-				methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history',
-				totalDays: 365,
-				apocryphaSupport: 'None (Protestant)',
-				readings: []
-			}
-		];
+	async function loadReadingPlans() {
+		// Subscribe to the store to get plans
+		const unsubscribe = readingPlans.subscribe(storePlans => {
+			plans = storePlans;
 
-		// Collect all days for the comparison table
-		allReadingProviders.forEach(plan => {
-			plan.readings.forEach(reading => {
-				allDays.add(reading.day);
+			// Create a more detailed structure for the legend
+			allReadingProviders = [
+				{
+					name: 'ESV Chronological',
+					key: 'esv',
+					methodology: 'Young-earth creationism, literal historical approach',
+					totalDays: 365,
+					apocryphaSupport: 'None (Protestant)',
+					color: '#e74c3c'
+				},
+				{
+					name: 'Logos Academic',
+					key: 'logos',
+					methodology: 'Conservative dating, historical-critical approach',
+					totalDays: 365,
+					apocryphaSupport: 'Full (Catholic/Orthodox)',
+					color: '#3498db'
+				},
+				{
+					name: 'Blue Letter Bible',
+					key: 'blb',
+					methodology: 'Conservative evangelical scholarship',
+					totalDays: 365,
+					apocryphaSupport: 'None (Protestant)',
+					color: '#9b59b6'
+				},
+				{
+					name: 'Apocrypha & Pseudepigrapha',
+					key: 'apocrypha',
+					methodology: 'Academic chronological approach through Deuterocanonical, Pseudepigrapha, and Early Christian writings',
+					totalDays: 365,
+					apocryphaSupport: 'Complete (Academic)',
+					color: '#e67e22'
+				},
+				{
+					name: 'Biblehub Chronological',
+					key: 'biblehub',
+					methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history',
+					totalDays: 365,
+					apocryphaSupport: 'None (Protestant)',
+					color: '#27ae60'
+				}
+			];
+
+			// Collect all unique days from all plans
+			const allDaysSet = new Set();
+			Object.values(plans).forEach(plan => {
+				if (plan.dailyReadings) {
+					plan.dailyReadings.forEach(reading => {
+						allDaysSet.add(reading.day);
+					});
+				}
 			});
+
+			// For now, let's add some sample days to demonstrate functionality
+			if (allDaysSet.size === 0) {
+				for (let i = 1; i <= 7; i++) {
+					allDaysSet.add(i);
+				}
+			}
+
+			sortedDays = Array.from(allDaysSet).sort((a, b) => a - b);
 		});
 
-		sortedDays = Array.from(allDays).sort((a, b) => a - b);
+		// Clean up subscription when component is destroyed
+		return unsubscribe;
 	}
 </script>
 
@@ -100,7 +117,7 @@
 			</div>
 		</div>
 
-		<ComparisonTable plans={allReadingProviders} sortedDays={sortedDays} />
+		<ComparisonTable {plans} {sortedDays} />
 	</div>
 </main>
 
