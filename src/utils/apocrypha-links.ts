@@ -73,13 +73,13 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
 
   // Old Testament Pseudepigrapha (Note: Many use Sacred Texts as primary since ECW doesn't have them)
   '1 Enoch': {
-    baseUrl: 'https://sacred-texts.com/bib/eno/',
+    baseUrl: 'https://sacred-texts.com/bib/boe/',
     pathPattern: 'index.htm',
     requiresChapter: false,
     fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   '2 Enoch': {
-    baseUrl: 'https://sacred-texts.com/bib/eno/',
+    baseUrl: 'https://sacred-texts.com/bib/boe/',
     pathPattern: 'index.htm',
     requiresChapter: false,
     fallbackUrl: 'https://www.earlychristianwritings.com/'
