@@ -1,4 +1,5 @@
-import type { ReadingPlan } from '../../types/reading-plans';
+import type { ReadingPlan, BiblePassage } from '../../types/reading-plans';
+import { generateApocryphaUrl } from '../../utils/apocrypha-links';
 
 export class ApocryphaReadingProvider {
   async loadReadingPlan(): Promise<ReadingPlan> {
@@ -150,7 +151,14 @@ export class ApocryphaReadingProvider {
               isApocryphal: true,
               testament: 'apocryphal' as const,
               parallelEvents: []
-            }],
+            }].map((passage: BiblePassage) => {
+              // Add href for clickable links
+              const href = generateApocryphaUrl(book, passage.chapterStart);
+              return {
+                ...passage,
+                ...(href && { href: href as any })
+              };
+            }),
             historicalContext: {
               period,
               approximateDate: date,
@@ -175,7 +183,14 @@ export class ApocryphaReadingProvider {
           isApocryphal: true,
           testament: 'apocryphal' as const,
           parallelEvents: []
-        }],
+        }].map((passage: BiblePassage) => {
+          // Add href for clickable links
+          const href = generateApocryphaUrl('Apocrypha Reflection', passage.chapterStart);
+          return {
+            ...passage,
+            ...(href && { href: href as any })
+          };
+        }),
         historicalContext: {
           period: 'Study Completion',
           approximateDate: '2025 CE',
