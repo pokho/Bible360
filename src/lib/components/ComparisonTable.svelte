@@ -4,31 +4,14 @@
 	export let plans;
 	export let sortedDays;
 
-	$: contextCache = new Map();
-
-	function getContextForDay(day) {
-		// Check cache first
-		if (contextCache.has(day)) {
-			return contextCache.get(day);
-		}
-
-		// Get context from the first available plan that has a reading for this day
-		for (const planKey of Object.keys(plans)) {
-			const plan = plans[planKey];
-			const reading = plan.dailyReadings.find(r => r.day === day);
-			if (reading && reading.historicalContext) {
-				contextCache.set(day, reading.historicalContext);
-				return reading.historicalContext;
-			}
-		}
-
-		return null;
-	}
-
+	
 	function renderPlanReading(reading, plan) {
 		if (!reading || !reading.passages || reading.passages.length === 0) {
 			return '<span class="no-reading">No reading</span>';
 		}
+
+		// Debug: Log the reading data
+		console.log('Reading data for plan:', plan, 'Historical context:', reading.historicalContext);
 
 		const passagesHtml = reading.passages.map(passage => {
 			const testamentClass = passage.testament === 'old' ? 'old' :
@@ -46,6 +29,18 @@
 		const readingTime = reading.readingTimeMinutes || 20;
 		const hasApocrypha = reading.passages.some(p => p.testament === 'apocryphal');
 
+		// Add historical context if available
+		let contextHtml = '';
+		if (reading.historicalContext) {
+			contextHtml = `
+				<div class="reading-context">
+					<strong>${reading.historicalContext.period}</strong>
+					<div class="context-date">${reading.historicalContext.approximateDate}</div>
+					<p>${reading.historicalContext.description}</p>
+				</div>
+			`;
+		}
+
 		const readingMeta = `
 			<div class="reading-meta">
 				<span class="reading-time">${readingTime} min</span>
@@ -56,25 +51,13 @@
 		return `
 			<div class="reading-content">
 				${passagesHtml}
+				${contextHtml}
 				${readingMeta}
 			</div>
 		`;
 	}
 
-	function renderContext(context) {
-		if (!context) {
-			return '<span class="no-context">-</span>';
-		}
-
-		return `
-			<div class="context-content">
-				<strong>${context.period}</strong>
-				<div class="context-date">${context.approximateDate}</div>
-				<p>${context.description}</p>
-			</div>
-		`;
-	}
-
+	
 	function getTestamentLabel(testament) {
 		const labels = {
 			'old': 'OT',
@@ -110,7 +93,6 @@
 						Apocrypha & Pseudepigrapha
 					</a>
 				</th>
-				<th>Historical Context</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -119,7 +101,6 @@
 				{@const blbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
 				{@const biblehubReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
 				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
-				{@const context = getContextForDay(day)}
 
 				<tr class="day-row">
 					<td class="day-cell">
@@ -137,9 +118,6 @@
 					<td class="plan-cell plan-apocrypha">
 						{@html apocryphaReading ? renderPlanReading(apocryphaReading, plans.apocrypha) : '<span class="no-reading">No reading</span>'}
 					</td>
-					<td class="context-cell">
-						{@html context ? renderContext(context) : '<span class="no-context">-</span>'}
-					</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -154,5 +132,34 @@
 
 	.plan-cell {
 		/* Additional component-specific styling */
+	}
+
+	.reading-context {
+		margin-top: 0.5rem;
+		padding: 0.5rem;
+		background-color: #f8f9fa;
+		border-left: 3px solid #6c757d;
+		border-radius: 0.25rem;
+		font-size: 0.8rem;
+		line-height: 1.3;
+	}
+
+	.reading-context strong {
+		color: #495057;
+		display: block;
+		margin-bottom: 0.25rem;
+		font-weight: 600;
+	}
+
+	.context-date {
+		color: #6c757d;
+		font-size: 0.75rem;
+		margin-bottom: 0.25rem;
+		font-style: italic;
+	}
+
+	.reading-context p {
+		margin: 0;
+		color: #495057;
 	}
 </style>

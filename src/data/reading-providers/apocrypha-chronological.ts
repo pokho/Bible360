@@ -1,6 +1,10 @@
 import type { ReadingPlan } from '../../types/reading-plans';
 
 export class ApocryphaReadingProvider {
+  async loadReadingPlan(): Promise<ReadingPlan> {
+    return this.generateApocryphaPlan();
+  }
+
   generateApocryphaPlan(): ReadingPlan {
     return {
       provider: 'apocrypha',

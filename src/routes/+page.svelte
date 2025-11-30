@@ -2,6 +2,10 @@
 	import ComparisonTable from '$lib/components/ComparisonTable.svelte';
 	import { readingPlans } from '$lib/stores/readingPlansStore';
 	import { onMount } from 'svelte';
+	import { LogosAcademicProvider } from '../data/reading-providers/logos-academic';
+	import { BlueLetterBibleProvider } from '../data/reading-providers/blue-letter-bible';
+	import { BiblehubReadingProvider } from '../data/reading-providers/biblehub-chronological';
+	import { ApocryphaReadingProvider } from '../data/reading-providers/apocrypha-chronological';
 
 	$: plans = {};
 	$: sortedDays = [];
@@ -9,16 +13,60 @@
 	$: currentMonth = 1;
 	$: monthDays = [];
 	$: maxMonth = 12;
+	$: loading = true;
+	$: error = null;
 
 	onMount(async () => {
-		// Load actual reading plan data
+		// Load actual reading plan data from provider classes
 		await loadReadingPlans();
 	});
 
 	async function loadReadingPlans() {
-		// Subscribe to the store to get plans
-		const unsubscribe = readingPlans.subscribe(storePlans => {
-			plans = storePlans;
+		try {
+			loading = true;
+			error = null;
+
+			// Initialize provider classes
+			const logosProvider = new LogosAcademicProvider();
+			const blbProvider = new BlueLetterBibleProvider();
+			const biblehubProvider = new BiblehubReadingProvider();
+			const apocryphaProvider = new ApocryphaReadingProvider();
+
+			// Load data from all providers in parallel
+			const [logosPlan, blbPlan, biblehubPlan, apocryphaPlan] = await Promise.all([
+				logosProvider.loadReadingPlan(),
+				blbProvider.loadReadingPlan(),
+				biblehubProvider.loadReadingPlan(),
+				apocryphaProvider.loadReadingPlan()
+			]);
+
+			// Create plans object with loaded data
+			plans = {
+				logos: {
+					provider: logosPlan.provider,
+					dailyReadings: logosPlan.dailyReadings,
+					color: '#3498db',
+					sourceUrl: 'https://www.logos.com/grow/nook-chronological-bible-reading-plan/'
+				},
+				blb: {
+					provider: blbPlan.provider,
+					dailyReadings: blbPlan.dailyReadings,
+					color: '#9b59b6',
+					sourceUrl: 'https://www.blueletterbible.org/dailyreading/'
+				},
+				apocrypha: {
+					provider: apocryphaPlan.provider,
+					dailyReadings: apocryphaPlan.dailyReadings,
+					color: '#e67e22',
+					sourceUrl: 'https://github.com/anthropics/bible360-research'
+				},
+				biblehub: {
+					provider: biblehubPlan.provider,
+					dailyReadings: biblehubPlan.dailyReadings,
+					color: '#27ae60',
+					sourceUrl: 'https://biblehub.com/timeline/'
+				}
+			};
 
 			// Create a more detailed structure for the legend
 			allReadingProviders = [
@@ -26,7 +74,7 @@
 					name: 'Logos Academic',
 					key: 'logos',
 					methodology: 'Conservative dating, historical-critical approach',
-					totalDays: 365,
+					totalDays: logosPlan.metadata.totalDays,
 					apocryphaSupport: 'Full (Catholic/Orthodox)',
 					color: '#3498db'
 				},
@@ -34,15 +82,15 @@
 					name: 'Blue Letter Bible',
 					key: 'blb',
 					methodology: 'Conservative evangelical scholarship',
-					totalDays: 365,
+					totalDays: blbPlan.metadata.totalDays,
 					apocryphaSupport: 'None (Protestant)',
 					color: '#9b59b6'
 				},
 				{
 					name: 'Apocrypha & Pseudepigrapha',
 					key: 'apocrypha',
-					methodology: 'Comprehensive academic chronological journey through 365 days of Deuterocanonical texts, Old Testament Pseudepigrapha, Apostolic Fathers, and New Testament Apocrypha with scholarly dating and mainstream academic consensus',
-					totalDays: 365,
+					methodology: 'Comprehensive academic chronological journey through Deuterocanonical texts, Old Testament Pseudepigrapha, and New Testament Apocrypha with scholarly dating',
+					totalDays: apocryphaPlan.metadata.totalDays,
 					apocryphaSupport: 'Complete Academic Coverage (Scholarly References)',
 					color: '#e67e22'
 				},
@@ -50,17 +98,28 @@
 					name: 'Biblehub Chronological',
 					key: 'biblehub',
 					methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history',
-					totalDays: 365,
+					totalDays: biblehubPlan.metadata.totalDays,
 					apocryphaSupport: 'None (Protestant)',
 					color: '#27ae60'
 				}
 			];
 
-			updateMonthDays();
-		});
+			// Update max month based on actual data
+			const maxDays = Math.max(
+				logosPlan.metadata.totalDays,
+				blbPlan.metadata.totalDays,
+				apocryphaPlan.metadata.totalDays,
+				biblehubPlan.metadata.totalDays
+			);
+			maxMonth = Math.ceil(maxDays / 31);
 
-		// Clean up subscription when component is destroyed
-		return unsubscribe;
+			updateMonthDays();
+		} catch (err) {
+			console.error('Error loading reading plans:', err);
+			error = err.message || 'Failed to load reading plans';
+		} finally {
+			loading = false;
+		}
 	}
 
 	function updateMonthDays() {
@@ -117,57 +176,70 @@
 </nav>
 
 <main class="bible360-content">
-	<div class="comparison-table-container">
-		<div class="comparison-header">
-			<h2>Reading Plan Comparison - {getMonthLabel(currentMonth)}</h2>
-			<div class="plan-legend">
-				{#each allReadingProviders as plan}
-					<div class="legend-item">
-						<span class="legend-color plan-{plan.key}"></span>
-						<span>{plan.name}</span>
-						<small>({plan.methodology})</small>
-					</div>
-				{/each}
-			</div>
+	{#if loading}
+		<div class="loading-container">
+			<div class="loading-spinner"></div>
+			<p>Loading reading plans from providers...</p>
 		</div>
-
-		<ComparisonTable {plans} {sortedDays} />
-
-		<!-- Month Navigation -->
-		<div class="month-navigation">
-			<div class="month-nav-container">
-				<button
-					class="month-nav-btn"
-					on:click={() => selectMonth(currentMonth - 1)}
-					disabled={currentMonth === 1}
-				>
-					← Previous
-				</button>
-
-				<div class="month-selector">
-					{#each Array(maxMonth) as _, i}
-						<button
-							class="month-btn {currentMonth === i + 1 ? 'active' : ''}"
-							on:click={() => selectMonth(i + 1)}
-						>
-							{i + 1}
-						</button>
+	{:else if error}
+		<div class="error-container">
+			<h3>Error Loading Reading Plans</h3>
+			<p>{error}</p>
+			<button on:click={loadReadingPlans}>Retry</button>
+		</div>
+	{:else}
+		<div class="comparison-table-container">
+			<div class="comparison-header">
+				<h2>Reading Plan Comparison - {getMonthLabel(currentMonth)}</h2>
+				<div class="plan-legend">
+					{#each allReadingProviders as plan}
+						<div class="legend-item">
+							<span class="legend-color plan-{plan.key}"></span>
+							<span>{plan.name}</span>
+							<small>({plan.methodology})</small>
+						</div>
 					{/each}
 				</div>
-
-				<button
-					class="month-nav-btn"
-					on:click={() => selectMonth(currentMonth + 1)}
-					disabled={currentMonth === maxMonth}
-				>
-					Next →
-				</button>
 			</div>
-			<div class="month-info">
-				Showing days {sortedDays.length > 0 ? sortedDays[0] : 1} - {sortedDays.length > 0 ? sortedDays[sortedDays.length - 1] : 31} of 365
+
+			<ComparisonTable {plans} {sortedDays} />
+
+			<!-- Month Navigation -->
+			<div class="month-navigation">
+				<div class="month-nav-container">
+					<button
+						class="month-nav-btn"
+						on:click={() => selectMonth(currentMonth - 1)}
+						disabled={currentMonth === 1}
+					>
+						← Previous
+					</button>
+
+					<div class="month-selector">
+						{#each Array(maxMonth) as _, i}
+							<button
+								class="month-btn {currentMonth === i + 1 ? 'active' : ''}"
+								on:click={() => selectMonth(i + 1)}
+							>
+								{i + 1}
+							</button>
+						{/each}
+					</div>
+
+					<button
+						class="month-nav-btn"
+						on:click={() => selectMonth(currentMonth + 1)}
+						disabled={currentMonth === maxMonth}
+					>
+						Next →
+					</button>
+				</div>
+				<div class="month-info">
+					Showing days {sortedDays.length > 0 ? sortedDays[0] : 1} - {sortedDays.length > 0 ? sortedDays[sortedDays.length - 1] : 31} of 365
+				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </main>
 
 <footer class="bible360-footer">
@@ -296,5 +368,60 @@
 			padding: 0.6rem 0.8rem;
 			font-size: 0.8rem;
 		}
+	}
+
+	/* Loading and Error States */
+	.loading-container, .error-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 4rem 2rem;
+		text-align: center;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		margin: 2rem 0;
+		min-height: 200px;
+	}
+
+	.loading-spinner {
+		width: 40px;
+		height: 40px;
+		border: 4px solid #f3f3f3;
+		border-top: 4px solid var(--primary-color);
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+		margin-bottom: 1rem;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.error-container {
+		color: #e74c3c;
+	}
+
+	.error-container h3 {
+		margin-bottom: 1rem;
+		color: #c0392b;
+	}
+
+	.error-container button {
+		background: var(--primary-color);
+		color: white;
+		border: none;
+		padding: 0.75rem 1.5rem;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 1rem;
+		margin-top: 1rem;
+		transition: background-color 0.2s ease;
+	}
+
+	.error-container button:hover {
+		background: var(--secondary-color);
 	}
 </style>
