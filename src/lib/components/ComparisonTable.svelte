@@ -101,13 +101,13 @@
 					</a>
 				</th>
 				<th>
-					<a href="https://github.com/anthropics/bible360-research" target="_blank" rel="noopener" class="provider-link">
-						Apocrypha & Pseudepigrapha
+					<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener" class="provider-link">
+						Biblehub Chronological
 					</a>
 				</th>
 				<th>
-					<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener" class="provider-link">
-						Biblehub Chronological
+					<a href="https://github.com/anthropics/bible360-research" target="_blank" rel="noopener" class="provider-link">
+						Apocrypha & Pseudepigrapha
 					</a>
 				</th>
 				<th>Historical Context</th>
@@ -117,8 +117,8 @@
 			{#each sortedDays as day}
 				{@const logosReading = plans.logos?.dailyReadings.find(r => r.day === day)}
 				{@const blbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
-				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
 				{@const biblehubReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
+				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
 				{@const context = getContextForDay(day)}
 
 				<tr class="day-row">
@@ -131,11 +131,11 @@
 					<td class="plan-cell plan-blb">
 						{@html blbReading ? renderPlanReading(blbReading, plans.blb) : '<span class="no-reading">No reading</span>'}
 					</td>
-					<td class="plan-cell plan-apocrypha">
-						{@html apocryphaReading ? renderPlanReading(apocryphaReading, plans.apocrypha) : '<span class="no-reading">No reading</span>'}
-					</td>
 					<td class="plan-cell plan-biblehub">
 						{@html biblehubReading ? renderPlanReading(biblehubReading, plans.biblehub) : '<span class="no-reading">No reading</span>'}
+					</td>
+					<td class="plan-cell plan-apocrypha">
+						{@html apocryphaReading ? renderPlanReading(apocryphaReading, plans.apocrypha) : '<span class="no-reading">No reading</span>'}
 					</td>
 					<td class="context-cell">
 						{@html context ? renderContext(context) : '<span class="no-context">-</span>'}
