@@ -15,60 +15,102 @@ export interface ApocryphaUrlConfig {
  * Primary URL configurations for different categories of apocryphal texts
  */
 const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
-  // Deuterocanonical Books (Catholic/Orthodox Tradition)
+  // Deuterocanonical Books (Catholic/Orthodox Tradition) - NRSVUE Priority
   'Tobit': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Tobit+{chapter}&version=NABRE',
+    pathPattern: '?search=Tobit+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/tobit.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/poly/tob.htm'
   },
   'Judith': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Judith+{chapter}&version=NABRE',
+    pathPattern: '?search=Judith+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/judith.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/jdt.htm'
   },
   'Wisdom of Solomon': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Wisdom+{chapter}&version=NABRE',
+    pathPattern: '?search=Wisdom+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/wisdom.html'
+    fallbackUrl: 'https://sacred-texts.com/chr/apo/index.htm'
   },
   'Sirach': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Sirach+{chapter}&version=NABRE',
+    pathPattern: '?search=Sirach+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/sirach.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/sirach.htm'
   },
   'Baruch': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Baruch+{chapter}&version=NABRE',
+    pathPattern: '?search=Baruch+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/baruch.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/baruch.htm'
   },
   '1 Maccabees': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=1+Maccabees+{chapter}&version=NABRE',
+    pathPattern: '?search=1+Maccabees+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/1maccabees.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/1macc.htm'
   },
   '2 Maccabees': {
     baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=2+Maccabees+{chapter}&version=NABRE',
+    pathPattern: '?search=2+Maccabees+{chapter}&version=NRSVUE',
     requiresChapter: true,
-    fallbackUrl: 'https://www.earlychristianwritings.com/2maccabees.html'
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/2macc.htm'
+  },
+  '3 Maccabees': {
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: '3macc.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/3maccabees.html'
+  },
+  '4 Maccabees': {
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: '4macc.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/4maccabees.html'
+  },
+  'Greek Esther': {
+    baseUrl: 'https://www.biblegateway.com/passage/',
+    pathPattern: '?search=Greek+Esther+{chapter}&version=NRSVUE',
+    requiresChapter: true,
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/gesth.htm'
+  },
+  'Letter of Jeremiah': {
+    baseUrl: 'https://www.biblegateway.com/passage/',
+    pathPattern: '?search=Letter+of+Jeremiah+{chapter}&version=NRSVUE',
+    requiresChapter: true,
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/epjer.htm'
+  },
+  'Prayer of Azariah': {
+    baseUrl: 'https://www.biblegateway.com/passage/',
+    pathPattern: '?search=Prayer+of+Azariah&version=NRSVUE',
+    requiresChapter: false,
+    fallbackUrl: 'https://sacred-texts.com/bib/apo/prazar.htm'
+  },
+  'Susanna': {
+    baseUrl: 'https://www.biblegateway.com/passage/',
+    pathPattern: '?search=Susanna&version=NRSVUE',
+    requiresChapter: false,
+    fallbackUrl: 'https://sacred-texts.com/bib/poly/sus.htm'
+  },
+  'Bel and the Dragon': {
+    baseUrl: 'https://www.biblegateway.com/passage/',
+    pathPattern: '?search=Bel+and+the+Dragon&version=NRSVUE',
+    requiresChapter: false,
+    fallbackUrl: 'https://sacred-texts.com/bib/poly/bel.htm'
   },
   '1 Esdras': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: '1esdras.html',
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: 'esdr001.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/apo/esdr001.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/1esdras.html'
   },
   '2 Esdras': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: '2esdras.html',
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: 'esdr002.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/apo/esdr002.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/2esdras.html'
   },
 
   // Old Testament Pseudepigrapha (Note: Many use Sacred Texts as primary since ECW doesn't have them)
@@ -91,74 +133,104 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   'Testament of the Twelve Patriarchs': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'patriarchs.html',
+    baseUrl: 'https://sacred-texts.com/bib/apo/',
+    pathPattern: 'testamen.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/apo/testamen.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/patriarchs.html'
   },
   'Psalms of Solomon': {
-    baseUrl: 'https://sacred-texts.com/bib/apo/',
-    pathPattern: 'psalm151.htm',
+    baseUrl: 'https://sacred-texts.com/bib/poly/',
+    pathPattern: 'pss.htm',
     requiresChapter: false,
     fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
 
-  // New Testament Apocrypha
+  // New Testament Apocrypha - Sacred Texts Priority when available
   'Gospel of Thomas': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'thomas.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'thomas.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/thomas.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/thomas.html'
   },
   'Gospel of Peter': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'gospelpeter.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'gospete.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/gospete.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/gospelpeter.html'
   },
   'Gospel of Mary': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'gospelmary.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'gomary.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/gomary.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/gospelmary.html'
   },
   'Gospel of Philip': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'gospelphilip.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'gphilip.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/gphilip.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/gospelphilip.html'
   },
   'Acts of Paul': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'actspaul.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'actspaul.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/actspaul.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/actspaul.html'
   },
   'Acts of Peter': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'actspeter.html',
+    baseUrl: 'https://sacred-texts.com/chr/',
+    pathPattern: 'actpete.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/chr/actpete.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/actspeter.html'
   },
 
-  // Early Church Fathers
+  // Early Church Fathers - Sacred Texts Priority when available
   '1 Clement': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: '1clement.html',
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: '1clement.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://www.newadvent.org/fathers/1010.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/1clement.html'
+  },
+  '2 Clement': {
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: '2clement.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/2clement.html'
   },
   'Didache': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'didache.html',
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: 'didache.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://www.newadvent.org/fathers/0714.htm'
+    fallbackUrl: 'https://www.earlychristianwritings.com/didache.html'
+  },
+  'Epistle of Barnabas': {
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: 'barnabas.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/barnabas.html'
+  },
+  'Shepherd of Hermas': {
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: 'hermas.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/shepherd.html'
   },
   'Ignatius Letters': {
     baseUrl: 'https://www.earlychristianwritings.com/',
     pathPattern: 'ignatius.html',
     requiresChapter: false,
     fallbackUrl: 'https://www.newadvent.org/fathers/0103.htm'
+  },
+  'Martyrdom of Polycarp': {
+    baseUrl: 'https://sacred-texts.com/chr/fathers/',
+    pathPattern: 'polycarp.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/polycarp.html'
+  },
+  'Odes of Solomon': {
+    baseUrl: 'https://sacred-texts.com/chr/solomon/',
+    pathPattern: 'index.htm',
+    requiresChapter: false,
+    fallbackUrl: 'https://www.earlychristianwritings.com/odes.html'
   },
 
   // Gnostic Texts (Nag Hammadi Library)
@@ -190,12 +262,19 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
 const BOOK_MAPPINGS: Record<string, string> = {
   'Sirach (Ecclesiasticus)': 'Sirach',
   'Wisdom of Solomon': 'Wisdom',
-  'Prayer of Manasseh': 'Manasseh',
-  'Psalm 151': 'Psalms of Solomon',
+  'Prayer of Manasseh': 'Prayer of Manasseh',
+  'Psalm 151': 'Psalm 151',
   '1 Maccabees': '1 Maccabees',
   '2 Maccabees': '2 Maccabees',
   '3 Maccabees': '3 Maccabees',
   '4 Maccabees': '4 Maccabees',
+  'Greek Esther': 'Greek Esther',
+  'Letter of Jeremiah': 'Letter of Jeremiah',
+  'Prayer of Azariah': 'Prayer of Azariah',
+  'Susanna': 'Susanna',
+  'Bel and the Dragon': 'Bel and the Dragon',
+  'Martyrdom of Polycarp': 'Martyrdom of Polycarp',
+  'Odes of Solomon': 'Odes of Solomon',
   '1 Esdras': '1 Esdras',
   '2 Esdras (4 Ezra)': '2 Esdras',
   '4 Ezra': '2 Esdras',
@@ -208,9 +287,9 @@ const BOOK_MAPPINGS: Record<string, string> = {
   '3 Baruch': '3 Baruch',
   '1 Clement': '1 Clement',
   '2 Clement': '2 Clement',
-  'Epistle of Barnabas': 'Barnabas',
-  'Ignatius Letters': 'Ignatius',
-  'Polycarp to Philippians': 'Polycarp',
+  'Epistle of Barnabas': 'Epistle of Barnabas',
+  'Ignatius Letters': 'Ignatius Letters',
+  'Polycarp to Philippians': 'Polycarp to Philippians',
   'Shepherd of Hermas': 'Shepherd of Hermas',
   'Gospel of the Hebrews': 'Gospel of the Hebrews',
   'Gospel of the Ebionites': 'Gospel of the Ebionites',
@@ -296,15 +375,19 @@ export function getApocryphaSourceDescription(bookName: string): string {
   const config = URL_CONFIGS[normalizedName];
 
   if (!config) {
-    return 'Source: Early Christian Writings';
+    return 'Source: Sacred Texts (Primary)';
   }
 
   if (config.baseUrl.includes('biblegateway.com')) {
-    return 'Source: Bible Gateway (New American Bible, Revised Edition)';
+    return 'Source: Bible Gateway (NRSVUE - Preferred)';
+  } else if (config.baseUrl.includes('sacred-texts.com')) {
+    return 'Source: Sacred Texts (Preferred)';
   } else if (config.baseUrl.includes('earlychristianwritings.com')) {
-    return 'Source: Early Christian Writings';
+    return 'Source: Early Christian Writings (Secondary)';
   } else if (config.baseUrl.includes('deadseascrolls.org.il')) {
     return 'Source: Israel Antiquities Authority - Dead Sea Scrolls';
+  } else if (config.baseUrl.includes('newadvent.org')) {
+    return 'Source: Christian Classics Ethereal Library';
   } else {
     return 'Source: Academic Online Repository';
   }

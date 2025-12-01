@@ -48,7 +48,6 @@
 		const readingMeta = `
 			<div class="reading-meta">
 				<span class="reading-time">${readingTime} min</span>
-				${hasApocrypha ? '<span class="apocrypha-indicator">📖 Apocrypha</span>' : ''}
 			</div>
 		`;
 

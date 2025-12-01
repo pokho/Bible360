@@ -195,7 +195,24 @@ src/
 
 ## License
 
-MIT License - see LICENSE file for details.
+Bible360 is licensed under the **Bible360 Source Available License**.
+
+**What this means:**
+- ✅ Free for personal, educational, and religious/non-profit use
+- ✅ You can study, modify, and contribute to the code
+- ✅ You can share the software for non-commercial purposes
+- ❌ Commercial use is strictly prohibited without written permission
+
+**Commercial Use Definition:**
+Commercial use includes selling the software, SaaS offerings, inclusion in commercial products, revenue generation activities, and enterprise use.
+
+**For Commercial Licensing:**
+Contact: [Your Email Address] for commercial licensing inquiries.
+
+**Important Note:**
+This is a "Source Available" license, not an "Open Source" license. It is designed to allow community contribution while protecting the commercial rights of the original author.
+
+See the [LICENSE](LICENSE) file for complete terms and conditions.
 
 ## Acknowledgments
 
