@@ -192,7 +192,7 @@ export class BiblehubReadingProvider {
         description: 'The Eternal Word and Creation Week - Foundation of all history, the divine Trinity, and the perfect creation of humanity and the world'
       },
       readingTimeMinutes: 20,
-      commentary: 'This day introduces Primeval History with the creation narrative and humanity\'s fall. John 1:1-14 provides the cosmic backdrop for Genesis, revealing Christ as the eternal Word through whom all things were made.'
+      commentary: '🔍EDITABLE_COMMENT: This day introduces Primeval History with the creation narrative and humanity\'s fall. John 1:1-14 provides the cosmic backdrop for Genesis, revealing Christ as the eternal Word through whom all things were made.'
     });
 
     // Day 2: The Fall
@@ -206,7 +206,7 @@ export class BiblehubReadingProvider {
         description: 'The Fall and Consequences - Sin enters the world through Adam and Eve, beginning of human violence and the righteous lineage leading to Noah'
       },
       readingTimeMinutes: 15,
-      commentary: 'The tragic turning point of human history. Genesis 3 introduces the doctrine of original sin and explains the brokenness of our world, while also containing the first promise of the Gospel in the protoevangelium (Genesis 3:15).'
+      commentary: '🔍EDITABLE_COMMENT: The tragic turning point of human history. Genesis 3 introduces the doctrine of original sin and explains the brokenness of our world, while also containing the first promise of the Gospel in the protoevangelium (Genesis 3:15).'
     });
 
     // Day 3-4: The Flood and Nations
@@ -325,7 +325,7 @@ export class BiblehubReadingProvider {
           description: `${section.period} - Key events in the deliverance from Egypt`
         },
         readingTimeMinutes: 20,
-        commentary: section.period === 'Exodus Journey' ? 'The crossing of the Red Sea demonstrates God\'s power and faithfulness. This monumental event shows how God delivers His people through impossible circumstances and establishes a pattern of redemption that points ultimately to Christ\'s work on the cross.' : undefined
+        commentary: section.period === 'Exodus Journey' ? '🔍EDITABLE_COMMENT: The crossing of the Red Sea demonstrates God\'s power and faithfulness. This monumental event shows how God delivers His people through impossible circumstances and establishes a pattern of redemption that points ultimately to Christ\'s work on the cross.' : undefined
       });
     });
   }

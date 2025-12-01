@@ -250,11 +250,11 @@ export class BlueLetterBibleProvider {
       // Add commentary for specific days
       let commentary;
       if (day === 1) {
-        commentary = 'The beginning of God\'s redemptive story. Genesis 1-3 reveals the perfect creation, the tragedy of the Fall, and contains the first promise of the Gospel that sets the stage for all of Scripture.';
+        commentary = '🔍EDITABLE_COMMENT: The beginning of God\'s redemptive story. Genesis 1-3 reveals the perfect creation, the tragedy of the Fall, and contains the first promise of the Gospel that sets the stage for all of Scripture.';
       } else if (day === 15) {
-        commentary = 'The call of Abraham represents God\'s choice to work through one family to bless all nations. This pivotal moment establishes the covenant framework that will culminate in Christ.';
+        commentary = '🔍EDITABLE_COMMENT: The call of Abraham represents God\'s choice to work through one family to bless all nations. This pivotal moment establishes the covenant framework that will culminate in Christ.';
       } else if (day === 45) {
-        commentary = 'The crossing of the Red Sea demonstrates God\'s power to save His people from impossible situations. This event serves as a powerful type of baptism and redemption throughout Scripture.';
+        commentary = '🔍EDITABLE_COMMENT: The crossing of the Red Sea demonstrates God\'s power to save His people from impossible situations. This event serves as a powerful type of baptism and redemption throughout Scripture.';
       }
 
       return {
