@@ -27,6 +27,7 @@ export interface DailyReading {
   historicalContext?: HistoricalContext;
   readingTimeMinutes: number;
   apocryphaIncluded?: boolean;
+  commentary?: string;
 }
 
 export interface BiblePassage {

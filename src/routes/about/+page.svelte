@@ -3,72 +3,69 @@
 
 	$: features = [
 		{
-			title: 'Multi-Provider Comparison',
-			description: 'Compare 5 different chronological reading plans side by side',
-			icon: '📊'
-		},
-		{
-			title: 'Historical Context',
-			description: 'Understand the historical background of each day\'s readings',
-			icon: '📚'
-		},
-		{
-			title: 'Color-Coded Providers',
-			description: 'Easily distinguish between different reading methodologies',
-			icon: '🎨'
-		},
-		{
-			title: 'Academic Rigor',
-			description: 'Scholarly approaches from conservative to academic perspectives',
-			icon: '🎓'
-		},
-		{
-			title: 'Complete Coverage',
-			description: 'Includes canonical, deuterocanonical, and pseudepigraphal texts',
+			title: 'Complete Bible Coverage',
+			description: '365-day chronological plan covering entire Bible from Genesis to Revelation',
 			icon: '📖'
 		},
 		{
-			title: 'Flexible Reading',
-			description: 'Adaptable to different schedules and reading preferences',
-			icon: '⏰'
+			title: 'Rich Historical Context',
+			description: 'Scholarly dating and theological insights integrated throughout each reading',
+			icon: '🏛️'
+		},
+		{
+			title: 'Comprehensive Apocrypha',
+			description: '365-day plan with 41 unique apocryphal and pseudepigraphal texts',
+			icon: '📚'
+		},
+		{
+			title: 'Working URL Generation',
+			description: 'Direct links to BibleGateway, Sacred Texts, and other biblical sources',
+			icon: '🔗'
+		},
+		{
+			title: '584 Timeline Events',
+			description: 'Complete BibleHub chronological timeline properly distributed',
+			icon: '📅'
+		},
+		{
+			title: 'Academic Excellence',
+			description: 'Conservative evangelical scholarship with proper historical dating',
+			icon: '🎓'
 		}
 	];
 
 	$: providers = [
 		{
-			name: 'ESV Chronological',
-			color: '#e74c3c',
-			methodology: 'Young-earth creationism, literal historical approach',
-			denomination: 'Evangelical Protestant',
-			sources: 'ESV.org'
+			name: 'BibleHub Chronological',
+			color: '#27ae60',
+			methodology: 'Complete 584-event timeline covering entire Bible from Genesis to Revelation',
+			denomination: 'Conservative Evangelical',
+			sources: 'BibleHub.com Timeline',
+			coverage: 'Complete Bible (365 days)'
 		},
 		{
 			name: 'Logos Academic',
 			color: '#3498db',
-			methodology: 'Conservative dating, historical-critical approach',
+			methodology: 'Conservative dating with configurable parameters and academic framework',
 			denomination: 'Interdenominational Academic',
-			sources: 'Logos.com'
+			sources: 'Logos.com Academic Resources',
+			coverage: 'Standard canonical books'
 		},
 		{
 			name: 'Blue Letter Bible',
 			color: '#9b59b6',
-			methodology: 'Conservative evangelical scholarship',
+			methodology: 'Traditional conservative evangelical scholarship with historical context',
 			denomination: 'Evangelical Protestant',
-			sources: 'BlueLetterBible.org'
+			sources: 'BlueLetterBible.org DBRP',
+			coverage: 'Standard canonical books'
 		},
 		{
 			name: 'Apocrypha & Pseudepigrapha',
 			color: '#e67e22',
-			methodology: 'Academic chronological approach through Deuterocanonical and Pseudepigraphal writings',
-			denomination: 'Academic/Comparative',
-			sources: 'Academic research'
-		},
-		{
-			name: 'Biblehub Chronological',
-			color: '#27ae60',
-			methodology: 'Complete chronological timeline following traditional Hebrew chronology',
-			denomination: 'Traditional Protestant',
-			sources: 'Biblehub.com'
+			methodology: 'Academic chronological approach through 41 unique texts from deuterocanonical to Nag Hammadi',
+			denomination: 'Academic/Comparative Study',
+			sources: 'BibleGateway NRSVUE, Sacred Texts, Early Christian Writings',
+			coverage: '365 days of non-canonical texts'
 		}
 	];
 </script>
@@ -93,7 +90,7 @@
 	<div class="about-container">
 		<section class="mission-section">
 			<h2>Our Mission</h2>
-			<p>Bible360 provides a comprehensive platform for comparing and understanding different chronological approaches to reading the Bible. We bring together multiple scholarly and theological perspectives to help you deepen your understanding of Scripture's historical and literary context.</p>
+			<p>Bible360 provides a complete chronological journey through Scripture, offering comprehensive 365-day reading plans that cover the entire Bible from Genesis to Revelation. We integrate rich historical context, scholarly insights, and working URL links to create the most thorough chronological Bible study experience available.</p>
 		</section>
 
 		<section class="features-section">
@@ -121,6 +118,7 @@
 							<p><strong>Methodology:</strong> {provider.methodology}</p>
 							<p><strong>Tradition:</strong> {provider.denomination}</p>
 							<p><strong>Sources:</strong> {provider.sources}</p>
+							<p><strong>Coverage:</strong> {provider.coverage}</p>
 						</div>
 					</div>
 				{/each}
@@ -128,58 +126,70 @@
 		</section>
 
 		<section class="chronology-section">
-			<h2>Why Chronological Reading?</h2>
+			<h2>Why Complete Chronological Reading?</h2>
 			<div class="chronology-content">
-				<p>Reading the Bible chronologically offers unique insights into Scripture's development and historical context:</p>
+				<p>Our comprehensive chronological reading plans provide unique insights into Scripture's complete historical and theological development:</p>
 				<ul>
-					<li><strong>Historical Flow:</strong> Experience events in the order they occurred</li>
-					<li><strong>Prophetic Context:</strong> Understand prophecies in their historical setting</li>
-					<li><strong>Literary Development:</strong> See how biblical literature evolved over time</li>
-					<li><strong>Cultural Understanding:</strong> Appreciate the cultural and historical backgrounds</li>
-					<li><strong>Theological Progression:</strong> Trace the development of biblical theology</li>
+					<li><strong>Complete Historical Flow:</strong> Experience the entire biblical narrative from Creation to Revelation in chronological order</li>
+					<li><strong>584 Timeline Events:</strong> Every major biblical event properly placed in historical context</li>
+					<li><strong>Rich Historical Context:</strong> Scholarly dating and cultural insights for each reading</li>
+					<li><strong>Theological Connections:</strong> Understand how doctrines develop across biblical history</li>
+					<li><strong>Comprehensive Coverage:</strong> Complete Bible plus 41 apocryphal texts for full historical understanding</li>
+					<li><strong>Academic Excellence:</strong> Conservative evangelical scholarship with proper historical methodology</li>
 				</ul>
 			</div>
 		</section>
 
 		<section class="technical-section">
-			<h2>Technical Information</h2>
+			<h2>Technical Implementation</h2>
 			<div class="technical-content">
-				<p>Bible360 is built with modern web technologies to provide the best user experience:</p>
+				<p>Bible360 is built with modern web technologies to provide a comprehensive chronological Bible study experience:</p>
 				<div class="tech-stack">
 					<div class="tech-item">
-						<strong>Frontend:</strong> SvelteKit with TypeScript
+						<strong>Frontend Framework:</strong> SvelteKit with TypeScript
 					</div>
 					<div class="tech-item">
-						<strong>Styling:</strong> Scoped CSS with custom design system
+						<strong>Build Tool:</strong> Vite for fast development and optimized production builds
 					</div>
 					<div class="tech-item">
-						<strong>Build:</strong> Vite for fast development and optimized production builds
+						<strong>Styling:</strong> Scoped CSS with responsive design system
 					</div>
 					<div class="tech-item">
-						<strong>Deployment:</strong> Static site generation for optimal performance
+						<strong>Data Management:</strong> TypeScript stores with type safety
+					</div>
+					<div class="tech-item">
+						<strong>URL Generation:</strong> Dynamic link generation for multiple Bible sources
+					</div>
+					<div class="tech-item">
+						<strong>Timeline Integration:</strong> Complete BibleHub 584-event chronological timeline
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<section class="contact-section">
-			<h2>Contact & Contributions</h2>
-			<p>Bible360 is an open-source project dedicated to making biblical scholarship accessible to everyone. We welcome feedback, suggestions, and contributions from the community.</p>
+			<h2>Contact & Licensing</h2>
+			<p>Bible360 is a source-available project dedicated to providing comprehensive chronological Bible study resources. We welcome feedback and contributions from the community.</p>
 			<div class="contact-info">
-				<p><strong>GitHub:</strong> Available for open-source collaboration</p>
-				<p><strong>License:</strong> MIT License</p>
-				<p><strong>Version:</strong> 1.0.0</p>
+				<p><strong>GitHub:</strong> <a href="https://github.com/pokho/Bible360" target="_blank" rel="noopener">github.com/pokho/Bible360</a></p>
+				<p><strong>License:</strong> Bible360 Source Available License by Paul Henckel</p>
+				<p><strong>Personal Use:</strong> ✅ Free for personal, educational, and religious/non-profit use</p>
+				<p><strong>Commercial Use:</strong> ❌ Commercial use prohibited without written permission</p>
+				<p><strong>Commercial Inquiries:</strong> <a href="mailto:bible360@travail.mozmail.com">bible360@travail.mozmail.com</a></p>
+				<p><strong>Version:</strong> 2.0 - Complete Chronological Implementation</p>
 			</div>
 		</section>
 	</div>
 </main>
 
 <footer class="bible360-footer">
-	<p>© 2025 Bible360 - Chronological Bible Reading Plans</p>
+	<p>© 2025 Bible360 by Paul Henckel - Complete Chronological Bible Reading Plans</p>
+	<p><em>Built with ❤️ for the Bible study community</em></p>
 	<div class="footer-links">
 		<a href="/">Home</a>
-		<a href="/plans">Reading Plans</a>
 		<a href="/about">About</a>
+		<a href="https://github.com/pokho/Bible360" target="_blank" rel="noopener">GitHub</a>
+		<a href="mailto:bible360@travail.mozmail.com">Contact</a>
 	</div>
 </footer>
 
@@ -332,6 +342,15 @@
 
 	.contact-info p {
 		margin: 0.5rem 0;
+	}
+
+	.contact-info a {
+		color: #3498db;
+		text-decoration: none;
+	}
+
+	.contact-info a:hover {
+		text-decoration: underline;
 	}
 
 	.bible360-footer {

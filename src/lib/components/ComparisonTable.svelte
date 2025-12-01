@@ -1,8 +1,30 @@
 <script>
 	import { readingPlans } from '$lib/stores/readingPlansStore';
+	import CommentButton from './CommentButton.svelte';
+	import CommentModal from './CommentModal.svelte';
 
 	export let plans;
 	export let sortedDays;
+
+	// Modal state
+	let showModal = false;
+	let modalCommentary = '';
+	let modalProvider = '';
+	let modalDay = 0;
+
+	function openCommentModal(commentary, provider, day) {
+		modalCommentary = commentary;
+		modalProvider = provider;
+		modalDay = day;
+		showModal = true;
+	}
+
+	function closeModal() {
+		showModal = false;
+		modalCommentary = '';
+		modalProvider = '';
+		modalDay = 0;
+	}
 
 	
 	function renderPlanReading(reading, plan) {
@@ -111,21 +133,57 @@
 					</td>
 					<td class="plan-cell plan-logos">
 						{@html logosReading ? renderPlanReading(logosReading, plans.logos) : '<span class="no-reading">No reading</span>'}
+						{#if logosReading?.commentary}
+							<CommentButton
+								commentary={logosReading.commentary}
+								provider="logos"
+								onClick={() => openCommentModal(logosReading.commentary, 'logos', day)}
+							/>
+						{/if}
 					</td>
 					<td class="plan-cell plan-blb">
 						{@html blbReading ? renderPlanReading(blbReading, plans.blb) : '<span class="no-reading">No reading</span>'}
+						{#if blbReading?.commentary}
+							<CommentButton
+								commentary={blbReading.commentary}
+								provider="blb"
+								onClick={() => openCommentModal(blbReading.commentary, 'blb', day)}
+							/>
+						{/if}
 					</td>
 					<td class="plan-cell plan-biblehub">
 						{@html biblehubReading ? renderPlanReading(biblehubReading, plans.biblehub) : '<span class="no-reading">No reading</span>'}
+						{#if biblehubReading?.commentary}
+							<CommentButton
+								commentary={biblehubReading.commentary}
+								provider="biblehub"
+								onClick={() => openCommentModal(biblehubReading.commentary, 'biblehub', day)}
+							/>
+						{/if}
 					</td>
 					<td class="plan-cell plan-apocrypha">
 						{@html apocryphaReading ? renderPlanReading(apocryphaReading, plans.apocrypha) : '<span class="no-reading">No reading</span>'}
+						{#if apocryphaReading?.commentary}
+							<CommentButton
+								commentary={apocryphaReading.commentary}
+								provider="apocrypha"
+								onClick={() => openCommentModal(apocryphaReading.commentary, 'apocrypha', day)}
+							/>
+						{/if}
 					</td>
 				</tr>
 			{/each}
 		</tbody>
 	</table>
 </div>
+
+<CommentModal
+	isOpen={showModal}
+	commentary={modalCommentary}
+	provider={modalProvider}
+	day={modalDay}
+	onClose={closeModal}
+/>
 
 <style>
 	/* Additional styles specific to this component can go here */
@@ -134,7 +192,11 @@
 	}
 
 	.plan-cell {
-		/* Additional component-specific styling */
+		position: relative;
+		padding: 12px;
+		min-width: 180px;
+		max-width: 220px;
+		vertical-align: top;
 	}
 
 	.reading-context {

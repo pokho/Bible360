@@ -179,7 +179,8 @@ export class LogosAcademicProvider {
           period: 'Primeval History',
           approximateDate: 'c. 4000 BC',
           description: 'The Creation account and the Fall - Foundation of cosmic order, humanity\'s creation in God\'s image, and the origin of sin and its consequences for all creation'
-        }
+        },
+        commentary: 'The foundational narrative of all Scripture. Genesis 1-3 establishes core theological concepts including God as Creator, humanity made in God\'s image, the origin of sin, and the first promise of redemption (protoevangelium).'
       },
       {
         day: 2,
@@ -189,7 +190,8 @@ export class LogosAcademicProvider {
           period: 'Antediluvian Era',
           approximateDate: 'c. 3900-3000 BC',
           description: 'Early human history outside Eden - Cain\'s murder of Abel establishing sin\'s progression, genealogical development of humanity, and growing corruption that leads to divine judgment'
-        }
+        },
+        commentary: 'The rapid spread of sin after the Fall. Genesis 4-7 shows how sin escalates from murder to violence, but also demonstrates God\'s grace in preserving a righteous line through Seth, ultimately leading to Noah and the promise of redemption.'
       },
       {
         day: 3,

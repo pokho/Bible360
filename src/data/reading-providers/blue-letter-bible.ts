@@ -247,12 +247,23 @@ export class BlueLetterBibleProvider {
         };
       }
 
+      // Add commentary for specific days
+      let commentary;
+      if (day === 1) {
+        commentary = 'The beginning of God\'s redemptive story. Genesis 1-3 reveals the perfect creation, the tragedy of the Fall, and contains the first promise of the Gospel that sets the stage for all of Scripture.';
+      } else if (day === 15) {
+        commentary = 'The call of Abraham represents God\'s choice to work through one family to bless all nations. This pivotal moment establishes the covenant framework that will culminate in Christ.';
+      } else if (day === 45) {
+        commentary = 'The crossing of the Red Sea demonstrates God\'s power to save His people from impossible situations. This event serves as a powerful type of baptism and redemption throughout Scripture.';
+      }
+
       return {
         day,
         date: date.toISOString().split('T')[0],
         passages,
         readingTimeMinutes: Math.max(15, passages.length * 8), // Minimum 15 minutes, 8 minutes per passage
-        historicalContext
+        historicalContext,
+        commentary
       };
     });
 

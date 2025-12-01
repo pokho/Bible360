@@ -141,6 +141,20 @@ export class ApocryphaReadingProvider {
     allPhases.forEach(({ book, startDay, endDay, period, date, description }) => {
       for (let day = startDay; day <= endDay; day++) {
         if (day <= 365) {
+          // Add commentary for specific key days
+          let commentary;
+          if (day === 15 && book === 'Wisdom of Solomon') {
+            commentary = 'Wisdom literature provides profound insights into practical living and divine wisdom. This book bridges Hebrew wisdom traditions with Hellenistic philosophy, showing how ancient Israel made sense of life\'s biggest questions.';
+          } else if (day === 56 && book === '2 Maccabees') {
+            commentary = 'The Maccabean Revolt represents one of the most significant periods in Jewish history. This text emphasizes martyrdom, resurrection beliefs, and divine intervention - themes that would deeply influence early Christianity.';
+          } else if (day === 91 && book === '1 Enoch') {
+            commentary = '1 Enoch profoundly influenced Second Temple Judaism and early Christian thought. Its apocalyptic visions, angelology, and messianic expectations shaped how both Jews and Christians understood the spiritual realm and end times.';
+          } else if (day === 188 && book === 'Didache') {
+            commentary = 'The Didache provides a window into the practical life of the earliest Christian communities. Its teachings on baptism, Eucharist, and ethics show how the apostles\' teachings were lived out in daily Christian life.';
+          } else if (day === 228 && book === 'Gospel of Thomas') {
+            commentary = 'The Gospel of Thomas offers a different perspective on Jesus\' teachings through its collection of sayings. While not included in the canon, it provides valuable insights into early Christian diversity and how Jesus was remembered in different communities.';
+          }
+
           readings.push({
             day,
             date: `2025-01-${day.toString().padStart(2, '0')}`,
@@ -166,7 +180,8 @@ export class ApocryphaReadingProvider {
               parallelEvents: []
             },
             readingTimeMinutes: 25,
-            apocryphaIncluded: true
+            apocryphaIncluded: true,
+            commentary
           });
         }
       }
