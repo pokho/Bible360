@@ -180,7 +180,7 @@ export class LogosAcademicProvider {
           approximateDate: 'c. 4000 BC',
           description: 'The Creation account and the Fall - Foundation of cosmic order, humanity\'s creation in God\'s image, and the origin of sin and its consequences for all creation'
         },
-        commentary: '🔍EDITABLE_COMMENT: The foundational narrative of all Scripture. Genesis 1-3 establishes core theological concepts including God as Creator, humanity made in God\'s image, the origin of sin, and the first promise of redemption (protoevangelium).'
+        commentary: '🔍GENERIC_COMMENT: The foundational narrative of all Scripture. Genesis 1-3 establishes core theological concepts including God as Creator, humanity made in God\'s image, the origin of sin, and the first promise of redemption (protoevangelium).'
       },
       {
         day: 2,
@@ -191,7 +191,7 @@ export class LogosAcademicProvider {
           approximateDate: 'c. 3900-3000 BC',
           description: 'Early human history outside Eden - Cain\'s murder of Abel establishing sin\'s progression, genealogical development of humanity, and growing corruption that leads to divine judgment'
         },
-        commentary: '🔍EDITABLE_COMMENT: The rapid spread of sin after the Fall. Genesis 4-7 shows how sin escalates from murder to violence, but also demonstrates God\'s grace in preserving a righteous line through Seth, ultimately leading to Noah and the promise of redemption.'
+        commentary: '🔍GENERIC_COMMENT: The rapid spread of sin after the Fall. Genesis 4-7 shows how sin escalates from murder to violence, but also demonstrates God\'s grace in preserving a righteous line through Seth, ultimately leading to Noah and the promise of redemption.'
       },
       {
         day: 3,

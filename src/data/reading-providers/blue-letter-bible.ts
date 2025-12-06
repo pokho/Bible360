@@ -55,7 +55,9 @@ export class BlueLetterBibleProvider {
   // Extract book name from chapter text
   private extractBookName(chapterText: string): string {
     // Remove chapter numbers and special characters
-    const bookName = chapterText.replace(/^(\w+\s*\w*)\s*\d.*$/, '$1').trim();
+    // Handle both single and multi-word book names (Gen, 1Sa, Sng, etc.)
+    // Use word boundary to ensure we don't capture digits as part of the book name
+    const bookName = chapterText.replace(/^([1-2]*\w+)\s+\d.*$/, '$1').trim();
     return bookName;
   }
 
@@ -250,11 +252,11 @@ export class BlueLetterBibleProvider {
       // Add commentary for specific days
       let commentary;
       if (day === 1) {
-        commentary = '🔍EDITABLE_COMMENT: The beginning of God\'s redemptive story. Genesis 1-3 reveals the perfect creation, the tragedy of the Fall, and contains the first promise of the Gospel that sets the stage for all of Scripture.';
+        commentary = '🔍GENERIC_COMMENT: The beginning of God\'s redemptive story. Genesis 1-3 reveals the perfect creation, the tragedy of the Fall, and contains the first promise of the Gospel that sets the stage for all of Scripture.';
       } else if (day === 15) {
-        commentary = '🔍EDITABLE_COMMENT: The call of Abraham represents God\'s choice to work through one family to bless all nations. This pivotal moment establishes the covenant framework that will culminate in Christ.';
+        commentary = '🔍GENERIC_COMMENT: The call of Abraham represents God\'s choice to work through one family to bless all nations. This pivotal moment establishes the covenant framework that will culminate in Christ.';
       } else if (day === 45) {
-        commentary = '🔍EDITABLE_COMMENT: The crossing of the Red Sea demonstrates God\'s power to save His people from impossible situations. This event serves as a powerful type of baptism and redemption throughout Scripture.';
+        commentary = '🔍GENERIC_COMMENT: The crossing of the Red Sea demonstrates God\'s power to save His people from impossible situations. This event serves as a powerful type of baptism and redemption throughout Scripture.';
       }
 
       return {
