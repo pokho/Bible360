@@ -74,3 +74,5 @@ temp-research/
 
 # Optional: Keep specific development files but track changes carefully
 # !BLB_DBRP_1Yr_ChronologicalPlan.pdf
+# SvelteKit generated files
+.svelte-kit/
