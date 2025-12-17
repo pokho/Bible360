@@ -28,7 +28,7 @@ export class ApocryphaReadingProvider {
         totalDays: 365,
         averageReadingTime: 25,
         language: 'en',
-        version: '1.0',
+        version: '2.0 Updated',
         sourceUrl: 'https://github.com/anthropics/bible360-research'
       }
     };
@@ -37,122 +37,172 @@ export class ApocryphaReadingProvider {
   private generateApocryphaReadings() {
     const readings = [];
 
-    // Phase 1: Foundation Period (Days 1-90) - Deuterocanonical and Early Wisdom Literature
+    // Phase 1: Primordial History (Days 1-30) - Early Enoch Literature and Creation Texts
     const phase1 = [
-      // Days 1-10: Tobit
-      { book: 'Tobit', startDay: 1, endDay: 7, period: 'Post-exilic Period', date: '200-150 BCE', description: 'Religious novel about piety, family, and divine providence in the Assyrian captivity context' },
-      { book: 'Judith', startDay: 8, endDay: 14, period: 'Assyrian Period Setting', date: '150-100 BCE', description: 'Story of widow heroism and faith during Assyrian threat, showing divine deliverance' },
-      { book: 'Wisdom of Solomon', startDay: 15, endDay: 22, period: 'Hellenistic Judaism', date: '50-20 BCE', description: 'Alexandrian philosophical wisdom contrasting righteousness and wickedness' },
-      { book: 'Sirach (Ecclesiasticus)', startDay: 23, endDay: 35, period: 'Post-exilic Wisdom', date: '180-115 BCE', description: 'Practical ethical teachings from Jesus ben Sirach, bridging Torah and Hellenistic thought' },
-      { book: 'Baruch', startDay: 36, endDay: 40, period: 'Babylonian Exile', date: '150-100 BCE', description: 'Jeremiah\'s scribe\'s confession and wisdom poem during exile' },
-      { book: 'Prayer of Manasseh', startDay: 41, endDay: 42, period: 'Assyrian Captivity', date: '100-50 BCE', description: 'Penitential prayer showing possibility of repentance even for wicked kings' },
-      { book: 'Psalm 151', startDay: 43, endDay: 43, period: 'Davidic Period', date: '100 BCE', description: 'Additional Davidic psalm on humble origins and divine election' },
-      // Days 44-65: Maccabean History
-      { book: '1 Maccabees', startDay: 44, endDay: 55, period: 'Maccabean Revolt', date: '175-134 BCE', description: 'Historical account of Jewish resistance against Seleucid religious oppression' },
-      { book: '2 Maccabees', startDay: 56, endDay: 65, period: 'Maccabean Revolt', date: '124-63 BCE', description: 'Theological reflection on martyrdom, resurrection, and divine intervention' },
-      // Days 66-90: Additional Deuterocanonical
-      { book: '1 Esdras', startDay: 66, endDay: 72, period: 'Return from Exile', date: '150-100 BCE', description: 'Alternative version of Ezra-Nehemiah material with unique traditions' },
-      { book: '2 Esdras (4 Ezra)', startDay: 73, endDay: 80, period: 'Post-Temple Destruction', date: '90-120 CE', description: 'Apocalyptic responses to the destruction of the Second Temple' },
-      { book: '3 Maccabees', startDay: 81, endDay: 85, period: 'Ptolemaic Egypt', date: '50-20 BCE', description: 'Jewish persecution in Egypt under Ptolemy IV Philopator' },
-      { book: '4 Maccabees', startDay: 86, endDay: 90, period: 'Philosophical Discourse', date: '25-50 CE', description: 'Hellenistic Jewish philosophy on reason controlling passions' }
+      // Days 1-15: 1 Enoch (earliest major apocalyptic work)
+      { book: '1 Enoch', startDay: 1, endDay: 15, period: 'Antediluvian Revelation', date: '300-200 BCE', description: 'Apocalyptic visions, angelology, and eschatology that profoundly influenced Second Temple Judaism and early Christianity' },
+      // Days 16-22: Books of Adam and Eve
+      { book: 'The First Book of Adam and Eve', startDay: 16, endDay: 19, period: 'Primeval History', date: '50-100 CE', description: 'Expansion of Genesis narrative describing Adam and Eve\'s life after expulsion from Eden' },
+      { book: 'The Second Book of Adam and Eve', startDay: 20, endDay: 22, period: 'Primeval History', date: '50-100 CE', description: 'Continuation of Adam and Eve\'s story with Cain\'s history and early human civilization' },
+      // Days 23-30: Other Early Pseudepigrapha
+      { book: 'The Book of Jasher', startDay: 23, endDay: 26, period: 'Biblical Supplements', date: '100-150 CE', description: 'Alleged lost biblical book mentioned in Joshua and 2 Samuel, providing additional details about biblical events' },
+      { book: 'The Book of the Secrets of Enoch (2 Enoch)', startDay: 27, endDay: 30, period: 'Heavenly Ascent', date: '50-70 CE', description: 'Enoch\'s journey through multiple heavens and transformation into the angel Metatron' }
     ];
 
-    // Phase 2: Second Temple Judaism (Days 91-180) - Old Testament Pseudepigrapha
+    // Phase 2: Pre-Exilic to Exilic Period (Days 31-75) - Wisdom and Testament Literature
     const phase2 = [
-      // Days 91-105: Early Enoch Literature
-      { book: '1 Enoch', startDay: 91, endDay: 110, period: 'Antediluvian Revelation', date: '300-200 BCE', description: 'Apocalyptic visions, angelology, and eschatology influencing Second Temple thought' },
-      // Days 111-120: Jubilees
-      { book: 'Jubilees', startDay: 111, endDay: 120, period: 'Chronological Revision', date: '160-150 BCE', description: 'Rewritten Genesis and Exodus with 364-day calendar and angelic mediation' },
-      // Days 121-135: Testament Literature
-      { book: 'Testament of the Twelve Patriarchs', startDay: 121, endDay: 135, period: 'Patriarchal Instructions', date: '140-100 BCE', description: 'Ethical testaments from Jacob\'s sons with future apocalyptic visions' },
-      // Days 136-150: Later Apocalypses
-      { book: '2 Enoch', startDay: 136, endDay: 142, period: 'Heavenly Ascent', date: '50-70 CE', description: 'Enoch\'s journey through heavens and apocalyptic revelations' },
-      { book: '4 Ezra', startDay: 143, endDay: 150, period: 'Post-Destruction Theodicy', date: '90-120 CE', description: 'Dialogues about divine justice in light of temple destruction' },
-      // Days 151-165: Other Pseudepigrapha
-      { book: 'Apocalypse of Abraham', startDay: 151, endDay: 155, period: 'Patriarchal Apocalypse', date: '70-100 CE', description: 'Abraham\'s heavenly ascent and cosmic vision' },
-      { book: 'Testament of Job', startDay: 156, endDay: 160, period: 'Wisdom Expansion', date: '100 BCE - 100 CE', description: 'Expanded story of Job with details about his daughters\' prophecies' },
-      { book: 'Psalms of Solomon', startDay: 161, endDay: 165, period: 'Hasmonean Reflection', date: '50 BCE', description: 'Pharisaic response to Roman occupation and Pompey\'s conquest' },
-      // Days 166-180: Late Pseudepigrapha
-      { book: '2 Baruch', startDay: 166, endDay: 170, period: 'Post-Temple Apocalypse', date: '100-130 CE', description: 'Syriac apocalypse responding to temple destruction' },
-      { book: '3 Baruch', startDay: 171, endDay: 173, period: 'Cosmic Tour', date: '100-200 CE', description: 'Journey through heavens with angelological revelations' },
-      { book: 'Joseph and Aseneth', startDay: 174, endDay: 177, period: 'Jewish Romance', date: '100-200 CE', description: 'Story of Joseph\'s marriage to Egyptian convert Aseneth' },
-      { book: 'Ascension of Isaiah', startDay: 178, endDay: 180, period: 'Christian Vision', date: '100-150 CE', description: 'Isaiah\'s vision of Christ and cosmic journey through heavens' }
+      // Days 31-40: Jubilees
+      { book: 'Jubilees', startDay: 31, endDay: 40, period: 'Chronological Revision', date: '160-150 BCE', description: 'Rewritten Genesis and Exodus with 364-day solar calendar and extensive angelic mediation' },
+      // Days 41-55: Testament of the Twelve Patriarchs
+      { book: 'Testament of the Twelve Patriarchs', startDay: 41, endDay: 55, period: 'Patriarchal Instructions', date: '140-100 BCE', description: 'Ethical testaments from Jacob\'s sons containing moral teachings and future apocalyptic visions' },
+      // Days 56-60: Psalms of Solomon
+      { book: 'Psalms of Solomon', startDay: 56, endDay: 60, period: 'Hasmonean Reflection', date: '50 BCE', description: 'Pharisaic response to Roman occupation and Pompey\'s conquest of Jerusalem' },
+      // Days 61-75: Deuterocanonical Wisdom
+      { book: 'Wisdom of Solomon', startDay: 61, endDay: 68, period: 'Hellenistic Judaism', date: '50-20 BCE', description: 'Alexandrian philosophical wisdom contrasting righteousness and wickedness, personifying Wisdom' },
+      { book: 'Sirach (Ecclesiasticus)', startDay: 69, endDay: 75, period: 'Post-exilic Wisdom', date: '180-115 BCE', description: 'Practical ethical teachings from Jesus ben Sirach, bridging Torah wisdom and Hellenistic thought' }
     ];
 
-    // Phase 3: Early Christianity (Days 181-270) - Apostolic Fathers and NT Apocrypha
+    // Phase 3: Second Temple Judaism - Deuterocanonical (Days 76-140)
     const phase3 = [
-      // Days 181-195: Apostolic Fathers
-      { book: '1 Clement', startDay: 181, endDay: 187, period: 'Post-Apostolic Church', date: '95-97 CE', description: 'Roman church\'s letter to Corinth on unity and humility' },
-      { book: 'Didache', startDay: 188, endDay: 192, period: 'Apostolic Teaching', date: '70-120 CE', description: 'Manual for Christian life, baptism, Eucharist, and church order' },
-      { book: 'Ignatius Letters', startDay: 193, endDay: 198, period: 'Martyrdom Theology', date: '107-110 CE', description: 'Seven letters emphasizing unity with bishop and martyrdom' },
-      { book: 'Polycarp to Philippians', startDay: 199, endDay: 201, period: 'Pastoral Epistle', date: '110-140 CE', description: 'Pastoral letter from John\'s disciple to Philippian church' },
-      // Days 202-220: Early Christian Literature
-      { book: 'Shepherd of Hermas', startDay: 202, endDay: 215, period: 'Roman Christianity', date: '140-155 CE', description: 'Allegorical visions about repentance and Christian life' },
-      { book: '2 Clement', startDay: 216, endDay: 218, period: 'Early Preaching', date: '140-160 CE', description: 'Oldest extant Christian sermon on Christian living' },
-      { book: 'Epistle of Barnabas', startDay: 219, endDay: 220, period: 'Allegorical Interpretation', date: '130-150 CE', description: 'Allegorical Old Testament interpretation from Christian perspective' },
-      // Days 221-240: New Testament Apocrypha - Early Period
-      { book: 'Gospel of the Hebrews', startDay: 221, endDay: 224, period: 'Jewish Christianity', date: '65-100 CE', description: 'Jewish-Christian gospel quoted by early church fathers' },
-      { book: 'Gospel of the Ebionites', startDay: 225, endDay: 227, period: 'Jewish Christian', date: '100-150 CE', description: 'Jewish-Christian gospel harmonizing synoptic traditions' },
-      { book: 'Gospel of Thomas', startDay: 228, endDay: 235, period: 'Sayings Collection', date: '50-140 CE', description: '114 sayings of Jesus with some parallels to canonical gospels' },
-      // Days 241-270: New Testament Apocrypha - Middle Period
-      { book: 'Gospel of Peter', startDay: 236, endDay: 240, period: 'Passion Narrative', date: '100-150 CE', description: 'Passion narrative with resurrection appearances' },
-      { book: 'Gospel of the Egyptians', startDay: 241, endDay: 244, period: 'Encratite Teaching', date: '120-150 CE', description: 'Ascetic gospel rejecting marriage and procreation' },
-      { book: 'Acts of Paul', startDay: 245, endDay: 250, period: 'Pauline Tradition', date: '150-200 CE', description: 'Expanded acts including Thecla\'s story of ministry' },
-      { book: 'Acts of Peter', startDay: 251, endDay: 255, period: 'Peter Tradition', date: '150-200 CE', description: 'Peter\'s ministry and martyrdom in Rome' },
-      { book: 'Gospel of Mary', startDay: 256, endDay: 258, period: 'Mary Magdalene', date: '150-180 CE', description: 'Mary Magdalene\'s revelation and teaching authority' },
-      { book: 'Gospel of Philip', startDay: 259, endDay: 262, period: 'Valentinian Teaching', date: '180-250 CE', description: 'Valentinian Gnostic theological collection' },
-      { book: 'Acts of Thomas', startDay: 263, endDay: 267, period: 'Syrian Tradition', date: '200-250 CE', description: 'Thomas\' mission to India with Hymn of the Pearl' },
-      { book: 'Apocalypse of Peter', startDay: 268, endDay: 270, period: 'Afterlife Vision', date: '200-250 CE', description: 'Vision of hell and final judgment scenes' }
+      // Days 76-85: Tobit and Judith
+      { book: 'Tobit', startDay: 76, endDay: 80, period: 'Post-exilic Period', date: '200-150 BCE', description: 'Religious novel about piety, family, and divine providence in the Assyrian captivity context' },
+      { book: 'Judith', startDay: 81, endDay: 85, period: 'Assyrian Period Setting', date: '150-100 BCE', description: 'Story of widow heroism and faith during Assyrian threat, showing divine deliverance' },
+      // Days 86-95: Baruch and Related Texts
+      { book: 'Baruch', startDay: 86, endDay: 90, period: 'Babylonian Exile', date: '150-100 BCE', description: 'Jeremiah\'s scribe\'s confession and wisdom poem during Babylonian exile' },
+      { book: 'Letter of Jeremiah', startDay: 91, endDay: 92, period: 'Babylonian Exile', date: '150-100 BCE', description: 'Warning against idolatry addressed to exiles in Babylon' },
+      { book: 'Prayer of Manasseh', startDay: 93, endDay: 94, period: 'Assyrian Captivity', date: '100-50 BCE', description: 'Penitential prayer of wicked King Manasseh showing possibility of repentance' },
+      { book: 'Psalm 151', startDay: 95, endDay: 95, period: 'Davidic Period', date: '100 BCE', description: 'Additional Davidic psalm on humble origins and divine election' },
+      // Days 96-115: Maccabean History
+      { book: '1 Maccabees', startDay: 96, endDay: 105, period: 'Maccabean Revolt', date: '175-134 BCE', description: 'Historical account of Jewish resistance against Seleucid religious oppression and persecution' },
+      { book: '2 Maccabees', startDay: 106, endDay: 115, period: 'Maccabean Revolt', date: '124-63 BCE', description: 'Theological reflection on martyrdom, resurrection, and divine intervention during persecution' },
+      // Days 116-125: Additional Maccabean Literature
+      { book: '3 Maccabees', startDay: 116, endDay: 120, period: 'Ptolemaic Egypt', date: '50-20 BCE', description: 'Jewish persecution in Egypt under Ptolemy IV Philopator, showing divine deliverance' },
+      { book: '4 Maccabees', startDay: 121, endDay: 125, period: 'Philosophical Discourse', date: '25-50 CE', description: 'Hellenistic Jewish philosophy on reason controlling passions, using Maccabean martyrs as examples' },
+      // Days 126-140: Post-Exilic and Return Literature
+      { book: '1 Esdras', startDay: 126, endDay: 132, period: 'Return from Exile', date: '150-100 BCE', description: 'Alternative version of Ezra-Nehemiah material with unique traditions about Zerubbabel' },
+      { book: 'Greek Esther', startDay: 133, endDay: 135, period: 'Post-Exilic Enhancement', date: '100-50 BCE', description: 'Greek additions to Esther providing prayer and explicit divine intervention' },
+      { book: '2 Esdras (4 Ezra)', startDay: 136, endDay: 140, period: 'Post-Temple Destruction', date: '90-120 CE', description: 'Apocalyptic responses to the destruction of the Second Temple, dealing with theodicy' }
     ];
 
-    // Phase 4: Gnostic and Alternative Traditions (Days 271-365) - Nag Hammadi Library
+    // Phase 4: Early Christianity - Apostolic Fathers (Days 141-180)
     const phase4 = [
-      // Days 271-290: Major Gnostic Gospels
-      { book: 'Apocryphon of John', startDay: 271, endDay: 277, period: 'Sethian Gnosticism', date: '150-200 CE', description: 'Classic Gnostic creation myth and divine revelation' },
-      { book: 'Gospel of Truth', startDay: 278, endDay: 282, period: 'Valentinian Gnosticism', date: '150-200 CE', description: 'Poetic Valentinian gospel of spiritual illumination' },
-      { book: 'Tripartite Tractate', startDay: 283, endDay: 287, period: 'Valentinian System', date: '200-250 CE', description: 'Systematic Valentinian theological exposition' },
-      { book: 'Thunder, Perfect Mind', startDay: 288, endDay: 290, period: 'Divine Feminine', date: '2nd-3rd century', description: 'Divine feminine revelation with paradoxical statements' },
-      // Days 291-320: Gnostic Revelation Texts
-      { book: 'Hypostasis of the Archons', startDay: 291, endDay: 295, period: 'Sethian Cosmology', date: '200-300 CE', description: 'Gnostic interpretation of Genesis and salvation history' },
-      { book: 'On the Origin of the World', startDay: 296, endDay: 300, period: 'Gnostic Creation', date: '250-300 CE', description: 'Comprehensive Gnostic creation and salvation narrative' },
-      { book: 'The Sophia of Jesus Christ', startDay: 301, endDay: 304, period: 'Gnostic Dialogue', date: '150-200 CE', description: 'Post-resurrection dialogue between apostles and Christ' },
-      { book: 'The Apocryphon of James', startDay: 305, endDay: 307, period: 'Gnostic Revelation', date: '150-200 CE', description: 'Revelation dialogue between James and Jesus' },
-      // Days 321-340: Other Nag Hammadi Texts
-      { book: 'The Gospel of the Egyptians', startDay: 308, endDay: 312, period: 'Sethian Gnosticism', date: '100-150 CE', description: 'Sethian Gnostic creation myth and liturgical text' },
-      { book: 'The Treatise on the Resurrection', startDay: 313, endDay: 315, period: 'Gnostic Theology', date: '180-200 CE', description: 'Gnostic understanding of resurrection and spiritual body' },
-      { book: 'The Three Steles of Seth', startDay: 316, endDay: 318, period: 'Sethian Liturgy', date: '200-300 CE', description: 'Sethian liturgical text with hymns and revelations' },
-      { book: 'The Vision of Paul', startDay: 319, endDay: 322, period: 'Apocalyptic Vision', date: '200-250 CE', description: 'Paul\'s heavenly tour and vision of afterlife' },
-      // Days 341-365: Final Texts and Dead Sea Scrolls
-      { book: 'The Prayer of the Apostle Paul', startDay: 323, endDay: 324, period: 'Early Christian Prayer', date: '150-250 CE', description: 'Early Christian prayer with Gnostic elements' },
-      { book: 'Great Isaiah Scroll (1QIsa^a)', startDay: 325, endDay: 330, period: 'Dead Sea Scrolls', date: '125 BCE', description: 'Nearly complete Hebrew Isaiah showing remarkable textual preservation' },
-      { book: 'Community Rule (1QS)', startDay: 331, endDay: 335, period: 'Qumran Community', date: '100 BCE', description: 'Essene community regulations and theological teachings' },
-      { book: 'War Scroll (1QM)', startDay: 336, endDay: 340, period: 'Qumran Eschatology', date: '50 BCE - 25 CE', description: 'Eschatological war between Sons of Light and Darkness' },
-      { book: 'Damascus Document (CD)', startDay: 341, endDay: 345, period: 'Qumran Law', date: '100 BCE - 50 CE', description: 'Community laws and theological teachings' },
-      { book: 'Papias Fragments', startDay: 346, endDay: 348, period: 'Early Tradition', date: '110-130 CE', description: 'Traditions about gospel origins and apostolic teachings' },
-      { book: 'The Sentences of Sextus', startDay: 349, endDay: 352, period: 'Christian Wisdom', date: '150-200 CE', description: 'Christian wisdom sayings influenced by pagan philosophy' },
-      { book: 'The Odes of Solomon', startDay: 353, endDay: 358, period: 'Early Christian Hymns', date: '100-150 CE', description: 'Early Christian hymns showing poetic theology' },
-      { book: 'The Acts of Peter and the Twelve Apostles', startDay: 359, endDay: 362, period: 'Gnostic Acts', date: '150-200 CE', description: 'Gnostic account of apostolic missionary activities' },
-      { book: 'The Teachings of Silvanus', startDay: 363, endDay: 365, period: 'Gnostic Philosophy', date: '150-250 CE', description: 'Gnostic philosophical teachings drawing on Platonic thought' }
+      // Days 141-150: Earliest Christian Documents
+      { book: 'Didache', startDay: 141, endDay: 145, period: 'Apostolic Teaching', date: '50-120 CE', description: 'Teaching of the Twelve - manual for Christian life, baptism, Eucharist, and church order' },
+      { book: '1 Clement', startDay: 146, endDay: 150, period: 'Post-Apostolic Church', date: '95-97 CE', description: 'Roman church\'s letter to Corinth on unity, humility, and resurrection - earliest post-apostolic writing' },
+      // Days 151-160: Martyrdom and Persecution
+      { book: 'Ignatius Letters', startDay: 151, endDay: 155, period: 'Martyrdom Theology', date: '105-115 CE', description: 'Seven letters from Bishop Ignatius emphasizing unity with bishop, Eucharist, and martyrdom' },
+      { book: 'Martyrdom of Polycarp', startDay: 156, endDay: 158, period: 'Early Martyrdom', date: '155-160 CE', description: 'Earliest extant martyrdom account, describing Polycarp\'s witness and death for Christ' },
+      { book: 'Polycarp to Philippians', startDay: 159, endDay: 160, period: 'Pastoral Epistle', date: '110-140 CE', description: 'Pastoral letter from John\'s disciple to Philippian church on righteousness' },
+      // Days 161-170: Early Christian Teaching
+      { book: 'Epistle of Barnabas', startDay: 161, endDay: 163, period: 'Allegorical Interpretation', date: '80-120 CE', description: 'Allegorical Old Testament interpretation from Christian perspective, typology of Christ' },
+      { book: '2 Clement', startDay: 164, endDay: 166, period: 'Early Preaching', date: '140-160 CE', description: 'Oldest extant complete Christian sermon on practical Christian living and repentance' },
+      { book: 'Papias Fragments', startDay: 167, endDay: 168, period: 'Early Tradition', date: '110-130 CE', description: 'Traditions about gospel origins and apostolic teachings from early church father' },
+      { book: 'Shepherd of Hermas (Part 1)', startDay: 169, endDay: 170, period: 'Roman Christianity', date: '140-155 CE', description: 'Visions and commands about repentance and church discipline' },
+      // Days 171-180: More Early Christian Texts
+      { book: 'Shepherd of Hermas (Part 2)', startDay: 171, endDay: 175, period: 'Roman Christianity', date: '140-155 CE', description: 'Similitudes and parables about building the church and Christian virtues' },
+      { book: 'The Odes of Solomon', startDay: 176, endDay: 180, period: 'Early Christian Hymns', date: '100-150 CE', description: 'Early Christian hymns showing poetic theology and Christ-centered praise' }
+    ];
+
+    // Phase 5: New Testament Apocrypha - Gospels and Acts (Days 181-230)
+    const phase5 = [
+      // Days 181-190: Jewish-Christian Gospels
+      { book: 'Gospel of the Hebrews', startDay: 181, endDay: 184, period: 'Jewish Christianity', date: '65-100 CE', description: 'Jewish-Christian gospel quoted by early church fathers, possibly used by Nazarene communities' },
+      { book: 'Gospel of the Ebionites', startDay: 185, endDay: 187, period: 'Jewish Christian', date: '100-150 CE', description: 'Jewish-Christian gospel harmonizing synoptic traditions with vegetarianism and Torah observance' },
+      { book: 'Gospel of the Nazoreans', startDay: 188, endDay: 190, period: 'Jewish Christian', date: '100-160 CE', description: 'Jewish-Christian gospel expanding on Matthew with Hebrew traditions' },
+      // Days 191-200: Sayings Gospels
+      { book: 'Gospel of Thomas', startDay: 191, endDay: 198, period: 'Sayings Collection', date: '50-140 CE', description: '114 sayings of Jesus with some parallels to canonical gospels, Gnostic influences' },
+      { book: 'Gospel of the Egyptians', startDay: 199, endDay: 200, period: 'Encratite Teaching', date: '80-150 CE', description: 'Ascetic gospel rejecting marriage and procreation, focusing on salvation through celibacy' },
+      // Days 201-215: Passion and Resurrection Narratives
+      { book: 'Gospel of Peter', startDay: 201, endDay: 205, period: 'Passion Narrative', date: '70-160 CE', description: 'Passion narrative with resurrection appearances, early Christian alternative perspective' },
+      { book: 'Gospel of Nicodemus (Acts of Pilate)', startDay: 206, endDay: 210, period: 'Passion Expansion', date: '150-400 CE', description: 'Expansion on passion narrative with Pilate\'s report and Christ\'s descent to hell' },
+      { book: 'Gospel of Mary', startDay: 211, endDay: 213, period: 'Mary Magdalene', date: '120-180 CE', description: 'Mary Magdalene\'s revelation and teaching authority in Gnostic context' },
+      { book: 'Pistis Sophia (Part 1)', startDay: 214, endDay: 215, period: 'Gnostic Revelation', date: '200-300 CE', description: 'Post-resurrection dialogue about cosmic redemption and Sophia\'s restoration' },
+      // Days 216-230: Acts of Apostles
+      { book: 'Acts of Paul', startDay: 216, endDay: 220, period: 'Pauline Tradition', date: '150-200 CE', description: 'Expanded acts including Thecla\'s story of ministry and celibacy advocacy' },
+      { book: 'Acts of Peter', startDay: 221, endDay: 224, period: 'Peter Tradition', date: '150-200 CE', description: 'Peter\'s ministry, conflict with Simon Magus, and martyrdom in Rome' },
+      { book: 'Acts of John', startDay: 225, endDay: 227, period: 'John Tradition', date: '150-200 CE', description: 'John\'s ministry, miracles, and theological discourses in Ephesus' },
+      { book: 'Acts of Andrew', startDay: 228, endDay: 230, period: 'Andrew Tradition', date: '150-200 CE', description: 'Andrew\'s missionary journeys and martyrdom in Patras' }
+    ];
+
+    // Phase 6: Gnostic Traditions (Days 231-290)
+    const phase6 = [
+      // Days 231-245: Major Gnostic Revelations
+      { book: 'Apocryphon of John', startDay: 231, endDay: 237, period: 'Sethian Gnosticism', date: '120-180 CE', description: 'Classic Gnostic creation myth revealing the transcendent Monad and fall of Sophia' },
+      { book: 'The Sophia of Jesus Christ', startDay: 238, endDay: 240, period: 'Gnostic Dialogue', date: '150-200 CE', description: 'Post-resurrection dialogue between apostles and Christ about Gnostic mysteries' },
+      { book: 'The Apocryphon of James', startDay: 241, endDay: 243, period: 'Gnostic Revelation', date: '150-200 CE', description: 'Revelation dialogue between James and Jesus about salvation knowledge' },
+      { book: 'Gospel of Truth', startDay: 244, endDay: 245, period: 'Valentinian Gnosticism', date: '140-180 CE', description: 'Poetic Valentinian gospel of spiritual illumination and error' },
+      // Days 246-255: Gnostic Cosmology and Anthropology
+      { book: 'Hypostasis of the Archons', startDay: 246, endDay: 250, period: 'Sethian Cosmology', date: '200-300 CE', description: 'Gnostic interpretation of Genesis and salvation history, revealing archontic rulers' },
+      { book: 'On the Origin of the World', startDay: 251, endDay: 255, period: 'Gnostic Creation', date: '250-350 CE', description: 'Comprehensive Gnostic creation and salvation narrative with divine feminine' },
+      // Days 256-265: Valentinian and Other Systems
+      { book: 'Tripartite Tractate', startDay: 256, endDay: 260, period: 'Valentinian System', date: '200-300 CE', description: 'Systematic Valentinian theological exposition of Pleroma, fall, and restoration' },
+      { book: 'Gospel of Philip', startDay: 261, endDay: 265, period: 'Valentinian Teaching', date: '180-250 CE', description: 'Valentinian Gnostic theological collection focusing on sacraments and symbolism' },
+      // Days 266-275: Unique Gnostic Texts
+      { book: 'Thunder, Perfect Mind', startDay: 266, endDay: 268, period: 'Divine Feminine', date: '150-250 CE', description: 'Divine feminine revelation with paradoxical statements and self-revelation' },
+      { book: 'The Treatise on the Resurrection', startDay: 269, endDay: 270, period: 'Gnostic Theology', date: '180-200 CE', description: 'Gnostic understanding of resurrection and spiritual body' },
+      { book: 'The Three Steles of Seth', startDay: 271, endDay: 272, period: 'Sethian Liturgy', date: '200-300 CE', description: 'Sethian liturgical text with hymns and revelations about transcendent realm' },
+      { book: 'The Prayer of the Apostle Paul', startDay: 273, endDay: 273, period: 'Early Christian Prayer', date: '150-250 CE', description: 'Early Christian prayer with Gnostic elements seeking deliverance' },
+      { book: 'The Gospel of the Egyptians', startDay: 274, endDay: 275, period: 'Sethian Gnosticism', date: '100-150 CE', description: 'Sethian Gnostic creation myth and liturgical text about overcoming rulers' },
+      // Days 276-290: Later Gnostic Development
+      { book: 'Zostrianos', startDay: 276, endDay: 278, period: 'Sethian Mysticism', date: '200-230 CE', description: 'Detailed account of heavenly ascent and visions of transcendent realm' },
+      { book: 'Allogenes', startDay: 279, endDay: 280, period: 'Sethian Mysticism', date: '300-350 CE', description: 'Final revelation about unknowable God and contemplation practices' },
+      { book: 'Marsanes', startDay: 281, endDay: 282, period: 'Sethian Mysticism', date: '270-330 CE', description: 'Advanced Gnostic teachings about cosmic ascent and spiritual contemplation' },
+      { book: 'The Thought of Norea', startDay: 283, endDay: 284, period: 'Sethian Tradition', date: '170-230 CE', description: 'Revelation to Norea, Seth\'s sister, about spiritual ignorance and salvation' },
+      { book: 'Melchizedek', startDay: 285, endDay: 286, period: 'Gnostic Christology', date: '150-300 CE', description: 'Melchizedek as heavenly high priest and cosmic redeemer figure' },
+      { book: 'The Interpretation of Knowledge', startDay: 287, endDay: 288, period: 'Valentinian Exegesis', date: '150-200 CE', description: 'Valentinian interpretation of salvation through knowledge' },
+      { book: 'A Valentinian Exposition', startDay: 289, endDay: 290, period: 'Valentinian System', date: '150-350 CE', description: 'Complete outline of Valentinian theological system' }
+    ];
+
+    // Phase 7: Later Christian Texts and Dead Sea Scrolls (Days 291-365)
+    const phase7 = [
+      // Days 291-305: Later Apostolic Acts
+      { book: 'Acts of Thomas', startDay: 291, endDay: 295, period: 'Syrian Tradition', date: '200-250 CE', description: 'Thomas\' mission to India with Hymn of the Pearl and ascetic teachings' },
+      { book: 'Acts of Peter and the Twelve Apostles', startDay: 296, endDay: 298, period: 'Gnostic Acts', date: '150-225 CE', description: 'Gnostic account of apostolic missionary activities with allegorical interpretations' },
+      { book: 'Preaching of Peter', startDay: 299, endDay: 300, period: 'Early Apology', date: '130-150 CE', description: 'Early Christian apologetic work defending Christian beliefs' },
+      { book: 'Teachings of Silvanus', startDay: 301, endDay: 303, period: 'Gnostic Philosophy', date: '150-250 CE', description: 'Gnostic philosophical teachings drawing on Platonic thought' },
+      { book: 'Sentences of Sextus', startDay: 304, endDay: 305, period: 'Christian Wisdom', date: '150-200 CE', description: 'Christian wisdom sayings influenced by pagan philosophical traditions' },
+      // Days 306-320: Apocalyptic and Vision Literature
+      { book: 'Apocalypse of Peter', startDay: 306, endDay: 308, period: 'Afterlife Vision', date: '100-150 CE', description: 'Vision of hell and final judgment scenes influencing later medieval visions' },
+      { book: 'Apocalypse of Paul', startDay: 309, endDay: 311, period: 'Apocalyptic Vision', date: '250-400 CE', description: 'Paul\'s heavenly tour and vision of afterlife rewards and punishments' },
+      { book: 'Coptic Apocalypse of Paul', startDay: 312, endDay: 313, period: 'Apocalyptic Vision', date: '150-300 CE', description: 'Alternative version of Paul\'s heavenly journey with Gnostic elements' },
+      { book: 'Apocalypse of Thomas', startDay: 314, endDay: 315, period: 'Apocalyptic Revelation', date: '300-400 CE', description: 'Apocalyptic revelation about end times and divine judgment' },
+      { book: '2 Baruch (Syriac Apocalypse)', startDay: 316, endDay: 320, period: 'Post-Temple Apocalypse', date: '100-130 CE', description: 'Syriac apocalypse responding to temple destruction with messianic hope' },
+      // Days 321-335: Other Later Pseudepigrapha
+      { book: 'Testament of Job', startDay: 321, endDay: 323, period: 'Wisdom Expansion', date: '100 BCE - 100 CE', description: 'Expanded story of Job with details about his daughters\' prophecies' },
+      { book: 'Joseph and Aseneth', startDay: 324, endDay: 326, period: 'Jewish Romance', date: '100-200 CE', description: 'Story of Joseph\'s marriage to Egyptian convert Aseneth with conversion themes' },
+      { book: 'Ascension of Isaiah', startDay: 327, endDay: 329, period: 'Christian Vision', date: '100-150 CE', description: 'Isaiah\'s vision of Christ and cosmic journey through seven heavens' },
+      { book: '3 Baruch', startDay: 330, endDay: 332, period: 'Cosmic Tour', date: '100-200 CE', description: 'Journey through heavens with angelological revelations about creation' },
+      { book: 'Letter of Aristeas', startDay: 333, endDay: 335, period: 'Hellenistic Judaism', date: '200 BCE', description: 'Legendary account of Septuagint translation with Hellenistic propaganda' },
+      // Days 336-350: Dead Sea Scrolls and Qumran Literature
+      { book: 'Great Isaiah Scroll (1QIsa^a)', startDay: 336, endDay: 338, period: 'Dead Sea Scrolls', date: '125 BCE', description: 'Nearly complete Hebrew Isaiah showing remarkable textual preservation and messianic interpretations' },
+      { book: 'Community Rule (1QS)', startDay: 339, endDay: 341, period: 'Qumran Community', date: '100 BCE', description: 'Essene community regulations, theological teachings, and sectarian identity' },
+      { book: 'War Scroll (1QM)', startDay: 342, endDay: 344, period: 'Qumran Eschatology', date: '50 BCE - 25 CE', description: 'Eschatological war between Sons of Light and Darkness with detailed battle plans' },
+      { book: 'Damascus Document (CD)', startDay: 345, endDay: 347, period: 'Qumran Law', date: '100 BCE - 50 CE', description: 'Community laws, theological teachings, and polemics against Jerusalem establishment' },
+      { book: 'Hodayot (Thanksgiving Hymns)', startDay: 348, endDay: 350, period: 'Qumran Worship', date: '50 BCE - 25 CE', description: 'Personal thanksgiving hymns expressing praise and gratitude for divine revelation' },
+      // Days 351-365: Final Texts and Reflections
+      { book: 'Pistis Sophia (Part 2)', startDay: 351, endDay: 355, period: 'Gnostic Revelation', date: '200-300 CE', description: 'Continuation of post-resurrection teachings about cosmic mysteries' },
+      { book: '4 Ezra (Latin)', startDay: 356, endDay: 358, period: 'Post-Temple Theodicy', date: '100-120 CE', description: 'Latin version of Ezra\'s dialogues about divine justice and suffering' },
+      { book: 'Questions of Bartholomew', startDay: 359, endDay: 361, period: 'Apocalyptic Dialogue', date: '200-400 CE', description: 'Questions to Christ about cosmic mysteries and afterlife conditions' },
+      { book: 'Testament of Solomon', startDay: 362, endDay: 364, period: 'Magic Tradition', date: '100-300 CE', description: 'Solomon\'s magical wisdom for controlling demons with angelic assistance' },
+      { book: 'Summary and Reflection', startDay: 365, endDay: 365, period: 'Study Completion', date: '2025 CE', description: 'Reflection on the breadth of apocryphal and pseudepigraphal traditions and their influence' }
     ];
 
     // Generate daily readings from all phases
-    const allPhases = [...phase1, ...phase2, ...phase3, ...phase4];
+    const allPhases = [...phase1, ...phase2, ...phase3, ...phase4, ...phase5, ...phase6, ...phase7];
 
     allPhases.forEach(({ book, startDay, endDay, period, date, description }) => {
       for (let day = startDay; day <= endDay; day++) {
         if (day <= 365) {
           // Add commentary for specific key days
           let commentary;
-          if (day === 15 && book === 'Wisdom of Solomon') {
-            commentary = '🔍GENERIC_COMMENT: Wisdom literature provides profound insights into practical living and divine wisdom. This book bridges Hebrew wisdom traditions with Hellenistic philosophy, showing how ancient Israel made sense of life\'s biggest questions.';
-          } else if (day === 56 && book === '2 Maccabees') {
-            commentary = '🔍GENERIC_COMMENT: The Maccabean Revolt represents one of the most significant periods in Jewish history. This text emphasizes martyrdom, resurrection beliefs, and divine intervention - themes that would deeply influence early Christianity.';
-          } else if (day === 91 && book === '1 Enoch') {
-            commentary = '🔍GENERIC_COMMENT: 1 Enoch profoundly influenced Second Temple Judaism and early Christian thought. Its apocalyptic visions, angelology, and messianic expectations shaped how both Jews and Christians understood the spiritual realm and end times.';
-          } else if (day === 188 && book === 'Didache') {
-            commentary = '🔍GENERIC_COMMENT: The Didache provides a window into the practical life of the earliest Christian communities. Its teachings on baptism, Eucharist, and ethics show how the apostles\' teachings were lived out in daily Christian life.';
-          } else if (day === 228 && book === 'Gospel of Thomas') {
-            commentary = '🔍GENERIC_COMMENT: The Gospel of Thomas offers a different perspective on Jesus\' teachings through its collection of sayings. While not included in the canon, it provides valuable insights into early Christian diversity and how Jesus was remembered in different communities.';
+          if (day === 141 && book === 'Didache') {
+            commentary = '🔍GENERIC_COMMENT: The Didache represents one of the most important discoveries in early Christian literature. This practical manual provides a window into how the earliest Christians lived, worshipped, and organized their communities. Its teachings on baptism, the Eucharist, and ethical living show the transition from Jewish practices to distinctly Christian faith.';
+          } else if (day === 146 && book === '1 Clement') {
+            commentary = '🔍GENERIC_COMMENT: 1 Clement is the earliest post-apostolic writing we possess, written by the Roman church to address division in Corinth. Its emphasis on humility, unity, and the resurrection demonstrates how the early church dealt with internal conflicts while maintaining apostolic faith and practice.';
+          } else if (day === 191 && book === 'Gospel of Thomas') {
+            commentary = '🔍GENERIC_COMMENT: The Gospel of Thomas offers a different perspective on Jesus\' teachings through its collection of sayings. While not included in the canon, it provides valuable insights into early Christian diversity and how Jesus was remembered in different communities, particularly those with Gnostic influences.';
+          } else if (day === 231 && book === 'Apocryphon of John') {
+            commentary = '🔍GENERIC_COMMENT: The Apocryryphon of John is the foundational text of Sethian Gnosticism, revealing the complex Gnostic creation myth. Its depiction of the Monad, the fall of Sophia, and the creation of the material world profoundly influenced alternative Christian movements and our understanding of early Christian diversity.';
           }
 
           readings.push({
