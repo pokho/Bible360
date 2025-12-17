@@ -140,33 +140,7 @@
 			</div>
 		</section>
 
-		<section class="technical-section">
-			<h2>Technical Implementation</h2>
-			<div class="technical-content">
-				<p>Bible360 is built with modern web technologies to provide a comprehensive chronological Bible study experience:</p>
-				<div class="tech-stack">
-					<div class="tech-item">
-						<strong>Frontend Framework:</strong> SvelteKit with TypeScript
-					</div>
-					<div class="tech-item">
-						<strong>Build Tool:</strong> Vite for fast development and optimized production builds
-					</div>
-					<div class="tech-item">
-						<strong>Styling:</strong> Scoped CSS with responsive design system
-					</div>
-					<div class="tech-item">
-						<strong>Data Management:</strong> TypeScript stores with type safety
-					</div>
-					<div class="tech-item">
-						<strong>URL Generation:</strong> Dynamic link generation for multiple Bible sources
-					</div>
-					<div class="tech-item">
-						<strong>Timeline Integration:</strong> Complete BibleHub 584-event chronological timeline
-					</div>
-				</div>
-			</div>
-		</section>
-
+		
 		<section class="contact-section">
 			<h2>Contact & Licensing</h2>
 			<p>Bible360 is a source-available project dedicated to providing comprehensive chronological Bible study resources. We welcome feedback and contributions from the community.</p>
@@ -319,20 +293,7 @@
 		border-bottom: none;
 	}
 
-	.tech-stack {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 1rem;
-		margin-top: 1rem;
-	}
-
-	.tech-item {
-		padding: 1rem;
-		background: #f8f9fa;
-		border-radius: 4px;
-		border-left: 3px solid #3498db;
-	}
-
+	
 	.contact-info {
 		margin-top: 1rem;
 		padding: 1rem;
