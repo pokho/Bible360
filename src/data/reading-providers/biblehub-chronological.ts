@@ -292,8 +292,8 @@ export class BiblehubReadingProvider {
     });
 
     // **EXODUS AND WILDERNESS (Days 26-90)**
-    this.addExodusReadings(dailyReadings, 26, 50);
-    this.addLeviticusNumbersReadings(dailyReadings, 51, 80);
+    this.addExodusReadings(dailyReadings, 26, 37);
+    this.addLeviticusNumbersReadings(dailyReadings, 38, 80);
     this.addDeuteronomyReadings(dailyReadings, 81, 90);
 
     // **CONQUEST AND JUDGES (Days 91-140)**
@@ -322,27 +322,34 @@ export class BiblehubReadingProvider {
     const exodusSections = [
       { start: 1, end: 2, period: 'Israel\'s Oppression', date: '1526 BC' },
       { start: 3, end: 4, period: 'Moses\' Call', date: '1446 BC' },
-      { start: 5, end: 11, period: 'Egyptian Conflict', date: '1446 BC' },
-      { start: 12, end: 17, period: 'Exodus Journey', date: '1446 BC' },
-      { start: 18, end: 24, period: 'Sinai Covenant', date: '1446 BC' },
-      { start: 25, end: 31, period: 'Tabernacle Instructions', date: '1446 BC' },
-      { start: 32, end: 40, period: 'Tabernacle Construction', date: '1446 BC' }
+      { start: 5, end: 7, period: 'Egyptian Conflict - Beginnings', date: '1446 BC' },
+      { start: 8, end: 11, period: 'Egyptian Conflict - Plagues', date: '1446 BC' },
+      { start: 12, end: 14, period: 'Exodus Journey - Departure', date: '1446 BC' },
+      { start: 15, end: 17, period: 'Exodus Journey - Wilderness', date: '1446 BC' },
+      { start: 18, end: 20, period: 'Sinai Covenant - Arrival', date: '1446 BC' },
+      { start: 21, end: 24, period: 'Sinai Covenant - Laws', date: '1446 BC' },
+      { start: 25, end: 27, period: 'Tabernacle Instructions - Offerings', date: '1446 BC' },
+      { start: 28, end: 31, period: 'Tabernacle Instructions - Priesthood', date: '1446 BC' },
+      { start: 32, end: 35, period: 'Tabernacle Construction - Structure', date: '1446 BC' },
+      { start: 36, end: 40, period: 'Tabernacle Construction - Completion', date: '1446 BC' }
     ];
 
     exodusSections.forEach((section, index) => {
       const day = startDay + index;
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Exodus', chapterStart: section.start, chapterEnd: section.end }],
-        historicalContext: {
-          period: section.period,
-          approximateDate: section.date,
-          description: `${section.period} - Key events in the deliverance from Egypt`
-        },
-        readingTimeMinutes: 20,
-        commentary: section.period === 'Exodus Journey' ? '🔍GENERIC_COMMENT: The crossing of the Red Sea demonstrates God\'s power and faithfulness. This monumental event shows how God delivers His people through impossible circumstances and establishes a pattern of redemption that points ultimately to Christ\'s work on the cross.' : undefined
-      });
+      if (day <= endDay) {
+        dailyReadings.push({
+          day,
+          date: this.getDateForDay(day),
+          passages: [{ book: 'Exodus', chapterStart: section.start, chapterEnd: section.end }],
+          historicalContext: {
+            period: section.period,
+            approximateDate: section.date,
+            description: `${section.period} - Key events in the deliverance from Egypt`
+          },
+          readingTimeMinutes: 20,
+          commentary: section.period.includes('Exodus Journey') ? '🔍GENERIC_COMMENT: The crossing of the Red Sea demonstrates God\'s power and faithfulness. This monumental event shows how God delivers His people through impossible circumstances and establishes a pattern of redemption that points ultimately to Christ\'s work on the cross.' : undefined
+        });
+      }
     });
   }
 
