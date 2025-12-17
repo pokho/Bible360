@@ -234,17 +234,18 @@ export class BiblehubReadingProvider {
       readingTimeMinutes: 15
     });
 
-    // Days 5-9: Job's Wisdom (3-4 chapters per day)
+    // Days 5-13: Job's Wisdom (3-4 chapters per day)
     const jobReadings = [
       { start: 1, end: 4, period: 'Job\'s Initial Testing and Friends\' Arrival', description: 'Job\'s righteousness, Satan\'s challenge, and the arrival of his friends who initially sit in silence' },
       { start: 5, end: 8, period: 'First Cycle of Debate', description: 'Eliphaz\'s first speech and Job\'s response - the beginning of the theological debate' },
       { start: 9, end: 12, period: 'Second Cycle of Debate', description: 'Bildad and Zophar speak, with Job\'s passionate defense of his integrity' },
       { start: 13, end: 16, period: 'Third Cycle of Debate', description: 'More intense debate as Job cries out for a mediator and his friends grow harsher' },
-      { start: 17, end: 21, period: 'Job\'s Final Defense', description: 'Job\'s oath of innocence and his lament of days gone by' },
-      { start: 22, end: 26, period: 'Elihu\'s Wisdom', description: 'The young Elihu speaks with divine insight, preparing for God\'s appearance' },
-      { start: 27, end: 31, period: 'God\'s First Speech', description: 'God speaks from the whirlwind, questioning Job about creation and natural order' },
-      { start: 32, end: 37, period: 'God\'s Second Speech and Job\'s Reply', description: 'God challenges Job\'s wisdom, Job humbles himself, and is restored' },
-      { start: 38, end: 42, period: 'Job\'s Restoration', description: 'Job\'s fortunes are restored, his family is blessed, and he dies in old age' }
+      { start: 17, end: 20, period: 'Job\'s Final Defense', description: 'Job\'s oath of innocence and his lament of days gone by' },
+      { start: 21, end: 25, period: 'Elihu\'s Wisdom', description: 'The young Elihu speaks with divine insight, preparing for God\'s appearance' },
+      { start: 26, end: 29, period: 'God\'s First Speech', description: 'God speaks from the whirlwind, questioning Job about creation and natural order' },
+      { start: 30, end: 33, period: 'God\'s Second Speech and Job\'s Reply', description: 'God challenges Job\'s wisdom, Job humbles himself' },
+      { start: 34, end: 37, period: 'Job\'s Restoration', description: 'Job is humbled and then his fortunes are restored and blessed' },
+      { start: 38, end: 42, period: 'Job\'s Final Blessing', description: 'Job\'s fortunes are restored, his family is blessed, and he dies in old age' }
     ];
 
     jobReadings.forEach((reading, index) => {
@@ -261,7 +262,7 @@ export class BiblehubReadingProvider {
       });
     });
 
-    // **PATRIARCHAL PERIOD (Days 14-25)**
+    // **PATRIARCHAL PERIOD (Days 14-27)** - Expand to better distribute 39 chapters
     const genesisReadings = [
       { start: 12, end: 14, period: 'Abraham\'s Call and Covenant', date: '2091-2084 BC' },
       { start: 15, end: 17, period: 'Covenant Confirmation', date: '2081-2067 BC' },
@@ -271,10 +272,12 @@ export class BiblehubReadingProvider {
       { start: 27, end: 28, period: 'Isaac\'s Prosperity', date: '2015-2010 BC' },
       { start: 29, end: 31, period: 'Jacob\'s Dreams and Family', date: '2009-2005 BC' },
       { start: 32, end: 33, period: 'Jacob\'s Flight and Laban', date: '1995-1975 BC' },
-      { start: 34, end: 36, period: 'Jacob\'s Reconciliation and Return', date: '1974-1970 BC' },
-      { start: 37, end: 40, period: 'Joseph\'s Rise to Power', date: '1945-1930 BC' },
-      { start: 41, end: 45, period: 'Joseph\'s Administration', date: '1930-1925 BC' },
-      { start: 46, end: 50, period: 'Jacob\'s Family in Egypt', date: '1928-1915 BC' }
+      { start: 34, end: 35, period: 'Jacob\'s Reconciliation', date: '1974-1970 BC' },
+      { start: 36, end: 37, period: 'Jacob\'s Return', date: '1974-1970 BC' },
+      { start: 38, end: 40, period: 'Joseph\'s Rise to Power', date: '1945-1930 BC' },
+      { start: 41, end: 43, period: 'Joseph\'s Administration', date: '1930-1925 BC' },
+      { start: 44, end: 46, period: 'Joseph\'s Famine Relief', date: '1930-1925 BC' },
+      { start: 47, end: 50, period: 'Jacob\'s Family in Egypt', date: '1928-1915 BC' }
     ];
 
     genesisReadings.forEach((reading, index) => {
@@ -291,28 +294,32 @@ export class BiblehubReadingProvider {
       });
     });
 
-    // **EXODUS AND WILDERNESS (Days 26-90)**
-    this.addExodusReadings(dailyReadings, 26, 37);
-    this.addLeviticusNumbersReadings(dailyReadings, 38, 80);
-    this.addDeuteronomyReadings(dailyReadings, 81, 90);
+    // **EXODUS AND WILDERNESS (Days 28-92)**
+    this.addExodusReadings(dailyReadings, 28, 39);
+    this.addLeviticusNumbersReadings(dailyReadings, 40, 82);
+    this.addDeuteronomyReadings(dailyReadings, 83, 92);
 
-    // **CONQUEST AND JUDGES (Days 91-140)**
-    this.addConquestReadings(dailyReadings, 91, 115);
-    this.addRuthReadings(dailyReadings, 116, 120);
-    this.addJudgesReadings(dailyReadings, 121, 140);
+    // **CONQUEST AND JUDGES (Days 93-142)**
+    this.addConquestReadings(dailyReadings, 93, 117);
+    this.addRuthReadings(dailyReadings, 118, 122);
+    this.addJudgesReadings(dailyReadings, 123, 142);
 
-    // **UNITED KINGDOM (Days 141-230)**
-    this.addSamuelReadings(dailyReadings, 141, 180);
-    this.addDavidKingsReadings(dailyReadings, 181, 210);
-    this.addPsalmsReadings(dailyReadings, 211, 230);
+    // **UNITED KINGDOM (Days 143-232)**
+    this.addSamuelReadings(dailyReadings, 143, 182);
+    this.addDavidKingsReadings(dailyReadings, 183, 212);
+    this.addPsalmsReadings(dailyReadings, 213, 262);
 
-    // **DIVIDED KINGDOM (Days 231-320)**
-    this.addDividedKingdomReadings(dailyReadings, 231, 290);
-    this.addProphetsReadings(dailyReadings, 291, 320);
+    // **DIVIDED KINGDOM (Days 263-282)**
+    this.addDividedKingdomReadings(dailyReadings, 263, 282);
 
-    // **EXILE AND RETURN (Days 321-365)**
-    this.addExileReturnReadings(dailyReadings, 321, 355);
-    this.addNewTestamentReadings(dailyReadings, 356, 365);
+    // **PROPHETS (Days 283-322)**
+    this.addProphetsReadings(dailyReadings, 283, 322);
+
+    // **EXILE AND RETURN (Days 323-342)** - Reduced to make room for expanded NT
+    this.addExileReturnReadings(dailyReadings, 323, 342);
+
+    // **NEW TESTAMENT (Days 343-365)** - Expanded to 23 days for reasonable reading pace
+    this.addNewTestamentReadings(dailyReadings, 343, 365);
 
     return dailyReadings;
   }
@@ -685,69 +692,107 @@ export class BiblehubReadingProvider {
   }
 
   private addNewTestamentReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Complete New Testament overview ending with Revelation
-    const ntBooks = [
+    // Expanded to 23 days for better chapter distribution
+    console.log(`Adding New Testament readings: Days ${startDay}-${endDay} (${endDay - startDay + 1} days)`);
+
+    // Gospels first (Matthew-John = 89 chapters) - use 12 days
+    const gospelBooks = [
       { book: 'Matthew', chapters: 28, period: 'Life of Christ', date: '26-30 AD' },
       { book: 'Mark', chapters: 16, period: 'Life of Christ', date: '26-30 AD' },
       { book: 'Luke', chapters: 24, period: 'Life of Christ', date: '26-30 AD' },
-      { book: 'John', chapters: 21, period: 'Life of Christ', date: '26-30 AD' },
-      { book: 'Acts', chapters: 28, period: 'Early Church', date: '30-60 AD' },
-      { book: 'Romans', chapters: 16, period: 'Pauline Ministry', date: '57-58 AD' },
-      { book: '1 Corinthians', chapters: 16, period: 'Pauline Ministry', date: '55 AD' },
-      { book: '2 Corinthians', chapters: 13, period: 'Pauline Ministry', date: '56 AD' },
-      { book: 'Galatians', chapters: 6, period: 'Pauline Ministry', date: '49 AD' },
-      { book: 'Ephesians', chapters: 6, period: 'Pauline Ministry', date: '61 AD' },
-      { book: 'Philippians', chapters: 4, period: 'Pauline Ministry', date: '62 AD' },
-      { book: 'Colossians', chapters: 4, period: 'Pauline Ministry', date: '62 AD' },
-      { book: '1 Thessalonians', chapters: 5, period: 'Pauline Ministry', date: '51 AD' },
-      { book: '2 Thessalonians', chapters: 3, period: 'Pauline Ministry', date: '52 AD' },
-      { book: '1 Timothy', chapters: 6, period: 'Pastoral Epistles', date: '63 AD' },
-      { book: '2 Timothy', chapters: 4, period: 'Pastoral Epistles', date: '66-67 AD' },
-      { book: 'Titus', chapters: 3, period: 'Pastoral Epistles', date: '63 AD' },
-      { book: 'Philemon', chapters: 1, period: 'Pauline Ministry', date: '62 AD' },
-      { book: 'Hebrews', chapters: 13, period: 'General Epistles', date: '64-68 AD' },
-      { book: 'James', chapters: 5, period: 'General Epistles', date: '45 AD' },
-      { book: '1 Peter', chapters: 5, period: 'General Epistles', date: '64-65 AD' },
-      { book: '2 Peter', chapters: 3, period: 'General Epistles', date: '66 AD' },
-      { book: '1 John', chapters: 5, period: 'General Epistles', date: '85-95 AD' },
-      { book: '2 John', chapters: 1, period: 'General Epistles', date: '85-95 AD' },
-      { book: '3 John', chapters: 1, period: 'General Epistles', date: '85-95 AD' },
-      { book: 'Jude', chapters: 1, period: 'General Epistles', date: '65-80 AD' },
-      { book: 'Revelation', chapters: 22, period: 'Apocalypse', date: '95 AD' }
+      { book: 'John', chapters: 21, period: 'Life of Christ', date: '26-30 AD' }
     ];
 
     let currentDay = startDay;
-    const chaptersPerDay = Math.ceil(260 / (endDay - startDay + 1)); // Total NT chapters
+    const chaptersPerDay = 4; // Still challenging but better
 
-    ntBooks.forEach(bookInfo => {
-      for (let chapter = 1; chapter <= bookInfo.chapters && currentDay <= endDay; chapter += chaptersPerDay) {
-        const endChapter = Math.min(chapter + chaptersPerDay - 1, bookInfo.chapters);
+    // Distribute Gospels across first 12 days
+    gospelBooks.forEach(bookInfo => {
+      const daysForBook = Math.ceil(bookInfo.chapters / chaptersPerDay);
+      for (let dayOffset = 0; dayOffset < daysForBook && currentDay <= startDay + 11; dayOffset++) {
+        const startChapter = dayOffset * chaptersPerDay + 1;
+        const endChapter = Math.min(startChapter + chaptersPerDay - 1, bookInfo.chapters);
         dailyReadings.push({
           day: currentDay,
           date: this.getDateForDay(currentDay),
-          passages: [{ book: bookInfo.book, chapterStart: chapter, chapterEnd: endChapter }],
+          passages: [{ book: bookInfo.book, chapterStart: startChapter, chapterEnd: endChapter }],
           historicalContext: {
             period: bookInfo.period,
             approximateDate: bookInfo.date,
-            description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${chapter}-${endChapter})`
+            description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${startChapter}-${endChapter})`
           },
-          readingTimeMinutes: 20
+          readingTimeMinutes: 30
         });
         currentDay++;
       }
     });
 
-    // Ensure Day 365 ends with Revelation
-    const lastReading = dailyReadings[dailyReadings.length - 1];
-    if (lastReading && lastReading.day === 365) {
-      lastReading.passages = [{ book: 'Revelation', chapterStart: 21, chapterEnd: 22 }];
-      lastReading.historicalContext = {
+    // Acts and key Pauline letters (Days 355-363)
+    const essentialBooks = [
+      { book: 'Acts', chapters: 28, period: 'Early Church', date: '30-60 AD' },
+      { book: 'Romans', chapters: 16, period: 'Pauline Ministry', date: '57-58 AD' },
+      { book: '1 Corinthians', chapters: 16, period: 'Pauline Ministry', date: '55 AD' },
+      { book: '2 Corinthians', chapters: 13, period: 'Pauline Ministry', date: '56 AD' },
+      { book: 'Galatians', chapters: 6, period: 'Pauline Ministry', date: '49-50 AD' },
+      { book: 'Ephesians', chapters: 6, period: 'Pauline Ministry', date: '61-63 AD' },
+      { book: 'Philippians', chapters: 4, period: 'Pauline Ministry', date: '61-63 AD' },
+      { book: 'Colossians', chapters: 4, period: 'Pauline Ministry', date: '61-63 AD' },
+      { book: '1 Thessalonians', chapters: 5, period: 'Pauline Ministry', date: '51-52 AD' }
+    ];
+
+    essentialBooks.forEach(bookInfo => {
+      if (currentDay <= endDay - 2) { // Save last 2 days for key epistles and Revelation
+        const daysForBook = Math.max(1, Math.ceil(bookInfo.chapters / chaptersPerDay));
+        for (let chapter = 1; chapter <= bookInfo.chapters && currentDay <= endDay - 2; chapter += chaptersPerDay) {
+          const endChapter = Math.min(chapter + chaptersPerDay - 1, bookInfo.chapters);
+          dailyReadings.push({
+            day: currentDay,
+            date: this.getDateForDay(currentDay),
+            passages: [{ book: bookInfo.book, chapterStart: chapter, chapterEnd: endChapter }],
+            historicalContext: {
+              period: bookInfo.period,
+              approximateDate: bookInfo.date,
+              description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${chapter}-${endChapter})`
+            },
+            readingTimeMinutes: 25
+          });
+          currentDay++;
+        }
+      }
+    });
+
+    // Key General Epistles and Revelation (Final 2 days)
+    if (currentDay === 364) {
+      dailyReadings.push({
+        day: 364,
+        date: this.getDateForDay(364),
+        passages: [
+          { book: 'Hebrews', chapterStart: 1, chapterEnd: 13 },
+          { book: 'James', chapterStart: 1, chapterEnd: 5 },
+          { book: '1 Peter', chapterStart: 1, chapterEnd: 5 }
+        ],
+        historicalContext: {
+          period: 'General Epistles',
+          approximateDate: '45-95 AD',
+          description: 'Key General Epistles - Hebrews, James, and 1 Peter covering faith, works, and hope'
+        },
+        readingTimeMinutes: 35
+      });
+    }
+
+    // Day 365 must end with Revelation
+    dailyReadings.push({
+      day: 365,
+      date: this.getDateForDay(365),
+      passages: [{ book: 'Revelation', chapterStart: 1, chapterEnd: 22 }],
+      historicalContext: {
         period: 'Apocalypse',
         approximateDate: '95 AD',
-        description: 'The New Heaven and New Earth - Christ\'s final victory and the consummation of all things'
-      };
-      lastReading.commentary = '🔍GENERIC_COMMENT: The grand finale of Scripture! Revelation 21-22 presents the glorious conclusion to God\'s redemptive story - the new heaven, new earth, and New Jerusalem where God dwells with His people forever. The Alpha and Omega, the Beginning and the End, makes all things new!';
-    }
+        description: 'The grand finale - Revelation\'s complete revelation of Jesus Christ and the new creation'
+      },
+      readingTimeMinutes: 45,
+      commentary: '🔍GENERIC_COMMENT: The grand finale of Scripture! Revelation presents the cosmic culmination of God\'s redemptive plan, the final victory over evil, and the establishment of the new heaven and new earth where God dwells with His people forever. The Alpha and Omega, the Beginning and the End, makes all things new!'
+    });
   }
 
   private getDateForDay(day: number): string {
