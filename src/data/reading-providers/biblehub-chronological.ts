@@ -391,21 +391,36 @@ export class BiblehubReadingProvider {
   }
 
   private addDeuteronomyReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    for (let i = 0; i < endDay - startDay; i++) {
+    // Days 81-89: 3 chapters each (27 chapters total)
+    for (let i = 0; i < 9; i++) {
       const day = startDay + i;
       const chapter = i * 3 + 1;
       dailyReadings.push({
         day,
         date: this.getDateForDay(day),
-        passages: [{ book: 'Deuteronomy', chapterStart: chapter, chapterEnd: Math.min(chapter + 2, 34) }],
+        passages: [{ book: 'Deuteronomy', chapterStart: chapter, chapterEnd: chapter + 2 }],
         historicalContext: {
           period: 'Covenant Renewal',
           approximateDate: '1406 BC',
-          description: `Moses' final discourse and covenant renewal (Chapters ${chapter}-${Math.min(chapter + 2, 34)})`
+          description: `Moses' final discourse and covenant renewal (Chapters ${chapter}-${chapter + 2})`
         },
         readingTimeMinutes: 20
       });
     }
+
+    // Day 90: Remaining chapters (28-34)
+    dailyReadings.push({
+      day: 90,
+      date: this.getDateForDay(90),
+      passages: [{ book: 'Deuteronomy', chapterStart: 28, chapterEnd: 34 }],
+      historicalContext: {
+        period: 'Covenant Renewal - Final Blessings',
+        approximateDate: '1406 BC',
+        description: 'Moses\' final blessings, death, and succession of Joshua - Conclusion of the Pentateuch'
+      },
+      readingTimeMinutes: 25,
+      commentary: '🔍GENERIC_COMMENT: This marks the conclusion of the Pentateuch! Moses reviews the covenant, gives his final blessings to the tribes, and dies on Mount Nebo. The leadership transitions to Joshua, setting the stage for the conquest of Canaan. This moment represents both an ending and a new beginning for Israel.'
+    });
   }
 
   private addConquestReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
