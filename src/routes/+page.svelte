@@ -171,7 +171,6 @@
 
 <nav class="bible360-nav">
 	<a href="/" class="nav-btn active">Comparison</a>
-	<a href="/plans" class="nav-btn">Reading Plans</a>
 	<a href="/about" class="nav-btn">About</a>
 </nav>
 
