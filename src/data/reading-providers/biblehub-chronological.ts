@@ -192,7 +192,7 @@ export class BiblehubReadingProvider {
         description: 'The Eternal Word and Creation Week - Foundation of all history, the divine Trinity, and the perfect creation of humanity and the world'
       },
       readingTimeMinutes: 20,
-      commentary: '🔍GENERIC_COMMENT: This day introduces Primeval History with the creation narrative and humanity\'s fall. John 1:1-14 provides the cosmic backdrop for Genesis, revealing Christ as the eternal Word through whom all things were made.'
+      commentary: '👨🏾‍💻 Paul\'s Recommendation: The TPT (The Passion Translation) version of Genesis is highly recommended, especially Genesis 2, which beautifully portrays the intimacy of God\'s relationship with humanity. Read it here: https://www.bible.com/bible/1849/GEN.2.TPT'
     });
 
     // Day 2: The Fall

@@ -218,7 +218,12 @@ export class ApocryphaReadingProvider {
               parallelEvents: []
             }].map((passage: BiblePassage) => {
               // Add href for clickable links
-              const href = generateApocryphaUrl(book, passage.chapterStart);
+              let href;
+              if (book === 'The First Book of Adam and Eve') {
+                href = 'https://www.sacred-texts.com/bib/fbe/index.htm#section_000';
+              } else {
+                href = generateApocryphaUrl(book, passage.chapterStart);
+              }
               return {
                 ...passage,
                 ...(href && { href: href as any })
@@ -251,7 +256,12 @@ export class ApocryphaReadingProvider {
           parallelEvents: []
         }].map((passage: BiblePassage) => {
           // Add href for clickable links
-          const href = generateApocryphaUrl('Apocrypha Reflection', passage.chapterStart);
+          let href;
+          if (book === 'The First Book of Adam and Eve') {
+            href = 'https://www.sacred-texts.com/bib/fbe/index.htm#section_000';
+          } else {
+            href = generateApocryphaUrl(book, passage.chapterStart);
+          }
           return {
             ...passage,
             ...(href && { href: href as any })
