@@ -23,7 +23,8 @@ export class BiblehubReadingProvider {
       passages: this.convertPassages(reading.passages),
       readingTimeMinutes: this.calculateReadingTime(reading.passages),
       apocryphaIncluded: this.hasApocrypha(reading.passages),
-      historicalContext: reading.historicalContext || this.getHistoricalContext(reading.day, reading.passages)
+      historicalContext: reading.historicalContext || this.getHistoricalContext(reading.day, reading.passages),
+      commentary: reading.commentary
     }));
 
     return {
