@@ -257,10 +257,10 @@ export class ApocryphaReadingProvider {
         }].map((passage: BiblePassage) => {
           // Add href for clickable links
           let href;
-          if (book === 'The First Book of Adam and Eve') {
+          if (passage.book === 'The First Book of Adam and Eve') {
             href = 'https://www.sacred-texts.com/bib/fbe/index.htm#section_000';
           } else {
-            href = generateApocryphaUrl(book, passage.chapterStart);
+            href = generateApocryphaUrl(passage.book, passage.chapterStart);
           }
           return {
             ...passage,
