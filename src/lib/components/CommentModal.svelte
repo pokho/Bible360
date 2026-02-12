@@ -23,6 +23,9 @@
   $: accentColor = providerColors[provider] || '#666';
   $: providerName = providerNames[provider] || provider;
 
+  // Convert escaped newlines to actual newlines for proper rendering
+  $: formattedCommentary = commentary.replace(/\\n/g, '\n');
+
   function handleBackdropClick(event) {
     // Close only when clicking the backdrop, not the modal content
     if (event.target === event.currentTarget) {
@@ -76,7 +79,7 @@
         </div>
 
         <div class="commentary-text">
-          {commentary}
+          {formattedCommentary}
         </div>
       </div>
     </div>
