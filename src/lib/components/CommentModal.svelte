@@ -4,6 +4,9 @@
   export let provider = '';
   export let day = 0;
   export let onClose;
+  export let commentaryType = 'generic';
+
+  $: comment = commentary && commentaryType === 'paul' ? `Paul's Commentary` : commentary;
 
   // Provider-specific colors matching existing color scheme
   const providerColors = {
@@ -60,7 +63,7 @@
     <div class="modal-content" style="border-color: {accentColor};">
       <div class="modal-header" style="background-color: {accentColor};">
         <h3 id="modal-title" class="modal-title">
-          💬 Day {day} Commentary
+          {$comment}
         </h3>
         <button
           class="close-btn"

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ComparisonTable from '$lib/components/ComparisonTable.svelte';
-	import { readingPlans } from '$lib/stores/readingPlansStore';
 	import { onMount } from 'svelte';
 	import { LogosAcademicProvider } from '../data/reading-providers/logos-academic';
 	import { BlueLetterBibleProvider } from '../data/reading-providers/blue-letter-bible';

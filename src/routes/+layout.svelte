@@ -2,6 +2,12 @@
 	import '../app.css';
 </script>
 
+<svelte:head>
+	<!-- Support Chatbot (Client-side Mode) -->
+	<link rel="stylesheet" href="/chatbot/widget.css">
+	<script src="/chatbot/widget.js" defer></script>
+</svelte:head>
+
 <div id="app">
 	<slot />
 </div>
