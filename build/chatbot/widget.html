@@ -1,4 +1,320 @@
+<!-- Support Chatbot Widget -->
+<div class="sc-widget-container" id="sc-widget-container">
+  <!-- Chat Button -->
+  <button class="sc-chat-button" id="sc-chat-button" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+    </svg>
+  </button>
 
+  <!-- Chat Window -->
+  <div class="sc-chat-window" id="sc-chat-window">
+    <!-- Header -->
+    <div class="sc-chat-header">
+      <!-- Drag handle for moving chatbot -->
+      <div class="sc-drag-handle" id="sc-drag-handle" title="Drag to move"></div>
+      <div class="sc-chat-avatar">
+        <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+             </svg>
+      </div>
+      <div class="sc-chat-info">
+        <h3>Bible360</h3>
+        <p>Support Assistant</p>
+      </div>
+      <button class="sc-close-button" id="sc-close-button" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="sc-messages" id="sc-messages">
+      <div class="sc-message bot">
+        Hi! I&#039;m Bible360 assistant.
+      </div>
+    </div>
+
+    <!-- Escalation Notice (shown when needed) -->
+    <div class="sc-escalation-notice" id="sc-escalation-notice" style="display: none;">
+      Connecting you to a human agent...
+    </div>
+
+    <!-- Input Area -->
+    <div class="sc-input-area">
+      <input
+        type="text"
+        class="sc-input-field"
+        id="sc-input-field"
+        placeholder="Type your message..."
+        autocomplete="off"
+      >
+      <button class="sc-send-button" id="sc-send-button" aria-label="Send message">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+<style>/* Support Chatbot Widget Styles */
+:root {
+  --sc-primary-color: #3b82f6;
+  --sc-text-color: #1f2937;
+  --sc-bg-color: #ffffff;
+  --sc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.sc-widget-container {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  z-index: 9999;
+  font-family: var(--sc-font);
+}
+
+.sc-chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--sc-primary-color);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sc-chat-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sc-chat-button svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+.sc-chat-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 380px;
+  height: 600px;
+  max-height: calc(100vh - 120px);
+  background: var(--sc-bg-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.sc-chat-window.sc-open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.sc-chat-header {
+  background: var(--sc-primary-color);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sc-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sc-chat-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sc-chat-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sc-chat-info p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.sc-close-button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.sc-close-button:hover {
+  opacity: 1;
+}
+
+.sc-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sc-message {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.5;
+  animation: sc-fadeIn 0.3s ease-out;
+}
+
+@keyframes sc-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sc-message.bot {
+  background: #f3f4f6;
+  color: var(--sc-text-color);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.sc-message.user {
+  background: var(--sc-primary-color);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.sc-message.typing {
+  background: #f3f4f6;
+  padding: 8px 16px;
+}
+
+.sc-typing-indicator {
+  display: flex;
+  gap: 4px;
+}
+
+.sc-typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9ca3af;
+  animation: sc-bounce 1.4s infinite ease-in-out both;
+}
+
+.sc-typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.sc-typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes sc-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.sc-input-area {
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 8px;
+}
+
+.sc-input-field {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sc-input-field:focus {
+  border-color: var(--sc-primary-color);
+}
+
+.sc-send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sc-primary-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.sc-send-button:hover {
+  opacity: 0.9;
+}
+
+.sc-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sc-escalation-notice {
+  padding: 12px 16px;
+  background: #fffbeb;
+  border-top: 1px solid #fcd34d;
+  font-size: 12px;
+  color: #92400e;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .sc-chat-window {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 120px);
+  }
+}</style><script>
 // Support Chatbot - Client-Side Mode (works on static hosting)
 (function() {
   'use strict';
@@ -7,9 +323,9 @@
     instanceName: 'bible360',
     brandName: 'Bible360',
     provider: 'openrouter',
-    model: undefined, // Auto-select from available free models
-    apiKey: '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',
-    knowledgeBase: {"chunks":[{"id":"kb-1","content":"Bible360 is a chronological Bible reading plan comparison tool. It helps users compare different chronological reading plans from multiple sources including Blue Letter Bible, Logos Academic, BibleHub, and ESV.","metadata":{"source":"knowledge-base.json","tags":["about","overview","what is"],"category":"general"}},{"id":"kb-2","content":"Bible360 offers 365-day chronological Bible reading plans. Each plan takes you through the entire Bible in historical/chronological order rather than the traditional book order.","metadata":{"source":"knowledge-base.json","tags":["reading plan","365 days","chronological"],"category":"plans"}},{"id":"kb-3","content":"The Blue Letter Bible reading plan is a 365-day chronological plan from Blue Letter Bible (blueletterbible.org). It includes combined readings for some books and spreads Revelation across the final 4 days.","metadata":{"source":"knowledge-base.json","tags":["blue letter bible","blb","provider"],"category":"providers"}},{"id":"kb-4","content":"The Logos Academic reading plan is a 365-day chronological plan from Logos Bible Software (logos.com). It includes all epistles at their correct chronological positions with combined readings for shorter books.","metadata":{"source":"knowledge-base.json","tags":["logos","logos academic","provider"],"category":"providers"}},{"id":"kb-5","content":"The BibleHub reading plan is a 365-day chronological plan from BibleHub.com. It includes Paul's commentary on key passages with theological insights.","metadata":{"source":"knowledge-base.json","tags":["biblehub","provider","commentary"],"category":"providers"}},{"id":"kb-6","content":"Chronological Bible reading means reading the Bible in the order events actually happened historically, rather than in the order of books as they appear in the Bible. For example, Job is read after Genesis 11 because Job lived during the patriarchal period.","metadata":{"source":"knowledge-base.json","tags":["chronological","order","how it works"],"category":"explanation"}},{"id":"kb-7","content":"Each daily reading in Bible360 includes the passage reference, historical context, approximate date, and a description of the theological significance of that reading.","metadata":{"source":"knowledge-base.json","tags":["daily reading","features","context"],"category":"features"}},{"id":"kb-8","content":"The New Testament readings in the chronological plan are placed in their historical order. James is read early (around Acts 13-14) because it was written around AD 45-48, making it one of the earliest NT books.","metadata":{"source":"knowledge-base.json","tags":["new testament","james","chronology","epistles"],"category":"nt"}},{"id":"kb-9","content":"Revelation is always the final book in chronological plans, dated around AD 95 during the reign of Domitian. Bible360 plans spread Revelation across 4 days (chapters 1-5, 6-11, 12-18, 19-22) for better pacing.","metadata":{"source":"knowledge-base.json","tags":["revelation","apocalypse","end times"],"category":"revelation"}},{"id":"kb-10","content":"Bible360 is built with SvelteKit and deployed as a static site. It's open source and available on GitHub at github.com/pokho/Bible360.","metadata":{"source":"knowledge-base.json","tags":["github","open source","technology"],"category":"technical"}},{"id":"kb-11","content":"To use Bible360, simply visit bible360.net and select a reading plan from the available providers. Click on any day to see the readings and historical context. You can compare plans side by side.","metadata":{"source":"knowledge-base.json","tags":["how to use","getting started","tutorial"],"category":"usage"}},{"id":"kb-12","content":"The Apocrypha reading plan includes deuterocanonical books like Tobit, Judith, Wisdom, Sirach, Baruch, and 1-2 Maccabees, read in their historical context.","metadata":{"source":"knowledge-base.json","tags":["apocrypha","deuterocanonical","catholic"],"category":"apocrypha"}}],"metadata":{"version":"1.0.0","exportedAt":"2026-02-14T12:00:00.000Z","totalChunks":12,"categories":["general","plans","providers","explanation","features","nt","revelation","technical","usage","apocrypha"],"compressed":false}},
+    model: 'meta-llama/llama-3-8b-instruct:free',
+    apiKey: undefined,
+    knowledgeBase: {"chunks":[],"metadata":{"version":"1.0.0","exportedAt":"2026-02-14T10:22:06.772Z","totalChunks":0,"categories":[],"compressed":false}},
     escalationEnabled: false,
     oksomeUrl: '',
     escalationThreshold: 50,
@@ -18,7 +334,7 @@
     draggable: false,
     constrainToViewport: true,
     rememberPosition: true,
-    dragHandleStyle: 'bar',
+    dragHandleStyle: config.draggable?.handleStyle || 'bar',
   };
 
   
@@ -250,7 +566,6 @@ async function sendMessageWithStreaming(message, context, apiKey) {
   // Try with current model, fallback to next free model on error
   let lastError = null;
   let maxRetries = freeModels.length > 0 ? Math.min(freeModels.length, 5) : 1;
-  let response;
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     if (!config.model) {
@@ -260,7 +575,7 @@ async function sendMessageWithStreaming(message, context, apiKey) {
     }
 
     try {
-      response = await fetch(apiUrl, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(body)
@@ -355,9 +670,13 @@ async function sendMessageWithStreaming(message, context, apiKey) {
           }
         }
 
-      if (onComplete) onComplete(this.fullResponse);
-    }
-  };
+        if (onComplete) onComplete(this.fullResponse);
+      }
+    };
+  } catch (error) {
+    console.error('API call failed:', error);
+    throw error;
+  }
 }
 
 // Get or prompt for API key
@@ -388,44 +707,26 @@ async function getApiKey() {
 }
 
 
-  // DOM Elements - will be initialized when elements are available
-  let container, chatButton, chatWindow, closeButton, messagesContainer, inputField, sendButton, escalationNotice;
+  // DOM Elements
+  const container = document.getElementById('sc-widget-container');
+  const chatButton = document.getElementById('sc-chat-button');
+  const chatWindow = document.getElementById('sc-chat-window');
+  const closeButton = document.getElementById('sc-close-button');
+  const messagesContainer = document.getElementById('sc-messages');
+  const inputField = document.getElementById('sc-input-field');
+  const sendButton = document.getElementById('sc-send-button');
+  const escalationNotice = document.getElementById('sc-escalation-notice');
+
   let isOpen = false;
   let conversationHistory = [];
   let apiKeyCache = null;
-  let isDragging = false;
-  let dragOffset = { x: 0, y: 0 };
-  let savedPosition = { x: null, y: null };
-
-  // Initialize DOM elements
-  function initElements() {
-    container = document.getElementById('sc-widget-container');
-    chatButton = document.getElementById('sc-chat-button');
-    chatWindow = document.getElementById('sc-chat-window');
-    closeButton = document.getElementById('sc-close-button');
-    messagesContainer = document.getElementById('sc-messages');
-    inputField = document.getElementById('sc-input-field');
-    sendButton = document.getElementById('sc-send-button');
-    escalationNotice = document.getElementById('sc-escalation-notice');
-
-    return chatButton && chatWindow && closeButton && messagesContainer && inputField && sendButton;
-  }
 
   // Toggle chat window
   async function toggleChat() {
-    // Re-query chat window in case Svelte re-rendered it
-    const win = document.getElementById('sc-chat-window');
-    if (!win) {
-      console.error('Chat window not found');
-      return;
-    }
-
     isOpen = !isOpen;
-    win.classList.toggle('sc-open', isOpen);
-    console.log('%c🔄 Chat toggled, isOpen:', 'color: #3b82f6', isOpen);
+    chatWindow.classList.toggle('sc-open', isOpen);
     if (isOpen) {
-      const input = document.getElementById('sc-input-field');
-      if (input) input.focus();
+      inputField.focus();
       // Fetch and log free models when chatbot opens (if not already fetched)
       if (freeModels.length === 0 && !modelsFetchFailed && !config.model) {
         await fetchFreeModels();
@@ -443,40 +744,28 @@ async function getApiKey() {
   }
 
   // Add message to chat
-  function addMessage(content, isUser = false, container = null) {
-    const msgContainer = container || document.getElementById('sc-messages');
-    if (!msgContainer) {
-      console.error('Messages container not found');
-      return;
-    }
-
+  function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'sc-message ' + (isUser ? 'user' : 'bot');
     messageDiv.textContent = content;
-    msgContainer.appendChild(messageDiv);
-    msgContainer.scrollTop = msgContainer.scrollHeight;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     conversationHistory.push({
       role: isUser ? 'user' : 'assistant',
       content: content,
       timestamp: new Date().toISOString(),
     });
-
-    // Save to localStorage
-    saveConversation();
   }
 
   // Show typing indicator
-  function showTyping(container = null) {
-    const msgContainer = container || document.getElementById('sc-messages');
-    if (!msgContainer) return;
-
+  function showTyping() {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'sc-message typing';
     typingDiv.id = 'sc-typing';
     typingDiv.innerHTML = '<div class="sc-typing-indicator"><span></span><span></span><span></span></div>';
-    msgContainer.appendChild(typingDiv);
-    msgContainer.scrollTop = msgContainer.scrollHeight;
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
   // Hide typing indicator
@@ -485,91 +774,6 @@ async function getApiKey() {
     if (typing) {
       typing.remove();
     }
-  }
-
-  // Save conversation to localStorage
-  function saveConversation() {
-    try {
-      localStorage.setItem('chatbot_conversation', JSON.stringify(conversationHistory));
-    } catch (e) {
-      console.warn('Could not save conversation:', e);
-    }
-  }
-
-  // Load conversation from localStorage
-  function loadConversation() {
-    try {
-      const saved = localStorage.getItem('chatbot_conversation');
-      if (saved) {
-        conversationHistory = JSON.parse(saved);
-        return true;
-      }
-    } catch (e) {
-      console.warn('Could not load conversation:', e);
-    }
-    return false;
-  }
-
-  // Restore conversation to UI
-  function restoreConversation() {
-    const messagesContainer = document.getElementById('sc-messages');
-    if (!messagesContainer || conversationHistory.length === 0) return;
-
-    // Clear existing messages
-    messagesContainer.innerHTML = '';
-
-    // Add each message
-    conversationHistory.forEach(msg => {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'sc-message ' + (msg.role === 'user' ? 'user' : 'bot');
-      messageDiv.textContent = msg.content;
-      messagesContainer.appendChild(messageDiv);
-    });
-
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
-
-  // Export conversation as text file
-  function exportConversation() {
-    if (conversationHistory.length === 0) {
-      alert('No conversation to export yet.');
-      return;
-    }
-
-    const lines = [
-      '═══════════════════════════════════════════════════════════════',
-      '                    BIBLE360 CHATBOT CONVERSATION',
-      '═══════════════════════════════════════════════════════════════',
-      '',
-    ];
-
-    conversationHistory.forEach(msg => {
-      const timestamp = msg.timestamp ? new Date(msg.timestamp).toLocaleString() : '';
-      const role = msg.role === 'user' ? 'YOU' : 'BIBLE360';
-      lines.push(`[${timestamp}] ${role}:`);
-      lines.push(msg.content);
-      lines.push('');
-      lines.push('───────────────────────────────────────────────────────────────');
-      lines.push('');
-    });
-
-    lines.push('═══════════════════════════════════════════════════════════════');
-    lines.push(`Exported on: ${new Date().toLocaleString()}`);
-    lines.push('═══════════════════════════════════════════════════════════════');
-
-    const text = lines.join('\n');
-    const blob = new Blob([text], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `bible360-chat-${new Date().toISOString().slice(0, 10)}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    console.log('%c📥 Conversation exported', 'color: #10b981');
   }
 
   // Drag functionality for chatbot widget
@@ -600,29 +804,29 @@ async function getApiKey() {
     document.addEventListener('touchend', endDragTouch);
 
     // Restore saved position on load
-    if (config.rememberPosition && savedPosition.x !== null && container) {
-      container.style.left = savedPosition.x + 'px';
-      container.style.top = savedPosition.y + 'px';
+    if (config.draggable?.rememberPosition && savedPosition.x !== null) {
+      widgetContainer.style.left = savedPosition.x + 'px';
+      widgetContainer.style.top = savedPosition.y + 'px';
     }
   }
 
   function startDrag(e) {
-    if (!config.draggable) return;
+    if (!config.draggable?.enabled) return;
     isDragging = true;
-    if (container) container.classList.add('dragging');
+    widgetContainer.classList.add('dragging');
 
-    const rect = container.getBoundingClientRect();
+    const rect = widgetContainer.getBoundingClientRect();
     dragOffset.x = e.clientX - rect.left;
     dragOffset.y = e.clientY - rect.top;
 
     // Save initial position for potential restore
-    const currentX = parseFloat(container.style.left) || 0;
-    const currentY = parseFloat(container.style.top) || 0;
+    const currentX = parseFloat(widgetContainer.style.left) || 0;
+    const currentY = parseFloat(widgetContainer.style.top) || 0;
     savedPosition = { x: currentX.toString(), y: currentY.toString() };
   }
 
   function drag(e) {
-    if (!isDragging || !container) return;
+    if (!isDragging) return;
 
     e.preventDefault();
 
@@ -633,13 +837,13 @@ async function getApiKey() {
     const maxX = window.innerWidth - 400;
     const maxY = window.innerHeight - 550;
 
-    container.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-    container.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
-    container.style.right = 'auto';
-    container.style.bottom = 'auto';
+    widgetContainer.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+    widgetContainer.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+    widgetContainer.style.right = 'auto';
+    widgetContainer.style.bottom = 'auto';
 
     // Save position
-    savedPosition = { x: container.style.left, y: container.style.top };
+    savedPosition = { x: widgetContainer.style.left, y: widgetContainer.style.top };
 
     // Store in localStorage
     try {
@@ -652,7 +856,7 @@ async function getApiKey() {
   function endDrag() {
     if (!isDragging) return;
     isDragging = false;
-    if (container) container.classList.remove('dragging');
+    widgetContainer.classList.remove('dragging');
   }
 
   function endDragTouch() {
@@ -663,52 +867,41 @@ async function getApiKey() {
   async function sendMessage(message) {
     if (!message.trim()) return;
 
-    // Re-query elements in case Svelte re-rendered them
-    const input = document.getElementById('sc-input-field');
-    const send = document.getElementById('sc-send-button');
-    const messages = document.getElementById('sc-messages');
-
-    if (!input || !send || !messages) {
-      console.error('Chatbot elements not found');
-      return;
-    }
-
     // Add user message
-    addMessage(message, true, messages);
-    input.value = '';
-    send.disabled = true;
+    addMessage(message, true);
+    inputField.value = '';
+    sendButton.disabled = true;
 
     // Check for frustration
     const frustration = detectFrustration(message);
     if (frustration.shouldEscalate && config.escalationEnabled) {
-      showTyping(messages);
+      showTyping();
 
-      const escalationEl = document.getElementById('sc-escalation-notice');
       setTimeout(() => {
         hideTyping();
-        if (escalationEl) escalationEl.style.display = 'block';
+        escalationNotice.style.display = 'block';
         setTimeout(() => {
-          if (escalationEl) escalationEl.style.display = 'none';
-          addMessage('I understand you need assistance. Let me connect you with a human agent who can better help you.', false, messages);
+          escalationNotice.style.display = 'none';
+          addMessage('I understand you need assistance. Let me connect you with a human agent who can better help you.', false);
           if (config.oksomeUrl) {
             window.open(config.oksomeUrl, '_blank');
           }
         }, 1500);
       }, 500);
 
-      send.disabled = false;
-      input.focus();
+      sendButton.disabled = false;
+      inputField.focus();
       return;
     }
 
     // Search knowledge base
     const kb = searchKnowledge(message);
-    showTyping(messages);
+    showTyping();
 
     // Create streaming message div
     const messageDiv = document.createElement('div');
     messageDiv.className = 'sc-message bot';
-    messages.appendChild(messageDiv);
+    messagesContainer.appendChild(messageDiv);
 
     try {
       // Get API key (cache it)
@@ -724,7 +917,7 @@ async function getApiKey() {
       await stream.parseStream(
         (token) => {
           messageDiv.textContent += token;
-          messages.scrollTop = messages.scrollHeight;
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
         },
         (fullResponse) => {
           conversationHistory.push({
@@ -740,96 +933,68 @@ async function getApiKey() {
       messageDiv.textContent = 'I apologize, I\'m having trouble connecting. Please check your API key or try again later.';
       console.error('Chatbot error:', error);
     } finally {
-      send.disabled = false;
-      input.focus();
+      sendButton.disabled = false;
+      inputField.focus();
     }
   }
 
-  // Main initialization function
-  function init() {
-    // Try to initialize elements, retry if not ready
-    if (!initElements()) {
-      console.log('%c⏳ Chatbot waiting for DOM elements...', 'color: #f59e0b');
-      setTimeout(init, 100);
-      return;
+  // Event listeners
+  chatButton.addEventListener('click', toggleChat);
+  closeButton.addEventListener('click', toggleChat);
+
+  sendButton.addEventListener('click', () => {
+    sendMessage(inputField.value);
+  });
+
+  inputField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(inputField.value);
     }
+  });
 
-    // Use event delegation for better compatibility with Svelte hydration
-    document.addEventListener('click', (e) => {
-      // Handle chat button click
-      if (e.target.closest('#sc-chat-button')) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleChat();
-        return;
-      }
-      // Handle close button click
-      if (e.target.closest('#sc-close-button')) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleChat();
-        return;
-      }
-      // Handle send button click
-      if (e.target.closest('#sc-send-button')) {
-        e.preventDefault();
-        const input = document.getElementById('sc-input-field');
-        if (input) sendMessage(input.value);
-        return;
-      }
-      // Handle export button click
-      if (e.target.closest('#sc-export-button')) {
-        e.preventDefault();
-        exportConversation();
-        return;
-      }
-    });
-
-    // Re-query elements when needed for input handling
-    document.addEventListener('keypress', (e) => {
-      const input = document.getElementById('sc-input-field');
-      if (e.target === input && e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage(input.value);
-      }
-    });
-
-    // Keyboard shortcut (Ctrl/Cmd + K)
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        toggleChat();
-      }
-    });
-
-    console.log('%c🤖 Support chatbot initialized (client-side mode)', 'color: #10b981; font-weight: bold');
-    console.log('%cProvider:', 'color: #6b7280', config.provider);
-    console.log('%cModel:', 'color: #6b7280', config.model || '(auto-selecting from free models)');
-    console.log('%cKnowledge chunks:', 'color: #6b7280', config.knowledgeBase?.metadata?.totalChunks || 0);
-    console.log('%cAuto-open:', 'color: #6b7280', config.autoOpen ? 'enabled' : 'disabled');
-
-    // Load saved conversation from localStorage
-    if (loadConversation()) {
-      restoreConversation();
-      console.log('%c💾 Restored previous conversation (' + conversationHistory.length + ' messages)', 'color: #10b981');
+  // Keyboard shortcut (Ctrl/Cmd + K)
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      toggleChat();
     }
+  });
 
-    // Fetch free models on initialization if no model is configured
-    if (!config.model) {
-      fetchFreeModels().then(() => {
-        if (freeModels.length > 0) {
-          console.log('%c✓ Fetched ' + freeModels.length + ' free models for automatic fallback', 'color: #10b981');
-        }
-      }).catch(err => {
-        console.warn('Failed to fetch free models:', err);
+  // Initialize
+  console.log('%c🤖 Support chatbot initialized (client-side mode)', 'color: #10b981; font-weight: bold');
+  console.log('%cProvider:', 'color: #6b7280', config.provider);
+  console.log('%cModel:', 'color: #6b7280', config.model || '(auto-selecting from free models)');
+  console.log('%cKnowledge chunks:', 'color: #6b7280', config.knowledgeBase?.metadata?.totalChunks || 0);
+  console.log('%cAuto-open:', 'color: #6b7280', config.autoOpen ? 'enabled' : 'disabled');
+
+  // Fetch free models on initialization if no model is configured
+  if (!config.model) {
+    fetchFreeModels().then(() => {
+      if (freeModels.length > 0) {
+        console.log('%c✓ Fetched ' + freeModels.length + ' free models for automatic fallback', 'color: #10b981');
+      }
+    }).catch(err => {
+      console.warn('Failed to fetch free models:', err);
+    });
+  }
+
+  // Initialize drag functionality
+  initDrag();
+
+  // Auto-open chatbot on page load if configured
+  if (config.autoOpen) {
+    // Wait for DOM to be fully loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          if (!isOpen) {
+            toggleChat();
+          }
+        }, 500);
       });
-    }
-
-    // Initialize drag functionality
-    initDrag();
-
-    // Auto-open chatbot on page load if configured
-    if (config.autoOpen) {
+    } else {
+      // DOM is already loaded
       setTimeout(() => {
         if (!isOpen) {
           toggleChat();
@@ -837,11 +1002,5 @@ async function getApiKey() {
       }, 500);
     }
   }
-
-  // Start initialization when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
 })();
+</script>

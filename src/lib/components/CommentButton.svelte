@@ -39,7 +39,7 @@
 <style>
   .comment-btn {
     position: absolute;
-    top: 8px;
+    bottom: 8px;
     right: 8px;
     width: 28px;
     height: 28px;
@@ -77,7 +77,7 @@
       width: 24px;
       height: 24px;
       font-size: 10px;
-      top: 6px;
+      bottom: 6px;
       right: 6px;
     }
   }

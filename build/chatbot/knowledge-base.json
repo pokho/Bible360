@@ -1,0 +1,74 @@
+[
+  {
+    "id": "kb-1",
+    "content": "Bible360 is a chronological Bible reading plan comparison tool. It helps users compare different chronological reading plans from multiple sources including Blue Letter Bible, Logos Academic, BibleHub, and ESV.",
+    "tags": ["about", "overview", "what is"],
+    "metadata": { "category": "general" }
+  },
+  {
+    "id": "kb-2",
+    "content": "Bible360 offers 365-day chronological Bible reading plans. Each plan takes you through the entire Bible in historical/chronological order rather than the traditional book order.",
+    "tags": ["reading plan", "365 days", "chronological"],
+    "metadata": { "category": "plans" }
+  },
+  {
+    "id": "kb-3",
+    "content": "The Blue Letter Bible reading plan is a 365-day chronological plan from Blue Letter Bible (blueletterbible.org). It includes combined readings for some books and spreads Revelation across the final 4 days.",
+    "tags": ["blue letter bible", "blb", "provider"],
+    "metadata": { "category": "providers" }
+  },
+  {
+    "id": "kb-4",
+    "content": "The Logos Academic reading plan is a 365-day chronological plan from Logos Bible Software (logos.com). It includes all epistles at their correct chronological positions with combined readings for shorter books.",
+    "tags": ["logos", "logos academic", "provider"],
+    "metadata": { "category": "providers" }
+  },
+  {
+    "id": "kb-5",
+    "content": "The BibleHub reading plan is a 365-day chronological plan from BibleHub.com. It includes Paul's commentary on key passages with theological insights.",
+    "tags": ["biblehub", "provider", "commentary"],
+    "metadata": { "category": "providers" }
+  },
+  {
+    "id": "kb-6",
+    "content": "Chronological Bible reading means reading the Bible in the order events actually happened historically, rather than in the order of books as they appear in the Bible. For example, Job is read after Genesis 11 because Job lived during the patriarchal period.",
+    "tags": ["chronological", "order", "how it works"],
+    "metadata": { "category": "explanation" }
+  },
+  {
+    "id": "kb-7",
+    "content": "Each daily reading in Bible360 includes the passage reference, historical context, approximate date, and a description of the theological significance of that reading.",
+    "tags": ["daily reading", "features", "context"],
+    "metadata": { "category": "features" }
+  },
+  {
+    "id": "kb-8",
+    "content": "The New Testament readings in the chronological plan are placed in their historical order. James is read early (around Acts 13-14) because it was written around AD 45-48, making it one of the earliest NT books.",
+    "tags": ["new testament", "james", "chronology", "epistles"],
+    "metadata": { "category": "nt" }
+  },
+  {
+    "id": "kb-9",
+    "content": "Revelation is always the final book in chronological plans, dated around AD 95 during the reign of Domitian. Bible360 plans spread Revelation across 4 days (chapters 1-5, 6-11, 12-18, 19-22) for better pacing.",
+    "tags": ["revelation", "apocalypse", "end times"],
+    "metadata": { "category": "revelation" }
+  },
+  {
+    "id": "kb-10",
+    "content": "Bible360 is built with SvelteKit and deployed as a static site. It's open source and available on GitHub at github.com/pokho/Bible360.",
+    "tags": ["github", "open source", "technology"],
+    "metadata": { "category": "technical" }
+  },
+  {
+    "id": "kb-11",
+    "content": "To use Bible360, simply visit bible360.net and select a reading plan from the available providers. Click on any day to see the readings and historical context. You can compare plans side by side.",
+    "tags": ["how to use", "getting started", "tutorial"],
+    "metadata": { "category": "usage" }
+  },
+  {
+    "id": "kb-12",
+    "content": "The Apocrypha reading plan includes deuterocanonical books like Tobit, Judith, Wisdom, Sirach, Baruch, and 1-2 Maccabees, read in their historical context.",
+    "tags": ["apocrypha", "deuterocanonical", "catholic"],
+    "metadata": { "category": "apocrypha" }
+  }
+]
