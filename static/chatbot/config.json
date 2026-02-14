@@ -13,7 +13,7 @@
   },
   "rag": {
     "enabled": true,
-    "knowledgePath": true
+    "knowledgePath": "./static/chatbot/knowledge-base.json"
   },
   "mode": "support",
   "branding": {},
