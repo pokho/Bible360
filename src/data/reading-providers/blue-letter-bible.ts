@@ -129,11 +129,11 @@ export class BlueLetterBibleProvider {
       "Mat 22 / Mar 12", "Mat 23 / Luk 20-21", "Mar 13", "Mat 24", "Mat 25", "Mat 26 / Mar 14",
       "Luk 22 / Jhn 13", "Jhn 14-17", "Mat 27 / Mar 15", "Luk 23 / Jhn 18-19", "Mat 28 / Mar 16",
       "Luk 24 / Jhn 20-21", "Act 1-3", "Act 4-6", "Act 7-8", "Act 9-10", "Act 11-12", "Act 13-14",
-      "Jas 1-5", "Act 15-16", "Gal 1-3", "Gal 4-6", "Act 17", "1Th 1-5 / 2Th 1-3", "Act 18-19",
+      "Jas 1-5", "Act 15-16", "Gal 1-3", "Gal 4-6", "Act 17", "1Th 1-5", "2Th 1-3", "Act 18-19",
       "1Co 1-4", "1Co 5-8", "1Co 9-11", "1Co 12-14", "1Co 15-16", "2Co 1-4", "2Co 5-9", "2Co 10-13",
       "Rom 1-3", "Rom 4-7", "Rom 8-10", "Rom 11-13", "Rom 14-16", "Act 20-23", "Act 24-26",
       "Act 27-28", "Col 1-4 / Phm 1", "Eph 1-6", "Phl 1-4", "1Ti 1-6", "Tit 1-3", "1Pe 1-5",
-      "Heb 1-6", "Heb 7-10", "Heb 11-13", "2Ti 1-4", "2Pe 1-3 / Jde 1", "1Jo 1-5", "2Jo 1 / 3Jo 1",
+      "Heb 1-6", "Heb 7-10", "Heb 11-13", "2Ti 1-4", "2Pe 1-3 / Jde 1", "1Jo 1-5", "2Jo 1", "3Jo 1",
       "Rev 1-5", "Rev 6-11", "Rev 12-18", "Rev 19-22"
     ];
 

@@ -3818,41 +3818,41 @@ export class LogosAcademicProvider {
       {
         day: 362,
         date: '2025-12-28',
-        passages: [{ book: 'James', chapters: '1-5' }],
+        passages: [{ book: 'Revelation', chapters: '1-5' }],
         historicalContext: {
-          period: 'Practical Faith',
-          approximateDate: 'AD 45-48',
-          description: 'Living faith - Trials producing perseverance, controlling tongue, caring for orphans and widows, faith without works dead, prayer power'
+          period: 'Apocalypse Begins',
+          approximateDate: 'AD 95',
+          description: 'Christ among the churches - John\'s vision on Patmos, Christ among seven lampstands, letters to Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia, Laodicea'
         }
       },
       {
         day: 363,
         date: '2025-12-29',
-        passages: [{ book: '1 Peter', chapters: '1-5' }],
+        passages: [{ book: 'Revelation', chapters: '6-11' }],
         historicalContext: {
-          period: 'Suffering Glory',
-          approximateDate: 'AD 64-65',
-          description: 'Victorious suffering - Living hope through resurrection, holy living, suffering for righteousness, submission to authorities, resisting devil'
+          period: 'Seal and Trumpet Judgments',
+          approximateDate: 'AD 95',
+          description: 'Divine judgments unfold - Seven seals opened, 144,000 sealed, seven trumpets sounded, two witnesses testify, seventh trumpet announces God\'s kingdom'
         }
       },
       {
         day: 364,
         date: '2025-12-30',
-        passages: [{ book: '2 Peter', chapters: '1-3' }],
+        passages: [{ book: 'Revelation', chapters: '12-18' }],
         historicalContext: {
-          period: 'Apostasy Warning',
-          approximateDate: 'AD 66-68',
-          description: 'True knowledge and false teachers - Divine power for godliness, false teachers condemnation, end times scoffers, new heavens and new earth'
+          period: 'Cosmic Conflict',
+          approximateDate: 'AD 95',
+          description: 'Spiritual warfare revealed - Woman and dragon, beast from sea and earth, lamb and 144,000, three angels\' messages, seven bowls of wrath, fall of Babylon'
         }
       },
       {
         day: 365,
         date: '2025-12-31',
-        passages: [{ book: 'Revelation', chapters: '1-22' }],
+        passages: [{ book: 'Revelation', chapters: '19-22' }],
         historicalContext: {
           period: 'Consummation',
           approximateDate: 'AD 95',
-          description: 'All things new - Christ glorified, seven churches addressed, tribulation judgments, Christ\'s victorious return, New Jerusalem, eternity with God'
+          description: 'All things new - Christ\'s victorious return, defeat of beast and false prophet, Satan bound and judged, great white throne, New Jerusalem, eternity with God'
         }
       },
     ];
