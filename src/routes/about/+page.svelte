@@ -156,7 +156,7 @@
 </main>
 
 <footer class="bible360-footer">
-	<p>© 2025 Bible360 by Paul Henckel - Complete Chronological Bible Reading Plans</p>
+	<p>© 2026 Bible360 by Paul Henckel - Complete Chronological Bible Reading Plans</p>
 	<p><em>Built with ❤️ for the Bible study community</em></p>
 	<div class="footer-links">
 		<a href="/">Home</a>

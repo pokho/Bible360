@@ -241,7 +241,7 @@
 </main>
 
 <footer class="bible360-footer">
-	<p>© 2025 Bible360 - Chronological Bible Reading Plans</p>
+	<p>© 2026 Bible360 - Chronological Bible Reading Plans</p>
 	<div class="source-attribution">
 		<p>Reading plans based on data from:</p>
 		<div class="source-links">

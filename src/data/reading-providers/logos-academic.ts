@@ -173,7 +173,7 @@ export class LogosAcademicProvider {
     const dailyReadings = [
       {
         day: 1,
-        date: '2025-01-01',
+        date: '2024-12-31',
         passages: [{ book: 'Genesis', chapters: '1-3' }],
         historicalContext: {
           period: 'Primeval History',
@@ -184,7 +184,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 2,
-        date: '2025-01-02',
+        date: '2025-01-01',
         passages: [{ book: 'Genesis', chapters: '4-7' }],
         historicalContext: {
           period: 'Antediluvian Era',
@@ -195,7 +195,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 3,
-        date: '2025-01-03',
+        date: '2025-01-02',
         passages: [{ book: 'Genesis', chapters: '8-11' }],
         historicalContext: {
           period: 'Postdiluvian Era',
@@ -205,7 +205,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 4,
-        date: '2025-01-04',
+        date: '2025-01-03',
         passages: [{ book: 'Job', chapters: '1-5' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -215,7 +215,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 5,
-        date: '2025-01-05',
+        date: '2025-01-04',
         passages: [{ book: 'Job', chapters: '6-9' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -225,7 +225,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 6,
-        date: '2025-01-06',
+        date: '2025-01-05',
         passages: [{ book: 'Job', chapters: '10-13' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -235,7 +235,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 7,
-        date: '2025-01-07',
+        date: '2025-01-06',
         passages: [{ book: 'Job', chapters: '14-16' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -245,7 +245,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 8,
-        date: '2025-01-08',
+        date: '2025-01-07',
         passages: [{ book: 'Job', chapters: '17-20' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -255,7 +255,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 9,
-        date: '2025-01-09',
+        date: '2025-01-08',
         passages: [{ book: 'Job', chapters: '21-23' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -265,7 +265,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 10,
-        date: '2025-01-10',
+        date: '2025-01-09',
         passages: [{ book: 'Job', chapters: '24-28' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -275,7 +275,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 11,
-        date: '2025-01-11',
+        date: '2025-01-10',
         passages: [{ book: 'Job', chapters: '29-31' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -285,7 +285,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 12,
-        date: '2025-01-12',
+        date: '2025-01-11',
         passages: [{ book: 'Job', chapters: '32-34' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -295,7 +295,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 13,
-        date: '2025-01-13',
+        date: '2025-01-12',
         passages: [{ book: 'Job', chapters: '35-37' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -305,7 +305,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 14,
-        date: '2025-01-14',
+        date: '2025-01-13',
         passages: [{ book: 'Job', chapters: '38-39' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -315,7 +315,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 15,
-        date: '2025-01-15',
+        date: '2025-01-14',
         passages: [{ book: 'Job', chapters: '40-42' }],
         historicalContext: {
           period: 'Wisdom Literature Period',
@@ -325,7 +325,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 16,
-        date: '2025-01-16',
+        date: '2025-01-15',
         passages: [{ book: 'Genesis', chapters: '12-15' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -335,7 +335,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 17,
-        date: '2025-01-17',
+        date: '2025-01-16',
         passages: [{ book: 'Genesis', chapters: '16-18' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -345,7 +345,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 18,
-        date: '2025-01-18',
+        date: '2025-01-17',
         passages: [{ book: 'Genesis', chapters: '19-21' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -355,7 +355,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 19,
-        date: '2025-01-19',
+        date: '2025-01-18',
         passages: [{ book: 'Genesis', chapters: '22-24' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -365,7 +365,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 20,
-        date: '2025-01-20',
+        date: '2025-01-19',
         passages: [{ book: 'Genesis', chapters: '25-26' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -375,7 +375,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 21,
-        date: '2025-01-21',
+        date: '2025-01-20',
         passages: [{ book: 'Genesis', chapters: '27-29' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -385,7 +385,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 22,
-        date: '2025-01-22',
+        date: '2025-01-21',
         passages: [{ book: 'Genesis', chapters: '30-31' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -395,7 +395,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 23,
-        date: '2025-01-23',
+        date: '2025-01-22',
         passages: [{ book: 'Genesis', chapters: '32-34' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -405,7 +405,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 24,
-        date: '2025-01-24',
+        date: '2025-01-23',
         passages: [{ book: 'Genesis', chapters: '35-37' }],
         historicalContext: {
           period: 'Patriarchal Era',
@@ -415,7 +415,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 25,
-        date: '2025-01-25',
+        date: '2025-01-24',
         passages: [{ book: 'Genesis', chapters: '38-40' }],
         historicalContext: {
           period: 'Egyptian Era',
@@ -425,7 +425,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 26,
-        date: '2025-01-26',
+        date: '2025-01-25',
         passages: [{ book: 'Genesis', chapters: '41-42' }],
         historicalContext: {
           period: 'Egyptian Era',
@@ -435,7 +435,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 27,
-        date: '2025-01-27',
+        date: '2025-01-26',
         passages: [{ book: 'Genesis', chapters: '43-45' }],
         historicalContext: {
           period: 'Egyptian Era',
@@ -445,7 +445,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 28,
-        date: '2025-01-28',
+        date: '2025-01-27',
         passages: [{ book: 'Genesis', chapters: '46-47' }],
         historicalContext: {
           period: 'Egyptian Era',
@@ -455,7 +455,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 29,
-        date: '2025-01-29',
+        date: '2025-01-28',
         passages: [{ book: 'Genesis', chapters: '48-50' }],
         historicalContext: {
           period: 'Egyptian Era',
@@ -465,7 +465,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 30,
-        date: '2025-01-30',
+        date: '2025-01-29',
         passages: [{ book: 'Exodus', chapters: '1-3' }],
         historicalContext: {
           period: 'Egyptian Bondage',
@@ -475,7 +475,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 31,
-        date: '2025-01-31',
+        date: '2025-01-30',
         passages: [{ book: 'Exodus', chapters: '4-6' }],
         historicalContext: {
           period: 'Egyptian Bondage',
@@ -486,7 +486,7 @@ export class LogosAcademicProvider {
       // Days 32-89: Months 2-3 - Exodus through Numbers
       {
         day: 32,
-        date: '2025-02-01',
+        date: '2025-01-31',
         passages: [{ book: 'Exodus', chapters: '7-9' }],
         historicalContext: {
           period: 'Egyptian Plagues',
@@ -496,7 +496,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 33,
-        date: '2025-02-02',
+        date: '2025-02-01',
         passages: [{ book: 'Exodus', chapters: '10-12' }],
         historicalContext: {
           period: 'Passover and Exodus',
@@ -506,7 +506,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 34,
-        date: '2025-02-03',
+        date: '2025-02-02',
         passages: [{ book: 'Exodus', chapters: '13-15' }],
         historicalContext: {
           period: 'Red Sea Deliverance',
@@ -516,7 +516,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 35,
-        date: '2025-02-04',
+        date: '2025-02-03',
         passages: [{ book: 'Exodus', chapters: '16-18' }],
         historicalContext: {
           period: 'Wilderness Provision',
@@ -526,7 +526,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 36,
-        date: '2025-02-05',
+        date: '2025-02-04',
         passages: [{ book: 'Exodus', chapters: '19-21' }],
         historicalContext: {
           period: 'Sinai Covenant',
@@ -536,7 +536,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 37,
-        date: '2025-02-06',
+        date: '2025-02-05',
         passages: [{ book: 'Exodus', chapters: '22-24' }],
         historicalContext: {
           period: 'Covenant Laws',
@@ -547,7 +547,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 38,
-        date: '2025-02-07',
+        date: '2025-02-06',
         passages: [{ book: 'Exodus', chapters: '25-27' }],
         historicalContext: {
           period: 'Tabernacle Construction',
@@ -557,7 +557,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 39,
-        date: '2025-02-08',
+        date: '2025-02-07',
         passages: [{ book: 'Exodus', chapters: '28-29' }],
         historicalContext: {
           period: 'Priestly Consecration',
@@ -567,7 +567,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 40,
-        date: '2025-02-09',
+        date: '2025-02-08',
         passages: [{ book: 'Exodus', chapters: '30-32' }],
         historicalContext: {
           period: 'Tabernacle Worship',
@@ -577,7 +577,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 41,
-        date: '2025-02-10',
+        date: '2025-02-09',
         passages: [{ book: 'Exodus', chapters: '33-35' }],
         historicalContext: {
           period: 'Divine Presence',
@@ -588,7 +588,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 42,
-        date: '2025-02-11',
+        date: '2025-02-10',
         passages: [{ book: 'Exodus', chapters: '36-38' }],
         historicalContext: {
           period: 'Tabernacle Completion',
@@ -598,7 +598,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 43,
-        date: '2025-02-12',
+        date: '2025-02-11',
         passages: [{ book: 'Exodus', chapters: '39-40' }],
         historicalContext: {
           period: 'Priestly Garments',
@@ -608,7 +608,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 44,
-        date: '2025-02-13',
+        date: '2025-02-12',
         passages: [{ book: 'Leviticus', chapters: '1-4' }],
         historicalContext: {
           period: 'Sacrificial System',
@@ -618,7 +618,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 45,
-        date: '2025-02-14',
+        date: '2025-02-13',
         passages: [{ book: 'Leviticus', chapters: '5-7' }],
         historicalContext: {
           period: 'Various Offerings',
@@ -628,7 +628,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 46,
-        date: '2025-02-15',
+        date: '2025-02-14',
         passages: [{ book: 'Leviticus', chapters: '8-10' }],
         historicalContext: {
           period: 'Priesthood Institution',
@@ -638,7 +638,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 47,
-        date: '2025-02-16',
+        date: '2025-02-15',
         passages: [{ book: 'Leviticus', chapters: '11-13' }],
         historicalContext: {
           period: 'Holiness Laws',
@@ -648,7 +648,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 48,
-        date: '2025-02-17',
+        date: '2025-02-16',
         passages: [{ book: 'Leviticus', chapters: '14-15' }],
         historicalContext: {
           period: 'Purification Rituals',
@@ -658,7 +658,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 49,
-        date: '2025-02-18',
+        date: '2025-02-17',
         passages: [{ book: 'Leviticus', chapters: '16-18' }],
         historicalContext: {
           period: 'Atonement and Holiness',
@@ -668,7 +668,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 50,
-        date: '2025-02-19',
+        date: '2025-02-18',
         passages: [{ book: 'Leviticus', chapters: '19-21' }],
         historicalContext: {
           period: 'Social Holiness',
@@ -678,7 +678,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 51,
-        date: '2025-02-20',
+        date: '2025-02-19',
         passages: [{ book: 'Leviticus', chapters: '22-23' }],
         historicalContext: {
           period: 'Sacred Time',
@@ -688,7 +688,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 52,
-        date: '2025-02-21',
+        date: '2025-02-20',
         passages: [{ book: 'Leviticus', chapters: '24-25' }],
         historicalContext: {
           period: 'Light and Darkness',
@@ -698,7 +698,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 53,
-        date: '2025-02-22',
+        date: '2025-02-21',
         passages: [{ book: 'Leviticus', chapters: '26-27' }],
         historicalContext: {
           period: 'Covenant Blessings',
@@ -708,7 +708,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 54,
-        date: '2025-02-23',
+        date: '2025-02-22',
         passages: [{ book: 'Numbers', chapters: '1-2' }],
         historicalContext: {
           period: 'Wilderness Organization',
@@ -718,7 +718,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 55,
-        date: '2025-02-24',
+        date: '2025-02-23',
         passages: [{ book: 'Numbers', chapters: '3-4' }],
         historicalContext: {
           period: 'Levitical Service',
@@ -729,7 +729,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 56,
-        date: '2025-02-25',
+        date: '2025-02-24',
         passages: [{ book: 'Numbers', chapters: '5-6' }],
         historicalContext: {
           period: 'Purity and Nazirite Vow',
@@ -740,7 +740,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 57,
-        date: '2025-02-26',
+        date: '2025-02-25',
         passages: [{ book: 'Numbers', chapters: '7' }],
         historicalContext: {
           period: 'Tribal Offerings',
@@ -750,7 +750,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 58,
-        date: '2025-02-27',
+        date: '2025-02-26',
         passages: [{ book: 'Numbers', chapters: '8-10' }],
         historicalContext: {
           period: 'Levitical Service Organization',
@@ -761,7 +761,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 59,
-        date: '2025-02-28',
+        date: '2025-02-27',
         passages: [{ book: 'Numbers', chapters: '11-13' }],
         historicalContext: {
           period: 'Wilderness Complaint',
@@ -771,7 +771,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 60,
-        date: '2025-03-01',
+        date: '2025-02-28',
         passages: [{ book: 'Numbers', chapters: '14-15' }, { book: 'Psalm', chapters: '90' }],
         historicalContext: {
           period: 'Wilderness Consequences',
@@ -781,7 +781,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 61,
-        date: '2025-03-02',
+        date: '2025-03-01',
         passages: [{ book: 'Numbers', chapters: '16-17' }],
         historicalContext: {
           period: 'Leadership Rebellion',
@@ -792,7 +792,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 62,
-        date: '2025-03-03',
+        date: '2025-03-02',
         passages: [{ book: 'Numbers', chapters: '18-20' }],
         historicalContext: {
           period: 'Priestly Provision',
@@ -802,7 +802,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 63,
-        date: '2025-03-04',
+        date: '2025-03-03',
         passages: [{ book: 'Numbers', chapters: '21-22' }],
         historicalContext: {
           period: 'Kingdom Journey',
@@ -812,7 +812,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 64,
-        date: '2025-03-05',
+        date: '2025-03-04',
         passages: [{ book: 'Numbers', chapters: '23-25' }],
         historicalContext: {
           period: 'Divine Prophecy',
@@ -822,7 +822,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 65,
-        date: '2025-03-06',
+        date: '2025-03-05',
         passages: [{ book: 'Numbers', chapters: '26-27' }],
         historicalContext: {
           period: 'Wilderness Census',
@@ -832,7 +832,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 66,
-        date: '2025-03-07',
+        date: '2025-03-06',
         passages: [{ book: 'Numbers', chapters: '28-30' }],
         historicalContext: {
           period: 'Covenant Remembrance',
@@ -842,7 +842,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 67,
-        date: '2025-03-08',
+        date: '2025-03-07',
         passages: [{ book: 'Numbers', chapters: '31-32' }],
         historicalContext: {
           period: 'Midianite Judgment',
@@ -852,7 +852,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 68,
-        date: '2025-03-09',
+        date: '2025-03-08',
         passages: [{ book: 'Numbers', chapters: '33-34' }],
         historicalContext: {
           period: 'Journey Review',
@@ -862,7 +862,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 69,
-        date: '2025-03-10',
+        date: '2025-03-09',
         passages: [{ book: 'Numbers', chapters: '35-36' }],
         historicalContext: {
           period: 'Tribal Inheritance',
@@ -872,7 +872,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 70,
-        date: '2025-03-11',
+        date: '2025-03-10',
         passages: [{ book: 'Deuteronomy', chapters: '1-2' }],
         historicalContext: {
           period: 'Covenant Renewal',
@@ -883,7 +883,7 @@ export class LogosAcademicProvider {
       // Days 71-89: Completion of Deuteronomy - Covenant Instructions
       {
         day: 71,
-        date: '2025-03-12',
+        date: '2025-03-11',
         passages: [{ book: 'Deuteronomy', chapters: '3-4' }],
         historicalContext: {
           period: 'Conquest Preparation',
@@ -893,7 +893,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 72,
-        date: '2025-03-13',
+        date: '2025-03-12',
         passages: [{ book: 'Deuteronomy', chapters: '5-7' }],
         historicalContext: {
           period: 'Law Renewal',
@@ -903,7 +903,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 73,
-        date: '2025-03-14',
+        date: '2025-03-13',
         passages: [{ book: 'Deuteronomy', chapters: '8-10' }],
         historicalContext: {
           period: 'Wilderness Lessons',
@@ -913,7 +913,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 74,
-        date: '2025-03-15',
+        date: '2025-03-14',
         passages: [{ book: 'Deuteronomy', chapters: '11-13' }],
         historicalContext: {
           period: 'Blessing and Curse',
@@ -923,7 +923,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 75,
-        date: '2025-03-16',
+        date: '2025-03-15',
         passages: [{ book: 'Deuteronomy', chapters: '14-16' }],
         historicalContext: {
           period: 'Holy Living',
@@ -933,7 +933,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 76,
-        date: '2025-03-17',
+        date: '2025-03-16',
         passages: [{ book: 'Deuteronomy', chapters: '17-19' }],
         historicalContext: {
           period: 'Justice and Kingship',
@@ -943,7 +943,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 77,
-        date: '2025-03-18',
+        date: '2025-03-17',
         passages: [{ book: 'Deuteronomy', chapters: '20-21' }],
         historicalContext: {
           period: 'Holy Warfare',
@@ -953,7 +953,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 78,
-        date: '2025-03-19',
+        date: '2025-03-18',
         passages: [{ book: 'Deuteronomy', chapters: '22-23' }],
         historicalContext: {
           period: 'Social Sanctity',
@@ -963,7 +963,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 79,
-        date: '2025-03-20',
+        date: '2025-03-19',
         passages: [{ book: 'Deuteronomy', chapters: '24-25' }],
         historicalContext: {
           period: 'Justice and Mercy',
@@ -973,7 +973,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 80,
-        date: '2025-03-21',
+        date: '2025-03-20',
         passages: [{ book: 'Deuteronomy', chapters: '26-27' }],
         historicalContext: {
           period: 'Covenant Confirmation',
@@ -983,7 +983,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 81,
-        date: '2025-03-22',
+        date: '2025-03-21',
         passages: [{ book: 'Deuteronomy', chapters: '28-29' }],
         historicalContext: {
           period: 'Covenant Consequences',
@@ -993,7 +993,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 82,
-        date: '2025-03-23',
+        date: '2025-03-22',
         passages: [{ book: 'Deuteronomy', chapters: '30-31' }],
         historicalContext: {
           period: 'Restoration and Succession',
@@ -1003,7 +1003,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 83,
-        date: '2025-03-24',
+        date: '2025-03-23',
         passages: [{ book: 'Deuteronomy', chapters: '32' }],
         historicalContext: {
           period: 'Covenant Song',
@@ -1013,7 +1013,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 84,
-        date: '2025-03-25',
+        date: '2025-03-24',
         passages: [{ book: 'Deuteronomy', chapters: '33' }],
         historicalContext: {
           period: 'Patriarchal Blessings',
@@ -1023,7 +1023,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 85,
-        date: '2025-03-26',
+        date: '2025-03-25',
         passages: [{ book: 'Deuteronomy', chapters: '34' }],
         historicalContext: {
           period: 'Mosaic Era Conclusion',
@@ -1035,7 +1035,7 @@ export class LogosAcademicProvider {
       // Days 86-120: Month 4 - Joshua and Judges (Conquest and Settlement)
       {
         day: 86,
-        date: '2025-03-27',
+        date: '2025-03-26',
         passages: [{ book: 'Joshua', chapters: '1-3' }],
         historicalContext: {
           period: 'Conquest Initiation',
@@ -1045,7 +1045,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 87,
-        date: '2025-03-28',
+        date: '2025-03-27',
         passages: [{ book: 'Joshua', chapters: '4-6' }],
         historicalContext: {
           period: 'Memorial and Conquest',
@@ -1055,7 +1055,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 88,
-        date: '2025-03-29',
+        date: '2025-03-28',
         passages: [{ book: 'Joshua', chapters: '7-9' }],
         historicalContext: {
           period: 'Conquest Challenges',
@@ -1065,7 +1065,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 89,
-        date: '2025-03-30',
+        date: '2025-03-29',
         passages: [{ book: 'Joshua', chapters: '10-12' }],
         historicalContext: {
           period: 'Southern and Northern Conquests',
@@ -1077,7 +1077,7 @@ export class LogosAcademicProvider {
       // Days 90-120: Month 4 Continued - Joshua, Judges, Ruth
       {
         day: 90,
-        date: '2025-03-31',
+        date: '2025-03-30',
         passages: [{ book: 'Joshua', chapters: '13-15' }],
         historicalContext: {
           period: 'Land Allotment',
@@ -1087,7 +1087,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 91,
-        date: '2025-04-01',
+        date: '2025-03-31',
         passages: [{ book: 'Joshua', chapters: '16-18' }],
         historicalContext: {
           period: 'Joseph and Central Tribes',
@@ -1097,7 +1097,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 92,
-        date: '2025-04-02',
+        date: '2025-04-01',
         passages: [{ book: 'Joshua', chapters: '19-21' }],
         historicalContext: {
           period: 'Final Inheritances',
@@ -1107,7 +1107,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 93,
-        date: '2025-04-03',
+        date: '2025-04-02',
         passages: [{ book: 'Joshua', chapters: '22-24' }],
         historicalContext: {
           period: 'Covenant Renewal',
@@ -1117,7 +1117,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 94,
-        date: '2025-04-04',
+        date: '2025-04-03',
         passages: [{ book: 'Judges', chapters: '1-2' }],
         historicalContext: {
           period: 'Judges Era Beginning',
@@ -1127,7 +1127,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 95,
-        date: '2025-04-05',
+        date: '2025-04-04',
         passages: [{ book: 'Judges', chapters: '3-4' }],
         historicalContext: {
           period: 'Early Judges',
@@ -1137,7 +1137,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 96,
-        date: '2025-04-06',
+        date: '2025-04-05',
         passages: [{ book: 'Judges', chapters: '5-6' }],
         historicalContext: {
           period: 'Deborah and Barak',
@@ -1147,7 +1147,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 97,
-        date: '2025-04-07',
+        date: '2025-04-06',
         passages: [{ book: 'Judges', chapters: '7-8' }],
         historicalContext: {
           period: 'Gideon\'s Deliverance',
@@ -1157,7 +1157,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 98,
-        date: '2025-04-08',
+        date: '2025-04-07',
         passages: [{ book: 'Judges', chapters: '9-10' }],
         historicalContext: {
           period: 'Abimelech and Minor Judges',
@@ -1167,7 +1167,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 99,
-        date: '2025-04-09',
+        date: '2025-04-08',
         passages: [{ book: 'Judges', chapters: '11-12' }],
         historicalContext: {
           period: 'Jephthah and Civil War',
@@ -1177,7 +1177,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 100,
-        date: '2025-04-10',
+        date: '2025-04-09',
         passages: [{ book: 'Judges', chapters: '13-14' }],
         historicalContext: {
           period: 'Samson\'s Beginning',
@@ -1187,7 +1187,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 101,
-        date: '2025-04-11',
+        date: '2025-04-10',
         passages: [{ book: 'Judges', chapters: '15-16' }],
         historicalContext: {
           period: 'Samson\'s Fall and Victory',
@@ -1197,7 +1197,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 102,
-        date: '2025-04-12',
+        date: '2025-04-11',
         passages: [{ book: 'Judges', chapters: '17-18' }],
         historicalContext: {
           period: 'Religious Corruption',
@@ -1207,7 +1207,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 103,
-        date: '2025-04-13',
+        date: '2025-04-12',
         passages: [{ book: 'Judges', chapters: '19-21' }],
         historicalContext: {
           period: 'Social Breakdown',
@@ -1217,7 +1217,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 104,
-        date: '2025-04-14',
+        date: '2025-04-13',
         passages: [{ book: 'Ruth', chapters: '1-4' }],
         historicalContext: {
           period: 'Redemption Narrative',
@@ -1229,7 +1229,7 @@ export class LogosAcademicProvider {
       // Days 105-135: Month 5 - 1 Samuel and Early Monarchy
       {
         day: 105,
-        date: '2025-04-15',
+        date: '2025-04-14',
         passages: [{ book: '1 Samuel', chapters: '1-3' }],
         historicalContext: {
           period: 'Samuel\'s Birth and Calling',
@@ -1239,7 +1239,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 106,
-        date: '2025-04-16',
+        date: '2025-04-15',
         passages: [{ book: '1 Samuel', chapters: '4-6' }],
         historicalContext: {
           period: 'Ark Captivity and Return',
@@ -1249,7 +1249,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 107,
-        date: '2025-04-17',
+        date: '2025-04-16',
         passages: [{ book: '1 Samuel', chapters: '7-9' }],
         historicalContext: {
           period: 'Samuel\'s Leadership and Kingship Demand',
@@ -1259,7 +1259,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 108,
-        date: '2025-04-18',
+        date: '2025-04-17',
         passages: [{ book: '1 Samuel', chapters: '10-12' }],
         historicalContext: {
           period: 'Saul\'s Coronation',
@@ -1269,7 +1269,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 109,
-        date: '2025-04-19',
+        date: '2025-04-18',
         passages: [{ book: '1 Samuel', chapters: '13-14' }],
         historicalContext: {
           period: 'Saul\'s Early Reign',
@@ -1279,7 +1279,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 110,
-        date: '2025-04-20',
+        date: '2025-04-19',
         passages: [{ book: '1 Samuel', chapters: '15-16' }],
         historicalContext: {
           period: 'Saul\'s Rejection and David\'s Anointing',
@@ -1289,7 +1289,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 111,
-        date: '2025-04-21',
+        date: '2025-04-20',
         passages: [{ book: '1 Samuel', chapters: '17-18' }],
         historicalContext: {
           period: 'David-Goliath Victory',
@@ -1299,7 +1299,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 112,
-        date: '2025-04-22',
+        date: '2025-04-21',
         passages: [{ book: '1 Samuel', chapters: '19-20' }],
         historicalContext: {
           period: 'Saul\'s Persecution',
@@ -1309,7 +1309,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 113,
-        date: '2025-04-23',
+        date: '2025-04-22',
         passages: [{ book: '1 Samuel', chapters: '21-22' }],
         historicalContext: {
           period: 'Priesthood Tragedy',
@@ -1319,7 +1319,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 114,
-        date: '2025-04-24',
+        date: '2025-04-23',
         passages: [{ book: '1 Samuel', chapters: '23-24' }],
         historicalContext: {
           period: 'David\'s Integrity',
@@ -1329,7 +1329,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 115,
-        date: '2025-04-25',
+        date: '2025-04-24',
         passages: [{ book: '1 Samuel', chapters: '25-27' }],
         historicalContext: {
           period: 'Wilderness Testing',
@@ -1339,7 +1339,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 116,
-        date: '2025-04-26',
+        date: '2025-04-25',
         passages: [{ book: '1 Samuel', chapters: '28-31' }],
         historicalContext: {
           period: 'Kingdom Transition Complete',
@@ -1351,7 +1351,7 @@ export class LogosAcademicProvider {
       // Days 117-150: Month 6 - 2 Samuel and David\'s Reign
       {
         day: 117,
-        date: '2025-04-27',
+        date: '2025-04-26',
         passages: [{ book: '2 Samuel', chapters: '1-3' }],
         historicalContext: {
           period: 'David\'s Lament and Hebron Reign',
@@ -1361,7 +1361,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 118,
-        date: '2025-04-28',
+        date: '2025-04-27',
         passages: [{ book: '2 Samuel', chapters: '4-6' }],
         historicalContext: {
           period: 'Kingdom Unification',
@@ -1371,7 +1371,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 119,
-        date: '2025-04-29',
+        date: '2025-04-28',
         passages: [{ book: '2 Samuel', chapters: '7-9' }],
         historicalContext: {
           period: 'Davidic Covenant',
@@ -1381,7 +1381,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 120,
-        date: '2025-04-30',
+        date: '2025-04-29',
         passages: [{ book: '2 Samuel', chapters: '10-12' }],
         historicalContext: {
           period: 'Royal Success and Sin',
@@ -1393,7 +1393,7 @@ export class LogosAcademicProvider {
       // Days 121-180: Month 7-8 - United Kingdom Complete (David through Kingdom Division)
       {
         day: 121,
-        date: '2025-05-01',
+        date: '2025-04-30',
         passages: [{ book: '2 Samuel', chapters: '13-14' }],
         historicalContext: {
           period: 'David\'s Family Crisis',
@@ -1403,7 +1403,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 122,
-        date: '2025-05-02',
+        date: '2025-05-01',
         passages: [{ book: '2 Samuel', chapters: '15-16' }],
         historicalContext: {
           period: 'Absalom\'s Rebellion',
@@ -1413,7 +1413,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 123,
-        date: '2025-05-03',
+        date: '2025-05-02',
         passages: [{ book: '2 Samuel', chapters: '17-18' }],
         historicalContext: {
           period: 'Battle and Tragedy',
@@ -1423,7 +1423,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 124,
-        date: '2025-05-04',
+        date: '2025-05-03',
         passages: [{ book: '2 Samuel', chapters: '19-20' }],
         historicalContext: {
           period: 'David\'s Restoration',
@@ -1433,7 +1433,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 125,
-        date: '2025-05-05',
+        date: '2025-05-04',
         passages: [{ book: '2 Samuel', chapters: '21-22' }],
         historicalContext: {
           period: 'Final Judgments and Praise',
@@ -1443,7 +1443,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 126,
-        date: '2025-05-06',
+        date: '2025-05-05',
         passages: [{ book: '2 Samuel', chapters: '23-24' }],
         historicalContext: {
           period: 'David\'s Final Words',
@@ -1453,7 +1453,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 127,
-        date: '2025-05-07',
+        date: '2025-05-06',
         passages: [{ book: '1 Kings', chapters: '1-2' }],
         historicalContext: {
           period: 'Solomon\'s Accession',
@@ -1463,7 +1463,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 128,
-        date: '2025-05-08',
+        date: '2025-05-07',
         passages: [{ book: '1 Kings', chapters: '3-4' }],
         historicalContext: {
           period: 'Solomon\'s Wisdom',
@@ -1473,7 +1473,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 129,
-        date: '2025-05-09',
+        date: '2025-05-08',
         passages: [{ book: '1 Kings', chapters: '5-6' }],
         historicalContext: {
           period: 'Temple Preparation',
@@ -1483,7 +1483,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 130,
-        date: '2025-05-10',
+        date: '2025-05-09',
         passages: [{ book: '1 Kings', chapters: '7-8' }],
         historicalContext: {
           period: 'Temple Completion',
@@ -1493,7 +1493,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 131,
-        date: '2025-05-11',
+        date: '2025-05-10',
         passages: [{ book: '1 Kings', chapters: '9-10' }],
         historicalContext: {
           period: 'Dedication and Fame',
@@ -1503,7 +1503,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 132,
-        date: '2025-05-12',
+        date: '2025-05-11',
         passages: [{ book: '1 Kings', chapters: '11-12' }],
         historicalContext: {
           period: 'Kingdom Division',
@@ -1513,7 +1513,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 133,
-        date: '2025-05-13',
+        date: '2025-05-12',
         passages: [{ book: '1 Kings', chapters: '13-14' }],
         historicalContext: {
           period: 'Early Divided Kingdom',
@@ -1523,7 +1523,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 134,
-        date: '2025-05-14',
+        date: '2025-05-13',
         passages: [{ book: '1 Kings', chapters: '15-16' }],
         historicalContext: {
           period: 'Dynastic Instability',
@@ -1533,7 +1533,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 135,
-        date: '2025-05-15',
+        date: '2025-05-14',
         passages: [{ book: '1 Kings', chapters: '17-18' }],
         historicalContext: {
           period: 'Elijah\'s Ministry',
@@ -1543,7 +1543,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 136,
-        date: '2025-05-16',
+        date: '2025-05-15',
         passages: [{ book: '1 Kings', chapters: '19-20' }],
         historicalContext: {
           period: 'Divine Encouragement',
@@ -1553,7 +1553,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 137,
-        date: '2025-05-17',
+        date: '2025-05-16',
         passages: [{ book: '1 Kings', chapters: '21-22' }],
         historicalContext: {
           period: 'Ahab\'s Wickedness',
@@ -1563,7 +1563,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 138,
-        date: '2025-05-18',
+        date: '2025-05-17',
         passages: [{ book: '2 Kings', chapters: '1-3' }],
         historicalContext: {
           period: 'Elisha\'s Succession',
@@ -1573,7 +1573,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 139,
-        date: '2025-05-19',
+        date: '2025-05-18',
         passages: [{ book: '2 Kings', chapters: '4-6' }],
         historicalContext: {
           period: 'Elisha\'s Miracles',
@@ -1583,7 +1583,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 140,
-        date: '2025-05-20',
+        date: '2025-05-19',
         passages: [{ book: '2 Kings', chapters: '7-9' }],
         historicalContext: {
           period: 'Syrian Siege Relief',
@@ -1593,7 +1593,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 141,
-        date: '2025-05-21',
+        date: '2025-05-20',
         passages: [{ book: '2 Kings', chapters: '10-12' }],
         historicalContext: {
           period: 'Jehu\'s Revolution',
@@ -1603,7 +1603,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 142,
-        date: '2025-05-22',
+        date: '2025-05-21',
         passages: [{ book: '2 Kings', chapters: '13-15' }],
         historicalContext: {
           period: 'Declining Kingdoms',
@@ -1613,7 +1613,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 143,
-        date: '2025-05-23',
+        date: '2025-05-22',
         passages: [{ book: '2 Kings', chapters: '16-17' }],
         historicalContext: {
           period: 'Northern Kingdom Fall',
@@ -1623,7 +1623,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 144,
-        date: '2025-05-24',
+        date: '2025-05-23',
         passages: [{ book: '2 Kings', chapters: '18-20' }],
         historicalContext: {
           period: 'Hezekiah\'s Faith',
@@ -1633,7 +1633,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 145,
-        date: '2025-05-25',
+        date: '2025-05-24',
         passages: [{ book: '2 Kings', chapters: '21-23' }],
         historicalContext: {
           period: 'Manasseh and Josiah',
@@ -1643,7 +1643,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 146,
-        date: '2025-05-26',
+        date: '2025-05-25',
         passages: [{ book: '2 Kings', chapters: '24-25' }],
         historicalContext: {
           period: 'Judah\'s Final Days',
@@ -1655,7 +1655,7 @@ export class LogosAcademicProvider {
       // Days 147-180: Month 9 - Chronicles and Exile Literature
       {
         day: 147,
-        date: '2025-05-27',
+        date: '2025-05-26',
         passages: [{ book: '1 Chronicles', chapters: '1-4' }],
         historicalContext: {
           period: 'Genealogical Foundation',
@@ -1665,7 +1665,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 148,
-        date: '2025-05-28',
+        date: '2025-05-27',
         passages: [{ book: '1 Chronicles', chapters: '5-8' }],
         historicalContext: {
           period: 'Tribal Histories',
@@ -1675,7 +1675,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 149,
-        date: '2025-05-29',
+        date: '2025-05-28',
         passages: [{ book: '1 Chronicles', chapters: '9-11' }],
         historicalContext: {
           period: 'Jerusalem and David',
@@ -1685,7 +1685,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 150,
-        date: '2025-05-30',
+        date: '2025-05-29',
         passages: [{ book: '1 Chronicles', chapters: '12-14' }],
         historicalContext: {
           period: 'David\'s Kingdom Rise',
@@ -1695,7 +1695,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 151,
-        date: '2025-05-31',
+        date: '2025-05-30',
         passages: [{ book: '1 Chronicles', chapters: '15-17' }],
         historicalContext: {
           period: 'Davidic Covenant',
@@ -1705,7 +1705,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 152,
-        date: '2025-06-01',
+        date: '2025-05-31',
         passages: [{ book: '1 Chronicles', chapters: '18-20' }],
         historicalContext: {
           period: 'David\'s Conquests',
@@ -1715,7 +1715,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 153,
-        date: '2025-06-02',
+        date: '2025-06-01',
         passages: [{ book: '1 Chronicles', chapters: '21-23' }],
         historicalContext: {
           period: 'Temple Preparation',
@@ -1725,7 +1725,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 154,
-        date: '2025-06-03',
+        date: '2025-06-02',
         passages: [{ book: '1 Chronicles', chapters: '24-26' }],
         historicalContext: {
           period: 'Priestly Organization',
@@ -1735,7 +1735,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 155,
-        date: '2025-06-04',
+        date: '2025-06-03',
         passages: [{ book: '1 Chronicles', chapters: '27-29' }],
         historicalContext: {
           period: 'David\'s Final Provision',
@@ -1745,7 +1745,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 156,
-        date: '2025-06-05',
+        date: '2025-06-04',
         passages: [{ book: '2 Chronicles', chapters: '1-3' }],
         historicalContext: {
           period: 'Solomon\'s Temple',
@@ -1755,7 +1755,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 157,
-        date: '2025-06-06',
+        date: '2025-06-05',
         passages: [{ book: '2 Chronicles', chapters: '4-6' }],
         historicalContext: {
           period: 'Temple Completion',
@@ -1765,7 +1765,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 158,
-        date: '2025-06-07',
+        date: '2025-06-06',
         passages: [{ book: '2 Chronicles', chapters: '7-9' }],
         historicalContext: {
           period: 'Early Kingdom Prosperity',
@@ -1775,7 +1775,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 159,
-        date: '2025-06-08',
+        date: '2025-06-07',
         passages: [{ book: '2 Chronicles', chapters: '10-12' }],
         historicalContext: {
           period: 'Kingdom Division',
@@ -1785,7 +1785,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 160,
-        date: '2025-06-09',
+        date: '2025-06-08',
         passages: [{ book: '2 Chronicles', chapters: '13-15' }],
         historicalContext: {
           period: 'Southern Kingdom Kings',
@@ -1795,7 +1795,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 161,
-        date: '2025-06-10',
+        date: '2025-06-09',
         passages: [{ book: '2 Chronicles', chapters: '16-18' }],
         historicalContext: {
           period: 'Asa through Jehoshaphat',
@@ -1805,7 +1805,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 162,
-        date: '2025-06-11',
+        date: '2025-06-10',
         passages: [{ book: '2 Chronicles', chapters: '19-21' }],
         historicalContext: {
           period: 'Jehoshaphat and Jehoram',
@@ -1815,7 +1815,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 163,
-        date: '2025-06-12',
+        date: '2025-06-11',
         passages: [{ book: '2 Chronicles', chapters: '22-24' }],
         historicalContext: {
           period: 'Athaliah and Joash',
@@ -1825,7 +1825,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 164,
-        date: '2025-06-13',
+        date: '2025-06-12',
         passages: [{ book: '2 Chronicles', chapters: '25-27' }],
         historicalContext: {
           period: 'Amaziah, Uzziah, Jotham',
@@ -1835,7 +1835,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 165,
-        date: '2025-06-14',
+        date: '2025-06-13',
         passages: [{ book: '2 Chronicles', chapters: '28-30' }],
         historicalContext: {
           period: 'Ahaz and Hezekiah',
@@ -1845,7 +1845,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 166,
-        date: '2025-06-15',
+        date: '2025-06-14',
         passages: [{ book: '2 Chronicles', chapters: '31-33' }],
         historicalContext: {
           period: 'Hezekiah and Manasseh',
@@ -1855,7 +1855,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 167,
-        date: '2025-06-16',
+        date: '2025-06-15',
         passages: [{ book: '2 Chronicles', chapters: '34-36' }],
         historicalContext: {
           period: 'Josiah and Kingdom Fall',
@@ -1867,7 +1867,7 @@ export class LogosAcademicProvider {
       // Days 168-180: Month 10 - Ezra, Nehemiah, and Return
       {
         day: 168,
-        date: '2025-06-17',
+        date: '2025-06-16',
         passages: [{ book: 'Ezra', chapters: '1-3' }],
         historicalContext: {
           period: 'First Return',
@@ -1877,7 +1877,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 169,
-        date: '2025-06-18',
+        date: '2025-06-17',
         passages: [{ book: 'Ezra', chapters: '4-6' }],
         historicalContext: {
           period: 'Temple Opposition',
@@ -1887,7 +1887,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 170,
-        date: '2025-06-19',
+        date: '2025-06-18',
         passages: [{ book: 'Ezra', chapters: '7-8' }],
         historicalContext: {
           period: 'Ezra\'s Return',
@@ -1897,7 +1897,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 171,
-        date: '2025-06-20',
+        date: '2025-06-19',
         passages: [{ book: 'Ezra', chapters: '9-10' }],
         historicalContext: {
           period: 'Intermarriage Crisis',
@@ -1907,7 +1907,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 172,
-        date: '2025-06-21',
+        date: '2025-06-20',
         passages: [{ book: 'Nehemiah', chapters: '1-3' }],
         historicalContext: {
           period: 'Nehemiah\'s Calling',
@@ -1917,7 +1917,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 173,
-        date: '2025-06-22',
+        date: '2025-06-21',
         passages: [{ book: 'Nehemiah', chapters: '4-6' }],
         historicalContext: {
           period: 'Wall Construction',
@@ -1927,7 +1927,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 174,
-        date: '2025-06-23',
+        date: '2025-06-22',
         passages: [{ book: 'Nehemiah', chapters: '7-9' }],
         historicalContext: {
           period: 'Community Organization',
@@ -1937,7 +1937,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 175,
-        date: '2025-06-24',
+        date: '2025-06-23',
         passages: [{ book: 'Nehemiah', chapters: '10-12' }],
         historicalContext: {
           period: 'Covenant Implementation',
@@ -1947,7 +1947,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 176,
-        date: '2025-06-25',
+        date: '2025-06-24',
         passages: [{ book: 'Nehemiah', chapters: '13' }],
         historicalContext: {
           period: 'Final Reforms',
@@ -1957,7 +1957,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 177,
-        date: '2025-06-26',
+        date: '2025-06-25',
         passages: [{ book: 'Esther', chapters: '1-4' }],
         historicalContext: {
           period: 'Persian Protection',
@@ -1967,7 +1967,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 178,
-        date: '2025-06-27',
+        date: '2025-06-26',
         passages: [{ book: 'Esther', chapters: '5-7' }],
         historicalContext: {
           period: 'Divine Reversal',
@@ -1977,7 +1977,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 179,
-        date: '2025-06-28',
+        date: '2025-06-27',
         passages: [{ book: 'Esther', chapters: '8-10' }],
         historicalContext: {
           period: 'Jewish Deliverance',
@@ -1987,7 +1987,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 180,
-        date: '2025-06-29',
+        date: '2025-06-28',
         passages: [{ book: 'Job', chapters: '1-3' }],
         historicalContext: {
           period: 'Wisdom Literature Context',
@@ -1999,7 +1999,7 @@ export class LogosAcademicProvider {
       // Days 181-210: Month 11 - Wisdom Literature and Major Prophets
       {
         day: 181,
-        date: '2025-06-30',
+        date: '2025-06-29',
         passages: [{ book: 'Job', chapters: '4-7' }],
         historicalContext: {
           period: 'Friends Counseling',
@@ -2009,7 +2009,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 182,
-        date: '2025-07-01',
+        date: '2025-06-30',
         passages: [{ book: 'Job', chapters: '8-11' }],
         historicalContext: {
           period: 'Wisdom Dialogue',
@@ -2019,7 +2019,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 183,
-        date: '2025-07-02',
+        date: '2025-07-01',
         passages: [{ book: 'Job', chapters: '12-15' }],
         historicalContext: {
           period: 'Divine Sovereignty',
@@ -2029,7 +2029,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 184,
-        date: '2025-07-03',
+        date: '2025-07-02',
         passages: [{ book: 'Job', chapters: '16-19' }],
         historicalContext: {
           period: 'Suffering Deepens',
@@ -2039,7 +2039,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 185,
-        date: '2025-07-04',
+        date: '2025-07-03',
         passages: [{ book: 'Job', chapters: '20-23' }],
         historicalContext: {
           period: 'Traditional Wisdom',
@@ -2049,7 +2049,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 186,
-        date: '2025-07-05',
+        date: '2025-07-04',
         passages: [{ book: 'Job', chapters: '24-28' }],
         historicalContext: {
           period: 'Injustice Observation',
@@ -2059,7 +2059,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 187,
-        date: '2025-07-06',
+        date: '2025-07-05',
         passages: [{ book: 'Job', chapters: '29-31' }],
         historicalContext: {
           period: 'Job\'s Defense',
@@ -2069,7 +2069,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 188,
-        date: '2025-07-07',
+        date: '2025-07-06',
         passages: [{ book: 'Job', chapters: '32-34' }],
         historicalContext: {
           period: 'Elihu\'s Wisdom',
@@ -2079,7 +2079,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 189,
-        date: '2025-07-08',
+        date: '2025-07-07',
         passages: [{ book: 'Job', chapters: '35-37' }],
         historicalContext: {
           period: 'Divine Teaching',
@@ -2089,7 +2089,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 190,
-        date: '2025-07-09',
+        date: '2025-07-08',
         passages: [{ book: 'Job', chapters: '38-39' }],
         historicalContext: {
           period: 'Divine Response',
@@ -2099,7 +2099,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 191,
-        date: '2025-07-10',
+        date: '2025-07-09',
         passages: [{ book: 'Job', chapters: '40-42' }],
         historicalContext: {
           period: 'Divine Restoration',
@@ -2109,7 +2109,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 192,
-        date: '2025-07-11',
+        date: '2025-07-10',
         passages: [{ book: 'Psalms', chapters: '1-10' }],
         historicalContext: {
           period: 'Wisdom and Lament',
@@ -2119,7 +2119,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 193,
-        date: '2025-07-12',
+        date: '2025-07-11',
         passages: [{ book: 'Psalms', chapters: '11-20' }],
         historicalContext: {
           period: 'Trust and Thanksgiving',
@@ -2129,7 +2129,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 194,
-        date: '2025-07-13',
+        date: '2025-07-12',
         passages: [{ book: 'Psalms', chapters: '21-30' }],
         historicalContext: {
           period: 'Kingship and Suffering',
@@ -2139,7 +2139,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 195,
-        date: '2025-07-14',
+        date: '2025-07-13',
         passages: [{ book: 'Psalms', chapters: '31-40' }],
         historicalContext: {
           period: 'Lament and Praise',
@@ -2149,7 +2149,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 196,
-        date: '2025-07-15',
+        date: '2025-07-14',
         passages: [{ book: 'Psalms', chapters: '41-50' }],
         historicalContext: {
           period: 'Community and Messiah',
@@ -2159,7 +2159,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 197,
-        date: '2025-07-16',
+        date: '2025-07-15',
         passages: [{ book: 'Psalms', chapters: '51-60' }],
         historicalContext: {
           period: 'Repentance and Refuge',
@@ -2169,7 +2169,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 198,
-        date: '2025-07-17',
+        date: '2025-07-16',
         passages: [{ book: 'Psalms', chapters: '61-70' }],
         historicalContext: {
           period: 'Aging and Salvation',
@@ -2179,7 +2179,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 199,
-        date: '2025-07-18',
+        date: '2025-07-17',
         passages: [{ book: 'Psalms', chapters: '71-80' }],
         historicalContext: {
           period: 'Wisdom History',
@@ -2189,7 +2189,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 200,
-        date: '2025-07-19',
+        date: '2025-07-18',
         passages: [{ book: 'Psalms', chapters: '81-90' }],
         historicalContext: {
           period: 'Covenant and Refuge',
@@ -2199,7 +2199,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 201,
-        date: '2025-07-20',
+        date: '2025-07-19',
         passages: [{ book: 'Psalms', chapters: '91-100' }],
         historicalContext: {
           period: 'Divine Protection',
@@ -2209,7 +2209,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 202,
-        date: '2025-07-21',
+        date: '2025-07-20',
         passages: [{ book: 'Psalms', chapters: '101-110' }],
         historicalContext: {
           period: 'Kingship and Messiah',
@@ -2219,7 +2219,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 203,
-        date: '2025-07-22',
+        date: '2025-07-21',
         passages: [{ book: 'Psalms', chapters: '111-120' }],
         historicalContext: {
           period: 'Wisdom and Deliverance',
@@ -2229,7 +2229,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 204,
-        date: '2025-07-23',
+        date: '2025-07-22',
         passages: [{ book: 'Psalms', chapters: '121-130' }],
         historicalContext: {
           period: 'Pilgrimage and Distress',
@@ -2239,7 +2239,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 205,
-        date: '2025-07-24',
+        date: '2025-07-23',
         passages: [{ book: 'Psalms', chapters: '131-140' }],
         historicalContext: {
           period: 'Humility and Lament',
@@ -2249,7 +2249,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 206,
-        date: '2025-07-25',
+        date: '2025-07-24',
         passages: [{ book: 'Psalms', chapters: '141-150' }],
         historicalContext: {
           period: 'Praise and Conquest',
@@ -2259,7 +2259,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 207,
-        date: '2025-07-26',
+        date: '2025-07-25',
         passages: [{ book: 'Proverbs', chapters: '1-5' }],
         historicalContext: {
           period: 'Foundational Wisdom',
@@ -2269,7 +2269,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 208,
-        date: '2025-07-27',
+        date: '2025-07-26',
         passages: [{ book: 'Proverbs', chapters: '6-10' }],
         historicalContext: {
           period: 'Practical Wisdom',
@@ -2279,7 +2279,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 209,
-        date: '2025-07-28',
+        date: '2025-07-27',
         passages: [{ book: 'Proverbs', chapters: '11-15' }],
         historicalContext: {
           period: 'Character Development',
@@ -2289,7 +2289,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 210,
-        date: '2025-07-29',
+        date: '2025-07-28',
         passages: [{ book: 'Proverbs', chapters: '16-20' }],
         historicalContext: {
           period: 'Divine Sovereignty',
@@ -2301,7 +2301,7 @@ export class LogosAcademicProvider {
       // Days 211-240: Month 12 - Major Prophets and Remaining Wisdom
       {
         day: 211,
-        date: '2025-07-30',
+        date: '2025-07-29',
         passages: [{ book: 'Proverbs', chapters: '21-25' }],
         historicalContext: {
           period: 'Social Justice',
@@ -2311,7 +2311,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 212,
-        date: '2025-07-31',
+        date: '2025-07-30',
         passages: [{ book: 'Proverbs', chapters: '26-31' }],
         historicalContext: {
           period: 'Complete Wisdom',
@@ -2321,7 +2321,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 213,
-        date: '2025-08-01',
+        date: '2025-07-31',
         passages: [{ book: 'Ecclesiastes', chapters: '1-4' }],
         historicalContext: {
           period: 'Life\'s Meaning',
@@ -2331,7 +2331,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 214,
-        date: '2025-08-02',
+        date: '2025-08-01',
         passages: [{ book: 'Ecclesiastes', chapters: '5-8' }],
         historicalContext: {
           period: 'Wisdom in Worship',
@@ -2341,7 +2341,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 215,
-        date: '2025-08-03',
+        date: '2025-08-02',
         passages: [{ book: 'Ecclesiastes', chapters: '9-12' }],
         historicalContext: {
           period: 'Life\'s Conclusion',
@@ -2351,7 +2351,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 216,
-        date: '2025-08-04',
+        date: '2025-08-03',
         passages: [{ book: 'Song of Songs', chapters: '1-4' }],
         historicalContext: {
           period: 'Divine Romance',
@@ -2361,7 +2361,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 217,
-        date: '2025-08-05',
+        date: '2025-08-04',
         passages: [{ book: 'Song of Songs', chapters: '5-8' }],
         historicalContext: {
           period: 'Love\'s Perfection',
@@ -2371,7 +2371,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 218,
-        date: '2025-08-06',
+        date: '2025-08-05',
         passages: [{ book: 'Isaiah', chapters: '1-4' }],
         historicalContext: {
           period: 'Isaiah\'s Calling',
@@ -2381,7 +2381,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 219,
-        date: '2025-08-07',
+        date: '2025-08-06',
         passages: [{ book: 'Isaiah', chapters: '5-8' }],
         historicalContext: {
           period: 'Judgment and Hope',
@@ -2391,7 +2391,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 220,
-        date: '2025-08-08',
+        date: '2025-08-07',
         passages: [{ book: 'Isaiah', chapters: '9-12' }],
         historicalContext: {
           period: 'Messiah\'s Kingdom',
@@ -2401,7 +2401,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 221,
-        date: '2025-08-09',
+        date: '2025-08-08',
         passages: [{ book: 'Isaiah', chapters: '13-16' }],
         historicalContext: {
           period: 'Babylon Judgment',
@@ -2411,7 +2411,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 222,
-        date: '2025-08-10',
+        date: '2025-08-09',
         passages: [{ book: 'Isaiah', chapters: '17-20' }],
         historicalContext: {
           period: 'Egypt and Cush',
@@ -2421,7 +2421,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 223,
-        date: '2025-08-11',
+        date: '2025-08-10',
         passages: [{ book: 'Isaiah', chapters: '21-24' }],
         historicalContext: {
           period: 'Prophetic Oracles',
@@ -2431,7 +2431,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 224,
-        date: '2025-08-12',
+        date: '2025-08-11',
         passages: [{ book: 'Isaiah', chapters: '25-27' }],
         historicalContext: {
           period: 'Divine Celebration',
@@ -2441,7 +2441,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 225,
-        date: '2025-08-13',
+        date: '2025-08-12',
         passages: [{ book: 'Isaiah', chapters: '28-30' }],
         historicalContext: {
           period: 'Woe to Ephraim',
@@ -2451,7 +2451,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 226,
-        date: '2025-08-14',
+        date: '2025-08-13',
         passages: [{ book: 'Isaiah', chapters: '31-33' }],
         historicalContext: {
           period: 'Trust in God Alone',
@@ -2461,7 +2461,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 227,
-        date: '2025-08-15',
+        date: '2025-08-14',
         passages: [{ book: 'Isaiah', chapters: '34-36' }],
         historicalContext: {
           period: 'Edom Judgment',
@@ -2471,7 +2471,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 228,
-        date: '2025-08-16',
+        date: '2025-08-15',
         passages: [{ book: 'Isaiah', chapters: '37-39' }],
         historicalContext: {
           period: 'Hezekiah Faith',
@@ -2481,7 +2481,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 229,
-        date: '2025-08-17',
+        date: '2025-08-16',
         passages: [{ book: 'Isaiah', chapters: '40-42' }],
         historicalContext: {
           period: 'Comfort and Servant',
@@ -2491,7 +2491,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 230,
-        date: '2025-08-18',
+        date: '2025-08-17',
         passages: [{ book: 'Isaiah', chapters: '43-45' }],
         historicalContext: {
           period: 'Divine Redemption',
@@ -2501,7 +2501,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 231,
-        date: '2025-08-19',
+        date: '2025-08-18',
         passages: [{ book: 'Isaiah', chapters: '46-48' }],
         historicalContext: {
           period: 'Babylon Judgment',
@@ -2511,7 +2511,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 232,
-        date: '2025-08-20',
+        date: '2025-08-19',
         passages: [{ book: 'Isaiah', chapters: '49-51' }],
         historicalContext: {
           period: 'Servant Salvation',
@@ -2521,7 +2521,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 233,
-        date: '2025-08-21',
+        date: '2025-08-20',
         passages: [{ book: 'Isaiah', chapters: '52-54' }],
         historicalContext: {
           period: 'Suffering Servant',
@@ -2531,7 +2531,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 234,
-        date: '2025-08-22',
+        date: '2025-08-21',
         passages: [{ book: 'Isaiah', chapters: '55-57' }],
         historicalContext: {
           period: 'Grace Invitation',
@@ -2541,7 +2541,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 235,
-        date: '2025-08-23',
+        date: '2025-08-22',
         passages: [{ book: 'Isaiah', chapters: '58-60' }],
         historicalContext: {
           period: 'True Worship',
@@ -2551,7 +2551,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 236,
-        date: '2025-08-24',
+        date: '2025-08-23',
         passages: [{ book: 'Isaiah', chapters: '61-63' }],
         historicalContext: {
           period: 'Messiah\'s Mission',
@@ -2561,7 +2561,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 237,
-        date: '2025-08-25',
+        date: '2025-08-24',
         passages: [{ book: 'Isaiah', chapters: '64-66' }],
         historicalContext: {
           period: 'New Creation',
@@ -2571,7 +2571,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 238,
-        date: '2025-08-26',
+        date: '2025-08-25',
         passages: [{ book: 'Jeremiah', chapters: '1-4' }],
         historicalContext: {
           period: 'Prophet\'s Calling',
@@ -2581,7 +2581,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 239,
-        date: '2025-08-27',
+        date: '2025-08-26',
         passages: [{ book: 'Jeremiah', chapters: '5-7' }],
         historicalContext: {
           period: 'Judah Corruption',
@@ -2591,7 +2591,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 240,
-        date: '2025-08-28',
+        date: '2025-08-27',
         passages: [{ book: 'Jeremiah', chapters: '8-10' }],
         historicalContext: {
           period: 'Impending Judgment',
@@ -2603,7 +2603,7 @@ export class LogosAcademicProvider {
       // Days 241-270: Month 13 - Jeremiah, Lamentations, Ezekiel
       {
         day: 241,
-        date: '2025-08-29',
+        date: '2025-08-28',
         passages: [{ book: 'Jeremiah', chapters: '11-13' }],
         historicalContext: {
           period: 'Covenant Broken',
@@ -2613,7 +2613,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 242,
-        date: '2025-08-30',
+        date: '2025-08-29',
         passages: [{ book: 'Jeremiah', chapters: '14-16' }],
         historicalContext: {
           period: 'Drought Warning',
@@ -2623,7 +2623,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 243,
-        date: '2025-08-31',
+        date: '2025-08-30',
         passages: [{ book: 'Jeremiah', chapters: '17-19' }],
         historicalContext: {
           period: 'Heart Deceitful',
@@ -2633,7 +2633,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 244,
-        date: '2025-09-01',
+        date: '2025-08-31',
         passages: [{ book: 'Jeremiah', chapters: '20-22' }],
         historicalContext: {
           period: 'Persecution and Kings',
@@ -2643,7 +2643,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 245,
-        date: '2025-09-02',
+        date: '2025-09-01',
         passages: [{ book: 'Jeremiah', chapters: '23-25' }],
         historicalContext: {
           period: 'Righteous Branch',
@@ -2653,7 +2653,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 246,
-        date: '2025-09-03',
+        date: '2025-09-02',
         passages: [{ book: 'Jeremiah', chapters: '26-28' }],
         historicalContext: {
           period: 'Temple Warning',
@@ -2663,7 +2663,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 247,
-        date: '2025-09-04',
+        date: '2025-09-03',
         passages: [{ book: 'Jeremiah', chapters: '29-31' }],
         historicalContext: {
           period: 'Exile and New Covenant',
@@ -2673,7 +2673,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 248,
-        date: '2025-09-05',
+        date: '2025-09-04',
         passages: [{ book: 'Jeremiah', chapters: '32-34' }],
         historicalContext: {
           period: 'Field Purchase',
@@ -2683,7 +2683,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 249,
-        date: '2025-09-06',
+        date: '2025-09-05',
         passages: [{ book: 'Jeremiah', chapters: '35-37' }],
         historicalContext: {
           period: 'Recabites and Kings',
@@ -2693,7 +2693,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 250,
-        date: '2025-09-07',
+        date: '2025-09-06',
         passages: [{ book: 'Jeremiah', chapters: '38-40' }],
         historicalContext: {
           period: 'Jerusalem Fall',
@@ -2703,7 +2703,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 251,
-        date: '2025-09-08',
+        date: '2025-09-07',
         passages: [{ book: 'Jeremiah', chapters: '41-43' }],
         historicalContext: {
           period: 'Post-Exile Rebellion',
@@ -2713,7 +2713,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 252,
-        date: '2025-09-09',
+        date: '2025-09-08',
         passages: [{ book: 'Jeremiah', chapters: '44-46' }],
         historicalContext: {
           period: 'Egypt Judgment',
@@ -2723,7 +2723,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 253,
-        date: '2025-09-10',
+        date: '2025-09-09',
         passages: [{ book: 'Jeremiah', chapters: '47-49' }],
         historicalContext: {
           period: 'Nations Judgment',
@@ -2733,7 +2733,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 254,
-        date: '2025-09-11',
+        date: '2025-09-10',
         passages: [{ book: 'Jeremiah', chapters: '50-52' }],
         historicalContext: {
           period: 'Babylon Judgment',
@@ -2743,7 +2743,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 255,
-        date: '2025-09-12',
+        date: '2025-09-11',
         passages: [{ book: 'Lamentations', chapters: '1-5' }],
         historicalContext: {
           period: 'Jerusalem Mourning',
@@ -2753,7 +2753,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 256,
-        date: '2025-09-13',
+        date: '2025-09-12',
         passages: [{ book: 'Ezekiel', chapters: '1-3' }],
         historicalContext: {
           period: 'Prophet\'s Vision',
@@ -2763,7 +2763,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 257,
-        date: '2025-09-14',
+        date: '2025-09-13',
         passages: [{ book: 'Ezekiel', chapters: '4-7' }],
         historicalContext: {
           period: 'Prophetic Signs',
@@ -2773,7 +2773,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 258,
-        date: '2025-09-15',
+        date: '2025-09-14',
         passages: [{ book: 'Ezekiel', chapters: '8-10' }],
         historicalContext: {
           period: 'Temple Abominations',
@@ -2783,7 +2783,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 259,
-        date: '2025-09-16',
+        date: '2025-09-15',
         passages: [{ book: 'Ezekiel', chapters: '11-13' }],
         historicalContext: {
           period: 'Judgment and False Prophets',
@@ -2793,7 +2793,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 260,
-        date: '2025-09-17',
+        date: '2025-09-16',
         passages: [{ book: 'Ezekiel', chapters: '14-16' }],
         historicalContext: {
           period: 'Individual Responsibility',
@@ -2803,7 +2803,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 261,
-        date: '2025-09-18',
+        date: '2025-09-17',
         passages: [{ book: 'Ezekiel', chapters: '17-19' }],
         historicalContext: {
           period: 'Kingship Parables',
@@ -2813,7 +2813,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 262,
-        date: '2025-09-19',
+        date: '2025-09-18',
         passages: [{ book: 'Ezekiel', chapters: '20-22' }],
         historicalContext: {
           period: 'Israel History',
@@ -2823,7 +2823,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 263,
-        date: '2025-09-20',
+        date: '2025-09-19',
         passages: [{ book: 'Ezekiel', chapters: '23-24' }],
         historicalContext: {
           period: 'Sisters Judah Samaria',
@@ -2833,7 +2833,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 264,
-        date: '2025-09-21',
+        date: '2025-09-20',
         passages: [{ book: 'Ezekiel', chapters: '25-27' }],
         historicalContext: {
           period: 'Surrounding Nations',
@@ -2843,7 +2843,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 265,
-        date: '2025-09-22',
+        date: '2025-09-21',
         passages: [{ book: 'Ezekiel', chapters: '28-30' }],
         historicalContext: {
           period: 'Pride and Egypt',
@@ -2853,7 +2853,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 266,
-        date: '2025-09-23',
+        date: '2025-09-22',
         passages: [{ book: 'Ezekiel', chapters: '31-33' }],
         historicalContext: {
           period: 'Watchman Warning',
@@ -2863,7 +2863,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 267,
-        date: '2025-09-24',
+        date: '2025-09-23',
         passages: [{ book: 'Ezekiel', chapters: '34-36' }],
         historicalContext: {
           period: 'Shepherd and Restoration',
@@ -2873,7 +2873,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 268,
-        date: '2025-09-25',
+        date: '2025-09-24',
         passages: [{ book: 'Ezekiel', chapters: '37-39' }],
         historicalContext: {
           period: 'Resurrection and Gog',
@@ -2883,7 +2883,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 269,
-        date: '2025-09-26',
+        date: '2025-09-25',
         passages: [{ book: 'Ezekiel', chapters: '40-42' }],
         historicalContext: {
           period: 'Millennial Temple',
@@ -2893,7 +2893,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 270,
-        date: '2025-09-27',
+        date: '2025-09-26',
         passages: [{ book: 'Ezekiel', chapters: '43-45' }],
         historicalContext: {
           period: 'Divine Glory',
@@ -2905,7 +2905,7 @@ export class LogosAcademicProvider {
       // Days 271-300: Month 14 - Ezekiel Completion, Daniel, Minor Prophets
       {
         day: 271,
-        date: '2025-09-28',
+        date: '2025-09-27',
         passages: [{ book: 'Ezekiel', chapters: '46-48' }],
         historicalContext: {
           period: 'Kingdom Order',
@@ -2915,7 +2915,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 272,
-        date: '2025-09-29',
+        date: '2025-09-28',
         passages: [{ book: 'Daniel', chapters: '1-3' }],
         historicalContext: {
           period: 'Babylonian Captivity',
@@ -2925,7 +2925,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 273,
-        date: '2025-09-30',
+        date: '2025-09-29',
         passages: [{ book: 'Daniel', chapters: '4-6' }],
         historicalContext: {
           period: 'Divine Sovereignty',
@@ -2935,7 +2935,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 274,
-        date: '2025-10-01',
+        date: '2025-09-30',
         passages: [{ book: 'Daniel', chapters: '7-9' }],
         historicalContext: {
           period: 'Future Empires',
@@ -2945,7 +2945,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 275,
-        date: '2025-10-02',
+        date: '2025-10-01',
         passages: [{ book: 'Daniel', chapters: '10-12' }],
         historicalContext: {
           period: 'End Times',
@@ -2955,7 +2955,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 276,
-        date: '2025-10-03',
+        date: '2025-10-02',
         passages: [{ book: 'Hosea', chapters: '1-4' }],
         historicalContext: {
           period: 'Northern Kingdom',
@@ -2965,7 +2965,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 277,
-        date: '2025-10-04',
+        date: '2025-10-03',
         passages: [{ book: 'Hosea', chapters: '5-7' }],
         historicalContext: {
           period: 'Israel Judgment',
@@ -2975,7 +2975,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 278,
-        date: '2025-10-05',
+        date: '2025-10-04',
         passages: [{ book: 'Hosea', chapters: '8-10' }],
         historicalContext: {
           period: 'Idolatry Consequences',
@@ -2985,7 +2985,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 279,
-        date: '2025-10-06',
+        date: '2025-10-05',
         passages: [{ book: 'Hosea', chapters: '11-14' }],
         historicalContext: {
           period: 'Everlasting Love',
@@ -2995,7 +2995,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 280,
-        date: '2025-10-07',
+        date: '2025-10-06',
         passages: [{ book: 'Joel', chapters: '1-3' }],
         historicalContext: {
           period: 'Locust Plague',
@@ -3005,7 +3005,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 281,
-        date: '2025-10-08',
+        date: '2025-10-07',
         passages: [{ book: 'Amos', chapters: '1-4' }],
         historicalContext: {
           period: 'Social Justice',
@@ -3015,7 +3015,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 282,
-        date: '2025-10-09',
+        date: '2025-10-08',
         passages: [{ book: 'Amos', chapters: '5-7' }],
         historicalContext: {
           period: 'Day of Lord',
@@ -3025,7 +3025,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 283,
-        date: '2025-10-10',
+        date: '2025-10-09',
         passages: [{ book: 'Amos', chapters: '8-9' }],
         historicalContext: {
           period: 'Vision Completion',
@@ -3035,7 +3035,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 284,
-        date: '2025-10-11',
+        date: '2025-10-10',
         passages: [{ book: 'Obadiah', chapters: '1' }],
         historicalContext: {
           period: 'Edom Judgment',
@@ -3045,7 +3045,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 285,
-        date: '2025-10-12',
+        date: '2025-10-11',
         passages: [{ book: 'Jonah', chapters: '1-4' }],
         historicalContext: {
           period: 'Nineveh Repentance',
@@ -3055,7 +3055,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 286,
-        date: '2025-10-13',
+        date: '2025-10-12',
         passages: [{ book: 'Micah', chapters: '1-3' }],
         historicalContext: {
           period: 'Justice and Peace',
@@ -3065,7 +3065,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 287,
-        date: '2025-10-14',
+        date: '2025-10-13',
         passages: [{ book: 'Micah', chapters: '4-5' }],
         historicalContext: {
           period: 'Future Kingdom',
@@ -3075,7 +3075,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 288,
-        date: '2025-10-15',
+        date: '2025-10-14',
         passages: [{ book: 'Micah', chapters: '6-7' }],
         historicalContext: {
           period: 'True Worship',
@@ -3085,7 +3085,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 289,
-        date: '2025-10-16',
+        date: '2025-10-15',
         passages: [{ book: 'Nahum', chapters: '1-3' }],
         historicalContext: {
           period: 'Nineveh Destruction',
@@ -3095,7 +3095,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 290,
-        date: '2025-10-17',
+        date: '2025-10-16',
         passages: [{ book: 'Habakkuk', chapters: '1-3' }],
         historicalContext: {
           period: 'Faith Questions',
@@ -3105,7 +3105,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 291,
-        date: '2025-10-18',
+        date: '2025-10-17',
         passages: [{ book: 'Zephaniah', chapters: '1-3' }],
         historicalContext: {
           period: 'Day of Lord',
@@ -3115,7 +3115,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 292,
-        date: '2025-10-19',
+        date: '2025-10-18',
         passages: [{ book: 'Haggai', chapters: '1-2' }],
         historicalContext: {
           period: 'Temple Rebuilding',
@@ -3125,7 +3125,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 293,
-        date: '2025-10-20',
+        date: '2025-10-19',
         passages: [{ book: 'Zechariah', chapters: '1-4' }],
         historicalContext: {
           period: 'Vision Series',
@@ -3135,7 +3135,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 294,
-        date: '2025-10-21',
+        date: '2025-10-20',
         passages: [{ book: 'Zechariah', chapters: '5-7' }],
         historicalContext: {
           period: 'Continued Visions',
@@ -3145,7 +3145,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 295,
-        date: '2025-10-22',
+        date: '2025-10-21',
         passages: [{ book: 'Zechariah', chapters: '8-10' }],
         historicalContext: {
           period: 'Future Jerusalem',
@@ -3155,7 +3155,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 296,
-        date: '2025-10-23',
+        date: '2025-10-22',
         passages: [{ book: 'Zechariah', chapters: '11-12' }],
         historicalContext: {
           period: 'Rejection and Piercing',
@@ -3165,7 +3165,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 297,
-        date: '2025-10-24',
+        date: '2025-10-23',
         passages: [{ book: 'Zechariah', chapters: '13-14' }],
         historicalContext: {
           period: 'Messianic Kingdom',
@@ -3175,7 +3175,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 298,
-        date: '2025-10-25',
+        date: '2025-10-24',
         passages: [{ book: 'Malachi', chapters: '1-4' }],
         historicalContext: {
           period: 'Post-Exile Reform',
@@ -3185,7 +3185,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 299,
-        date: '2025-10-26',
+        date: '2025-10-25',
         passages: [{ book: 'Matthew', chapters: '1-4' }],
         historicalContext: {
           period: 'Messiah\'s Arrival',
@@ -3195,7 +3195,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 300,
-        date: '2025-10-27',
+        date: '2025-10-26',
         passages: [{ book: 'Matthew', chapters: '5-7' }],
         historicalContext: {
           period: 'Sermon on Mount',
@@ -3207,7 +3207,7 @@ export class LogosAcademicProvider {
       // Days 301-365: Months 15-16 - Complete New Testament
       {
         day: 301,
-        date: '2025-10-28',
+        date: '2025-10-27',
         passages: [{ book: 'Matthew', chapters: '8-10' }],
         historicalContext: {
           period: 'Kingdom Power',
@@ -3217,7 +3217,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 302,
-        date: '2025-10-29',
+        date: '2025-10-28',
         passages: [{ book: 'Matthew', chapters: '11-13' }],
         historicalContext: {
           period: 'Kingdom Mysteries',
@@ -3227,7 +3227,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 303,
-        date: '2025-10-30',
+        date: '2025-10-29',
         passages: [{ book: 'Matthew', chapters: '14-16' }],
         historicalContext: {
           period: 'Rejection and Revelation',
@@ -3237,7 +3237,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 304,
-        date: '2025-10-31',
+        date: '2025-10-30',
         passages: [{ book: 'Matthew', chapters: '17-19' }],
         historicalContext: {
           period: 'Glory and Teaching',
@@ -3247,7 +3247,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 305,
-        date: '2025-11-01',
+        date: '2025-10-31',
         passages: [{ book: 'Matthew', chapters: '20-22' }],
         historicalContext: {
           period: 'Kingdom Service',
@@ -3257,7 +3257,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 306,
-        date: '2025-11-02',
+        date: '2025-11-01',
         passages: [{ book: 'Matthew', chapters: '23-25' }],
         historicalContext: {
           period: 'Judgment Prophecies',
@@ -3267,7 +3267,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 307,
-        date: '2025-11-03',
+        date: '2025-11-02',
         passages: [{ book: 'Matthew', chapters: '26-28' }],
         historicalContext: {
           period: 'Death and Resurrection',
@@ -3277,7 +3277,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 308,
-        date: '2025-11-04',
+        date: '2025-11-03',
         passages: [{ book: 'Mark', chapters: '1-4' }],
         historicalContext: {
           period: 'Miracle Ministry',
@@ -3287,7 +3287,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 309,
-        date: '2025-11-05',
+        date: '2025-11-04',
         passages: [{ book: 'Mark', chapters: '5-8' }],
         historicalContext: {
           period: 'Miracle Power',
@@ -3297,7 +3297,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 310,
-        date: '2025-11-06',
+        date: '2025-11-05',
         passages: [{ book: 'Mark', chapters: '9-12' }],
         historicalContext: {
           period: 'Teaching and Conflict',
@@ -3307,7 +3307,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 311,
-        date: '2025-11-07',
+        date: '2025-11-06',
         passages: [{ book: 'Mark', chapters: '13-16' }],
         historicalContext: {
           period: 'End Times and Victory',
@@ -3317,7 +3317,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 312,
-        date: '2025-11-08',
+        date: '2025-11-07',
         passages: [{ book: 'Luke', chapters: '1-3' }],
         historicalContext: {
           period: 'Birth Preparation',
@@ -3327,7 +3327,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 313,
-        date: '2025-11-09',
+        date: '2025-11-08',
         passages: [{ book: 'Luke', chapters: '4-6' }],
         historicalContext: {
           period: 'Galilean Ministry',
@@ -3337,7 +3337,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 314,
-        date: '2025-11-10',
+        date: '2025-11-09',
         passages: [{ book: 'Luke', chapters: '7-9' }],
         historicalContext: {
           period: 'Ministry Expansion',
@@ -3347,7 +3347,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 315,
-        date: '2025-11-11',
+        date: '2025-11-10',
         passages: [{ book: 'Luke', chapters: '10-12' }],
         historicalContext: {
           period: 'Discipleship Training',
@@ -3357,7 +3357,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 316,
-        date: '2025-11-12',
+        date: '2025-11-11',
         passages: [{ book: 'Luke', chapters: '13-15' }],
         historicalContext: {
           period: 'Salvation Universal',
@@ -3367,7 +3367,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 317,
-        date: '2025-11-13',
+        date: '2025-11-12',
         passages: [{ book: 'Luke', chapters: '16-18' }],
         historicalContext: {
           period: 'Kingdom Priorities',
@@ -3377,7 +3377,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 318,
-        date: '2025-11-14',
+        date: '2025-11-13',
         passages: [{ book: 'Luke', chapters: '19-21' }],
         historicalContext: {
           period: 'Jerusalem Ministry',
@@ -3387,7 +3387,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 319,
-        date: '2025-11-15',
+        date: '2025-11-14',
         passages: [{ book: 'Luke', chapters: '22-24' }],
         historicalContext: {
           period: 'Passion Victory',
@@ -3397,7 +3397,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 320,
-        date: '2025-11-16',
+        date: '2025-11-15',
         passages: [{ book: 'John', chapters: '1-3' }],
         historicalContext: {
           period: 'Divine Sonship',
@@ -3407,7 +3407,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 321,
-        date: '2025-11-17',
+        date: '2025-11-16',
         passages: [{ book: 'John', chapters: '4-6' }],
         historicalContext: {
           period: 'Living Water',
@@ -3417,7 +3417,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 322,
-        date: '2025-11-18',
+        date: '2025-11-17',
         passages: [{ book: 'John', chapters: '7-9' }],
         historicalContext: {
           period: 'Light of World',
@@ -3427,7 +3427,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 323,
-        date: '2025-11-19',
+        date: '2025-11-18',
         passages: [{ book: 'John', chapters: '10-12' }],
         historicalContext: {
           period: 'Life and Death',
@@ -3437,7 +3437,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 324,
-        date: '2025-11-20',
+        date: '2025-11-19',
         passages: [{ book: 'John', chapters: '13-15' }],
         historicalContext: {
           period: 'Upper Room Discourse',
@@ -3447,7 +3447,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 325,
-        date: '2025-11-21',
+        date: '2025-11-20',
         passages: [{ book: 'John', chapters: '16-18' }],
         historicalContext: {
           period: 'High Priestly Prayer',
@@ -3457,7 +3457,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 326,
-        date: '2025-11-22',
+        date: '2025-11-21',
         passages: [{ book: 'John', chapters: '19-21' }],
         historicalContext: {
           period: 'Crucifixion and Commission',
@@ -3467,7 +3467,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 327,
-        date: '2025-11-23',
+        date: '2025-11-22',
         passages: [{ book: 'Acts', chapters: '1-5' }],
         historicalContext: {
           period: 'Church Birth',
@@ -3477,7 +3477,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 328,
-        date: '2025-11-24',
+        date: '2025-11-23',
         passages: [{ book: 'Acts', chapters: '6-9' }],
         historicalContext: {
           period: 'Church Expansion',
@@ -3487,7 +3487,7 @@ export class LogosAcademicProvider {
       },
       {
         day: 329,
-        date: '2025-11-25',
+        date: '2025-11-24',
         passages: [{ book: 'Acts', chapters: '10-13' }],
         historicalContext: {
           period: 'Gentile Mission',
@@ -3497,6 +3497,16 @@ export class LogosAcademicProvider {
       },
       {
         day: 330,
+        date: '2025-11-25',
+        passages: [{ book: 'James', chapters: '1-5' }],
+        historicalContext: {
+          period: 'Practical Faith',
+          approximateDate: 'AD 45-48',
+          description: 'Living faith - Trials producing perseverance, controlling tongue, caring for orphans and widows, faith without works dead, prayer power'
+        }
+      },
+      {
+        day: 331,
         date: '2025-11-26',
         passages: [{ book: 'Acts', chapters: '14-16' }],
         historicalContext: {
@@ -3506,7 +3516,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 331,
+        day: 332,
         date: '2025-11-27',
         passages: [{ book: 'Acts', chapters: '17-19' }],
         historicalContext: {
@@ -3516,7 +3526,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 332,
+        day: 333,
         date: '2025-11-28',
         passages: [{ book: 'Acts', chapters: '20-22' }],
         historicalContext: {
@@ -3526,7 +3536,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 333,
+        day: 334,
         date: '2025-11-29',
         passages: [{ book: 'Acts', chapters: '23-25' }],
         historicalContext: {
@@ -3536,7 +3546,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 334,
+        day: 335,
         date: '2025-11-30',
         passages: [{ book: 'Acts', chapters: '26-28' }],
         historicalContext: {
@@ -3546,7 +3556,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 335,
+        day: 336,
         date: '2025-12-01',
         passages: [{ book: 'Romans', chapters: '1-5' }],
         historicalContext: {
@@ -3556,7 +3566,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 336,
+        day: 337,
         date: '2025-12-02',
         passages: [{ book: 'Romans', chapters: '6-8' }],
         historicalContext: {
@@ -3566,7 +3576,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 337,
+        day: 338,
         date: '2025-12-03',
         passages: [{ book: 'Romans', chapters: '9-11' }],
         historicalContext: {
@@ -3576,7 +3586,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 338,
+        day: 339,
         date: '2025-12-04',
         passages: [{ book: 'Romans', chapters: '12-14' }],
         historicalContext: {
@@ -3586,7 +3596,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 339,
+        day: 340,
         date: '2025-12-05',
         passages: [{ book: '1 Corinthians', chapters: '1-5' }],
         historicalContext: {
@@ -3596,7 +3606,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 340,
+        day: 341,
         date: '2025-12-06',
         passages: [{ book: '1 Corinthians', chapters: '6-9' }],
         historicalContext: {
@@ -3606,7 +3616,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 341,
+        day: 342,
         date: '2025-12-07',
         passages: [{ book: '1 Corinthians', chapters: '10-13' }],
         historicalContext: {
@@ -3616,7 +3626,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 342,
+        day: 343,
         date: '2025-12-08',
         passages: [{ book: '1 Corinthians', chapters: '14-16' }],
         historicalContext: {
@@ -3626,7 +3636,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 343,
+        day: 344,
         date: '2025-12-09',
         passages: [{ book: '2 Corinthians', chapters: '1-5' }],
         historicalContext: {
@@ -3636,7 +3646,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 344,
+        day: 345,
         date: '2025-12-10',
         passages: [{ book: '2 Corinthians', chapters: '6-9' }],
         historicalContext: {
@@ -3646,7 +3656,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 345,
+        day: 346,
         date: '2025-12-11',
         passages: [{ book: '2 Corinthians', chapters: '10-13' }],
         historicalContext: {
@@ -3656,7 +3666,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 346,
+        day: 347,
         date: '2025-12-12',
         passages: [{ book: 'Galatians', chapters: '1-4' }],
         historicalContext: {
@@ -3666,7 +3676,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 347,
+        day: 348,
         date: '2025-12-13',
         passages: [{ book: 'Galatians', chapters: '5-6' }],
         historicalContext: {
@@ -3676,7 +3686,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 348,
+        day: 349,
         date: '2025-12-14',
         passages: [{ book: 'Ephesians', chapters: '1-4' }],
         historicalContext: {
@@ -3686,7 +3696,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 349,
+        day: 350,
         date: '2025-12-15',
         passages: [{ book: 'Ephesians', chapters: '5-6' }],
         historicalContext: {
@@ -3696,7 +3706,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 350,
+        day: 351,
         date: '2025-12-16',
         passages: [{ book: 'Philippians', chapters: '1-4' }],
         historicalContext: {
@@ -3706,7 +3716,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 351,
+        day: 352,
         date: '2025-12-17',
         passages: [{ book: 'Colossians', chapters: '1-4' }],
         historicalContext: {
@@ -3716,7 +3726,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 352,
+        day: 353,
         date: '2025-12-18',
         passages: [{ book: '1 Thessalonians', chapters: '1-5' }],
         historicalContext: {
@@ -3726,7 +3736,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 353,
+        day: 354,
         date: '2025-12-19',
         passages: [{ book: '2 Thessalonians', chapters: '1-3' }],
         historicalContext: {
@@ -3736,7 +3746,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 354,
+        day: 355,
         date: '2025-12-20',
         passages: [{ book: '1 Timothy', chapters: '1-6' }],
         historicalContext: {
@@ -3746,7 +3756,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 355,
+        day: 356,
         date: '2025-12-21',
         passages: [{ book: '2 Timothy', chapters: '1-4' }],
         historicalContext: {
@@ -3756,7 +3766,7 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 356,
+        day: 357,
         date: '2025-12-22',
         passages: [{ book: 'Titus', chapters: '1-3' }],
         historicalContext: {
@@ -3766,8 +3776,18 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 357,
+        day: 358,
         date: '2025-12-23',
+        passages: [{ book: '1 Peter', chapters: '1-5' }],
+        historicalContext: {
+          period: 'Suffering Glory',
+          approximateDate: 'AD 64-65',
+          description: 'Victorious suffering - Living hope through resurrection, holy living, suffering for righteousness, submission to authorities, resisting devil'
+        }
+      },
+      {
+        day: 359,
+        date: '2025-12-24',
         passages: [{ book: 'Philemon', chapters: '1' }],
         historicalContext: {
           period: 'Christian Brotherhood',
@@ -3776,8 +3796,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 358,
-        date: '2025-12-24',
+        day: 360,
+        date: '2025-12-25',
         passages: [{ book: 'Hebrews', chapters: '1-4' }],
         historicalContext: {
           period: 'Christ Superiority',
@@ -3786,8 +3806,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 359,
-        date: '2025-12-25',
+        day: 361,
+        date: '2025-12-26',
         passages: [{ book: 'Hebrews', chapters: '5-8' }],
         historicalContext: {
           period: 'Perfect High Priest',
@@ -3796,8 +3816,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 360,
-        date: '2025-12-26',
+        day: 362,
+        date: '2025-12-27',
         passages: [{ book: 'Hebrews', chapters: '9-10' }],
         historicalContext: {
           period: 'Perfect Sacrifice',
@@ -3806,8 +3826,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 361,
-        date: '2025-12-27',
+        day: 363,
+        date: '2025-12-28',
         passages: [{ book: 'Hebrews', chapters: '11-13' }],
         historicalContext: {
           period: 'Faith Heroes',
@@ -3816,8 +3836,48 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 362,
-        date: '2025-12-28',
+        day: 364,
+        date: '2025-12-29',
+        passages: [{ book: '2 Peter', chapters: '1-3' }, { book: 'Jude', chapters: '1' }],
+        historicalContext: {
+          period: 'Apostasy Warning',
+          approximateDate: 'AD 66-68',
+          description: 'True knowledge and false teachers - Divine power for godliness, false teachers condemnation, end times scoffers, new heavens and new earth, contending for the faith'
+        }
+      },
+      {
+        day: 365,
+        date: '2025-12-30',
+        passages: [{ book: '1 John', chapters: '1-5' }],
+        historicalContext: {
+          period: 'Fellowship and Love',
+          approximateDate: 'AD 85-95',
+          description: 'Walking in light - Fellowship with God and believers, testing the spirits, love one another, assurance of salvation, knowing God through love'
+        }
+      },
+      {
+        day: 366,
+        date: '2025-12-31',
+        passages: [{ book: '2 John', chapters: '1' }],
+        historicalContext: {
+          period: 'Truth and Love',
+          approximateDate: 'AD 85-95',
+          description: 'Walking in truth - Love in truth, walking in Christ\'s commandments, warning against deceivers, refusing false teachers'
+        }
+      },
+      {
+        day: 367,
+        date: '2026-01-01',
+        passages: [{ book: '3 John', chapters: '1' }],
+        historicalContext: {
+          period: 'Hospitality and Support',
+          approximateDate: 'AD 85-95',
+          description: 'Supporting the truth - Commendation for hospitality, Diotrephes pride warning, Demetrius good testimony, peace and greeting'
+        }
+      },
+      {
+        day: 368,
+        date: '2026-01-02',
         passages: [{ book: 'Revelation', chapters: '1-5' }],
         historicalContext: {
           period: 'Apocalypse Begins',
@@ -3826,8 +3886,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 363,
-        date: '2025-12-29',
+        day: 369,
+        date: '2026-01-03',
         passages: [{ book: 'Revelation', chapters: '6-11' }],
         historicalContext: {
           period: 'Seal and Trumpet Judgments',
@@ -3836,8 +3896,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 364,
-        date: '2025-12-30',
+        day: 370,
+        date: '2026-01-04',
         passages: [{ book: 'Revelation', chapters: '12-18' }],
         historicalContext: {
           period: 'Cosmic Conflict',
@@ -3846,8 +3906,8 @@ export class LogosAcademicProvider {
         }
       },
       {
-        day: 365,
-        date: '2025-12-31',
+        day: 371,
+        date: '2026-01-05',
         passages: [{ book: 'Revelation', chapters: '19-22' }],
         historicalContext: {
           period: 'Consummation',
