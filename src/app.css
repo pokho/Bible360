@@ -130,6 +130,10 @@
   color: white;
   padding: 1.5rem;
   text-align: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .comparison-header h2 {
@@ -409,6 +413,39 @@
 
   .bible360-content {
     padding: 1rem 0.5rem;
+  }
+
+  .comparison-header {
+    padding: 1rem;
+    max-width: 100vw;
+    word-wrap: break-word;
+  }
+
+  .comparison-header h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .plan-legend {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .legend-item {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .legend-item small {
+    width: 100%;
+    font-size: 0.75rem;
+    opacity: 0.8;
   }
 
   .comparison-table {
