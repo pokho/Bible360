@@ -102,7 +102,8 @@
 }
 
 .sc-close-button,
-.sc-export-button {
+.sc-export-button,
+.sc-settings-button {
   background: none;
   border: none;
   color: white;
@@ -113,11 +114,13 @@
 }
 
 .sc-close-button:hover,
-.sc-export-button:hover {
+.sc-export-button:hover,
+.sc-settings-button:hover {
   opacity: 1;
 }
 
-.sc-export-button {
+.sc-export-button,
+.sc-settings-button {
   margin-left: 8px;
 }
 
@@ -254,9 +257,142 @@
   text-align: center;
 }
 
+/* Settings Modal Styles */
+.sc-settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  font-family: var(--sc-font);
+}
+
+.sc-settings-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.sc-settings-content h4 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sc-setting-group {
+  margin-bottom: 20px;
+}
+
+.sc-setting-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.sc-setting-group input[type="password"],
+.sc-setting-group input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.sc-setting-group input:focus {
+  border-color: var(--sc-primary-color);
+}
+
+.sc-setting-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: white;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.sc-setting-group select:focus {
+  border-color: var(--sc-primary-color);
+}
+
+.sc-setting-group small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.sc-setting-group small a {
+  color: var(--sc-primary-color);
+  text-decoration: none;
+}
+
+.sc-setting-group small a:hover {
+  text-decoration: underline;
+}
+
+.sc-settings-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.sc-settings-actions button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.sc-settings-actions button:first-child {
+  background: var(--sc-primary-color);
+  color: white;
+}
+
+.sc-settings-actions button:first-child:hover {
+  opacity: 0.9;
+}
+
+.sc-settings-actions button:last-child {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.sc-settings-actions button:last-child:hover {
+  background: #e5e7eb;
+}
+
 @media (max-width: 480px) {
   .sc-chat-window {
     width: calc(100vw - 40px);
     height: calc(100vh - 120px);
+  }
+
+  .sc-settings-content {
+    margin: 16px;
+    padding: 16px;
   }
 }

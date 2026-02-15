@@ -7,8 +7,8 @@
     instanceName: 'bible360',
     brandName: 'Bible360',
     provider: 'openrouter',
-    model: undefined, // Auto-select from available free models
-    apiKey: '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',
+    model: undefined, // Will be loaded from settings or auto-select from free models
+    apiKey: undefined, // Removed hardcoded key - user provides their own
     knowledgeBase: {"chunks":[{"id":"kb-1","content":"Bible360 is a chronological Bible reading plan comparison tool. It helps users compare different chronological reading plans from multiple sources including Blue Letter Bible, Logos Academic, BibleHub, and ESV.","metadata":{"source":"knowledge-base.json","tags":["about","overview","what is"],"category":"general"}},{"id":"kb-2","content":"Bible360 offers 365-day chronological Bible reading plans. Each plan takes you through the entire Bible in historical/chronological order rather than the traditional book order.","metadata":{"source":"knowledge-base.json","tags":["reading plan","365 days","chronological"],"category":"plans"}},{"id":"kb-3","content":"The Blue Letter Bible reading plan is a 365-day chronological plan from Blue Letter Bible (blueletterbible.org). It includes combined readings for some books and spreads Revelation across the final 4 days.","metadata":{"source":"knowledge-base.json","tags":["blue letter bible","blb","provider"],"category":"providers"}},{"id":"kb-4","content":"The Logos Academic reading plan is a 365-day chronological plan from Logos Bible Software (logos.com). It includes all epistles at their correct chronological positions with combined readings for shorter books.","metadata":{"source":"knowledge-base.json","tags":["logos","logos academic","provider"],"category":"providers"}},{"id":"kb-5","content":"The BibleHub reading plan is a 365-day chronological plan from BibleHub.com. It includes Paul's commentary on key passages with theological insights.","metadata":{"source":"knowledge-base.json","tags":["biblehub","provider","commentary"],"category":"providers"}},{"id":"kb-6","content":"Chronological Bible reading means reading the Bible in the order events actually happened historically, rather than in the order of books as they appear in the Bible. For example, Job is read after Genesis 11 because Job lived during the patriarchal period.","metadata":{"source":"knowledge-base.json","tags":["chronological","order","how it works"],"category":"explanation"}},{"id":"kb-7","content":"Each daily reading in Bible360 includes the passage reference, historical context, approximate date, and a description of the theological significance of that reading.","metadata":{"source":"knowledge-base.json","tags":["daily reading","features","context"],"category":"features"}},{"id":"kb-8","content":"The New Testament readings in the chronological plan are placed in their historical order. James is read early (around Acts 13-14) because it was written around AD 45-48, making it one of the earliest NT books.","metadata":{"source":"knowledge-base.json","tags":["new testament","james","chronology","epistles"],"category":"nt"}},{"id":"kb-9","content":"Revelation is always the final book in chronological plans, dated around AD 95 during the reign of Domitian. Bible360 plans spread Revelation across 4 days (chapters 1-5, 6-11, 12-18, 19-22) for better pacing.","metadata":{"source":"knowledge-base.json","tags":["revelation","apocalypse","end times"],"category":"revelation"}},{"id":"kb-10","content":"Bible360 is built with SvelteKit and deployed as a static site. It's open source and available on GitHub at github.com/pokho/Bible360.","metadata":{"source":"knowledge-base.json","tags":["github","open source","technology"],"category":"technical"}},{"id":"kb-11","content":"To use Bible360, simply visit bible360.net and select a reading plan from the available providers. Click on any day to see the readings and historical context. You can compare plans side by side.","metadata":{"source":"knowledge-base.json","tags":["how to use","getting started","tutorial"],"category":"usage"}},{"id":"kb-12","content":"The Apocrypha reading plan includes deuterocanonical books like Tobit, Judith, Wisdom, Sirach, Baruch, and 1-2 Maccabees, read in their historical context.","metadata":{"source":"knowledge-base.json","tags":["apocrypha","deuterocanonical","catholic"],"category":"apocrypha"}}],"metadata":{"version":"1.0.0","exportedAt":"2026-02-14T12:00:00.000Z","totalChunks":12,"categories":["general","plans","providers","explanation","features","nt","revelation","technical","usage","apocrypha"],"compressed":false}},
     escalationEnabled: false,
     oksomeUrl: '',
@@ -20,6 +20,86 @@
     rememberPosition: true,
     dragHandleStyle: 'bar',
   };
+
+  // Settings management
+  const SETTINGS_KEY = 'chatbot_settings';
+
+  function loadSettings() {
+    try {
+      const stored = localStorage.getItem(SETTINGS_KEY);
+      if (stored) {
+        const settings = JSON.parse(stored);
+        return {
+          apiKey: settings.apiKey || null,
+          model: settings.model || null
+        };
+      }
+    } catch (e) {
+      console.warn('Could not load settings:', e);
+    }
+    return { apiKey: null, model: null };
+  }
+
+  function saveSettings(apiKey, model) {
+    try {
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+        apiKey: apiKey,
+        model: model || null
+      }));
+      // Update config and cache
+      config.model = model || undefined;
+      apiKeyCache = apiKey;
+      console.log('%c✓ Settings saved', 'color: #10b981');
+    } catch (e) {
+      console.error('Could not save settings:', e);
+    }
+  }
+
+  function openSettings() {
+    const modal = document.getElementById('sc-settings-modal');
+    const keyInput = document.getElementById('sc-api-key-input');
+    const modelSelect = document.getElementById('sc-model-select');
+
+    if (!modal) return;
+
+    // Load current settings
+    const settings = loadSettings();
+    if (keyInput) keyInput.value = settings.apiKey || '';
+
+    // Populate model dropdown
+    populateModelSelect();
+
+    if (modelSelect) {
+      modelSelect.value = settings.model || '';
+    }
+
+    modal.style.display = 'flex';
+  }
+
+  function closeSettings() {
+    const modal = document.getElementById('sc-settings-modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  function populateModelSelect() {
+    const modelSelect = document.getElementById('sc-model-select');
+    if (!modelSelect) return;
+
+    // Clear existing options except the first one
+    while (modelSelect.options.length > 1) {
+      modelSelect.remove(1);
+    }
+
+    // Add free models
+    freeModels.forEach(modelId => {
+      const option = document.createElement('option');
+      option.value = modelId;
+      option.textContent = modelId;
+      modelSelect.appendChild(option);
+    });
+  }
 
   
         // Draggable disabled - no drag handle or CSS
@@ -360,31 +440,38 @@ async function sendMessageWithStreaming(message, context, apiKey) {
   };
 }
 
-// Get or prompt for API key
+// Get API key from settings
 async function getApiKey() {
-  // Check environment variable (build-time)
-  if (config.apiKey) {
-    return config.apiKey;
+  // Check settings (localStorage)
+  const settings = loadSettings();
+  if (settings.apiKey) {
+    return settings.apiKey;
   }
 
-  // Check localStorage (runtime)
-  const storedKey = localStorage.getItem('chatbot_api_key');
-  if (storedKey) {
-    return storedKey;
-  }
+  // No key stored - show settings modal
+  openSettings();
 
-  // Prompt user for API key
-  const key = prompt(
-    'Enter your ' + config.provider.toUpperCase() + ' API key:\n\n' +
-    'Your key will be stored locally in your browser for future use.'
-  );
+  // Return a promise that resolves when settings are saved
+  return new Promise((resolve, reject) => {
+    const checkSettings = () => {
+      const newSettings = loadSettings();
+      if (newSettings.apiKey) {
+        resolve(newSettings.apiKey);
+      } else {
+        reject(new Error('API key is required. Please enter your OpenRouter API key in Settings.'));
+      }
+    };
 
-  if (key && key.trim().length > 0) {
-    localStorage.setItem('chatbot_api_key', key.trim());
-    return key.trim();
-  }
-
-  throw new Error('API key is required for client-side chatbot');
+    // Set up one-time listener for save button
+    const saveBtn = document.getElementById('sc-save-settings');
+    if (saveBtn) {
+      const originalHandler = saveBtn.onclick;
+      saveBtn.onclick = (e) => {
+        if (originalHandler) originalHandler(e);
+        setTimeout(checkSettings, 100);
+      };
+    }
+  });
 }
 
 
@@ -754,6 +841,15 @@ async function getApiKey() {
       return;
     }
 
+    // Load settings on init
+    const settings = loadSettings();
+    if (settings.model) {
+      config.model = settings.model;
+    }
+    if (settings.apiKey) {
+      apiKeyCache = settings.apiKey;
+    }
+
     // Use event delegation for better compatibility with Svelte hydration
     document.addEventListener('click', (e) => {
       // Handle chat button click
@@ -781,6 +877,41 @@ async function getApiKey() {
       if (e.target.closest('#sc-export-button')) {
         e.preventDefault();
         exportConversation();
+        return;
+      }
+      // Handle settings button click
+      if (e.target.closest('#sc-settings-button')) {
+        e.preventDefault();
+        e.stopPropagation();
+        openSettings();
+        return;
+      }
+      // Handle save settings button click
+      if (e.target.closest('#sc-save-settings')) {
+        e.preventDefault();
+        const keyInput = document.getElementById('sc-api-key-input');
+        const modelSelect = document.getElementById('sc-model-select');
+        const apiKey = keyInput ? keyInput.value.trim() : '';
+        const model = modelSelect ? modelSelect.value : '';
+
+        if (!apiKey) {
+          alert('Please enter an API key.');
+          return;
+        }
+
+        saveSettings(apiKey, model);
+        closeSettings();
+        return;
+      }
+      // Handle cancel settings button click
+      if (e.target.closest('#sc-cancel-settings')) {
+        e.preventDefault();
+        closeSettings();
+        return;
+      }
+      // Close modal when clicking overlay
+      if (e.target.id === 'sc-settings-modal') {
+        closeSettings();
         return;
       }
     });
@@ -814,16 +945,14 @@ async function getApiKey() {
       console.log('%c💾 Restored previous conversation (' + conversationHistory.length + ' messages)', 'color: #10b981');
     }
 
-    // Fetch free models on initialization if no model is configured
-    if (!config.model) {
-      fetchFreeModels().then(() => {
-        if (freeModels.length > 0) {
-          console.log('%c✓ Fetched ' + freeModels.length + ' free models for automatic fallback', 'color: #10b981');
-        }
-      }).catch(err => {
-        console.warn('Failed to fetch free models:', err);
-      });
-    }
+    // Fetch free models on initialization (needed for settings dropdown)
+    fetchFreeModels().then(() => {
+      if (freeModels.length > 0) {
+        console.log('%c✓ Fetched ' + freeModels.length + ' free models for automatic fallback', 'color: #10b981');
+      }
+    }).catch(err => {
+      console.warn('Failed to fetch free models:', err);
+    });
 
     // Initialize drag functionality
     initDrag();
@@ -833,6 +962,12 @@ async function getApiKey() {
       setTimeout(() => {
         if (!isOpen) {
           toggleChat();
+        }
+        // Show settings modal if no API key is stored
+        if (!settings.apiKey) {
+          setTimeout(() => {
+            openSettings();
+          }, 300);
         }
       }, 500);
     }
