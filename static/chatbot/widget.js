@@ -819,6 +819,7 @@ async function getApiKey() {
             content: fullResponse,
             timestamp: new Date().toISOString(),
           });
+          saveConversation();
         }
       );
 

@@ -79,6 +79,7 @@
 <div class="sc-settings-modal" id="sc-settings-modal" style="display: none;">
 	<div class="sc-settings-content">
 		<h4>Chatbot Settings</h4>
+		<p class="sc-settings-note">Bible360 is fully client-side with no backend—your API key and chat history stay on your device.</p>
 		<div class="sc-setting-group">
 			<label for="sc-api-key-input">OpenRouter API Key</label>
 			<input type="password" id="sc-api-key-input" placeholder="sk-or-v1-...">

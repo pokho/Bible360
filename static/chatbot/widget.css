@@ -282,10 +282,17 @@
 }
 
 .sc-settings-content h4 {
-  margin: 0 0 20px;
+  margin: 0 0 8px;
   font-size: 18px;
   font-weight: 600;
   color: #1f2937;
+}
+
+.sc-settings-note {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
 }
 
 .sc-setting-group {
