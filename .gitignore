@@ -76,3 +76,4 @@ temp-research/
 # !BLB_DBRP_1Yr_ChronologicalPlan.pdf
 # SvelteKit generated files
 .svelte-kit/
+build/
