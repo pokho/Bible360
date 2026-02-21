@@ -11,7 +11,6 @@ export class BiblehubReadingProvider {
   }
 
   async loadReadingPlan(pdfBuffer?: Buffer): Promise<ReadingPlan> {
-    // Use our comprehensive chronological reading plan
     const parsedPlan = this.getCompleteReadingPlan();
     return this.convertToReadingPlan(parsedPlan);
   }
@@ -24,7 +23,8 @@ export class BiblehubReadingProvider {
       readingTimeMinutes: this.calculateReadingTime(reading.passages),
       apocryphaIncluded: this.hasApocrypha(reading.passages),
       historicalContext: reading.historicalContext || this.getHistoricalContext(reading.day, reading.passages),
-      commentary: reading.commentary
+      commentary: reading.commentary,
+      commentaryType: reading.commentaryType
     }));
 
     return {
@@ -44,11 +44,11 @@ export class BiblehubReadingProvider {
       dailyReadings,
       metadata: {
         title: 'Biblehub Enhanced Chronological Timeline Reading Plan',
-        description: 'Event-based chronological timeline with comprehensive historical context following conservative biblical chronology and traditional Hebrew dating.',
+        description: 'Event-based chronological timeline with comprehensive historical context following conservative biblical chronology. 280 OT / 85 NT day distribution.',
         totalDays: parsedPlan.metadata.totalDays,
         averageReadingTime: 20,
         language: 'English',
-        version: '2.0 Enhanced',
+        version: '3.0 Restructured',
         sourceUrl: 'https://biblehub.com/timeline/'
       }
     };
@@ -106,12 +106,10 @@ export class BiblehubReadingProvider {
       'Tobit', 'Judith', 'Wisdom', 'Sirach', 'Baruch', '1 Maccabees', '2 Maccabees',
       '1 Esdras', '2 Esdras', 'Prayer of Manasseh', 'Additions to Esther', 'Additions to Daniel'
     ];
-
     return apocryphalBooks.includes(book);
   }
 
   private calculateReadingTime(passages: Array<{ book: string; chapters?: string; chapterStart?: number; chapterEnd?: number }>): number {
-    // Estimate reading time based on number of chapters
     let totalChapters = 0;
     passages.forEach(passage => {
       if (passage.chapters) {
@@ -125,8 +123,6 @@ export class BiblehubReadingProvider {
         totalChapters += (end - start + 1);
       }
     });
-
-    // Average reading time: ~5 minutes per chapter
     return Math.max(10, totalChapters * 5);
   }
 
@@ -136,8 +132,6 @@ export class BiblehubReadingProvider {
 
   private getHistoricalContext(day: number, passages: Array<{ book: string; chapters?: string; chapterStart?: number; chapterEnd?: number }>): HistoricalContext | undefined {
     const book = passages[0]?.book;
-
-    // Event-based historical context mapping
     const contextMap: Record<string, HistoricalContext> = {
       'John': {
         period: 'Eternal Past',
@@ -155,652 +149,675 @@ export class BiblehubReadingProvider {
         description: 'Job\'s Suffering and Faith - The testing of Job\'s faith amidst extreme suffering'
       }
     };
-
     return contextMap[book];
   }
 
   private getCompleteReadingPlan(): ParsedReadingPlan {
-    // Complete chronological reading plan based on BibleHub timeline
-    // 584 timeline events distributed across 365 days
-
     const dailyReadings = this.generateCompleteTimeline();
-
     return {
-      dailyReadings,
+      dailyReadings: dailyReadings.map(r => ({
+        day: r.day,
+        date: r.date,
+        passages: r.passages.map(p => ({
+          book: p.book,
+          chapterStart: p.chapterStart,
+          chapterEnd: p.chapterEnd
+        })),
+        historicalContext: r.historicalContext,
+        commentary: r.commentary,
+        commentaryType: r.commentaryType
+      })),
       metadata: {
-        totalDays: 365,
-        source: 'Biblehub Timeline - Complete 584 Event Chronological Reading Plan'
+        totalDays: dailyReadings.length,
+        source: 'Biblehub Timeline - Restructured Chronological Plan (320 days, expandable to 365)'
       }
     };
-  }
-
-  private generateCompleteTimeline(): Array<any> {
-    const dailyReadings: DailyReading[] = [];
-
-    // **PRIMEVAL HISTORY & PATRIARCHS (Days 1-25)**
-
-    // Day 1: Creation Foundation
-    dailyReadings.push({
-      day: 1,
-      date: '2025-01-01',
-      passages: [
-        { book: 'John', chapterStart: 1, chapterEnd: 1 },
-        { book: 'Genesis', chapterStart: 1, chapterEnd: 2 }
-      ],
-      historicalContext: {
-        period: 'Primeval History',
-        approximateDate: 'Before Time - 4000 BC',
-        description: 'The Eternal Word and Creation Week - Foundation of all history, the divine Trinity, and the perfect creation of humanity and the world'
-      },
-      readingTimeMinutes: 20,
-      commentary: '👨🏾‍💻 Paul\'s Recommendation: The TPT (The Passion Translation) version of Genesis is highly recommended, especially Genesis 2, which beautifully portrays the intimacy of God\'s relationship with humanity. Read it here: https://www.bible.com/bible/1849/GEN.2.TPT'
-    });
-
-    // Day 2: The Fall
-    dailyReadings.push({
-      day: 2,
-      date: '2025-01-02',
-      passages: [{ book: 'Genesis', chapterStart: 3, chapterEnd: 5 }],
-      historicalContext: {
-        period: 'Primeval History',
-        approximateDate: 'Before 3000 BC',
-        description: 'The Fall and Consequences - Sin enters the world through Adam and Eve, beginning of human violence and the righteous lineage leading to Noah'
-      },
-      readingTimeMinutes: 15,
-      commentary: '📜 FROM PAUL: When reading Genesis 5 which outlines the genealogy of Adam and Eve until Noah, it is useful also to remember the full genealogy until Jesus - and remember/recognise/value all the people, the men and women leading up to the coming of the Lord and Saviour. We find some of their names in Matthew 1 and Luke 3.\n\nFrom Adam to David (Common Lineage): God → Adam and Eve (Eve means LIFE-GIVER) → Seth (Abel means VANITY, Seth means SUBSTITUTE/in-place-of) → Enosh → Cainan → Mahalalel → Jared → Enoch (DEDICATED to God) → Methuselah → Lamech → Noah (means REST) → Shem → Arphaxad → Cainan → Shelah → Eber → Peleg → Reu → Serug → Nahor → Terah → Abraham and Sarah → Isaac and Rebekah (Rebekah means "captivated by her beauty") → Jacob → Judah and Tamar → Perez (BREACH) → Hezron → Ram → Amminadab → Nahshon → Salmon (means CLOTHES) and Rahab (was a prostitute) → Boaz and Ruth (Ruth means FRIEND) → Obed → Jesse → David and Bathsheba (Bathsheba means DAUGHTER-OF-AN-OATH).\n\nThe Royal Line (through Solomon per Matthew 1): Solomon → Rehoboam → ... → Joseph → Jesus (God and Mary, raised by Joseph. Mary comes from old-Hebrew word Miriam S4813 meaning REBELLIOUS).\n\nLuke\'s Line (through Nathan): Nathan → Mattatha → ... → Joseph → Jesus (God and Mary, raised by Joseph. Mary comes from old-Hebrew word Miriam S4813 meaning REBELLIOUS).',
-      commentaryType: 'paul'
-    });
-
-    // Day 3-4: The Flood and Nations
-    dailyReadings.push({
-      day: 3,
-      date: '2025-01-03',
-      passages: [{ book: 'Genesis', chapterStart: 6, chapterEnd: 9 }],
-      historicalContext: {
-        period: 'Primeval History',
-        approximateDate: 'Before 2500 BC',
-        description: 'The Great Flood and New Beginning - Divine judgment on human wickedness, preservation of Noah\'s family, and establishment of the rainbow covenant'
-      },
-      readingTimeMinutes: 20,
-      commentary: '👨🏾‍💻 Paul\'s Commentary: ROMANS 11:36 (AMP) — "For from Him [all things originate] and through Him [all things exist and are sustained] and to Him are all things [directed]. All things originate from Him and exist through Him, and all things find their purpose and completion in Him. To Him be the glory forever! Amen."\n\nThis verse captures the cosmic reality that everything is FROM Christ, THROUGH Christ, and FOR Christ. This connects beautifully to today\'s reading of Genesis 6-9.\n\nJohn 1:1 ("In the beginning was the Word") parallels Genesis 1:1 ("In the beginning God created"). The Word who became flesh (John 1:14) is the eternal Son, present at creation, through whom all things were made (John 1:3, Colossians 1:16-17). So when Genesis speaks of God creating, judging, and covenanting—we are seeing the triune God at work, with the Son as the divine agent of creation and redemption.\n\nTHE ARK AS A TYPE OF CHRIST: Just as the ark was the ONLY vessel of salvation from the flood waters, Jesus is the ONLY way to the Father (John 14:6). Inside the ark = salvation; outside = destruction. The ark had ONE door (John 10:9: "I am the door"). The pitch covering the ark inside and out was "kaphar" in Hebrew—the same word for ATONEMENT. Christ is our atonement, covering us from judgment.\n\nNOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God\'s eyes (Genesis 6:8-9), pointing to the truly Righteous One who brings salvation. Noah saved his family through the judgment; Christ saves His people through divine wrath.\n\nTHE DOVE AND OLIVE BRANCH: The dove returning with the olive leaf (Genesis 8:11) signaled new life after judgment. The Holy Spirit descended "like a dove" at Jesus\' baptism (Matthew 3:16), and Jesus is our peace (Ephesians 2:14)—the olive branch of reconciliation between God and humanity.\n\nTHE COVENANT SIGN: God established a covenant with the rainbow as its sign (Genesis 9:12-17), pointing forward to the New Covenant in Christ\'s blood (Luke 22:20)—a promise of eternal salvation rather than destruction.\n\n1 Peter 3:20-21 makes this explicit: the flood waters "symbolize baptism that now saves you also." The flood prefigured baptism into Christ\'s death and resurrection—the ultimate washing that brings salvation.',
-      commentaryType: 'paul',
-    });
-
-    dailyReadings.push({
-      day: 4,
-      date: '2025-01-04',
-      passages: [{ book: 'Genesis', chapterStart: 10, chapterEnd: 11 }],
-      historicalContext: {
-        period: 'Table of Nations',
-        approximateDate: 'Before 2100 BC',
-        description: 'Nations Dispersed and Tower of Babel - Post-flood population growth, human rebellion, and confusion of languages that scattered humanity'
-      },
-      readingTimeMinutes: 15
-    });
-
-    // Days 5-13: Job's Wisdom (3-4 chapters per day)
-    const jobReadings = [
-      { start: 1, end: 4, period: 'Job\'s Initial Testing and Friends\' Arrival', description: 'Job\'s righteousness, Satan\'s challenge, and the arrival of his friends who initially sit in silence' },
-      { start: 5, end: 8, period: 'First Cycle of Debate', description: 'Eliphaz\'s first speech and Job\'s response - the beginning of the theological debate' },
-      { start: 9, end: 12, period: 'Second Cycle of Debate', description: 'Bildad and Zophar speak, with Job\'s passionate defense of his integrity' },
-      { start: 13, end: 16, period: 'Third Cycle of Debate', description: 'More intense debate as Job cries out for a mediator and his friends grow harsher' },
-      { start: 17, end: 20, period: 'Job\'s Final Defense', description: 'Job\'s oath of innocence and his lament of days gone by' },
-      { start: 21, end: 25, period: 'Elihu\'s Wisdom', description: 'The young Elihu speaks with divine insight, preparing for God\'s appearance' },
-      { start: 26, end: 29, period: 'God\'s First Speech', description: 'God speaks from the whirlwind, questioning Job about creation and natural order' },
-      { start: 30, end: 33, period: 'God\'s Second Speech and Job\'s Reply', description: 'God challenges Job\'s wisdom, Job humbles himself' },
-      { start: 34, end: 37, period: 'Job\'s Restoration', description: 'Job is humbled and then his fortunes are restored and blessed' },
-      { start: 38, end: 42, period: 'Job\'s Final Blessing', description: 'Job\'s fortunes are restored, his family is blessed, and he dies in old age' }
-    ];
-
-    jobReadings.forEach((reading, index) => {
-      dailyReadings.push({
-        day: 5 + index,
-        date: `2025-01-0${5 + index}`,
-        passages: [{ book: 'Job', chapterStart: reading.start, chapterEnd: reading.end }],
-        historicalContext: {
-          period: 'Patriarchal Era',
-          approximateDate: 'Before 2100 BC',
-          description: `${reading.period} (Chapters ${reading.start}-${reading.end}) - ${reading.description}`
-        },
-        readingTimeMinutes: 20
-      });
-    });
-
-    // **PATRIARCHAL PERIOD (Days 14-27)** - Expand to better distribute 39 chapters
-    const genesisReadings = [
-      { start: 12, end: 14, period: 'Abraham\'s Call and Covenant', date: '2091-2084 BC' },
-      { start: 15, end: 17, period: 'Covenant Confirmation', date: '2081-2067 BC' },
-      { start: 18, end: 20, period: 'Promise of Isaac', date: '2067-2066 BC' },
-      { start: 21, end: 23, period: 'Binding of Isaac', date: '2066-2067 BC' },
-      { start: 24, end: 26, period: 'Isaac\'s Marriage and Jacob\'s Birth', date: '2045-2035 BC' },
-      { start: 27, end: 28, period: 'Isaac\'s Prosperity', date: '2015-2010 BC' },
-      { start: 29, end: 31, period: 'Jacob\'s Dreams and Family', date: '2009-2005 BC' },
-      { start: 32, end: 33, period: 'Jacob\'s Flight and Laban', date: '1995-1975 BC' },
-      { start: 34, end: 35, period: 'Jacob\'s Reconciliation', date: '1974-1970 BC' },
-      { start: 36, end: 37, period: 'Jacob\'s Return', date: '1974-1970 BC' },
-      { start: 38, end: 40, period: 'Joseph\'s Rise to Power', date: '1945-1930 BC' },
-      { start: 41, end: 43, period: 'Joseph\'s Administration', date: '1930-1925 BC' },
-      { start: 44, end: 46, period: 'Joseph\'s Famine Relief', date: '1930-1925 BC' },
-      { start: 47, end: 50, period: 'Jacob\'s Family in Egypt', date: '1928-1915 BC' }
-    ];
-
-    genesisReadings.forEach((reading, index) => {
-      dailyReadings.push({
-        day: 14 + index,
-        date: `2025-01-${14 + index}`,
-        passages: [{ book: 'Genesis', chapterStart: reading.start, chapterEnd: reading.end }],
-        historicalContext: {
-          period: 'Patriarchal Era',
-          approximateDate: reading.date,
-          description: `${reading.period} - Key events in the formation of Israel's patriarchal family`
-        },
-        readingTimeMinutes: 20
-      });
-    });
-
-    // **EXODUS AND WILDERNESS (Days 28-92)**
-    this.addExodusReadings(dailyReadings, 28, 39);
-    this.addLeviticusNumbersReadings(dailyReadings, 40, 82);
-    this.addDeuteronomyReadings(dailyReadings, 83, 92);
-
-    // **CONQUEST AND JUDGES (Days 93-142)**
-    this.addConquestReadings(dailyReadings, 93, 117);
-    this.addRuthReadings(dailyReadings, 118, 122);
-    this.addJudgesReadings(dailyReadings, 123, 142);
-
-    // **UNITED KINGDOM (Days 143-232)**
-    this.addSamuelReadings(dailyReadings, 143, 182);
-    this.addDavidKingsReadings(dailyReadings, 183, 212);
-    this.addPsalmsReadings(dailyReadings, 213, 262);
-
-    // **DIVIDED KINGDOM (Days 263-282)**
-    this.addDividedKingdomReadings(dailyReadings, 263, 282);
-
-    // **PROPHETS (Days 283-322)**
-    this.addProphetsReadings(dailyReadings, 283, 322);
-
-    // **EXILE AND RETURN (Days 323-342)** - Reduced to make room for expanded NT
-    this.addExileReturnReadings(dailyReadings, 323, 342);
-
-    // **NEW TESTAMENT (Days 343-365)** - Expanded to 23 days for reasonable reading pace
-    this.addNewTestamentReadings(dailyReadings, 343, 365);
-
-    return dailyReadings;
-  }
-
-  // Helper methods for different biblical periods
-  private addExodusReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    const exodusSections = [
-      { start: 1, end: 2, period: 'Israel\'s Oppression', date: '1526 BC' },
-      { start: 3, end: 4, period: 'Moses\' Call', date: '1446 BC' },
-      { start: 5, end: 7, period: 'Egyptian Conflict - Beginnings', date: '1446 BC' },
-      { start: 8, end: 11, period: 'Egyptian Conflict - Plagues', date: '1446 BC' },
-      { start: 12, end: 14, period: 'Exodus Journey - Departure', date: '1446 BC' },
-      { start: 15, end: 17, period: 'Exodus Journey - Wilderness', date: '1446 BC' },
-      { start: 18, end: 20, period: 'Sinai Covenant - Arrival', date: '1446 BC' },
-      { start: 21, end: 24, period: 'Sinai Covenant - Laws', date: '1446 BC' },
-      { start: 25, end: 27, period: 'Tabernacle Instructions - Offerings', date: '1446 BC' },
-      { start: 28, end: 31, period: 'Tabernacle Instructions - Priesthood', date: '1446 BC' },
-      { start: 32, end: 35, period: 'Tabernacle Construction - Structure', date: '1446 BC' },
-      { start: 36, end: 40, period: 'Tabernacle Construction - Completion', date: '1446 BC' }
-    ];
-
-    exodusSections.forEach((section, index) => {
-      const day = startDay + index;
-      if (day <= endDay) {
-        dailyReadings.push({
-          day,
-          date: this.getDateForDay(day),
-          passages: [{ book: 'Exodus', chapterStart: section.start, chapterEnd: section.end }],
-          historicalContext: {
-            period: section.period,
-            approximateDate: section.date,
-            description: `${section.period} - Key events in the deliverance from Egypt`
-          },
-          readingTimeMinutes: 20,
-          commentary: section.period.includes('Exodus Journey') ? '🔍GENERIC_COMMENT: The crossing of the Red Sea demonstrates God\'s power and faithfulness. This monumental event shows how God delivers His people through impossible circumstances and establishes a pattern of redemption that points ultimately to Christ\'s work on the cross.' : undefined
-        });
-      }
-    });
-  }
-
-  private addLeviticusNumbersReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Add Leviticus
-    for (let i = 0; i < 15; i++) {
-      const day = startDay + i;
-      const chapter = i * 2 + 1;
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Leviticus', chapterStart: chapter, chapterEnd: Math.min(chapter + 1, 27) }],
-        historicalContext: {
-          period: 'Sinai Covenant Laws',
-          approximateDate: '1446 BC',
-          description: `Levitical laws and sacrificial system (Chapters ${chapter}-${Math.min(chapter + 1, 27)})`
-        },
-        readingTimeMinutes: 15
-      });
-    }
-
-    // Add Numbers
-    const numbersStart = startDay + 15;
-    for (let i = 0; i < endDay - numbersStart; i++) {
-      const day = numbersStart + i;
-      const chapter = i * 2 + 1;
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Numbers', chapterStart: chapter, chapterEnd: Math.min(chapter + 1, 36) }],
-        historicalContext: {
-          period: 'Wilderness Wanderings',
-          approximateDate: '1446-1406 BC',
-          description: `Israel's journey and organization in the wilderness (Chapters ${chapter}-${Math.min(chapter + 1, 36)})`
-        },
-        readingTimeMinutes: 15
-      });
-    }
-  }
-
-  private addDeuteronomyReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Days 81-89: 3 chapters each (27 chapters total)
-    for (let i = 0; i < 9; i++) {
-      const day = startDay + i;
-      const chapter = i * 3 + 1;
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Deuteronomy', chapterStart: chapter, chapterEnd: chapter + 2 }],
-        historicalContext: {
-          period: 'Covenant Renewal',
-          approximateDate: '1406 BC',
-          description: `Moses' final discourse and covenant renewal (Chapters ${chapter}-${chapter + 2})`
-        },
-        readingTimeMinutes: 20
-      });
-    }
-
-    // Day 90: Remaining chapters (28-34)
-    dailyReadings.push({
-      day: 90,
-      date: this.getDateForDay(90),
-      passages: [{ book: 'Deuteronomy', chapterStart: 28, chapterEnd: 34 }],
-      historicalContext: {
-        period: 'Covenant Renewal - Final Blessings',
-        approximateDate: '1406 BC',
-        description: 'Moses\' final blessings, death, and succession of Joshua - Conclusion of the Pentateuch'
-      },
-      readingTimeMinutes: 25,
-      commentary: '🔍GENERIC_COMMENT: This marks the conclusion of the Pentateuch! Moses reviews the covenant, gives his final blessings to the tribes, and dies on Mount Nebo. The leadership transitions to Joshua, setting the stage for the conquest of Canaan. This moment represents both an ending and a new beginning for Israel.'
-    });
-  }
-
-  private addConquestReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Joshua has 24 chapters, create daily readings
-    const chaptersPerDay = Math.ceil(24 / (endDay - startDay + 1));
-    for (let day = startDay, chapter = 1; day <= endDay && chapter <= 24; day++) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 24);
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Joshua', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'Conquest of Canaan',
-          approximateDate: '1406-1390 BC',
-          description: `Conquest and settlement of the promised land (Chapters ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 15
-      });
-      chapter = endChapter + 1;
-    }
-  }
-
-  private addRuthReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Ruth has 4 chapters, can read in sections over these days
-    dailyReadings.push({
-      day: startDay,
-      date: this.getDateForDay(startDay),
-      passages: [{ book: 'Ruth', chapterStart: 1, chapterEnd: 2 }],
-      historicalContext: {
-        period: 'Judges Period',
-        approximateDate: '1150 BC',
-        description: 'Ruth\'s loyalty and journey to Bethlehem - A story of faithfulness in dark times'
-      },
-      readingTimeMinutes: 15
-    });
-
-    dailyReadings.push({
-      day: startDay + 1,
-      date: this.getDateForDay(startDay + 1),
-      passages: [{ book: 'Ruth', chapterStart: 3, chapterEnd: 4 }],
-      historicalContext: {
-        period: 'Judges Period',
-        approximateDate: '1150 BC',
-        description: 'Ruth and Boaz at the threshing floor - Redemption and marriage, leading to King David\'s lineage'
-      },
-      readingTimeMinutes: 15
-    });
-
-    // Fill remaining days with 1 Chronicles chapters 1-9 (genealogies)
-    for (let day = startDay + 2, chapter = 1; day <= endDay && chapter <= 9; day++, chapter++) {
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: '1 Chronicles', chapterStart: chapter, chapterEnd: chapter }],
-        historicalContext: {
-          period: 'Priestly Record',
-          approximateDate: '500 BC',
-          description: `Genealogical records and tribal arrangements (Chapter ${chapter})`
-        },
-        readingTimeMinutes: 15
-      });
-    }
-  }
-
-  private addJudgesReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Judges has 21 chapters
-    const chaptersPerDay = Math.ceil(21 / (endDay - startDay + 1));
-    for (let day = startDay, chapter = 1; day <= endDay && chapter <= 21; day++) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 21);
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Judges', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'Judges Period',
-          approximateDate: '1390-1050 BC',
-          description: `Cyclic pattern of sin and deliverance (Chapters ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 15
-      });
-      chapter = endChapter + 1;
-    }
-  }
-
-  private addSamuelReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // 1 Samuel has 31 chapters, read at 1-2 chapters per day
-    const chaptersPerDay = 2;
-    for (let day = startDay, chapter = 1; day <= endDay && chapter <= 31; day++) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 31);
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: '1 Samuel', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'United Monarchy',
-          approximateDate: '1100-970 BC',
-          description: `Samuel and Saul's reign (Chapters ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 15
-      });
-      chapter = endChapter + 1;
-    }
-  }
-
-  private addDavidKingsReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // 2 Samuel (24 chapters) and 1 Kings (11 chapters, Solomon portion)
-    const chaptersPerDay = 2;
-    let currentDay = startDay;
-
-    // 2 Samuel first
-    for (let chapter = 1; chapter <= 24 && currentDay <= endDay; chapter += chaptersPerDay) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 24);
-      dailyReadings.push({
-        day: currentDay,
-        date: this.getDateForDay(currentDay),
-        passages: [{ book: '2 Samuel', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'David\'s Reign',
-          approximateDate: '1059-970 BC',
-          description: `King David's reign and challenges (Chapters ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 20
-      });
-      currentDay++;
-    }
-
-    // 1 Kings 1-11 (Solomon)
-    for (let chapter = 1; chapter <= 11 && currentDay <= endDay; chapter += chaptersPerDay) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 11);
-      dailyReadings.push({
-        day: currentDay,
-        date: this.getDateForDay(currentDay),
-        passages: [{ book: '1 Kings', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'Solomon\'s Reign',
-          approximateDate: '970-931 BC',
-          description: `King Solomon's wisdom and temple building (Chapters ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 20
-      });
-      currentDay++;
-    }
-  }
-
-  private addDividedKingdomReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Continue 1 Kings, 2 Kings, and prophets
-    const books = ['1 Kings', '2 Kings', 'Isaiah', 'Jeremiah', 'Ezekiel'];
-    const chaptersPerBook = [11, 25, 66, 52, 48];
-
-    let currentDay = startDay;
-    books.forEach((book, bookIndex) => {
-      const chaptersToCover = Math.min(chaptersPerBook[bookIndex], endDay - currentDay);
-      for (let i = 0; i < chaptersToCover && currentDay < endDay; i += 3) {
-        dailyReadings.push({
-          day: currentDay,
-          date: this.getDateForDay(currentDay),
-          passages: [{ book, chapterStart: i + 1, chapterEnd: Math.min(i + 3, chaptersPerBook[bookIndex]) }],
-          historicalContext: {
-            period: 'Divided Kingdom',
-            approximateDate: '931-586 BC',
-            description: `${book} - Prophetic ministry and royal history`
-          },
-          readingTimeMinutes: 20
-        });
-        currentDay++;
-      }
-    });
-  }
-
-  private addPsalmsReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Psalms has 150 chapters, divide evenly
-    const chaptersPerDay = Math.ceil(150 / (endDay - startDay + 1));
-    for (let day = startDay, chapter = 1; day <= endDay && chapter <= 150; day++) {
-      const endChapter = Math.min(chapter + chaptersPerDay - 1, 150);
-      dailyReadings.push({
-        day,
-        date: this.getDateForDay(day),
-        passages: [{ book: 'Psalms', chapterStart: chapter, chapterEnd: endChapter }],
-        historicalContext: {
-          period: 'Wisdom Literature',
-          approximateDate: '1000-500 BC',
-          description: `Songs and prayers of ancient Israel (Psalms ${chapter}-${endChapter})`
-        },
-        readingTimeMinutes: 20
-      });
-      chapter = endChapter + 1;
-    }
-  }
-
-  private addProphetsReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Major and minor prophets
-    const prophets = [
-      { book: 'Isaiah', chapters: 66, period: 'Assyrian Period', date: '740-700 BC' },
-      { book: 'Jeremiah', chapters: 52, period: 'Pre-Exilic', date: '627-586 BC' },
-      { book: 'Lamentations', chapters: 5, period: 'Fall of Jerusalem', date: '586 BC' },
-      { book: 'Ezekiel', chapters: 48, period: 'Exilic', date: '593-571 BC' },
-      { book: 'Daniel', chapters: 12, period: 'Exilic', date: '605-535 BC' },
-      { book: 'Hosea', chapters: 14, period: 'Pre-Exilic', date: '755-715 BC' },
-      { book: 'Joel', chapters: 3, period: 'Post-Exilic', date: '500 BC' },
-      { book: 'Amos', chapters: 9, period: 'Pre-Exilic', date: '760-750 BC' },
-      { book: 'Obadiah', chapters: 1, period: 'Post-Exilic', date: '586 BC' },
-      { book: 'Jonah', chapters: 4, period: 'Pre-Exilic', date: '760 BC' },
-      { book: 'Micah', chapters: 7, period: 'Pre-Exilic', date: '735-700 BC' },
-      { book: 'Nahum', chapters: 3, period: 'Pre-Exilic', date: '663-612 BC' },
-      { book: 'Habakkuk', chapters: 3, period: 'Pre-Exilic', date: '610-605 BC' },
-      { book: 'Zephaniah', chapters: 3, period: 'Pre-Exilic', date: '640-621 BC' },
-      { book: 'Haggai', chapters: 2, period: 'Post-Exilic', date: '520 BC' },
-      { book: 'Zechariah', chapters: 14, period: 'Post-Exilic', date: '520-518 BC' },
-      { book: 'Malachi', chapters: 4, period: 'Post-Exilic', date: '433-424 BC' }
-    ];
-
-    let currentDay = startDay;
-    const chaptersPerDay = 3;
-
-    prophets.forEach(prophet => {
-      for (let chapter = 1; chapter <= prophet.chapters && currentDay <= endDay; chapter += chaptersPerDay) {
-        const endChapter = Math.min(chapter + chaptersPerDay - 1, prophet.chapters);
-        dailyReadings.push({
-          day: currentDay,
-          date: this.getDateForDay(currentDay),
-          passages: [{ book: prophet.book, chapterStart: chapter, chapterEnd: endChapter }],
-          historicalContext: {
-            period: prophet.period,
-            approximateDate: prophet.date,
-            description: `${prophet.book} - Prophetic ministry and message (Chapters ${chapter}-${endChapter})`
-          },
-          readingTimeMinutes: 20
-        });
-        currentDay++;
-      }
-    });
-  }
-
-  private addExileReturnReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Post-exilic books: Ezra, Nehemiah, Esther
-    const books = [
-      { book: 'Ezra', chapters: 10, period: 'Return from Exile', date: '538-457 BC' },
-      { book: 'Nehemiah', chapters: 13, period: 'Rebuilding Jerusalem', date: '445-433 BC' },
-      { book: 'Esther', chapters: 10, period: 'Persian Empire', date: '483-473 BC' }
-    ];
-
-    let currentDay = startDay;
-    const chaptersPerDay = 2;
-
-    books.forEach(bookInfo => {
-      for (let chapter = 1; chapter <= bookInfo.chapters && currentDay <= endDay; chapter += chaptersPerDay) {
-        const endChapter = Math.min(chapter + chaptersPerDay - 1, bookInfo.chapters);
-        dailyReadings.push({
-          day: currentDay,
-          date: this.getDateForDay(currentDay),
-          passages: [{ book: bookInfo.book, chapterStart: chapter, chapterEnd: endChapter }],
-          historicalContext: {
-            period: bookInfo.period,
-            approximateDate: bookInfo.date,
-            description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${chapter}-${endChapter})`
-          },
-          readingTimeMinutes: 15
-        });
-        currentDay++;
-      }
-    });
-  }
-
-  private addNewTestamentReadings(dailyReadings: DailyReading[], startDay: number, endDay: number): void {
-    // Expanded to 23 days for better chapter distribution
-    console.log(`Adding New Testament readings: Days ${startDay}-${endDay} (${endDay - startDay + 1} days)`);
-
-    // Gospels first (Matthew-John = 89 chapters) - use 12 days
-    const gospelBooks = [
-      { book: 'Matthew', chapters: 28, period: 'Life of Christ', date: '26-30 AD' },
-      { book: 'Mark', chapters: 16, period: 'Life of Christ', date: '26-30 AD' },
-      { book: 'Luke', chapters: 24, period: 'Life of Christ', date: '26-30 AD' },
-      { book: 'John', chapters: 21, period: 'Life of Christ', date: '26-30 AD' }
-    ];
-
-    let currentDay = startDay;
-    const chaptersPerDay = 4; // Still challenging but better
-
-    // Distribute Gospels across first 12 days
-    gospelBooks.forEach(bookInfo => {
-      const daysForBook = Math.ceil(bookInfo.chapters / chaptersPerDay);
-      for (let dayOffset = 0; dayOffset < daysForBook && currentDay <= startDay + 11; dayOffset++) {
-        const startChapter = dayOffset * chaptersPerDay + 1;
-        const endChapter = Math.min(startChapter + chaptersPerDay - 1, bookInfo.chapters);
-        dailyReadings.push({
-          day: currentDay,
-          date: this.getDateForDay(currentDay),
-          passages: [{ book: bookInfo.book, chapterStart: startChapter, chapterEnd: endChapter }],
-          historicalContext: {
-            period: bookInfo.period,
-            approximateDate: bookInfo.date,
-            description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${startChapter}-${endChapter})`
-          },
-          readingTimeMinutes: 30
-        });
-        currentDay++;
-      }
-    });
-
-    // Acts and key Pauline letters (Days 355-363)
-    const essentialBooks = [
-      { book: 'Acts', chapters: 28, period: 'Early Church', date: '30-60 AD' },
-      { book: 'Romans', chapters: 16, period: 'Pauline Ministry', date: '57-58 AD' },
-      { book: '1 Corinthians', chapters: 16, period: 'Pauline Ministry', date: '55 AD' },
-      { book: '2 Corinthians', chapters: 13, period: 'Pauline Ministry', date: '56 AD' },
-      { book: 'Galatians', chapters: 6, period: 'Pauline Ministry', date: '49-50 AD' },
-      { book: 'Ephesians', chapters: 6, period: 'Pauline Ministry', date: '61-63 AD' },
-      { book: 'Philippians', chapters: 4, period: 'Pauline Ministry', date: '61-63 AD' },
-      { book: 'Colossians', chapters: 4, period: 'Pauline Ministry', date: '61-63 AD' },
-      { book: '1 Thessalonians', chapters: 5, period: 'Pauline Ministry', date: '51-52 AD' }
-    ];
-
-    essentialBooks.forEach(bookInfo => {
-      if (currentDay <= endDay - 2) { // Save last 2 days for key epistles and Revelation
-        const daysForBook = Math.max(1, Math.ceil(bookInfo.chapters / chaptersPerDay));
-        for (let chapter = 1; chapter <= bookInfo.chapters && currentDay <= endDay - 2; chapter += chaptersPerDay) {
-          const endChapter = Math.min(chapter + chaptersPerDay - 1, bookInfo.chapters);
-          dailyReadings.push({
-            day: currentDay,
-            date: this.getDateForDay(currentDay),
-            passages: [{ book: bookInfo.book, chapterStart: chapter, chapterEnd: endChapter }],
-            historicalContext: {
-              period: bookInfo.period,
-              approximateDate: bookInfo.date,
-              description: `${bookInfo.book} - ${bookInfo.period} (Chapters ${chapter}-${endChapter})`
-            },
-            readingTimeMinutes: 25
-          });
-          currentDay++;
-        }
-      }
-    });
-
-    // Key General Epistles and Revelation (Final 2 days)
-    if (currentDay === 364) {
-      dailyReadings.push({
-        day: 364,
-        date: this.getDateForDay(364),
-        passages: [
-          { book: 'Hebrews', chapterStart: 1, chapterEnd: 13 },
-          { book: 'James', chapterStart: 1, chapterEnd: 5 },
-          { book: '1 Peter', chapterStart: 1, chapterEnd: 5 }
-        ],
-        historicalContext: {
-          period: 'General Epistles',
-          approximateDate: '45-95 AD',
-          description: 'Key General Epistles - Hebrews, James, and 1 Peter covering faith, works, and hope'
-        },
-        readingTimeMinutes: 35
-      });
-    }
-
-    // Day 365 must end with Revelation
-    dailyReadings.push({
-      day: 365,
-      date: this.getDateForDay(365),
-      passages: [{ book: 'Revelation', chapterStart: 1, chapterEnd: 22 }],
-      historicalContext: {
-        period: 'Apocalypse',
-        approximateDate: '95 AD',
-        description: 'The grand finale - Revelation\'s complete revelation of Jesus Christ and the new creation'
-      },
-      readingTimeMinutes: 45,
-      commentary: '🔍GENERIC_COMMENT: The grand finale of Scripture! Revelation presents the cosmic culmination of God\'s redemptive plan, the final victory over evil, and the establishment of the new heaven and new earth where God dwells with His people forever. The Alpha and Omega, the Beginning and the End, makes all things new!'
-    });
   }
 
   private getDateForDay(day: number): string {
     const date = new Date(2025, 0, day);
     return date.toISOString().split('T')[0];
+  }
+
+  // ========================================
+  // MAIN TIMELINE GENERATOR
+  // ========================================
+  private generateCompleteTimeline(): DailyReading[] {
+    const readings: DailyReading[] = [];
+    let day = 1;
+
+    // ===== OLD TESTAMENT: Days 1-280 =====
+
+    // PHASE 1: Primeval History (Days 1-14)
+    // Day 1: Creation
+    readings.push(this.createReading(day++, [
+      { book: 'John', chapterStart: 1, chapterEnd: 1 },
+      { book: 'Genesis', chapterStart: 1, chapterEnd: 2 }
+    ], 'Primeval History', 'Before Time - 4000 BC',
+      'The Eternal Word and Creation Week - Foundation of all history, the divine Trinity, and the perfect creation of humanity and the world',
+      '👨🏾‍💻 Paul\'s Recommendation: The TPT (The Passion Translation) version of Genesis is highly recommended, especially Genesis 2, which beautifully portrays the intimacy of God\'s relationship with humanity. Read it here: https://www.bible.com/bible/1849/GEN.2.TPT',
+      'paul'
+    ));
+
+    // Day 2: Fall
+    readings.push(this.createReading(day++, [{ book: 'Genesis', chapterStart: 3, chapterEnd: 5 }],
+      'Primeval History', 'Before 3000 BC',
+      'The Fall and Consequences - Sin enters the world through Adam and Eve, beginning of human violence and the righteous lineage leading to Noah',
+      `📜 FROM PAUL: When reading Genesis 5 which outlines the genealogy of Adam and Eve until Noah, it is useful also to remember the full genealogy until Jesus - and remember/recognise/value all the people, the men and women leading up to the coming of the Lord and Saviour. We find some of their names in Matthew 1 and Luke 3.
+
+From Adam to David (Common Lineage): God → Adam and Eve (Eve means LIFE-GIVER) → Seth (Abel means VANITY, Seth means SUBSTITUTE/in-place-of) → Enosh → Cainan → Mahalalel → Jared → Enoch (DEDICATED to God) → Methuselah → Lamech → Noah (means REST) → Shem → Arphaxad → Cainan → Shelah → Eber → Peleg → Reu → Serug → Nahor → Terah → Abraham and Sarah → Isaac and Rebekah (Rebekah means "captivated by her beauty") → Jacob → Judah and Tamar → Perez (BREACH) → Hezron → Ram → Amminadab → Nahshon → Salmon (means CLOTHES) and Rahab (was a prostitute) → Boaz and Ruth (Ruth means FRIEND) → Obed → Jesse → David and Bathsheba (Bathsheba means DAUGHTER-OF-AN-OATH).
+
+The Royal Line (through Solomon per Matthew 1): Solomon → Rehoboam → ... → Joseph → Jesus (God and Mary, raised by Joseph. Mary comes from old-Hebrew word Miriam S4813 meaning REBELLIOUS).
+
+Luke's Line (through Nathan): Nathan → Mattatha → ... → Joseph → Jesus (God and Mary, raised by Joseph. Mary comes from old-Hebrew word Miriam S4813 meaning REBELLIOUS).`,
+      'paul'
+    ));
+
+    // Day 3: Flood
+    readings.push(this.createReading(day++, [{ book: 'Genesis', chapterStart: 6, chapterEnd: 9 }],
+      'Primeval History', 'Before 2500 BC',
+      'The Great Flood and New Beginning - Divine judgment on human wickedness, preservation of Noah\'s family, and establishment of the rainbow covenant',
+      `👨🏾‍💻 Paul's Commentary: ROMANS 11:36 (AMP) — "For from Him [all things originate] and through Him [all things exist and are sustained] and to Him are all things [directed]. All things originate from Him and exist through Him, and all things find their purpose and completion in Him. To Him be the glory forever! Amen."
+
+THE ARK AS A TYPE OF CHRIST: Just as the ark was the ONLY vessel of salvation from the flood waters, Jesus is the ONLY way to the Father (John 14:6). Inside the ark = salvation; outside = destruction. The ark had ONE door (John 10:9: "I am the door"). The pitch covering the ark inside and out was "kaphar" in Hebrew—the same word for ATONEMENT.
+
+NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God's eyes (Genesis 6:8-9), pointing to the truly Righteous One who brings salvation. Noah saved his family through the judgment; Christ saves His people through divine wrath.
+
+1 Peter 3:20-21 makes this explicit: the flood waters "symbolize baptism that now saves you also." The flood prefigured baptism into Christ's death and resurrection—the ultimate washing that brings salvation.`,
+      'paul'
+    ));
+
+    // Day 4: Babel
+    readings.push(this.createReading(day++, [{ book: 'Genesis', chapterStart: 10, chapterEnd: 11 }],
+      'Table of Nations', 'Before 2100 BC',
+      'Nations Dispersed and Tower of Babel - Post-flood population growth, human rebellion, and confusion of languages that scattered humanity'
+    ));
+
+    // Days 5-14: Job (42 chapters, ~4/day)
+    const jobDescriptions = [
+      'Job\'s righteousness, Satan\'s challenge, and the arrival of his friends who initially sit in silence',
+      'First Cycle of Debate - Eliphaz\'s first speech and Job\'s response, beginning the theological debate',
+      'Second Cycle of Debate - Bildad and Zophar speak, with Job\'s passionate defense of his integrity',
+      'Third Cycle of Debate - More intense debate as Job cries out for a mediator and his friends grow harsher',
+      'Job\'s Oath of Innocence - Job\'s oath of innocence and his lament of days gone by',
+      'Elihu\'s Wisdom - The young Elihu speaks with divine insight, preparing for God\'s appearance',
+      'God\'s First Speech - God speaks from the whirlwind, questioning Job about creation and natural order',
+      'God\'s Second Speech - God challenges Job\'s wisdom with questions about Behemoth and Leviathan',
+      'Job\'s Humility and Restoration - Job is humbled, repents, and his fortunes begin to be restored',
+      'Job\'s Final Blessing - Job\'s fortunes are fully restored, his family is blessed, and he dies in old age'
+    ];
+    const jobDays = [[1,4],[5,8],[9,12],[13,16],[17,20],[21,24],[25,28],[29,32],[33,37],[38,42]];
+    jobDays.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Job', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Patriarchal Era', 'Before 2100 BC',
+      `Job ${ch[0]}-${ch[1]}: ${jobDescriptions[i]}`
+    )));
+
+    // PHASE 2: Patriarchal Era (Days 15-29)
+    const patriarchDescriptions = [
+      'Abraham\'s Call and Covenant - God calls Abram to leave his homeland and promises to make him a great nation',
+      'Covenant Confirmed - The Abrahamic covenant is ratified through the smoking firepot and circumcision',
+      'Three Visitors and Sodom\'s Destruction - The Lord appears to Abraham, and Sodom and Gomorrah are destroyed',
+      'Isaac Born and Tested - The long-promised son is born, and Abraham\'s faith is tested on Mount Moriah',
+      'Rebekah for Isaac, Abraham\'s Death - Isaac marries Rebekah, and Abraham dies at a good old age',
+      'Jacob Deceives Isaac - Jacob obtains the birthright and blessing, then flees from Esau',
+      'Jacob\'s Dream and Family - Jacob sees the ladder to heaven, marries Leah and Rachel, and has twelve sons',
+      'Jacob Returns to Canaan - Jacob wrestles with God, is renamed Israel, and reconciles with Esau',
+      'Jacob at Bethel and Esau\'s Line - Jacob returns to Bethel, and the lineage of Esau is recorded',
+      'Joseph Sold into Slavery - Joseph\'s dreams, his brothers\' betrayal, and Judah and Tamar',
+      'Joseph in Potiphar\'s House - Joseph serves Potiphar, resists temptation, and is imprisoned',
+      'Pharaoh\'s Dreams - Joseph interprets the dreams of the cupbearer, baker, and Pharaoh',
+      'Brothers\' First Journey - Joseph\'s brothers come to Egypt for grain during the famine',
+      'Joseph Reveals Himself - The silver cup test leads to Joseph revealing his identity to his brothers',
+      'Jacob\'s Journey to Egypt - Jacob brings his entire family to Egypt to survive the famine',
+      'Jacob Blesses His Sons - Jacob blesses each of his twelve sons and dies in Egypt',
+      'Joseph\'s Death - Joseph forgives his brothers, blesses Ephraim and Manasseh, and dies in faith'
+    ];
+    const patriarchChapters: [number, number, string, string][] = [
+      [12, 14, '2091-2084 BC'], [15, 17, '2081-2067 BC'], [18, 20, '2067 BC'],
+      [21, 23, '2066-2054 BC'], [24, 26, '2030-2006 BC'], [27, 28, '2006-1977 BC'],
+      [29, 31, '1928-1916 BC'], [32, 34, '1908-1906 BC'], [35, 36, '1906 BC'],
+      [37, 38, '1898 BC'], [39, 40, '1889 BC'], [41, 42, '1875 BC'],
+      [43, 44, '1875 BC'], [45, 45, '1875 BC'], [46, 47, '1875 BC'],
+      [48, 49, '1859 BC'], [50, 50, '1806 BC']
+    ];
+    patriarchChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Genesis', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Patriarchal Era', ch[2],
+      `Genesis ${ch[0]}-${ch[1]}: ${patriarchDescriptions[i]}`
+    )));
+
+    // PHASE 3: Exodus & Wilderness (Days 30-56)
+    const exodusDescriptions = [
+      'Israel Oppressed in Egypt - The Hebrews multiply despite oppression, and Moses is born and adopted by Pharaoh\'s daughter',
+      'Moses Called at the Burning Bush - God calls Moses from the burning bush to deliver His people from Egypt',
+      'Plagues Begin - Moses confronts Pharaoh, and the first plagues strike Egypt',
+      'More Plagues - The plagues intensify, but Pharaoh\'s heart remains hardened',
+      'The Passover - The final plague, the first Passover, and the exodus from Egypt',
+      'Crossing the Red Sea - Israel crosses the sea on dry ground while Egypt\'s army is destroyed',
+      'Manna, Water, and Jethro - God provides manna and water; Jethro visits and advises Moses',
+      'Mount Sinai and the Ten Commandments - Israel arrives at Sinai and receives God\'s law',
+      'The Book of the Covenant - Civil and ceremonial laws given to Israel',
+      'Tabernacle Instructions - God gives Moses the pattern for the tabernacle and its furnishings',
+      'Priestly Garments and Consecration - Instructions for Aaron and his sons to serve as priests',
+      'The Golden Calf - Israel sins with the golden calf while Moses is on the mountain',
+      'Tabernacle Built and Erected - The people contribute, and the tabernacle is constructed and filled with God\'s glory'
+    ];
+    const exodusChapters: [number, number, string][] = [
+      [1,2,'1446 BC'],[3,4,'1446 BC'],[5,7,'1446 BC'],[8,10,'1446 BC'],
+      [11,12,'1446 BC'],[13,15,'1446 BC'],[16,18,'1446 BC'],[19,21,'1446 BC'],
+      [22,24,'1446 BC'],[25,27,'1446 BC'],[28,31,'1446 BC'],[32,34,'1446 BC'],
+      [35,40,'1445 BC']
+    ];
+    exodusChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Exodus', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Exodus', ch[2],
+      `Exodus ${ch[0]}-${ch[1]}: ${exodusDescriptions[i]}`
+    )));
+
+    // Leviticus (Days 43-51)
+    const levDescriptions = [
+      'The Burnt, Grain, and Peace Offerings - Laws for approaching a holy God through sacrifice',
+      'The Sin and Guilt Offerings - How to deal with unintentional sins and trespasses',
+      'Priests and Their Ministry - Aaron and his sons are ordained and begin their ministry',
+      'Clean and Unclean - Laws distinguishing between clean and unclean animals and conditions',
+      'Skin Diseases and Mildew - Procedures for diagnosing and cleansing skin diseases',
+      'The Day of Atonement - The annual ceremony for national atonement and the scapegoat',
+      'Holiness Laws - Various laws calling Israel to be holy as God is holy',
+      'Feasts of the Lord - The appointed feasts: Passover, Pentecost, Tabernacles',
+      'The Sabbath Year and Jubilee - Laws for the sabbath year and the year of jubilee'
+    ];
+    const levChapters: [number, number, string][] = [
+      [1,3,'1445 BC'],[4,6,'1445 BC'],[7,9,'1445 BC'],[10,12,'1445 BC'],
+      [13,15,'1445 BC'],[16,18,'1445 BC'],[19,21,'1445 BC'],[22,24,'1445 BC'],
+      [25,27,'1445 BC']
+    ];
+    levChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Leviticus', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Sinai Laws', ch[2],
+      `Leviticus ${ch[0]}-${ch[1]}: ${levDescriptions[i]}`
+    )));
+
+    // Numbers (Days 52-63)
+    const numDescriptions = [
+      'The First Census - Israel is numbered and organized by tribes around the tabernacle',
+      'The Levites\' Duties - The Levites are assigned their responsibilities for the tabernacle',
+      'Offerings and the Second Passover - Tribal leaders bring offerings; the Passover is kept',
+      'The Cloud and the Silver Trumpets - Israel follows the cloud and uses trumpets for signals',
+      'The Twelve Spies - Twelve spies explore Canaan; ten bring a bad report',
+      'Korah\'s Rebellion - Korah, Dathan, and Abiram rebel against Moses and Aaron',
+      'The Red Heifer and Moses\' Sin - Laws of purification; Moses strikes the rock',
+      'Balaam and Balak - Balaam is hired to curse Israel but blesses them instead',
+      'Moab Seduces Israel - Israel sins with Moabite women; Phinehas acts zealously',
+      'The Second Census - A new generation is numbered before entering Canaan',
+      'Vengeance on Midian and Settlement - Midian is defeated; the tribes east of Jordan settle',
+      'Boundaries and Cities of Refuge - The land boundaries are set; cities of refuge appointed'
+    ];
+    const numChapters: [number, number, string][] = [
+      [1,3,'1445 BC'],[4,6,'1445 BC'],[7,9,'1445 BC'],[10,12,'1445 BC'],
+      [13,15,'1445 BC'],[16,18,'1445 BC'],[19,21,'1407 BC'],[22,24,'1407 BC'],
+      [25,27,'1407 BC'],[28,30,'1407 BC'],[31,33,'1407 BC'],[34,36,'1407 BC']
+    ];
+    numChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Numbers', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Wilderness Wanderings', ch[2],
+      `Numbers ${ch[0]}-${ch[1]}: ${numDescriptions[i]}`
+    )));
+
+    // Deuteronomy + Psalm 90 (Days 64-75)
+    const deutDescriptions = [
+      'Review of the Journey - Moses reviews Israel\'s forty years in the wilderness',
+      'Victories East of Jordan - The conquest of Sihon and Og',
+      'The Ten Commandments Repeated - The Shema and the great commandment',
+      'Remember the Lord - Warnings against forgetting God in prosperity',
+      'Laws for the Land - Civil and ceremonial laws for life in Canaan',
+      'Clean and Unclean Foods - Dietary laws and tithing regulations',
+      'Kings, Priests, and Prophets - Instructions for future leadership',
+      'Laws of War - Rules for warfare and dealing with cities',
+      'Various Laws - Laws about assembly, marriage, and various matters',
+      'Firstfruits and Curses - Bringing firstfruits; blessings for obedience, curses for disobedience',
+      'The Covenant at Moab - The covenant is renewed; Moses\' song and blessing',
+      'Moses\' Death and Psalm 90 - Moses dies on Mount Nebo; his prayer from Psalm 90'
+    ];
+    const deutChapters: [number, number, string, number[]][] = [
+      [1,2,'1406 BC',[]],[3,4,'1406 BC',[]],[5,7,'1406 BC',[]],[8,10,'1406 BC',[]],
+      [11,13,'1406 BC',[]],[14,16,'1406 BC',[]],[17,19,'1406 BC',[]],[20,22,'1406 BC',[]],
+      [23,25,'1406 BC',[]],[26,28,'1406 BC',[]],[29,31,'1406 BC',[]],[32,34,'1406 BC',[90]]
+    ];
+    deutChapters.forEach((ch, i) => {
+      const passages: any[] = [{ book: 'Deuteronomy', chapterStart: ch[0], chapterEnd: ch[1] }];
+      ch[3].forEach(p => passages.push({ book: 'Psalms', chapterStart: p, chapterEnd: p }));
+      readings.push(this.createReading(day++, passages, 'Covenant Renewal', ch[2],
+        `Deuteronomy ${ch[0]}-${ch[1]}: ${deutDescriptions[i]}`
+      ));
+    });
+
+    // PHASE 4: Conquest (Days 96-115)
+    // PHASE 4: Conquest Period (Days 76-92)
+    const joshuaDescriptions = [
+      'Rahab and the Spies - Joshua sends spies; Rahab hides them and is promised deliverance',
+      'Crossing the Jordan - Israel crosses the Jordan on dry ground as the waters part',
+      'Jericho and Ai - The walls of Jericho fall; initial defeat then victory at Ai',
+      'The Gibeonite Deception - The Gibeonites trick Israel into a treaty',
+      'Conquest of the South - The sun stands still as Joshua conquers southern Canaan',
+      'Land Division Begins - The land is divided among the tribes by lot',
+      'Tribal Territories - Ephraim, Manasseh, and the remaining tribes receive their inheritance',
+      'Cities of Refuge and the Altar - Cities of refuge appointed; the eastern tribes build an altar',
+      'Joshua\'s Farewell - Joshua charges Israel to serve the Lord and renews the covenant'
+    ];
+    const joshuaChapters: [number, number, string][] = [
+      [1,2,'1406 BC'],[3,5,'1406 BC'],[6,8,'1406 BC'],[9,10,'1405 BC'],
+      [11,12,'1405-1399 BC'],[13,15,'1399 BC'],[16,19,'1399 BC'],[20,22,'1399 BC'],
+      [23,24,'1375 BC']
+    ];
+    joshuaChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Joshua', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Conquest of Canaan', ch[2],
+      `Joshua ${ch[0]}-${ch[1]}: ${joshuaDescriptions[i]}`
+    )));
+
+    const judgesDescriptions = [
+      'The Cycle Begins - Israel fails to drive out all inhabitants; the cycle of sin begins',
+      'Othniel, Ehud, and Shamgar - The first judges deliver Israel from oppressors',
+      'Deborah and Barak - Deborah judges Israel; Barak defeats Sisera',
+      'Gideon - Gideon defeats the Midianites with 300 men',
+      'Abimelech and Tola - Abimelech\'s violent reign; minor judges Tola and Jair',
+      'Jephthah - Jephthah delivers Israel from the Ammonites',
+      'Minor Judges and Samson\'s Birth - Ibzan, Elon, Abdon; Samson is announced',
+      'Samson\'s Exploits - Samson\'s marriage, riddles, and feats of strength',
+      'Micah\'s Idolatry - Micah makes idols; the Danites steal them',
+      'Civil War Against Benjamin - A Levite\'s concubine leads to war against Benjamin'
+    ];
+    const judgesChapters: [number, number, string][] = [
+      [1,2,'1374-1334 BC'],[3,3,'1334-1150 BC'],[4,5,'1235 BC'],[6,7,'1169 BC'],
+      [8,9,'1169-1129 BC'],[10,11,'1118-1097 BC'],[12,14,'1097-1090 BC'],
+      [15,16,'1090-1075 BC'],[17,18,'1075 BC'],[19,21,'1075 BC']
+    ];
+    judgesChapters.forEach((ch, i) => readings.push(this.createReading(day++,
+      [{ book: 'Judges', chapterStart: ch[0], chapterEnd: ch[1] }],
+      'Judges Period', ch[2],
+      `Judges ${ch[0]}-${ch[1]}: ${judgesDescriptions[i]}`
+    )));
+
+    // Ruth
+    readings.push(this.createReading(day++, [{ book: 'Ruth', chapterStart: 1, chapterEnd: 4 }],
+      'Judges Period', '1140 BC',
+      'Ruth - A Moabite woman\'s loyalty leads her to become part of David\'s lineage and ultimately Jesus\' genealogy'
+    ));
+
+    // PHASE 5: Samuel & Saul (Days 94-106)
+    const sam1Descriptions = [
+      'Samuel\'s Birth and Call - Hannah prays for a son; Samuel is born and dedicated to the Lord',
+      'The Lord Calls Samuel - God calls the boy Samuel; Eli\'s house is judged',
+      'The Ark Captured - Israel loses the ark to the Philistines; Eli dies',
+      'The Ark Returns - The Philistines are plagued; the ark returns to Israel',
+      'Israel Requests a King - Samuel\'s sons are corrupt; the people demand a king',
+      'Saul Anointed King - Samuel anoints Saul; Saul is proclaimed king',
+      'Saul\'s Early Reign - Saul rescues Jabesh Gilead; Samuel\'s farewell address',
+      'Saul Rejected - Saul offers an unlawful sacrifice; Samuel pronounces rejection',
+      'David Anointed - Samuel anoints David; David enters Saul\'s service',
+      'David and Goliath - David defeats Goliath with faith in God',
+      'Saul\'s Jealousy - Saul becomes jealous of David; Jonathan warns David',
+      'David Flees with Psalms - David flees to Nob and Gath, writing Psalms of trust (59, 52, 34, 56)',
+      'David in the Wilderness - David hides in caves, writing Psalms of refuge (57, 142, 54)',
+      'David Spares Saul - David refuses to kill Saul in the cave of En Gedi',
+      'David, Nabal, and Abigail - David is insulted by Nabal; Abigail intervenes',
+      'David Spares Saul Again - David again refuses to kill Saul',
+      'David Among the Philistines - David flees to Achish; Saul consults a medium',
+      'Saul\'s Death - Saul and Jonathan die in battle against the Philistines'
+    ];
+    const sam1Chapters: [number, number, string, number[]][] = [
+      [1,2,'1100 BC',[]],[3,4,'1090 BC',[]],[5,6,'1070 BC',[]],[7,7,'1070 BC',[]],
+      [8,9,'1043 BC',[]],[10,11,'1043 BC',[]],[12,14,'1042 BC',[]],[15,15,'1028 BC',[]],
+      [16,16,'1024 BC',[]],[17,17,'1024 BC',[]],[18,19,'1015 BC',[]],[20,20,'1013 BC',[]],
+      [21,22,'1012 BC',[59,52,34,56]],[23,24,'1011 BC',[57,142,54]],[25,25,'1011 BC',[63]],
+      [26,26,'1011 BC',[]],[27,28,'1010 BC',[]],[29,31,'1010 BC',[]]
+    ];
+    sam1Chapters.forEach((ch, i) => {
+      const passages: any[] = [{ book: '1 Samuel', chapterStart: ch[0], chapterEnd: ch[1] }];
+      ch[3].forEach(p => passages.push({ book: 'Psalms', chapterStart: p, chapterEnd: p }));
+      readings.push(this.createReading(day++, passages, 'United Kingdom', ch[2],
+        `1 Samuel ${ch[0]}-${ch[1]}: ${sam1Descriptions[i]}`
+      ));
+    });
+
+    // 1 Chronicles 1-9 (Genealogies)
+    readings.push(this.createReading(day++,
+      [{ book: '1 Chronicles', chapterStart: 1, chapterEnd: 4 }],
+      'Priestly Records', '1003 BC',
+      '1 Chronicles 1-4: Genealogies from Adam to Judah - The lineage of God\'s chosen people'
+    ));
+    readings.push(this.createReading(day++,
+      [{ book: '1 Chronicles', chapterStart: 5, chapterEnd: 9 }],
+      'Priestly Records', '1003 BC',
+      '1 Chronicles 5-9: Genealogies of the Tribes and Priests - The organization of Israel'
+    ));
+
+    // PHASE 6: David's Reign (Days 109-145)
+    const davidDescriptions = [
+      'David Becomes King - David mourns Saul and Jonathan; he is anointed king over Judah',
+      'Civil War - War between David\'s house and Saul\'s house; Abner joins David',
+      'David King Over All Israel - David captures Jerusalem; the ark is brought with celebration (Psalms 15, 24, 96, 105, 106)',
+      'God\'s Covenant with David - The Lord promises David an eternal dynasty',
+      'David\'s Victories - David defeats the Philistines and expands the kingdom',
+      'David and Bathsheba - David commits adultery with Bathsheba; Nathan confronts him (Psalm 51)',
+      'Absalom\'s Rebellion - Amnon sins; Absalom kills him and later rebels against David',
+      'David Flees Jerusalem - David flees from Absalom (Psalms 63, 41, 55)',
+      'Absalom\'s Death - The battle in the forest; Absalom is killed',
+      'David Returns to Jerusalem - David returns; Sheba rebels; David shows mercy',
+      'David\'s Census and Psalms - David sins by counting the fighting men (Psalms 22, 18, 108)'
+    ];
+    const sam2Chron: [number, number, number, number, string, number[]][] = [
+      [1,2,10,11,'1010-1004 BC',[]],[3,4,12,12,'1004 BC',[]],[5,6,13,16,'1003-998 BC',[15,24,96,105,106]],
+      [7,7,17,17,'997 BC',[]],[8,10,18,20,'998-995 BC',[]],[11,12,0,0,'993-991 BC',[51]],
+      [13,14,0,0,'990-988 BC',[]],[15,16,0,0,'976 BC',[63,41,55]],[17,18,0,0,'972 BC',[]],
+      [19,20,0,0,'972 BC',[]],[21,24,21,24,'970 BC',[22,18,108]]
+    ];
+    sam2Chron.forEach((ch, i) => {
+      const passages: any[] = [];
+      if (ch[0] > 0) passages.push({ book: '2 Samuel', chapterStart: ch[0], chapterEnd: ch[1] });
+      if (ch[2] > 0) passages.push({ book: '1 Chronicles', chapterStart: ch[2], chapterEnd: ch[3] });
+      ch[5].forEach(p => passages.push({ book: 'Psalms', chapterStart: p, chapterEnd: p }));
+      readings.push(this.createReading(day++, passages, 'David\'s Reign', ch[4],
+        davidDescriptions[i]
+      ));
+    });
+
+    // 1 Chronicles 23-29 (Temple Preparation)
+    readings.push(this.createReading(day++,
+      [{ book: '1 Chronicles', chapterStart: 23, chapterEnd: 26 }],
+      'Temple Preparation', '970 BC',
+      '1 Chronicles 23-26: Organization of Levites, Priests, Musicians, and Gatekeepers for Temple Service'
+    ));
+    readings.push(this.createReading(day++,
+      [{ book: '1 Chronicles', chapterStart: 27, chapterEnd: 29 }],
+      'Temple Preparation', '970 BC',
+      '1 Chronicles 27-29: Military Divisions, Tribal Leaders, and Solomon Anointed as King'
+    ));
+
+    // David's Psalms (Days 112-145)
+    const psalmGroupDescriptions = [
+      'Psalms of the Blessed Man and the Messiah - Psalms 1-4 introduce the way of righteousness',
+      'Prayers for Justice and Praise - Psalms 5-8: Morning prayer and declaring God\'s glory',
+      'Thanksgiving and Trust in God - Psalms 9-12: God as refuge for the oppressed',
+      'Prayers for Deliverance - Psalms 13-14, 16-17: How long, O Lord? The path of life',
+      'Psalms of Creation and the Shepherd - Psalms 19-21, 23: God\'s glory in nature, the Good Shepherd',
+      'Prayers for Guidance - Psalms 25-28: Show me Your ways, O Lord',
+      'The Voice of the Lord, Forgiveness - Psalms 29-32: The Lord gives strength; blessed is the forgiven',
+      'Psalms of Trust and Repentance - Psalms 35-38: Contend for me, O Lord',
+      'Waiting for God, Longing for God - Psalms 39-40, 42-43: My soul thirsts for God',
+      'National Lament and the Royal Wedding - Psalms 44-47: We have heard; God is King',
+      'Wisdom and True Worship - Psalms 49-50, 53, 61: The fool says; sacrifice thanksgiving',
+      'God Alone, Praise for Provision - Psalms 62, 64-66: My soul finds rest in God alone',
+      'God\'s Blessing and Salvation - Psalms 67-70: May God bless us; haste to help',
+      'Prayer in Old Age, Messiah\'s Reign - Psalms 71-74: Do not cast me away when I am old',
+      'God the Judge, Israel\'s History - Psalms 75-78: We will tell the next generation',
+      'Prayer for Deliverance - Psalms 79-82: O God, the nations have defiled Your temple',
+      'Prayer Against Enemies, Longing for Courts - Psalms 83-86: How lovely is Your dwelling place',
+      'Zion, Lament, Covenant with David - Psalms 87-90: Lord, You have been our dwelling place',
+      'Dwelling in Shelter, God\'s Reign - Psalms 91-94: He who dwells in the shelter of the Most High',
+      'Call to Worship, The Lord Reigns - Psalms 95, 97-99: Come, let us sing for joy',
+      'Thanksgiving, Mercy and Grace - Psalms 100-103: Bless the Lord, O my soul',
+      'Psalms of Creation and History - Psalms 104-107: How many are Your works, O Lord',
+      'Victory and Praise - Psalms 108-111: My heart is steadfast, O God',
+      'Psalms of the Righteous - Psalms 112-115: Blessed is the man who fears the Lord',
+      'Psalm 118 and 119 - The stone the builders rejected; Your word is a lamp to my feet',
+      'Songs of Ascent Begin - Psalms 120-123: I lift up my eyes to the hills',
+      'Songs of Ascent Continue - Psalms 124-127: Unless the Lord builds the house',
+      'More Songs of Ascent - Psalms 128-130: Out of the depths I cry to You',
+      'Pilgrim Psalms and Praise - Psalms 131-134, 137-138: How good and pleasant when brothers dwell',
+      'Search Me, O God - Psalms 139-140: You have searched me and You know me',
+      'Psalms of David, Praise - Psalms 141-144: I cry to You, O Lord',
+      'Final Psalms of Praise - Psalms 145-150: I will exalt You, my God the King; Let everything that has breath praise the Lord'
+    ];
+    const psalmGroups: number[][] = [
+      [1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,16,17],[19,20,21,23],[25,26,27,28],
+      [29,30,31,32],[35,36,37,38],[39,40,42,43],[44,45,46,47],[49,50,53,61],
+      [62,64,65,66],[67,68,69,70],[71,72,73,74],[75,76,77,78],[79,80,81,82],
+      [83,84,85,86],[87,88,89,90],[91,92,93,94],[95,97,98,99],[100,101,102,103],
+      [104,105,106,107],[108,109,110,111],[112,113,114,115],[116,117,118],[119,120,121,122],
+      [123,124,125,126],[127,128,129,130],[131,132,133,134,137,138],[139,140],[141,142,143,144],
+      [145,146,147,148,149,150]
+    ];
+    psalmGroups.forEach((ps, i) => {
+      const passages = ps.map(p => ({ book: 'Psalms', chapterStart: p, chapterEnd: p }));
+      readings.push(this.createReading(day++, passages, 'Psalms', '979 BC',
+        psalmGroupDescriptions[i]
+      ));
+    });
+
+    // PHASE 7: Solomon (Days 191-220)
+    const solomonReadings: any[][] = [
+      [[{b:'1 Kings',s:1,e:2}],'970-967 BC','Solomon King'],
+      [[{b:'1 Kings',s:3,e:4}],'967 BC','Wisdom'],
+      [[{b:'1 Kings',s:5,e:6},{b:'2 Chronicles',s:2,e:3}],'967 BC','Temple'],
+      [[{b:'1 Kings',s:7,e:7},{b:'2 Chronicles',s:4,e:4}],'966 BC','Furnishings'],
+      [[{b:'1 Kings',s:8,e:8},{b:'2 Chronicles',s:5,e:7}],'966 BC','Dedication'],
+      [[{b:'1 Kings',s:9,e:10},{b:'2 Chronicles',s:8,e:9}],'959-946 BC','Queen of Sheba'],
+      [[{b:'1 Kings',s:11,e:11}],'931 BC','Solomon\'s End'],
+      [[{b:'Proverbs',s:1,e:3}],'950 BC','Wisdom Begins'],
+      [[{b:'Proverbs',s:4,e:6}],'950 BC','Get Wisdom'],
+      [[{b:'Proverbs',s:7,e:9}],'950 BC','Folly vs Wisdom'],
+      [[{b:'Proverbs',s:10,e:12}],'950 BC','Proverbs'],
+      [[{b:'Proverbs',s:13,e:15}],'950 BC','Wise Words'],
+      [[{b:'Proverbs',s:16,e:18}],'950 BC','Plans'],
+      [[{b:'Proverbs',s:19,e:21}],'950 BC','Wealth'],
+      [[{b:'Proverbs',s:22,e:24}],'950 BC','Sayings'],
+      [[{b:'Proverbs',s:25,e:27}],'950 BC','More Proverbs'],
+      [[{b:'Proverbs',s:28,e:31}],'950 BC','Excellent Wife'],
+      [[{b:'Ecclesiastes',s:1,e:3}],'937 BC','Vanity'],
+      [[{b:'Ecclesiastes',s:4,e:6}],'937 BC','Toil'],
+      [[{b:'Ecclesiastes',s:7,e:9}],'937 BC','Wisdom'],
+      [[{b:'Ecclesiastes',s:10,e:12}],'937 BC','Youth'],
+      [[{b:'Song of Solomon',s:1,e:4}],'950 BC','Love Song'],
+      [[{b:'Song of Solomon',s:5,e:8}],'950 BC','Love Strong']
+    ];
+    solomonReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Solomon\'s Reign', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 8: Divided Kingdom (Days 221-245)
+    const dividedReadings: any[][] = [
+      [[{b:'1 Kings',s:12,e:14},{b:'2 Chronicles',s:10,e:12}],'931-913 BC','Division'],
+      [[{b:'1 Kings',s:15,e:16},{b:'2 Chronicles',s:13,e:16}],'913-886 BC','Asa'],
+      [[{b:'1 Kings',s:17,e:18}],'874 BC','Elijah'],
+      [[{b:'1 Kings',s:19,e:20}],'874 BC','Horeb'],
+      [[{b:'1 Kings',s:21,e:22}],'853 BC','Naboth'],
+      [[{b:'2 Kings',s:1,e:3},{b:'Joel',s:1,e:3}],'852 BC','Elijah Taken, Joel'],
+      [[{b:'2 Kings',s:4,e:5}],'841 BC','Elisha Miracles'],
+      [[{b:'2 Kings',s:6,e:7}],'841 BC','Elisha'],
+      [[{b:'2 Kings',s:8,e:9},{b:'2 Chronicles',s:21,e:22}],'841 BC','Jehu'],
+      [[{b:'2 Kings',s:10,e:12},{b:'2 Chronicles',s:23,e:24}],'841-835 BC','Athaliah'],
+      [[{b:'2 Kings',s:13,e:14},{b:'2 Chronicles',s:25,e:26}],'812-766 BC','Amaziah, Uzziah'],
+      [[{b:'Amos',s:1,e:3}],'760 BC','Amos'],
+      [[{b:'Amos',s:4,e:6}],'760 BC','Seek the Lord'],
+      [[{b:'Amos',s:7,e:9}],'760 BC','Amos Visions'],
+      [[{b:'Jonah',s:1,e:4}],'760 BC','Jonah'],
+      [[{b:'Hosea',s:1,e:4}],'755 BC','Hosea'],
+      [[{b:'Hosea',s:5,e:9}],'755 BC','Unfaithful Israel'],
+      [[{b:'Hosea',s:10,e:14}],'755 BC','Hosea'],
+      [[{b:'2 Kings',s:15,e:17},{b:'2 Chronicles',s:27,e:28}],'750-722 BC','Fall of Samaria'],
+      [[{b:'Micah',s:1,e:4}],'735 BC','Micah'],
+      [[{b:'Micah',s:5,e:7}],'735 BC','Bethlehem Prophecy'],
+      [[{b:'Isaiah',s:1,e:4}],'739 BC','Isaiah Begins'],
+      [[{b:'Isaiah',s:5,e:8}],'734 BC','Immanuel'],
+      [[{b:'Isaiah',s:9,e:12}],'730 BC','Prince of Peace'],
+      [[{b:'Isaiah',s:13,e:17}],'725 BC','Nations']
+    ];
+    dividedReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Divided Kingdom', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 9: Isaiah & Hezekiah (Days 246-260)
+    const isaiahReadings: any[][] = [
+      [[{b:'Isaiah',s:18,e:23}],'725 BC','Oracles'],
+      [[{b:'Isaiah',s:24,e:27}],'725 BC','Apocalypse'],
+      [[{b:'Isaiah',s:28,e:31}],'711 BC','Woes'],
+      [[{b:'Isaiah',s:32,e:35}],'711 BC','Restoration'],
+      [[{b:'2 Kings',s:18,e:19},{b:'2 Chronicles',s:29,e:30}],'716 BC','Hezekiah'],
+      [[{b:'Isaiah',s:36,e:37}],'701 BC','Sennacherib'],
+      [[{b:'2 Kings',s:20,e:20},{b:'Isaiah',s:38,e:39}],'701 BC','Hezekiah\'s Illness'],
+      [[{b:'Psalms',s:46,e:48}],'701 BC','Hezekiah Psalms'],
+      [[{b:'Isaiah',s:40,e:44}],'700 BC','Comfort'],
+      [[{b:'Isaiah',s:45,e:48}],'700 BC','Cyrus'],
+      [[{b:'Isaiah',s:49,e:52}],'700 BC','Servant'],
+      [[{b:'Isaiah',s:53,e:55}],'700 BC','Suffering Servant'],
+      [[{b:'Isaiah',s:56,e:59}],'700 BC','Salvation'],
+      [[{b:'Isaiah',s:60,e:62}],'700 BC','Zion'],
+      [[{b:'Isaiah',s:63,e:66}],'700 BC','New Heavens']
+    ];
+    isaiahReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Isaiah', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 10: Fall of Judah (Days 261-270)
+    const fallReadings: any[][] = [
+      [[{b:'2 Kings',s:21,e:23},{b:'2 Chronicles',s:33,e:35}],'687-621 BC','Manasseh to Josiah'],
+      [[{b:'Nahum',s:1,e:3}],'663 BC','Nahum'],
+      [[{b:'Jeremiah',s:1,e:3},{b:'Zephaniah',s:1,e:3}],'627 BC','Jeremiah Called'],
+      [[{b:'Jeremiah',s:4,e:7}],'627 BC','Judgment'],
+      [[{b:'Jeremiah',s:8,e:11},{b:'Habakkuk',s:1,e:3}],'627 BC','Temple, Habakkuk'],
+      [[{b:'Jeremiah',s:12,e:16}],'609 BC','Covenant Broken'],
+      [[{b:'Jeremiah',s:17,e:21}],'609 BC','Rejection'],
+      [[{b:'Jeremiah',s:22,e:26}],'605 BC','Exile'],
+      [[{b:'Jeremiah',s:27,e:30}],'605 BC','Seventy Years'],
+      [[{b:'Jeremiah',s:31,e:34}],'593 BC','New Covenant']
+    ];
+    fallReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Fall of Judah', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 11: Exile (Days 271-280)
+    const exileReadings: any[][] = [
+      [[{b:'Jeremiah',s:35,e:39}],'588-586 BC','Jerusalem Falls'],
+      [[{b:'2 Kings',s:24,e:25},{b:'Lamentations',s:1,e:3}],'586 BC','Lamentations'],
+      [[{b:'Lamentations',s:4,e:5},{b:'Psalms',s:74,e:74},{b:'Psalms',s:79,e:79}],'586 BC','Fall Psalms'],
+      [[{b:'Jeremiah',s:40,e:45}],'588 BC','After the Fall'],
+      [[{b:'Jeremiah',s:46,e:52}],'588 BC','Nations'],
+      [[{b:'Ezekiel',s:1,e:4}],'593 BC','Ezekiel Called'],
+      [[{b:'Ezekiel',s:5,e:10}],'593 BC','Siege Symbol'],
+      [[{b:'Ezekiel',s:11,e:16}],'592 BC','Glory Departs'],
+      [[{b:'Ezekiel',s:17,e:24}],'591 BC','Parables'],
+      [[{b:'Ezekiel',s:25,e:32}],'587 BC','Nations']
+    ];
+    exileReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Exile', r[1] as string, r[2] as string));
+    });
+
+    // ===== NEW TESTAMENT: Days 281-365 =====
+
+    // PHASE 12: Gospels Harmonized (Days 281-330)
+    const gospelReadings: any[][] = [
+      [[{b:'Luke',s:1,e:1},{b:'John',s:1,e:1},{b:'Matthew',s:1,e:1},{b:'Luke',s:2,e:2}],'6-5 BC','Birth'],
+      [[{b:'Matthew',s:2,e:2},{b:'Luke',s:2,e:2}],'5 BC-8 AD','Childhood'],
+      [[{b:'Matthew',s:3,e:3},{b:'Mark',s:1,e:1},{b:'Luke',s:3,e:3},{b:'John',s:1,e:1}],'26 AD','Baptism'],
+      [[{b:'Matthew',s:4,e:4},{b:'Luke',s:4,e:4}],'27 AD','Temptation'],
+      [[{b:'John',s:1,e:4}],'27 AD','First Signs'],
+      [[{b:'Matthew',s:4,e:5},{b:'Mark',s:1,e:2},{b:'Luke',s:5,e:5}],'27 AD','Ministry Begins'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:2,e:2},{b:'Luke',s:5,e:5}],'28 AD','Miracles'],
+      [[{b:'Matthew',s:5,e:5}],'27 AD','Beatitudes'],
+      [[{b:'Matthew',s:6,e:6}],'27 AD','Prayer'],
+      [[{b:'Matthew',s:7,e:7}],'27 AD','Build on Rock'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:4,e:5},{b:'Luke',s:8,e:8}],'28 AD','More Miracles'],
+      [[{b:'Matthew',s:10,e:10},{b:'Mark',s:6,e:6},{b:'Luke',s:9,e:9}],'29 AD','Send Twelve'],
+      [[{b:'Matthew',s:11,e:12},{b:'Luke',s:7,e:7}],'28 AD','John, Woes'],
+      [[{b:'Matthew',s:13,e:13},{b:'Mark',s:4,e:4},{b:'Luke',s:8,e:8}],'28 AD','Parables'],
+      [[{b:'John',s:5,e:6}],'28 AD','Feeding 5000'],
+      [[{b:'Matthew',s:14,e:15},{b:'Mark',s:6,e:7}],'29 AD','John Beheaded'],
+      [[{b:'Matthew',s:16,e:17},{b:'Mark',s:8,e:9},{b:'Luke',s:9,e:9}],'29 AD','Transfiguration'],
+      [[{b:'John',s:7,e:8}],'29 AD','Tabernacles'],
+      [[{b:'John',s:9,e:10}],'29 AD','Blind Man'],
+      [[{b:'Luke',s:10,e:11}],'29 AD','Seventy'],
+      [[{b:'Luke',s:12,e:13}],'30 AD','Parables'],
+      [[{b:'Luke',s:14,e:16}],'30 AD','Cost, Lost'],
+      [[{b:'Luke',s:17,e:18}],'30 AD','Kingdom'],
+      [[{b:'John',s:11,e:11}],'30 AD','Lazarus'],
+      [[{b:'Matthew',s:19,e:20},{b:'Mark',s:10,e:10},{b:'Luke',s:18,e:19}],'30 AD','Journey'],
+      [[{b:'Matthew',s:21,e:22},{b:'Mark',s:11,e:12},{b:'Luke',s:19,e:20},{b:'John',s:12,e:12}],'30 AD','Entry'],
+      [[{b:'Matthew',s:23,e:24},{b:'Mark',s:12,e:13},{b:'Luke',s:20,e:21}],'30 AD','Temple'],
+      [[{b:'Matthew',s:25,e:25},{b:'Mark',s:13,e:13},{b:'Luke',s:21,e:21}],'30 AD','Olivet'],
+      [[{b:'John',s:13,e:14}],'30 AD','Upper Room'],
+      [[{b:'John',s:15,e:17}],'30 AD','Farewell'],
+      [[{b:'Matthew',s:26,e:26},{b:'Mark',s:14,e:14},{b:'Luke',s:22,e:22}],'30 AD','Gethsemane'],
+      [[{b:'Matthew',s:27,e:27},{b:'Mark',s:15,e:15},{b:'Luke',s:23,e:23},{b:'John',s:18,e:19}],'30 AD','Trial'],
+      [[{b:'Matthew',s:27,e:27},{b:'Mark',s:15,e:15},{b:'Luke',s:23,e:23},{b:'John',s:19,e:19}],'30 AD','Crucifixion'],
+      [[{b:'Matthew',s:28,e:28},{b:'Mark',s:16,e:16},{b:'Luke',s:24,e:24},{b:'John',s:20,e:21}],'30 AD','Resurrection']
+    ];
+    gospelReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Gospels', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 13: Acts (Days 315-330)
+    const actsReadings: [number, number, string][] = [
+      [1,2,'Pentecost'],[3,4,'Healing'],[5,6,'Church'],
+      [7,8,'Stephen'],[9,10,'Saul'],[11,12,'Antioch'],
+      [13,14,'First Journey'],[15,16,'Council'],
+      [17,18,'Athens, Corinth'],[19,20,'Ephesus'],
+      [21,23,'Arrest'],[24,26,'Trials'],
+      [27,28,'Rome']
+    ];
+    actsReadings.forEach(ch => readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: ch[0], chapterEnd: ch[1] }], 'Early Church', '30-62 AD', ch[2])));
+
+    // James with Acts 12
+    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Early Church', '45 AD', 'James'));
+
+    // PHASE 14: Pauline Epistles (Days 332-358)
+    const paulReadings: [string, number, number, string][] = [
+      ['Galatians',1,6,'49 AD'],['1 Thessalonians',1,5,'51 AD'],['2 Thessalonians',1,3,'52 AD'],
+      ['1 Corinthians',1,8,'54 AD'],['1 Corinthians',9,16,'54 AD'],['2 Corinthians',1,7,'57 AD'],
+      ['2 Corinthians',8,13,'57 AD'],['Romans',1,8,'57 AD'],['Romans',9,16,'57 AD'],
+      ['Ephesians',1,6,'62 AD'],['Philippians',1,4,'62 AD'],['Colossians',1,4,'62 AD'],
+      ['Philemon',1,1,'62 AD'],['1 Timothy',1,6,'63 AD'],['Titus',1,3,'66 AD'],
+      ['1 Peter',1,5,'64 AD'],['2 Timothy',1,4,'67 AD'],['2 Peter',1,3,'67 AD'],
+      ['Hebrews',1,7,'68 AD'],['Hebrews',8,13,'68 AD'],['Jude',1,1,'68 AD']
+    ];
+    paulReadings.forEach(ep => readings.push(this.createReading(day++, [{ book: ep[0], chapterStart: ep[1], chapterEnd: ep[2] }], 'Epistles', ep[3], ep[0])));
+
+    // PHASE 15: Final Epistles + Revelation (Days 359-365)
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 5 }], 'Epistles', '90 AD', '1 John'));
+    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }, { book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '92-94 AD', '2-3 John'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 5 }], 'Apocalypse', '95 AD', 'Revelation 1-5'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 6, chapterEnd: 11 }], 'Apocalypse', '95 AD', 'Revelation 6-11'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 12, chapterEnd: 17 }], 'Apocalypse', '95 AD', 'Revelation 12-17'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 18, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 18-22'));
+
+    return readings;
+  }
+
+  private createReading(
+    day: number,
+    passages: Array<{book: string; chapterStart: number; chapterEnd: number}>,
+    period: string,
+    date: string,
+    description: string,
+    commentary?: string,
+    commentaryType?: 'generic' | 'paul'
+  ): DailyReading {
+    return {
+      day,
+      date: this.getDateForDay(day),
+      passages: passages.map(p => ({
+        book: p.book,
+        chapterStart: p.chapterStart,
+        chapterEnd: p.chapterEnd,
+        testament: this.getTestament(p.book),
+        isApocryphal: this.isApocryphal(p.book),
+        href: generateBiblehubHref(p.book, p.chapterStart)
+      })),
+      historicalContext: {
+        period,
+        approximateDate: date,
+        description
+      },
+      readingTimeMinutes: this.calculateReadingTime(passages),
+      commentary,
+      commentaryType
+    };
   }
 }

@@ -6,13 +6,17 @@ export interface ParsedReadingPlan {
     date?: string;
     passages: Array<{
       book: string;
-      chapters: string;
+      chapters?: string;
+      chapterStart?: number;
+      chapterEnd?: number;
     }>;
     historicalContext?: {
       period: string;
       approximateDate: string;
-      description: string;
+      description?: string;
     };
+    commentary?: string;
+    commentaryType?: 'generic' | 'paul';
   }>;
   metadata: {
     totalDays: number;
