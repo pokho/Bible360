@@ -535,7 +535,7 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       '1 Chronicles 27-29: Military Divisions, Tribal Leaders, and Solomon Anointed as King'
     ));
 
-    // David's Psalms (Days 112-145)
+    // David's Psalms (Days 131-158)
     const psalmGroupDescriptions = [
       'Psalms of the Blessed Man and the Messiah - Psalms 1-4 introduce the way of righteousness',
       'Prayers for Justice and Praise - Psalms 5-8: Morning prayer and declaring God\'s glory',
@@ -562,12 +562,9 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       'Victory and Praise - Psalms 108-111: My heart is steadfast, O God',
       'Psalms of the Righteous - Psalms 112-115: Blessed is the man who fears the Lord',
       'Psalm 118 and 119 - The stone the builders rejected; Your word is a lamp to my feet',
-      'Songs of Ascent Begin - Psalms 120-123: I lift up my eyes to the hills',
-      'Songs of Ascent Continue - Psalms 124-127: Unless the Lord builds the house',
-      'More Songs of Ascent - Psalms 128-130: Out of the depths I cry to You',
-      'Pilgrim Psalms and Praise - Psalms 131-134, 137-138: How good and pleasant when brothers dwell',
-      'Search Me, O God - Psalms 139-140: You have searched me and You know me',
-      'Psalms of David, Praise - Psalms 141-144: I cry to You, O Lord',
+      'Songs of Ascent - Psalms 120-130: I lift up my eyes to the hills; Out of the depths',
+      'Pilgrim Psalms and Praise - Psalms 131-138: How good and pleasant when brothers dwell',
+      'Search Me, O God - Psalms 139-144: You have searched me and You know me',
       'Final Psalms of Praise - Psalms 145-150: I will exalt You, my God the King; Let everything that has breath praise the Lord'
     ];
     const psalmGroups: number[][] = [
@@ -575,8 +572,8 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       [29,30,31,32],[35,36,37,38],[39,40,42,43],[44,45,46,47],[49,50,53,61],
       [62,64,65,66],[67,68,69,70],[71,72,73,74],[75,76,77,78],[79,80,81,82],
       [83,84,85,86],[87,88,89,90],[91,92,93,94],[95,97,98,99],[100,101,102,103],
-      [104,105,106,107],[108,109,110,111],[112,113,114,115],[116,117,118],[119,120,121,122],
-      [123,124,125,126],[127,128,129,130],[131,132,133,134,137,138],[139,140],[141,142,143,144],
+      [104,105,106,107],[108,109,110,111],[112,113,114,115],[116,117,118],[119,120,121,122,123,124,125,126,127,128,129,130],
+      [131,132,133,134,137,138],[139,140,141,142,143,144],
       [145,146,147,148,149,150]
     ];
     psalmGroups.forEach((ps, i) => {
@@ -691,22 +688,69 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       readings.push(this.createReading(day++, passages, 'Fall of Judah', r[1] as string, r[2] as string));
     });
 
-    // PHASE 11: Exile (Days 271-280)
+    // PHASE 11: Exile (Days 246-265) - Expanded
     const exileReadings: any[][] = [
       [[{b:'Jeremiah',s:35,e:39}],'588-586 BC','Jerusalem Falls'],
-      [[{b:'2 Kings',s:24,e:25},{b:'Lamentations',s:1,e:3}],'586 BC','Lamentations'],
-      [[{b:'Lamentations',s:4,e:5},{b:'Psalms',s:74,e:74},{b:'Psalms',s:79,e:79}],'586 BC','Fall Psalms'],
-      [[{b:'Jeremiah',s:40,e:45}],'588 BC','After the Fall'],
-      [[{b:'Jeremiah',s:46,e:52}],'588 BC','Nations'],
-      [[{b:'Ezekiel',s:1,e:4}],'593 BC','Ezekiel Called'],
-      [[{b:'Ezekiel',s:5,e:10}],'593 BC','Siege Symbol'],
-      [[{b:'Ezekiel',s:11,e:16}],'592 BC','Glory Departs'],
-      [[{b:'Ezekiel',s:17,e:24}],'591 BC','Parables'],
-      [[{b:'Ezekiel',s:25,e:32}],'587 BC','Nations']
+      [[{b:'2 Kings',s:24,e:25},{b:'Lamentations',s:1,e:2}],'586 BC','Lamentations 1-2'],
+      [[{b:'Lamentations',s:3,e:5},{b:'Psalms',s:74,e:74},{b:'Psalms',s:79,e:79}],'586 BC','Lamentations 3-5, Fall Psalms'],
+      [[{b:'Jeremiah',s:40,e:42}],'588 BC','After the Fall - Gedaliah'],
+      [[{b:'Jeremiah',s:43,e:45}],'588 BC','Flight to Egypt'],
+      [[{b:'Jeremiah',s:46,e:48}],'588 BC','Oracles Against Egypt'],
+      [[{b:'Jeremiah',s:49,e:52}],'588 BC','Oracles Against Nations'],
+      [[{b:'Ezekiel',s:1,e:2}],'593 BC','Ezekiel\'s Call - The Vision'],
+      [[{b:'Ezekiel',s:3,e:4}],'593 BC','The Scroll and Commission'],
+      [[{b:'Ezekiel',s:5,e:7}],'593 BC','Siege Symbol - Jerusalem'],
+      [[{b:'Ezekiel',s:8,e:11}],'592 BC','Idolatry in the Temple'],
+      [[{b:'Ezekiel',s:12,e:14}],'592 BC','Exile Symbol and False Prophets'],
+      [[{b:'Ezekiel',s:15,e:17}],'591 BC','Parable of the Vine'],
+      [[{b:'Ezekiel',s:18,e:20}],'591 BC','Individual Responsibility'],
+      [[{b:'Ezekiel',s:21,e:24}],'590 BC','Sword and Parables'],
+      [[{b:'Ezekiel',s:25,e:28}],'587 BC','Oracles Against Ammon, Moab, Edom'],
+      [[{b:'Ezekiel',s:29,e:32}],'587 BC','Oracles Against Egypt'],
+      [[{b:'Ezekiel',s:33,e:34}],'586 BC','Watchman and News of Fall'],
+      [[{b:'Ezekiel',s:35,e:36}],'586 BC','Mount Seir and Israel'],
+      [[{b:'Ezekiel',s:37,e:37}],'585 BC','Valley of Dry Bones'],
+      [[{b:'Ezekiel',s:38,e:39}],'585 BC','Gog and Magog']
     ];
     exileReadings.forEach(r => {
       const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
       readings.push(this.createReading(day++, passages, 'Exile', r[1] as string, r[2] as string));
+    });
+
+    // PHASE 11b: Restoration (Days 266-280) - Daniel, Esther, Ezra, Nehemiah
+    const restorationReadings: any[][] = [
+      [[{b:'Daniel',s:1,e:2}],'605 BC','Daniel in Babylon'],
+      [[{b:'Daniel',s:3,e:4}],'605 BC','Fiery Furnace'],
+      [[{b:'Daniel',s:5,e:6}],'539 BC','Writing on Wall, Lions\' Den'],
+      [[{b:'Daniel',s:7,e:8}],'553 BC','Four Beasts, Ram and Goat'],
+      [[{b:'Daniel',s:9,e:10}],'539 BC','Seventy Weeks'],
+      [[{b:'Daniel',s:11,e:12}],'539 BC','Kings of North and South'],
+      [[{b:'Ezekiel',s:40,e:42}],'573 BC','New Temple Vision'],
+      [[{b:'Ezekiel',s:43,e:45}],'573 BC','Glory Returns, Priests'],
+      [[{b:'Ezekiel',s:46,e:48}],'573 BC','Prince, River, Land Division'],
+      [[{b:'Esther',s:1,e:3}],'483 BC','Queen Vashti, Esther Chosen'],
+      [[{b:'Esther',s:4,e:6}],'473 BC','Haman\'s Plot'],
+      [[{b:'Esther',s:7,e:10}],'473 BC','Esther Saves the Jews'],
+      [[{b:'Ezra',s:1,e:2}],'537 BC','Return from Exile'],
+      [[{b:'Ezra',s:3,e:4}],'536 BC','Altar and Temple Foundation'],
+      [[{b:'Ezra',s:5,e:6}],'520 BC','Rebuilding Resumes'],
+      [[{b:'Haggai',s:1,e:2}],'520 BC','Haggai: Build the House'],
+      [[{b:'Ezra',s:7,e:8}],'456 BC','Ezra Comes to Jerusalem'],
+      [[{b:'Ezra',s:9,e:10}],'456 BC','Mixed Marriages, Reformation'],
+      [[{b:'Nehemiah',s:1,e:3}],'445 BC','Nehemiah\'s Mission'],
+      [[{b:'Nehemiah',s:4,e:6}],'445 BC','Wall Built Despite Opposition'],
+      [[{b:'Zechariah',s:1,e:4}],'520 BC','Zechariah\'s Visions Begin'],
+      [[{b:'Zechariah',s:5,e:8}],'520 BC','More Visions'],
+      [[{b:'Nehemiah',s:7,e:8}],'445 BC','The Wall Completed, Law Read'],
+      [[{b:'Nehemiah',s:9,e:10}],'445 BC','Confession and Covenant'],
+      [[{b:'Zechariah',s:9,e:11}],'518 BC','Oracles: The King Comes'],
+      [[{b:'Nehemiah',s:11,e:13}],'432 BC','Dedication, Reforms'],
+      [[{b:'Zechariah',s:12,e:14}],'518 BC','The Day of the Lord'],
+      [[{b:'Malachi',s:1,e:4}],'430 BC','Final Prophet: I Love Jacob']
+    ];
+    restorationReadings.forEach(r => {
+      const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
+      readings.push(this.createReading(day++, passages, 'Restoration', r[1] as string, r[2] as string));
     });
 
     // ===== NEW TESTAMENT: Days 281-365 =====
@@ -753,39 +797,68 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       readings.push(this.createReading(day++, passages, 'Gospels', r[1] as string, r[2] as string));
     });
 
-    // PHASE 13: Acts (Days 315-330)
+    // PHASE 13: Acts (Days 309-325)
     const actsReadings: [number, number, string][] = [
-      [1,2,'Pentecost'],[3,4,'Healing'],[5,6,'Church'],
-      [7,8,'Stephen'],[9,10,'Saul'],[11,12,'Antioch'],
-      [13,14,'First Journey'],[15,16,'Council'],
-      [17,18,'Athens, Corinth'],[19,20,'Ephesus'],
-      [21,23,'Arrest'],[24,26,'Trials'],
-      [27,28,'Rome']
+      [1,2,'Ascension and Pentecost'],
+      [3,4,'Healing and Preaching'],
+      [5,6,'Church Unity and Stephen'],
+      [7,8,'Stephen\'s Martyrdom, Philip'],
+      [9,10,'Saul\'s Conversion, Cornelius'],
+      [11,12,'Gentiles, James Killed'],
+      [13,14,'First Missionary Journey'],
+      [15,16,'Jerusalem Council, Timothy'],
+      [17,18,'Thessalonica, Corinth'],
+      [19,20,'Ephesus, Farewell'],
+      [21,22,'Arrest in Jerusalem'],
+      [23,24,'Defense Before Council'],
+      [25,26,'Festus and Agrippa'],
+      [27,28,'Voyage and Rome']
     ];
     actsReadings.forEach(ch => readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: ch[0], chapterEnd: ch[1] }], 'Early Church', '30-62 AD', ch[2])));
 
-    // James with Acts 12
-    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Early Church', '45 AD', 'James'));
+    // James (early epistle)
+    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Early Church', '45 AD', 'James - Faith and Works'));
 
-    // PHASE 14: Pauline Epistles (Days 332-358)
-    const paulReadings: [string, number, number, string][] = [
-      ['Galatians',1,6,'49 AD'],['1 Thessalonians',1,5,'51 AD'],['2 Thessalonians',1,3,'52 AD'],
-      ['1 Corinthians',1,8,'54 AD'],['1 Corinthians',9,16,'54 AD'],['2 Corinthians',1,7,'57 AD'],
-      ['2 Corinthians',8,13,'57 AD'],['Romans',1,8,'57 AD'],['Romans',9,16,'57 AD'],
-      ['Ephesians',1,6,'62 AD'],['Philippians',1,4,'62 AD'],['Colossians',1,4,'62 AD'],
-      ['Philemon',1,1,'62 AD'],['1 Timothy',1,6,'63 AD'],['Titus',1,3,'66 AD'],
-      ['1 Peter',1,5,'64 AD'],['2 Timothy',1,4,'67 AD'],['2 Peter',1,3,'67 AD'],
-      ['Hebrews',1,7,'68 AD'],['Hebrews',8,13,'68 AD'],['Jude',1,1,'68 AD']
+    // PHASE 14: Pauline Epistles (Days 327-354)
+    const paulReadings: [string, number, number, string, string][] = [
+      ['Galatians',1,6,'49 AD','Galatians: Freedom in Christ'],
+      ['1 Thessalonians',1,5,'51 AD','1 Thessalonians: His Coming'],
+      ['2 Thessalonians',1,3,'52 AD','2 Thessalonians: Standing Firm'],
+      ['1 Corinthians',1,8,'54 AD','1 Cor 1-8: Wisdom and Purity'],
+      ['1 Corinthians',9,16,'54 AD','1 Cor 9-16: Body and Love'],
+      ['2 Corinthians',1,7,'57 AD','2 Cor 1-7: Comfort'],
+      ['2 Corinthians',8,13,'57 AD','2 Cor 8-13: Generosity'],
+      ['Romans',1,8,'57 AD','Romans 1-8: Justified by Faith'],
+      ['Romans',9,16,'57 AD','Romans 9-16: Israel and Living'],
+      ['Ephesians',1,6,'62 AD','Ephesians: One in Christ'],
+      ['Philippians',1,4,'62 AD','Philippians: Joy'],
+      ['Colossians',1,4,'62 AD','Colossians: Christ Supreme'],
+      ['Philemon',1,1,'62 AD','Philemon: Forgiveness'],
+      ['1 Timothy',1,6,'63 AD','1 Timothy: Church Order'],
+      ['Titus',1,3,'66 AD','Titus: Sound Doctrine'],
+      ['1 Peter',1,5,'64 AD','1 Peter: Living Hope'],
+      ['2 Timothy',1,4,'67 AD','2 Timothy: Faithful to End'],
+      ['2 Peter',1,3,'67 AD','2 Peter: Knowledge'],
+      ['Hebrews',1,7,'68 AD','Hebrews 1-7: Better Priest'],
+      ['Hebrews',8,13,'68 AD','Hebrews 8-13: New Covenant']
     ];
-    paulReadings.forEach(ep => readings.push(this.createReading(day++, [{ book: ep[0], chapterStart: ep[1], chapterEnd: ep[2] }], 'Epistles', ep[3], ep[0])));
+    paulReadings.forEach(ep => readings.push(this.createReading(day++, [{ book: ep[0], chapterStart: ep[1], chapterEnd: ep[2] }], 'Epistles', ep[3], ep[4])));
 
-    // PHASE 15: Final Epistles + Revelation (Days 359-365)
-    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 5 }], 'Epistles', '90 AD', '1 John'));
-    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }, { book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '92-94 AD', '2-3 John'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 5 }], 'Apocalypse', '95 AD', 'Revelation 1-5'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 6, chapterEnd: 11 }], 'Apocalypse', '95 AD', 'Revelation 6-11'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 12, chapterEnd: 17 }], 'Apocalypse', '95 AD', 'Revelation 12-17'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 18, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 18-22'));
+    // PHASE 15: Final Epistles + Revelation (Days 355-365)
+    readings.push(this.createReading(day++, [{ book: 'Jude', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '68 AD', 'Jude: Contend for the Faith'));
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 2 }], 'Epistles', '90 AD', '1 John 1-2: Walking in the Light'));
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 3, chapterEnd: 5 }], 'Epistles', '90 AD', '1 John 3-5: Love One Another'));
+    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '92 AD', '2 John: Walk in Truth'));
+    readings.push(this.createReading(day++, [{ book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '94 AD', '3 John: Hospitality and Truth'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 3 }], 'Apocalypse', '95 AD', 'Revelation 1-3: Letters to Seven Churches'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 4, chapterEnd: 5 }], 'Apocalypse', '95 AD', 'Revelation 4-5: The Throne Room'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 6, chapterEnd: 8 }], 'Apocalypse', '95 AD', 'Revelation 6-8: The Seven Seals'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 9, chapterEnd: 11 }], 'Apocalypse', '95 AD', 'Revelation 9-11: The Seven Trumpets'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 12, chapterEnd: 14 }], 'Apocalypse', '95 AD', 'Revelation 12-14: The Dragon and the Beasts'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 15, chapterEnd: 16 }], 'Apocalypse', '95 AD', 'Revelation 15-16: The Seven Bowls'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 17, chapterEnd: 18 }], 'Apocalypse', '95 AD', 'Revelation 17-18: Babylon the Great'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 19, chapterEnd: 20 }], 'Apocalypse', '95 AD', 'Revelation 19-20: The Return of Christ'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 21, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 21-22: New Heaven and New Earth'));
 
     return readings;
   }

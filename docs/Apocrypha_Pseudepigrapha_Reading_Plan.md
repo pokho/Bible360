@@ -425,31 +425,116 @@ This reading plan organizes Apocrypha, Pseudepigrapha, and early Christian writi
 
 ---
 
-## Reading Plan Organization
+## Reading Plan Organization & Ordering Rationale
 
-### Phase 1: Foundation Period (Days 1-90)
-**Deuterocanonical and Early Wisdom Literature**
-- Tobit, Judith, Sirach, Wisdom of Solomon
-- Baruch, Prayer of Manasseh, Psalm 151
-- Maccabean history and context
+### Core Ordering Principles
 
-### Phase 2: Second Temple Judaism (Days 91-180)
-**Old Testament Pseudepigrapha**
-- 1 Enoch and Jubilees (foundational)
-- Testament literature and apocalypses
-- Wisdom and apocalyptic traditions
+The 365-day plan follows a **narrative chronology** rather than strict composition dating. Texts are ordered by:
 
-### Phase 3: Early Christianity (Days 181-270)
-**Apostolic Fathers and New Testament Apocrypha**
-- Clement, Didache, Ignatius, Polycarp
-- Early gospels and acts
-- Development of Christian tradition
+1. **Narrative Chronology**: Texts ordered by the biblical events they describe, not composition date
+2. **Thematic Progression**: Wisdom → Prophecy → Apocalyptic → Gnostic revelation
+3. **Canonical Bridge**: Starts with Genesis expansions, ends with apocalyptic visions
+4. **Jewish → Christian Transition**: Phases 1-4 are Jewish, Phases 5-7 are increasingly Christian
+5. **Complexity Gradient**: Moves from accessible wisdom literature to complex Gnostic cosmology
 
-### Phase 4: Gnostic and Alternative Traditions (Days 271-365)
-**Nag Hammadi and Later Developments**
-- Major Gnostic gospels and revelations
-- Alternative Christianities
-- Comparative studies and theological reflections
+---
+
+### Phase 1: Primeval History (Days 1-35)
+**Adam to Noah Period** - Earliest biblical events
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 1-8 | First & Second Book of Adam and Eve | Describes life immediately after Eden |
+| 9-20 | 1 Enoch | Antediluvian revelations (Enoch lived pre-Flood) |
+| 21-24 | Book of Jasher | Supplements Genesis patriarchal history |
+| 25-27 | 2 Enoch (Secrets of Enoch) | Enoch's heavenly ascent |
+| 28-35 | Testament of Solomon | Solomonic wisdom (though written later, placed early for thematic reasons) |
+
+---
+
+### Phase 2: Patriarchal to Kingdom (Days 36-75)
+**Abraham to Solomon Era**
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 36-45 | Jubilees | Rewritten Genesis-Exodus with calendar system |
+| 46-58 | Testament of Twelve Patriarchs | Jacob's sons' ethical teachings |
+| 59-62 | Psalms of Solomon | Attributed to Solomon's era |
+| 63-75 | Wisdom of Solomon + Sirach | Wisdom literature progression |
+
+---
+
+### Phase 3: Divided Kingdom to Exile (Days 76-140)
+**931-538 BCE Historical Events**
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 76-78 | Prayer of Manasseh + Psalm 151 | Manasseh's repentance (c. 695-642 BCE) |
+| 79-85 | Baruch + Letter of Jeremiah | Babylonian Exile period |
+| 86-95 | 1 Esdras + Greek Esther | Return from Exile & Persian Period |
+| 96-105 | Tobit + Judith | Hellenistic wisdom under foreign rule |
+| 106-135 | 1-4 Maccabees | Maccabean Revolt (167-160 BCE) |
+| 136-140 | 2 Esdras (4 Ezra) | Post-Temple destruction response (90-120 CE) |
+
+---
+
+### Phase 4: Second Temple Judaism (Days 141-180)
+**Dead Sea Scrolls & Qumran Period**
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 141-152 | Isaiah Scroll, Community Rule, War Scroll, Damascus Document | Qumran community texts |
+| 153-160 | Hodayot, Testament of Job, Joseph and Aseneth | Worship & wisdom expansions |
+| 161-170 | Letter of Aristeas, 3 Baruch, Ascension of Isaiah | Hellenistic & transitional works |
+| 171-180 | 2 Baruch, Sentences of Sextus, Odes of Solomon | Bridge to Christian era |
+
+---
+
+### Phase 5: Apostolic Fathers (Days 181-230)
+**Early Christianity (30-160 CE)**
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 181-190 | Didache + 1 Clement | Earliest Christian manuals |
+| 191-200 | Ignatius Letters + Polycarp + Martyrdom of Polycarp | Martyrdom theology |
+| 201-210 | Barnabas + 2 Clement + Papias + Shepherd of Hermas Pt.1 | Teaching & tradition |
+| 211-220 | Shepherd of Hermas Pt.2 + Preaching of Peter + Silvanus | Church expansion |
+
+---
+
+### Phase 6: NT Apocrypha - Gospels & Acts (Days 231-290)
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 231-240 | Gospel of Hebrews, Ebionites, Nazoreans | Jewish-Christian gospels first |
+| 241-255 | Gospel of Thomas, Egyptians, Peter | Alternative gospel traditions |
+| 256-265 | Nicodemus, Gospel of Mary, Pistis Sophia Pt.1 | Passion expansions |
+| 266-290 | Acts of Paul, Peter, John, Andrew, Thomas + Pistis Sophia Pt.2 | Apostolic acts narratives |
+
+---
+
+### Phase 7: Gnostic Texts & Apocalyptic (Days 291-365)
+
+| Days | Texts | Ordering Logic |
+|------|-------|----------------|
+| 291-310 | Apocryphon of John, Gospel of Truth/Philip, Sophia of Jesus Christ | Major Gnostic revelations |
+| 311-325 | Hypostasis of Archons, Origin of World, Tripartite Tractate | Advanced Gnostic cosmology |
+| 326-340 | Thunder Perfect Mind, Resurrection treatises, Vision of Paul | Specialized Gnostic works |
+| 341-355 | Zostrianos, Allogenes, Marsanes, Melchizedek | Later Gnostic development |
+| 356-365 | Apocalypses of Peter, Thomas, Paul | Final apocalyptic visions |
+
+---
+
+### Educational Journey Design
+
+This structure creates an educational journey from familiar biblical territory into increasingly esoteric traditions:
+
+- **Days 1-75**: Accessible expansions of canonical narratives
+- **Days 76-140**: Historical wisdom through Israel's crises
+- **Days 141-180**: Dead Sea Scrolls and Second Temple context
+- **Days 181-230**: Birth of Christianity and apostolic teaching
+- **Days 231-290**: Alternative gospel traditions and acts
+- **Days 291-365**: Gnostic cosmology and apocalyptic culmination
 
 ---
 
