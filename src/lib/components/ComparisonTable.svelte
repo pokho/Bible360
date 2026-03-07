@@ -26,7 +26,7 @@
 		modalDay = 0;
 	}
 
-	
+
 	function renderPlanReading(reading, plan) {
 		if (!reading || !reading.passages || reading.passages.length === 0) {
 			return '<span class="no-reading">No reading</span>';
@@ -55,6 +55,13 @@
 		const readingTime = reading.readingTimeMinutes || 20;
 		const hasApocrypha = reading.passages.some(p => p.testament === 'apocryphal');
 
+		// Add text type badge if available
+		let textTypeBadge = '';
+		if (reading.textType) {
+			const textTypeClass = `text-type-${reading.textType.replace('_', '-')}`;
+			textTypeBadge = `<span class="text-type-badge ${textTypeClass}">${getTextTypeLabel(reading.textType)}</span>`;
+		}
+
 		// Add historical context if available
 		let contextHtml = '';
 		if (reading.historicalContext) {
@@ -70,6 +77,7 @@
 		const readingMeta = `
 			<div class="reading-meta">
 				<span class="reading-time">${readingTime} min</span>
+				${textTypeBadge}
 			</div>
 		`;
 
@@ -82,7 +90,7 @@
 		`;
 	}
 
-	
+
 	function getTestamentLabel(testament) {
 		const labels = {
 			'old': 'OT',
@@ -90,6 +98,18 @@
 			'apocryphal': 'APO'
 		};
 		return labels[testament] || testament;
+	}
+
+	function getTextTypeLabel(textType) {
+		const labels = {
+			'archaeological': 'Archaeological',
+			'deuterocanonical': 'Deuterocanonical',
+			'pseudepigrapha': 'Pseudepigrapha',
+			'apostolic_fathers': 'Apostolic Fathers',
+			'nt_apocrypha': 'NT Apocrypha',
+			'gnostic': 'Gnostic'
+		};
+		return labels[textType] || textType;
 	}
 </script>
 
@@ -237,5 +257,56 @@
 	.passage-link:hover {
 		text-decoration: underline;
 		color: #0056b3;
+	}
+
+	.reading-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.text-type-badge {
+		font-size: 0.7rem;
+		padding: 0.15rem 0.4rem;
+		border-radius: 3px;
+		font-weight: 500;
+		text-transform: capitalize;
+	}
+
+	.text-type-archaeological {
+		background: #fff3e0;
+		color: #856404;
+		border: 1px solid #ffd700;
+	}
+
+	.text-type-deuterocanonical {
+		background: #e8f4fd;
+		color: #1a5276;
+		border: 1px solid #3498db;
+	}
+
+	.text-type-pseudepigrapha {
+		background: #fdf2e8;
+		color: #92400e;
+		border: 1px solid #f97316;
+	}
+
+	.text-type-apostolic-fathers {
+		background: #f0fdf4;
+		color: #166534;
+		border: 1px solid #22c55e;
+	}
+
+	.text-type-nt-apocrypha {
+		background: #fdf4ff;
+		color: #7c3aed;
+		border: 1px solid #9b59b6;
+	}
+
+	.text-type-gnostic {
+		background: #f5f0ff;
+		color: #6b21a8;
+		border: 1px solid #a855f7;
 	}
 </style>

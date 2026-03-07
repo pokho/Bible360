@@ -193,7 +193,6 @@
 				<div class="plan-legend">
 					{#each allReadingProviders as plan}
 						<div class="legend-item">
-							<span class="legend-color plan-{plan.key}"></span>
 							<span>{plan.name}</span>
 							<small>({plan.methodology})</small>
 						</div>
