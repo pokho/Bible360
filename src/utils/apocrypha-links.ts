@@ -15,46 +15,46 @@ export interface ApocryphaUrlConfig {
  * Primary URL configurations for different categories of apocryphal texts
  */
 const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
-  // Deuterocanonical Books (Catholic/Orthodox Tradition) - NRSVUE Priority
+  // Deuterocanonical Books (Catholic/Orthodox Tradition) - BibleHub Priority
   'Tobit': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Tobit+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/tobit/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/poly/tob.htm'
   },
   'Judith': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Judith+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/judith/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/jdt.htm'
   },
   'Wisdom of Solomon': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Wisdom+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/wisdom_of_solomon/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/chr/apo/index.htm'
   },
   'Sirach': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Sirach+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/ecclesiasticus/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/sirach.htm'
   },
   'Baruch': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Baruch+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/baruch/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/baruch.htm'
   },
   '1 Maccabees': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=1+Maccabees+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/1_maccabees/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/1macc.htm'
   },
   '2 Maccabees': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=2+Maccabees+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/2_maccabees/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/2macc.htm'
   },
@@ -71,45 +71,45 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://www.earlychristianwritings.com/4maccabees.html'
   },
   'Greek Esther': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Greek+Esther+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/esther_greek/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/gesth.htm'
   },
   'Letter of Jeremiah': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Letter+of+Jeremiah+{chapter}&version=NRSVUE',
+    baseUrl: 'https://biblehub.com/apocrypha/epistle_of_jeremiah/',
+    pathPattern: '{chapter}-{chapter}.htm',
     requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/epjer.htm'
   },
   'Prayer of Azariah': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Prayer+of+Azariah&version=NRSVUE',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/prayer_of_azariah/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/prazar.htm'
   },
   'Susanna': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Susanna&version=NRSVUE',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/susanna/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/poly/sus.htm'
   },
   'Bel and the Dragon': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Bel+and+the+Dragon&version=NRSVUE',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/bel_and_the_dragon/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/poly/bel.htm'
   },
   '1 Esdras': {
-    baseUrl: 'https://sacred-texts.com/bib/apo/',
-    pathPattern: 'esdr001.htm',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/1_esdras/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/1esdras.html'
   },
   '2 Esdras': {
-    baseUrl: 'https://sacred-texts.com/bib/apo/',
-    pathPattern: 'esdr002.htm',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/2_esdras/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://www.earlychristianwritings.com/2esdras.html'
   },
 
@@ -353,9 +353,9 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://www.earlychristianwritings.com/2enoch.html'
   },
   'Prayer of Manasseh': {
-    baseUrl: 'https://www.biblegateway.com/passage/',
-    pathPattern: '?search=Prayer+of+Manasseh&version=NRSVUE',
-    requiresChapter: false,
+    baseUrl: 'https://biblehub.com/apocrypha/prayer_of_manasseh/',
+    pathPattern: '{chapter}-{chapter}.htm',
+    requiresChapter: true,
     fallbackUrl: 'https://sacred-texts.com/bib/apo/prman.htm'
   },
   'Psalm 151': {
@@ -457,8 +457,8 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://www.earlychristianwritings.com/2baruch.html'
   },
   'Testament of Job': {
-    baseUrl: 'https://sacred-texts.com/bib/apo/',
-    pathPattern: 'testjob.htm',
+    baseUrl: 'https://wesley.nnu.edu/sermons-essays-books/noncanonical-literature/noncanonical-literature-ot-pseudepigrapha/testament-of-job/',
+    pathPattern: '',
     requiresChapter: false,
     fallbackUrl: 'https://www.earlychristianwritings.com/testamentjob.html'
   },
@@ -555,18 +555,6 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     pathPattern: 'valentinianexposition.html',
     requiresChapter: false,
     fallbackUrl: 'https://sacred-texts.com/chr/gno/valent.htm'
-  },
-  'Teachings of Silvanus': {
-    baseUrl: 'https://sacred-texts.com/chr/gno/',
-    pathPattern: 'teachsyl.htm',
-    requiresChapter: false,
-    fallbackUrl: 'https://www.earlychristianwritings.com/teachingssilvanus.html'
-  },
-  'Sentences of Sextus': {
-    baseUrl: 'https://www.earlychristianwritings.com/',
-    pathPattern: 'sentencessextus.html',
-    requiresChapter: false,
-    fallbackUrl: 'https://sacred-texts.com/bib/poly/sextus.htm'
   },
   'Tripartite Tractate': {
     baseUrl: 'https://sacred-texts.com/chr/gno/',
@@ -736,7 +724,6 @@ const BOOK_MAPPINGS: Record<string, string> = {
   'Pistis Sophia (Part 1)': 'Pistis Sophia',
   'Pistis Sophia (Part 2)': 'Pistis Sophia',
   'Preaching of Peter': 'Preaching of Peter',
-  'Testament of Job': 'Testament of Job',
   'Joseph and Aseneth': 'Joseph and Aseneth',
   'Ascension of Isaiah': 'Ascension of Isaiah',
   'Letter of Aristeas': 'Letter of Aristeas',
@@ -803,7 +790,9 @@ export function getApocryphaSourceDescription(bookName: string): string {
     return 'Source: Sacred Texts (Primary)';
   }
 
-  if (config.baseUrl.includes('biblegateway.com')) {
+  if (config.baseUrl.includes('biblehub.com')) {
+    return 'Source: BibleHub Apocrypha';
+  } else if (config.baseUrl.includes('biblegateway.com')) {
     return 'Source: Bible Gateway (NRSVUE - Preferred)';
   } else if (config.baseUrl.includes('sacred-texts.com')) {
     return 'Source: Sacred Texts (Preferred)';

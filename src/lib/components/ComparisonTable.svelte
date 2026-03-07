@@ -114,7 +114,7 @@
 					</a>
 				</th>
 				<th>
-					<a href="https://github.com/anthropics/bible360-research" target="_blank" rel="noopener" class="provider-link">
+					<a href="/noncanonical" class="provider-link">
 						Apocrypha & Pseudepigrapha
 					</a>
 				</th>

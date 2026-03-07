@@ -171,6 +171,7 @@
 <nav class="bible360-nav">
 	<a href="/" class="nav-btn active">Comparison</a>
 	<a href="/about" class="nav-btn">About</a>
+	<a href="/noncanonical" class="nav-btn">Non-Canonical</a>
 </nav>
 
 <main class="bible360-content">
@@ -242,14 +243,6 @@
 
 <footer class="bible360-footer">
 	<p>© 2026 Bible360 - Chronological Bible Reading Plans</p>
-	<div class="source-attribution">
-		<p>Reading plans based on data from:</p>
-		<div class="source-links">
-			<a href="https://www.logos.com/grow/nook-chronological-bible-reading-plan/" target="_blank" rel="noopener">Logos.com</a>
-			<a href="https://www.blueletterbible.org/dailyreading/" target="_blank" rel="noopener">BlueLetterBible.org</a>
-			<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener">Biblehub</a>
-		</div>
-	</div>
 </footer>
 
 <style>

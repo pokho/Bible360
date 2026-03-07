@@ -27,6 +27,7 @@ export interface DailyReading {
   historicalContext?: HistoricalContext;
   readingTimeMinutes: number;
   apocryphaIncluded?: boolean;
+  textType?: 'archaeological' | 'deuterocanonical' | 'pseudepigrapha' | 'apostolic_fathers' | 'nt_apocrypha' | 'gnostic';
   commentary?: string;
   commentaryType?: 'generic' | 'paul';
 }
