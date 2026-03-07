@@ -181,8 +181,10 @@
 				<h3>Read These Texts Online</h3>
 				<p>Many non-canonical texts are available for free online:</p>
 				<ul>
+					<li><a href="https://biblehub.com/apocrypha/" target="_blank" rel="noopener">BibleHub Apocrypha</a> - Deuterocanonical books with study tools</li>
+					<li><a href="https://www.biblegateway.com/versions/New-Revised-Standard-Version-Updated-Edition-NRSVue-Bible/#booklist" target="_blank" rel="noopener">BibleGateway NRSVue</a> - Deuterocanonical books in the New Revised Standard Version Updated Edition</li>
 					<li><a href="https://wesley.nnu.edu/noncanonical-literature/" target="_blank" rel="noopener">Wesley NNU Non-Canonical Literature</a> - Comprehensive collection of OT pseudepigrapha, NT apocrypha, and Apostolic Fathers</li>
-					<li><a href="https://www.sacred-texts.com/bib/apo/index.htm" target="_blank" rel="noopener">Sacred Texts: Apocrypha</a> - Deuterocanonical books and pseudepigrapha</li>
+					<li><a href="https://www.sacred-texts.com/chr/apo/index.htm" target="_blank" rel="noopener">Sacred Texts: Apocrypha</a> - Deuterocanonical books and pseudepigrapha</li>
 					<li><a href="https://www.earlychristianwritings.com/" target="_blank" rel="noopener">Early Christian Writings</a> - New Testament apocrypha and Apostolic Fathers</li>
 				</ul>
 			</div>
