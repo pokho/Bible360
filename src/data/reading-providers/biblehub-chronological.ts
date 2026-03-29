@@ -561,7 +561,8 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       'Psalms of Creation and History - Psalms 104-107: How many are Your works, O Lord',
       'Victory and Praise - Psalms 108-111: My heart is steadfast, O God',
       'Psalms of the Righteous - Psalms 112-115: Blessed is the man who fears the Lord',
-      'Psalm 118 and 119 - The stone the builders rejected; Your word is a lamp to my feet',
+      'Psalm 118 - The stone the builders rejected has become the cornerstone',
+      'Psalm 119 - The longest psalm: Your word is a lamp to my feet and a light to my path',
       'Songs of Ascent - Psalms 120-130: I lift up my eyes to the hills; Out of the depths',
       'Pilgrim Psalms and Praise - Psalms 131-138: How good and pleasant when brothers dwell',
       'Search Me, O God - Psalms 139-144: You have searched me and You know me',
@@ -572,7 +573,7 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       [29,30,31,32],[35,36,37,38],[39,40,42,43],[44,45,46,47],[49,50,53,61],
       [62,64,65,66],[67,68,69,70],[71,72,73,74],[75,76,77,78],[79,80,81,82],
       [83,84,85,86],[87,88,89,90],[91,92,93,94],[95,97,98,99],[100,101,102,103],
-      [104,105,106,107],[108,109,110,111],[112,113,114,115],[116,117,118],[119,120,121,122,123,124,125,126,127,128,129,130],
+      [104,105,106,107],[108,109,110,111],[112,113,114,115],[116,117,118],[119],[120,121,122,123,124,125,126,127,128,129,130],
       [131,132,133,134,137,138],[139,140,141,142,143,144],
       [145,146,147,148,149,150]
     ];
