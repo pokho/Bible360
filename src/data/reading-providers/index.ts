@@ -1,6 +1,7 @@
 import { ProviderConfiguration, ChronologicalMethodology } from '../../types';
 export { ApocryphaReadingProvider } from './apocrypha-chronological';
 export { BiblehubReadingProvider } from './biblehub-interleaved';
+export { BiblehubChronologicalProvider } from './biblehub-chronological';
 
 export const providerConfigurations: ProviderConfiguration[] = [
   {
@@ -121,6 +122,31 @@ export const providerConfigurations: ProviderConfiguration[] = [
     },
     features: [
       'OT/NT interleaved daily reading',
+      '280 OT readings + 85 NT readings',
+      'Traditional Hebrew chronology',
+      'Event-based Psalms distribution',
+      'Complete biblical history coverage'
+    ],
+    isDefault: false
+  },
+  {
+    id: 'biblehub-chronological',
+    name: 'BibleHub Chronological',
+    description: 'Pure chronological reading: OT first (days 1-280), then NT (days 281-365) following BibleHub timeline.',
+    methodology: {
+      datingSystem: 'conservative',
+      jobPlacement: 'early-genesis',
+      gospelIntegration: 'historical',
+      psalmsDistribution: 'event-based',
+      apocryphaInclusion: {
+        includeDeuterocanonical: false,
+        includeNTApocrypha: false,
+        denominationalPreference: 'protestant',
+        intertestamentalPlacement: 'historical-gap'
+      }
+    },
+    features: [
+      'Pure chronological order (OT then NT)',
       '280 OT readings + 85 NT readings',
       'Traditional Hebrew chronology',
       'Event-based Psalms distribution',

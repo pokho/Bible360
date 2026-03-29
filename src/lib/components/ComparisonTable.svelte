@@ -9,6 +9,9 @@
 	// Dropdown state for Logos/BLB toggle
 	let selectedAcademicProvider = 'logos'; // 'logos' or 'blb'
 
+	// Dropdown state for BibleHub toggle
+	let selectedBiblehubProvider = 'interleaved'; // 'interleaved' or 'chronological'
+
 	// Modal state
 	let showModal = false;
 	let modalCommentary = '';
@@ -150,10 +153,16 @@
 						{/if}
 					</div>
 				</th>
-				<th>
-					<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener" class="provider-link">
-						Biblehub Chronological
-					</a>
+				<th class="biblehub-provider-header">
+					<div class="provider-selector">
+						<select bind:value={selectedBiblehubProvider} class="provider-dropdown">
+							<option value="interleaved">BibleHub Interleaved</option>
+							<option value="chronological">BibleHub Chronological</option>
+						</select>
+						<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener" class="provider-external-link" title="Open BibleHub Timeline">
+							↗
+						</a>
+					</div>
 				</th>
 				<th>
 					<a href="/noncanonical" class="provider-link">
@@ -166,9 +175,11 @@
 			{#each sortedDays as day}
 				{@const logosReading = plans.logos?.dailyReadings.find(r => r.day === day)}
 				{@const blbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
-				{@const biblehubReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
+				{@const biblehubInterleavedReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
+				{@const biblehubChronologicalReading = plans.biblehubChronological?.dailyReadings.find(r => r.day === day)}
 				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
 				{@const currentAcademicReading = selectedAcademicProvider === 'logos' ? logosReading : blbReading}
+				{@const currentBiblehubReading = selectedBiblehubProvider === 'interleaved' ? biblehubInterleavedReading : biblehubChronologicalReading}
 
 				<tr class="day-row">
 					<td class="day-cell">
@@ -185,12 +196,12 @@
 						{/if}
 					</td>
 					<td class="plan-cell plan-biblehub">
-						{@html biblehubReading ? renderPlanReading(biblehubReading, plans.biblehub) : '<span class="no-reading">No reading</span>'}
-						{#if biblehubReading?.commentary}
+						{@html currentBiblehubReading ? renderPlanReading(currentBiblehubReading, selectedBiblehubProvider === 'interleaved' ? plans.biblehub : plans.biblehubChronological) : '<span class="no-reading">No reading</span>'}
+						{#if currentBiblehubReading?.commentary}
 							<CommentButton
-								commentary={biblehubReading.commentary}
-								provider="biblehub"
-								onClick={() => openCommentModal(biblehubReading.commentary, 'biblehub', day)}
+								commentary={currentBiblehubReading.commentary}
+								provider={selectedBiblehubProvider === 'interleaved' ? 'biblehub' : 'biblehubChronological'}
+								onClick={() => openCommentModal(currentBiblehubReading.commentary, selectedBiblehubProvider === 'interleaved' ? 'biblehub' : 'biblehubChronological', day)}
 							/>
 						{/if}
 					</td>
@@ -225,8 +236,20 @@
 	}
 
 	.academic-provider-header {
+
+		.biblehub-provider-header {
+			min-width: 200px;
+		}
 		min-width: 200px;
+
+		.biblehub-provider-header {
+			min-width: 200px;
+		}
 	}
+
+		.biblehub-provider-header {
+			min-width: 200px;
+		}
 
 	.provider-selector {
 		display: flex;

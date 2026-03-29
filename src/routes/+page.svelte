@@ -4,6 +4,7 @@
 	import { LogosAcademicProvider } from '../data/reading-providers/logos-academic';
 	import { BlueLetterBibleProvider } from '../data/reading-providers/blue-letter-bible';
 	import { BiblehubReadingProvider } from '../data/reading-providers/biblehub-interleaved';
+	import { BiblehubChronologicalProvider } from '../data/reading-providers/biblehub-chronological';
 	import { ApocryphaReadingProvider } from '../data/reading-providers/apocrypha-chronological';
 
 	$: plans = {};
@@ -28,14 +29,16 @@
 			// Initialize provider classes
 			const logosProvider = new LogosAcademicProvider();
 			const blbProvider = new BlueLetterBibleProvider();
-			const biblehubProvider = new BiblehubReadingProvider();
+			const biblehubInterleavedProvider = new BiblehubReadingProvider();
+			const biblehubChronologicalProvider = new BiblehubChronologicalProvider();
 			const apocryphaProvider = new ApocryphaReadingProvider();
 
 			// Load data from all providers in parallel
-			const [logosPlan, blbPlan, biblehubPlan, apocryphaPlan] = await Promise.all([
+			const [logosPlan, blbPlan, biblehubInterleavedPlan, biblehubChronologicalPlan, apocryphaPlan] = await Promise.all([
 				logosProvider.loadReadingPlan(),
 				blbProvider.loadReadingPlan(),
-				biblehubProvider.loadReadingPlan(),
+				biblehubInterleavedProvider.loadReadingPlan(),
+				biblehubChronologicalProvider.loadReadingPlan(),
 				apocryphaProvider.loadReadingPlan()
 			]);
 
@@ -60,9 +63,15 @@
 					sourceUrl: 'https://github.com/anthropics/bible360-research'
 				},
 				biblehub: {
-					provider: biblehubPlan.provider,
-					dailyReadings: biblehubPlan.dailyReadings,
+					provider: biblehubInterleavedPlan.provider,
+					dailyReadings: biblehubInterleavedPlan.dailyReadings,
 					color: '#27ae60',
+					sourceUrl: 'https://biblehub.com/timeline/'
+				},
+				biblehubChronological: {
+					provider: 'biblehub-chronological',
+					dailyReadings: biblehubChronologicalPlan.dailyReadings,
+					color: '#16a085',
 					sourceUrl: 'https://biblehub.com/timeline/'
 				}
 			};
@@ -86,12 +95,20 @@
 					color: '#9b59b6'
 				},
 				{
-					name: 'Biblehub Chronological',
+					name: 'BibleHub Interleaved',
 					key: 'biblehub',
-					methodology: 'Complete chronological timeline following traditional Hebrew chronology with chapter-by-chapter progression through biblical history.',
-					totalDays: biblehubPlan.metadata.totalDays,
+					methodology: 'OT and NT readings interleaved across 365 days following BibleHub timeline with daily Testament alternation.',
+					totalDays: biblehubInterleavedPlan.metadata.totalDays,
 					apocryphaSupport: 'None (Protestant)',
 					color: '#27ae60'
+				},
+				{
+					name: 'BibleHub Chronological',
+					key: 'biblehubChronological',
+					methodology: 'Pure chronological reading: OT first (days 1-280), then NT (days 281-365) following BibleHub timeline.',
+					totalDays: biblehubChronologicalPlan.metadata.totalDays,
+					apocryphaSupport: 'None (Protestant)',
+					color: '#16a085'
 				},
 				{
 					name: 'Apocrypha & Pseudepigrapha',
@@ -108,7 +125,7 @@
 				logosPlan.metadata.totalDays,
 				blbPlan.metadata.totalDays,
 				apocryphaPlan.metadata.totalDays,
-				biblehubPlan.metadata.totalDays
+				biblehubInterleavedPlan.metadata.totalDays,\n\t\t\t\tbiblehubChronologicalPlan.metadata.totalDays
 			);
 			maxMonth = Math.ceil(maxDays / 31);
 
