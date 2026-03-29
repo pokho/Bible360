@@ -1,6 +1,6 @@
 import { Component, h, State, Listen, Event, EventEmitter, Element } from '@stencil/core';
 import { ApocryphaReadingProvider } from '../../data/reading-providers/apocrypha-chronological';
-import { BiblehubReadingProvider } from '../../data/reading-providers/biblehub-chronological';
+import { BiblehubReadingProvider } from '../../data/reading-providers/biblehub-interleaved';
 
 interface LocalReadingPassage {
   book: string;

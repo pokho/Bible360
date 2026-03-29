@@ -43,8 +43,8 @@ export class BiblehubReadingProvider {
       },
       dailyReadings,
       metadata: {
-        title: 'Biblehub Enhanced Chronological Timeline Reading Plan',
-        description: 'Event-based chronological timeline with comprehensive historical context following conservative biblical chronology. 280 OT readings spread across 365 days with 85 NT readings superimposed.',
+        title: 'BibleHub Interleaved Reading Plan',
+        description: 'OT and NT readings interleaved across 365 days following BibleHub timeline with daily Testament alternation. 280 OT readings + 85 NT readings.',
         totalDays: 365,
         averageReadingTime: 20,
         language: 'English',

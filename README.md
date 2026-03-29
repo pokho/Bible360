@@ -5,7 +5,7 @@ Complete chronological Bible reading plans with comprehensive historical context
 ## Features
 
 ### 📖 Complete Bible Coverage
-- **BibleHub Chronological**: Complete 365-day plan covering entire Bible (Genesis to Revelation)
+- **BibleHub Interleaved**: OT and NT readings interleaved across 365 days (Genesis to Revelation)
 - **Logos Academic**: Conservative evangelical scholarship with configurable parameters
 - **Blue Letter Bible**: Traditional chronological reading methodology
 - **Side-by-side comparison**: Compare all providers day-by-day in detailed table view
@@ -62,7 +62,7 @@ src/
 │       └── reading-providers/        # Provider implementations
 │           ├── blue-letter-bible.ts  # BLB chronological plan
 │           ├── logos-academic.ts     # Logos chronological plan
-│           ├── biblehub-chronological.ts # Complete Bible timeline
+│           ├── biblehub-interleaved.ts # OT/NT interleaved 365-day plan
 │           └── apocrypha-chronological.ts # Apocrypha reading plan
 ├── utils/
 │   ├── biblehub-utils.ts             # URL generation utilities
@@ -73,7 +73,7 @@ src/
 
 ## Reading Plan Coverage
 
-### BibleHub Chronological (Complete Bible)
+### BibleHub Interleaved (OT/NT Daily Alternation)
 - **Days 1-25**: Primeval History & Patriarchs (Creation, Fall, Flood, Abraham, Jacob, Joseph)
 - **Days 26-90**: Exodus & Wilderness (Deliverance, Sinai Covenant, Tabernacle, Wanderings)
 - **Days 91-180**: Conquest & Judges (Joshua, Judges, Ruth)

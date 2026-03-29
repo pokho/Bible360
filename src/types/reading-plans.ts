@@ -8,7 +8,7 @@ export interface ReadingPlan {
 export interface ChronologicalMethodology {
   datingSystem: 'young-earth' | 'conservative' | 'moderate' | 'academic' | 'custom';
   jobPlacement: 'early-genesis' | 'patriarchal' | 'custom';
-  gospelIntegration: 'immediate' | 'historical' | 'custom';
+  gospelIntegration: 'immediate' | 'historical' | 'interleaved' | 'synoptic' | 'custom';
   psalmsDistribution: 'historical' | 'thematic' | 'custom';
   apocryphaInclusion: ApocryphaSettings;
 }

@@ -1,6 +1,6 @@
 import { ProviderConfiguration, ChronologicalMethodology } from '../../types';
 export { ApocryphaReadingProvider } from './apocrypha-chronological';
-export { BiblehubReadingProvider } from './biblehub-chronological';
+export { BiblehubReadingProvider } from './biblehub-interleaved';
 
 export const providerConfigurations: ProviderConfiguration[] = [
   {

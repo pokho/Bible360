@@ -1,4 +1,4 @@
-import { ReadingPlan } from '../../types/reading-plans';
+import type { ReadingPlan } from '../../types/reading-plans';
 
 export class BiblehubReadingProvider {
   generateBiblehubPlan(): ReadingPlan {
@@ -18,8 +18,8 @@ export class BiblehubReadingProvider {
       },
       dailyReadings: this.generateBiblehubReadings(),
       metadata: {
-        title: 'Biblehub Chronological Timeline',
-        description: 'Complete chronological reading plan following Biblehub timeline structure with chapter-by-chapter progression through biblical history',
+        title: 'BibleHub Interleaved Reading Plan',
+        description: 'OT and NT readings interleaved across 365 days following BibleHub timeline with daily Testament alternation',
         totalDays: 365,
         averageReadingTime: 20,
         language: 'en',

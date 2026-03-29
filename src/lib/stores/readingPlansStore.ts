@@ -6,7 +6,7 @@ import { apocrypha365DayPlan } from '$lib/data/apocrypha-365-day-plan';
 // NOTE: All reading plan data has been MOVED to proper provider files:
 // - Blue Letter Bible data: src/data/reading-providers/blue-letter-bible.ts
 // - Logos Academic data: src/data/reading-providers/logos-academic.ts
-// - Biblehub data: src/data/reading-providers/biblehub-chronological.ts
+// - Biblehub data: src/data/reading-providers/biblehub-interleaved.ts
 // - Apocrypha data: src/data/reading-providers/apocrypha-chronological.ts
 // ============================================================================
 

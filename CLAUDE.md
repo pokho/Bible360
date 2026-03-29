@@ -12,7 +12,7 @@
 ```
 ✅ CORRECT: src/data/reading-providers/blue-letter-bible.ts
 ✅ CORRECT: src/data/reading-providers/logos-academic.ts
-✅ CORRECT: src/data/reading-providers/biblehub-chronological.ts
+✅ CORRECT: src/data/reading-providers/biblehub-interleaved.ts
 ✅ CORRECT: src/data/reading-providers/apocrypha-chronological.ts
 
 ❌ WRONG: src/lib/data/consolidated-reading-plans.ts

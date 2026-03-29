@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { LogosAcademicProvider } from '../data/reading-providers/logos-academic';
 	import { BlueLetterBibleProvider } from '../data/reading-providers/blue-letter-bible';
-	import { BiblehubReadingProvider } from '../data/reading-providers/biblehub-chronological';
+	import { BiblehubReadingProvider } from '../data/reading-providers/biblehub-interleaved';
 	import { ApocryphaReadingProvider } from '../data/reading-providers/apocrypha-chronological';
 
 	$: plans = {};
