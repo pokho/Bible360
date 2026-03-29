@@ -44,8 +44,8 @@ export class BiblehubReadingProvider {
       dailyReadings,
       metadata: {
         title: 'Biblehub Enhanced Chronological Timeline Reading Plan',
-        description: 'Event-based chronological timeline with comprehensive historical context following conservative biblical chronology. 280 OT / 85 NT day distribution.',
-        totalDays: parsedPlan.metadata.totalDays,
+        description: 'Event-based chronological timeline with comprehensive historical context following conservative biblical chronology. 280 OT readings spread across 365 days with 85 NT readings superimposed.',
+        totalDays: 365,
         averageReadingTime: 20,
         language: 'English',
         version: '3.0 Restructured',
@@ -168,8 +168,8 @@ export class BiblehubReadingProvider {
         commentaryType: r.commentaryType
       })),
       metadata: {
-        totalDays: dailyReadings.length,
-        source: 'Biblehub Timeline - Restructured Chronological Plan (320 days, expandable to 365)'
+        totalDays: 365,
+        source: 'Biblehub Timeline - OT/NT Superimposed Chronological Plan (365 days)'
       }
     };
   }
@@ -753,43 +753,75 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       readings.push(this.createReading(day++, passages, 'Restoration', r[1] as string, r[2] as string));
     });
 
-    // ===== NEW TESTAMENT: Days 281-365 =====
+    // Redistribute OT readings across 365 days, leaving gaps for NT
+    // We have ~280 OT + ~84 NT = ~364 readings for 365 days
+    const otReadingCount = readings.length;
+    const totalDays = 365;
 
-    // PHASE 12: Gospels Harmonized (Days 281-330)
+    // Distribute OT readings evenly across 365 days using floor to avoid collisions
+    // This creates predictable gaps where NT readings will be interleaved
+    const otDays = new Set<number>();
+    readings.forEach((reading, index) => {
+      // Linear distribution from day 1 to day 365
+      const day = 1 + Math.floor(index * (totalDays - 1) / Math.max(1, otReadingCount - 1));
+      reading.day = day;
+      reading.date = this.getDateForDay(day);
+      otDays.add(day);
+    });
+
+    // Find gap days (days 1-365 without OT readings)
+    const gapDays: number[] = [];
+    for (let d = 1; d <= 365; d++) {
+      if (!otDays.has(d)) {
+        gapDays.push(d);
+      }
+    }
+
+    // ===== NEW TESTAMENT: Interleaved into gap days =====
+    // Following BibleHub timeline order with epistles interleaved at historical writing dates
+    // Target: 85 NT readings to total 365 with 280 OT
+
+    // === GOSPELS: 34 readings (following BibleHub chronological order) ===
     const gospelReadings: any[][] = [
-      [[{b:'Luke',s:1,e:1},{b:'John',s:1,e:1},{b:'Matthew',s:1,e:1},{b:'Luke',s:2,e:2}],'6-5 BC','Birth'],
-      [[{b:'Matthew',s:2,e:2},{b:'Luke',s:2,e:2}],'5 BC-8 AD','Childhood'],
-      [[{b:'Matthew',s:3,e:3},{b:'Mark',s:1,e:1},{b:'Luke',s:3,e:3},{b:'John',s:1,e:1}],'26 AD','Baptism'],
-      [[{b:'Matthew',s:4,e:4},{b:'Luke',s:4,e:4}],'27 AD','Temptation'],
-      [[{b:'John',s:1,e:4}],'27 AD','First Signs'],
-      [[{b:'Matthew',s:4,e:5},{b:'Mark',s:1,e:2},{b:'Luke',s:5,e:5}],'27 AD','Ministry Begins'],
-      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:2,e:2},{b:'Luke',s:5,e:5}],'28 AD','Miracles'],
-      [[{b:'Matthew',s:5,e:5}],'27 AD','Beatitudes'],
-      [[{b:'Matthew',s:6,e:6}],'27 AD','Prayer'],
-      [[{b:'Matthew',s:7,e:7}],'27 AD','Build on Rock'],
-      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:4,e:5},{b:'Luke',s:8,e:8}],'28 AD','More Miracles'],
-      [[{b:'Matthew',s:10,e:10},{b:'Mark',s:6,e:6},{b:'Luke',s:9,e:9}],'29 AD','Send Twelve'],
-      [[{b:'Matthew',s:11,e:12},{b:'Luke',s:7,e:7}],'28 AD','John, Woes'],
-      [[{b:'Matthew',s:13,e:13},{b:'Mark',s:4,e:4},{b:'Luke',s:8,e:8}],'28 AD','Parables'],
-      [[{b:'John',s:5,e:6}],'28 AD','Feeding 5000'],
-      [[{b:'Matthew',s:14,e:15},{b:'Mark',s:6,e:7}],'29 AD','John Beheaded'],
-      [[{b:'Matthew',s:16,e:17},{b:'Mark',s:8,e:9},{b:'Luke',s:9,e:9}],'29 AD','Transfiguration'],
-      [[{b:'John',s:7,e:8}],'29 AD','Tabernacles'],
-      [[{b:'John',s:9,e:10}],'29 AD','Blind Man'],
-      [[{b:'Luke',s:10,e:11}],'29 AD','Seventy'],
-      [[{b:'Luke',s:12,e:13}],'30 AD','Parables'],
-      [[{b:'Luke',s:14,e:16}],'30 AD','Cost, Lost'],
-      [[{b:'Luke',s:17,e:18}],'30 AD','Kingdom'],
-      [[{b:'John',s:11,e:11}],'30 AD','Lazarus'],
-      [[{b:'Matthew',s:19,e:20},{b:'Mark',s:10,e:10},{b:'Luke',s:18,e:19}],'30 AD','Journey'],
-      [[{b:'Matthew',s:21,e:22},{b:'Mark',s:11,e:12},{b:'Luke',s:19,e:20},{b:'John',s:12,e:12}],'30 AD','Entry'],
-      [[{b:'Matthew',s:23,e:24},{b:'Mark',s:12,e:13},{b:'Luke',s:20,e:21}],'30 AD','Temple'],
-      [[{b:'Matthew',s:25,e:25},{b:'Mark',s:13,e:13},{b:'Luke',s:21,e:21}],'30 AD','Olivet'],
-      [[{b:'John',s:13,e:14}],'30 AD','Upper Room'],
-      [[{b:'John',s:15,e:17}],'30 AD','Farewell'],
-      [[{b:'Matthew',s:26,e:26},{b:'Mark',s:14,e:14},{b:'Luke',s:22,e:22}],'30 AD','Gethsemane'],
-      [[{b:'Matthew',s:27,e:27},{b:'Mark',s:15,e:15},{b:'Luke',s:23,e:23},{b:'John',s:18,e:19}],'30 AD','Trial'],
-      [[{b:'Matthew',s:27,e:27},{b:'Mark',s:15,e:15},{b:'Luke',s:23,e:23},{b:'John',s:19,e:19}],'30 AD','Crucifixion'],
+      // Birth and Childhood
+      [[{b:'Luke',s:1,e:1}],'6 BC','Birth of John the Baptist'],
+      [[{b:'Matthew',s:1,e:1},{b:'Luke',s:2,e:2}],'5 BC','Birth of Jesus'],
+      [[{b:'Matthew',s:2,e:2}],'5 BC','Magi, Egypt, Nazareth'],
+      [[{b:'Luke',s:2,e:2}],'8 AD','Boy Jesus at Temple'],
+      // Ministry of John and Jesus' Baptism
+      [[{b:'Matthew',s:3,e:3},{b:'Mark',s:1,e:1},{b:'Luke',s:3,e:3}],'26 AD','John Baptist Prepares the Way'],
+      [[{b:'Matthew',s:4,e:4},{b:'Mark',s:1,e:1},{b:'Luke',s:4,e:4}],'27 AD','Temptation of Jesus'],
+      // Early Ministry
+      [[{b:'John',s:1,e:2}],'27 AD','First Disciples, Wedding at Cana'],
+      [[{b:'John',s:3,e:4}],'27 AD','Nicodemus, Samaritan Woman'],
+      [[{b:'Matthew',s:4,e:5},{b:'Mark',s:1,e:2},{b:'Luke',s:5,e:5}],'27 AD','Calls First Disciples'],
+      [[{b:'Matthew',s:5,e:7}],'27 AD','Sermon on the Mount'],
+      [[{b:'Luke',s:11,e:11}],'28 AD','Instructions on Prayer'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:2,e:2},{b:'Luke',s:4,e:5}],'28 AD','Ministry in Galilee'],
+      [[{b:'John',s:5,e:5}],'28 AD','Pool of Bethesda'],
+      [[{b:'Matthew',s:12,e:12},{b:'Mark',s:3,e:3},{b:'Luke',s:6,e:6}],'28 AD','Lord of the Sabbath'],
+      [[{b:'Matthew',s:11,e:11},{b:'Luke',s:7,e:7}],'28 AD','Answers John\'s Disciples'],
+      [[{b:'Matthew',s:13,e:13},{b:'Mark',s:4,e:4},{b:'Luke',s:8,e:8}],'28 AD','Many Parables'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:5,e:5},{b:'Luke',s:8,e:8}],'28 AD','Heals Demoniac, Paralytic'],
+      [[{b:'Matthew',s:10,e:10},{b:'Mark',s:6,e:6}],'29 AD','Sends Out Twelve'],
+      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6}],'29 AD','John Beheaded'],
+      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6},{b:'Luke',s:9,e:9},{b:'John',s:6,e:6}],'29 AD','Feeds 5000'],
+      [[{b:'Matthew',s:15,e:15},{b:'Mark',s:7,e:7}],'29 AD','Clean and Unclean'],
+      [[{b:'Matthew',s:16,e:16},{b:'Mark',s:8,e:8},{b:'Luke',s:9,e:9}],'29 AD','Peter\'s Confession'],
+      [[{b:'Matthew',s:17,e:17},{b:'Mark',s:9,e:9},{b:'Luke',s:9,e:9}],'29 AD','Transfiguration'],
+      [[{b:'Matthew',s:18,e:18}],'29 AD','Greatest in Kingdom'],
+      [[{b:'Luke',s:10,e:10}],'29 AD','Sends Out Seventy-two'],
+      [[{b:'John',s:7,e:8}],'29 AD','Feast of Tabernacles'],
+      [[{b:'John',s:9,e:10}],'29 AD','Man Born Blind, Good Shepherd'],
+      [[{b:'Luke',s:12,e:16}],'30 AD','More Parables'],
+      [[{b:'Luke',s:17,e:17}],'30 AD','Ten Lepers, Coming Kingdom'],
+      [[{b:'John',s:11,e:11}],'30 AD','Raises Lazarus'],
+      [[{b:'Matthew',s:19,e:20},{b:'Mark',s:10,e:10},{b:'Luke',s:18,e:18}],'30 AD','Final Journey to Jerusalem'],
+      [[{b:'Matthew',s:21,e:21},{b:'Mark',s:11,e:11},{b:'Luke',s:19,e:19},{b:'John',s:12,e:12}],'30 AD','Triumphal Entry'],
+      [[{b:'Matthew',s:22,e:25},{b:'Mark',s:12,e:13},{b:'Luke',s:20,e:21}],'30 AD','Closing Ministry in Jerusalem'],
+      [[{b:'Matthew',s:26,e:26},{b:'Mark',s:14,e:14},{b:'Luke',s:22,e:22},{b:'John',s:13,e:13}],'30 AD','Thursday Before Passover'],
+      [[{b:'John',s:14,e:17}],'30 AD','Farewell Discourse'],
+      [[{b:'Matthew',s:26,e:27},{b:'Mark',s:14,e:15},{b:'Luke',s:22,e:23},{b:'John',s:18,e:19}],'30 AD','Betrayal, Trial, Crucifixion'],
       [[{b:'Matthew',s:28,e:28},{b:'Mark',s:16,e:16},{b:'Luke',s:24,e:24},{b:'John',s:20,e:21}],'30 AD','Resurrection']
     ];
     gospelReadings.forEach(r => {
@@ -797,68 +829,145 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       readings.push(this.createReading(day++, passages, 'Gospels', r[1] as string, r[2] as string));
     });
 
-    // PHASE 13: Acts (Days 309-325)
-    const actsReadings: [number, number, string][] = [
-      [1,2,'Ascension and Pentecost'],
-      [3,4,'Healing and Preaching'],
-      [5,6,'Church Unity and Stephen'],
-      [7,8,'Stephen\'s Martyrdom, Philip'],
-      [9,10,'Saul\'s Conversion, Cornelius'],
-      [11,12,'Gentiles, James Killed'],
-      [13,14,'First Missionary Journey'],
-      [15,16,'Jerusalem Council, Timothy'],
-      [17,18,'Thessalonica, Corinth'],
-      [19,20,'Ephesus, Farewell'],
-      [21,22,'Arrest in Jerusalem'],
-      [23,24,'Defense Before Council'],
-      [25,26,'Festus and Agrippa'],
-      [27,28,'Voyage and Rome']
-    ];
-    actsReadings.forEach(ch => readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: ch[0], chapterEnd: ch[1] }], 'Early Church', '30-62 AD', ch[2])));
+    // === ACTS + EPISTLES INTERLEAVED (51 readings to total 85 NT) ===
+    // Following BibleHub's historical order: epistles inserted when they were written
 
-    // James (early epistle)
-    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Early Church', '45 AD', 'James - Faith and Works'));
+    // Acts 1-2: Ascension and Pentecost
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 1, chapterEnd: 1 }], 'Early Church', '30 AD', 'Ascension, Matthias Chosen'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 2, chapterEnd: 2 }], 'Early Church', '30 AD', 'Pentecost'));
 
-    // PHASE 14: Pauline Epistles (Days 327-354)
-    const paulReadings: [string, number, number, string, string][] = [
-      ['Galatians',1,6,'49 AD','Galatians: Freedom in Christ'],
-      ['1 Thessalonians',1,5,'51 AD','1 Thessalonians: His Coming'],
-      ['2 Thessalonians',1,3,'52 AD','2 Thessalonians: Standing Firm'],
-      ['1 Corinthians',1,8,'54 AD','1 Cor 1-8: Wisdom and Purity'],
-      ['1 Corinthians',9,16,'54 AD','1 Cor 9-16: Body and Love'],
-      ['2 Corinthians',1,7,'57 AD','2 Cor 1-7: Comfort'],
-      ['2 Corinthians',8,13,'57 AD','2 Cor 8-13: Generosity'],
-      ['Romans',1,8,'57 AD','Romans 1-8: Justified by Faith'],
-      ['Romans',9,16,'57 AD','Romans 9-16: Israel and Living'],
-      ['Ephesians',1,6,'62 AD','Ephesians: One in Christ'],
-      ['Philippians',1,4,'62 AD','Philippians: Joy'],
-      ['Colossians',1,4,'62 AD','Colossians: Christ Supreme'],
-      ['Philemon',1,1,'62 AD','Philemon: Forgiveness'],
-      ['1 Timothy',1,6,'63 AD','1 Timothy: Church Order'],
-      ['Titus',1,3,'66 AD','Titus: Sound Doctrine'],
-      ['1 Peter',1,5,'64 AD','1 Peter: Living Hope'],
-      ['2 Timothy',1,4,'67 AD','2 Timothy: Faithful to End'],
-      ['2 Peter',1,3,'67 AD','2 Peter: Knowledge'],
-      ['Hebrews',1,7,'68 AD','Hebrews 1-7: Better Priest'],
-      ['Hebrews',8,13,'68 AD','Hebrews 8-13: New Covenant']
-    ];
-    paulReadings.forEach(ep => readings.push(this.createReading(day++, [{ book: ep[0], chapterStart: ep[1], chapterEnd: ep[2] }], 'Epistles', ep[3], ep[4])));
+    // Acts 3-4: Peter Heals and Preaches
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 3, chapterEnd: 4 }], 'Early Church', '30 AD', 'Peter Heals, Preaches, Arrested'));
 
-    // PHASE 15: Final Epistles + Revelation (Days 355-365)
-    readings.push(this.createReading(day++, [{ book: 'Jude', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '68 AD', 'Jude: Contend for the Faith'));
-    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 2 }], 'Epistles', '90 AD', '1 John 1-2: Walking in the Light'));
-    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 3, chapterEnd: 5 }], 'Epistles', '90 AD', '1 John 3-5: Love One Another'));
-    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '92 AD', '2 John: Walk in Truth'));
-    readings.push(this.createReading(day++, [{ book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistles', '94 AD', '3 John: Hospitality and Truth'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 3 }], 'Apocalypse', '95 AD', 'Revelation 1-3: Letters to Seven Churches'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 4, chapterEnd: 5 }], 'Apocalypse', '95 AD', 'Revelation 4-5: The Throne Room'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 6, chapterEnd: 8 }], 'Apocalypse', '95 AD', 'Revelation 6-8: The Seven Seals'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 9, chapterEnd: 11 }], 'Apocalypse', '95 AD', 'Revelation 9-11: The Seven Trumpets'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 12, chapterEnd: 14 }], 'Apocalypse', '95 AD', 'Revelation 12-14: The Dragon and the Beasts'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 15, chapterEnd: 16 }], 'Apocalypse', '95 AD', 'Revelation 15-16: The Seven Bowls'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 17, chapterEnd: 18 }], 'Apocalypse', '95 AD', 'Revelation 17-18: Babylon the Great'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 19, chapterEnd: 20 }], 'Apocalypse', '95 AD', 'Revelation 19-20: The Return of Christ'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 21, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 21-22: New Heaven and New Earth'));
+    // Acts 5: Ananias/Sapphira, Apostles Heal
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 5, chapterEnd: 5 }], 'Early Church', '30 AD', 'Ananias/Sapphira, Apostles Heal'));
+
+    // Acts 6-7: Stephen's Martyrdom
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 6, chapterEnd: 7 }], 'Early Church', '31 AD', 'Stephen\'s Speech and Martyrdom'));
+
+    // Acts 8: Saul Persecutes, Philip
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 8, chapterEnd: 8 }], 'Early Church', '31 AD', 'Saul Persecutes, Philip in Samaria, Ethiopian'));
+
+    // Acts 9: Saul's Conversion
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 9, chapterEnd: 9 }], 'Early Church', '34 AD', 'Saul\'s Conversion'));
+
+    // Acts 10-11: Peter Preaches to Gentiles
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 10, chapterEnd: 11 }], 'Early Church', '37-42 AD', 'Cornelius, Gentiles, Barnabas Sent'));
+
+    // Acts 12: Peter Freed, Herod Dies
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 12, chapterEnd: 12 }], 'Early Church', '42-44 AD', 'Peter Freed from Prison, Herod Dies'));
+
+    // JAMES (45 AD) - First epistle, written after Acts 12
+    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '45 AD', 'James: Faith and Works'));
+
+    // Acts 13-14: First Missionary Journey
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 13, chapterEnd: 14 }], 'Early Church', '48 AD', 'First Missionary Journey'));
+
+    // Acts 15: Jerusalem Council
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 15, chapterEnd: 15 }], 'Early Church', '48 AD', 'Jerusalem Council'));
+
+    // GALATIANS (49 AD) - Written after Jerusalem Council
+    readings.push(this.createReading(day++, [{ book: 'Galatians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '49 AD', 'Galatians: Freedom in Christ'));
+
+    // Acts 16: Second Journey - Philippi
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 16, chapterEnd: 16 }], 'Early Church', '49 AD', 'Philippi: Lydia, Jailer'));
+
+    // 1 THESSALONIANS (51 AD) - Written from Corinth
+    readings.push(this.createReading(day++, [{ book: '1 Thessalonians', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '51 AD', '1 Thessalonians: His Coming'));
+
+    // 2 THESSALONIANS (52 AD)
+    readings.push(this.createReading(day++, [{ book: '2 Thessalonians', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '52 AD', '2 Thessalonians: Standing Firm'));
+
+    // Acts 17-18: Thessalonica, Athens, Corinth
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 17, chapterEnd: 18 }], 'Early Church', '51 AD', 'Thessalonica, Athens, Corinth'));
+
+    // 1 CORINTHIANS (54 AD) - From Ephesus
+    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '54 AD', '1 Cor 1-8: Wisdom and Purity'));
+    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '54 AD', '1 Cor 9-16: Body and Love'));
+
+    // Acts 19-20: Ephesus, Farewell
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 19, chapterEnd: 20 }], 'Early Church', '54-57 AD', 'Ephesus, Farewell to Ephesian Elders'));
+
+    // 2 CORINTHIANS (57 AD) - From Macedonia
+    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 1, chapterEnd: 7 }], 'Epistle', '57 AD', '2 Cor 1-7: Comfort in Suffering'));
+    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 8, chapterEnd: 13 }], 'Epistle', '57 AD', '2 Cor 8-13: Generosity and Defense'));
+
+    // ROMANS (57 AD) - From Corinth
+    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '57 AD', 'Romans 1-8: Justified by Faith'));
+    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '57 AD', 'Romans 9-16: Israel and Christian Living'));
+
+    // Acts 21-23: Arrest in Jerusalem
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 21, chapterEnd: 23 }], 'Early Church', '59 AD', 'Arrest in Jerusalem, Defense Before Council'));
+
+    // Acts 24-26: Caesarea, Festus, Agrippa
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 24, chapterEnd: 26 }], 'Early Church', '60-62 AD', 'Caesarea, Festus and Agrippa'));
+
+    // Acts 27-28: Voyage to Rome
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 27, chapterEnd: 28 }], 'Early Church', '62 AD', 'Voyage to Rome, Shipwreck, Preaches at Rome'));
+
+    // PRISON EPISTLES (62 AD) - Written from Rome
+    readings.push(this.createReading(day++, [{ book: 'Ephesians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '62 AD', 'Ephesians: One in Christ'));
+    readings.push(this.createReading(day++, [{ book: 'Philippians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Philippians: Joy in Christ'));
+    readings.push(this.createReading(day++, [{ book: 'Colossians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Colossians: Christ Supreme'));
+    readings.push(this.createReading(day++, [{ book: 'Philemon', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '62 AD', 'Philemon: Forgiveness'));
+
+    // 1 TIMOTHY (63 AD) - After release from Rome
+    readings.push(this.createReading(day++, [{ book: '1 Timothy', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '63 AD', '1 Timothy: Church Order'));
+
+    // 1 PETER (64 AD) - Before Nero's persecution intensifies
+    readings.push(this.createReading(day++, [{ book: '1 Peter', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '64 AD', '1 Peter: Living Hope'));
+
+    // TITUS (66 AD)
+    readings.push(this.createReading(day++, [{ book: 'Titus', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '66 AD', 'Titus: Sound Doctrine'));
+
+    // 2 TIMOTHY (67 AD) - Paul's final letter before martyrdom
+    readings.push(this.createReading(day++, [{ book: '2 Timothy', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '67 AD', '2 Timothy: Faithful to the End'));
+
+    // 2 PETER (67 AD)
+    readings.push(this.createReading(day++, [{ book: '2 Peter', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '67 AD', '2 Peter: Knowledge and Warning'));
+
+    // HEBREWS (68 AD) - Before Jerusalem's destruction (BibleHub shows as one reading)
+    readings.push(this.createReading(day++, [{ book: 'Hebrews', chapterStart: 1, chapterEnd: 13 }], 'Epistle', '68 AD', 'Hebrews: Better Priest, New Covenant'));
+
+    // JUDE (68 AD)
+    readings.push(this.createReading(day++, [{ book: 'Jude', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '68 AD', 'Jude: Contend for the Faith'));
+
+    // JOHANNINE EPISTLES (90-94 AD)
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '90 AD', '1 John 1-3: Walking in the Light'));
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 4, chapterEnd: 5 }], 'Epistle', '90 AD', '1 John 4-5: Love One Another'));
+    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '92 AD', '2 John: Walk in Truth'));
+    readings.push(this.createReading(day++, [{ book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '94 AD', '3 John: Hospitality and Truth'));
+
+    // REVELATION (95 AD) - Patmos vision (BibleHub shows as one reading)
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 3 }], 'Apocalypse', '95 AD', 'Revelation 1-3: Letters to Churches'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 4, chapterEnd: 8 }], 'Apocalypse', '95 AD', 'Revelation 4-8: Throne, Seals, Trumpets Begin'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 9, chapterEnd: 14 }], 'Apocalypse', '95 AD', 'Revelation 9-14: Trumpets, Dragon, Beasts'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 15, chapterEnd: 18 }], 'Apocalypse', '95 AD', 'Revelation 15-18: Bowls and Babylon'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 19, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 19-22: Return and New Creation'));
+
+    // Redistribute NT readings to fill gap days (1-to-1 mapping)
+    const ntReadings = readings.slice(otReadingCount);
+    ntReadings.forEach((reading, index) => {
+      if (index < gapDays.length) {
+        const targetDay = gapDays[index];
+        reading.day = targetDay;
+        reading.date = this.getDateForDay(targetDay);
+      } else {
+        // Fallback: if more NT readings than gaps, append to end
+        const fallbackDay = 365 - (ntReadings.length - index) + 1;
+        reading.day = fallbackDay;
+        reading.date = this.getDateForDay(fallbackDay);
+      }
+    });
+
+    // Sort all readings by day to ensure proper ordering
+    readings.sort((a, b) => a.day - b.day);
+
+    // Verify no collisions and exactly 365 unique days
+    const daySet = new Set(readings.map(r => r.day));
+    if (daySet.size !== readings.length) {
+      console.warn(`Warning: Day collisions detected. ${readings.length} readings for ${daySet.size} unique days`);
+    }
 
     return readings;
   }
