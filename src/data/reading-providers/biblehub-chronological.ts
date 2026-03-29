@@ -273,7 +273,7 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
       'Jacob Blesses His Sons - Jacob blesses each of his twelve sons and dies in Egypt',
       'Joseph\'s Death - Joseph forgives his brothers, blesses Ephraim and Manasseh, and dies in faith'
     ];
-    const patriarchChapters: [number, number, string, string][] = [
+    const patriarchChapters: [number, number, string][] = [
       [12, 14, '2091-2084 BC'], [15, 17, '2081-2067 BC'], [18, 20, '2067 BC'],
       [21, 23, '2066-2054 BC'], [24, 26, '2030-2006 BC'], [27, 28, '2006-1977 BC'],
       [29, 31, '1928-1916 BC'], [32, 34, '1908-1906 BC'], [35, 36, '1906 BC'],
@@ -781,169 +781,169 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
     // Following BibleHub timeline order with epistles interleaved at historical writing dates
     // Target: 85 NT readings to total 365 with 280 OT
 
-    // === GOSPELS: 34 readings (following BibleHub chronological order) ===
+    // === GOSPELS: 37 readings (following BibleHub chronological order) ===
     const gospelReadings: any[][] = [
       // Birth and Childhood
-      [[{b:'Luke',s:1,e:1}],'6 BC','Birth of John the Baptist'],
-      [[{b:'Matthew',s:1,e:1},{b:'Luke',s:2,e:2}],'5 BC','Birth of Jesus'],
-      [[{b:'Matthew',s:2,e:2}],'5 BC','Magi, Egypt, Nazareth'],
-      [[{b:'Luke',s:2,e:2}],'8 AD','Boy Jesus at Temple'],
+      [[{b:'Luke',s:1,e:1}],'6 BC','Birth of John the Baptist - The angel Gabriel announces to Zechariah the miraculous conception of the forerunner who would prepare Israel for the Messiah, fulfilling Malachi\'s prophecy (Luke 1; John 1:6)'],
+      [[{b:'Matthew',s:1,e:1},{b:'Luke',s:2,e:2}],'5 BC','Birth of Jesus Christ - The incarnation of the eternal Word, conceived by the Holy Spirit and born of the Virgin Mary in Bethlehem, fulfilling Isaiah\'s prophecy of Immanuel (Matthew 1; Luke 2:6; John 1:14)'],
+      [[{b:'Matthew',s:2,e:2}],'5 BC','Visit of the Magi, Flight to Egypt, Return to Nazareth - Gentile wise men worship the newborn King while Herod\'s jealousy leads to the slaughter of Bethlehem\'s infants; Joseph flees to Egypt then settles in Nazareth (Matthew 2)'],
+      [[{b:'Luke',s:2,e:2}],'8 AD','The Boy Jesus at the Temple - At twelve years old, Jesus amazes the teachers in the Temple with His understanding, revealing His awareness of being about His Father\'s business (Luke 2:41)'],
       // Ministry of John and Jesus' Baptism
-      [[{b:'Matthew',s:3,e:3},{b:'Mark',s:1,e:1},{b:'Luke',s:3,e:3}],'26 AD','John Baptist Prepares the Way'],
-      [[{b:'Matthew',s:4,e:4},{b:'Mark',s:1,e:1},{b:'Luke',s:4,e:4}],'27 AD','Temptation of Jesus'],
+      [[{b:'Matthew',s:3,e:3},{b:'Mark',s:1,e:1},{b:'Luke',s:3,e:3}],'26 AD','John the Baptist Prepares the Way - The voice crying in the wilderness fulfills Isaiah\'s prophecy, calling Israel to repentance and baptism in preparation for the coming Messiah (Matthew 3; Mark 1:4; Luke 3; John 1:15)'],
+      [[{b:'Matthew',s:4,e:4},{b:'Mark',s:1,e:1},{b:'Luke',s:4,e:4}],'27 AD','The Temptation of Jesus - Following His baptism, Jesus is led by the Spirit into the wilderness where He triumphs over Satan\'s temptations by the sword of the Spirit, God\'s Word (Matthew 4; Mark 1:12; Luke 4)'],
       // Early Ministry
-      [[{b:'John',s:1,e:2}],'27 AD','First Disciples, Wedding at Cana'],
-      [[{b:'John',s:3,e:4}],'27 AD','Nicodemus, Samaritan Woman'],
-      [[{b:'Matthew',s:4,e:5},{b:'Mark',s:1,e:2},{b:'Luke',s:5,e:5}],'27 AD','Calls First Disciples'],
-      [[{b:'Matthew',s:5,e:7}],'27 AD','Sermon on the Mount'],
-      [[{b:'Luke',s:11,e:11}],'28 AD','Instructions on Prayer'],
-      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:2,e:2},{b:'Luke',s:4,e:5}],'28 AD','Ministry in Galilee'],
-      [[{b:'John',s:5,e:5}],'28 AD','Pool of Bethesda'],
-      [[{b:'Matthew',s:12,e:12},{b:'Mark',s:3,e:3},{b:'Luke',s:6,e:6}],'28 AD','Lord of the Sabbath'],
-      [[{b:'Matthew',s:11,e:11},{b:'Luke',s:7,e:7}],'28 AD','Answers John\'s Disciples'],
-      [[{b:'Matthew',s:13,e:13},{b:'Mark',s:4,e:4},{b:'Luke',s:8,e:8}],'28 AD','Many Parables'],
-      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:5,e:5},{b:'Luke',s:8,e:8}],'28 AD','Heals Demoniac, Paralytic'],
-      [[{b:'Matthew',s:10,e:10},{b:'Mark',s:6,e:6}],'29 AD','Sends Out Twelve'],
-      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6}],'29 AD','John Beheaded'],
-      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6},{b:'Luke',s:9,e:9},{b:'John',s:6,e:6}],'29 AD','Feeds 5000'],
-      [[{b:'Matthew',s:15,e:15},{b:'Mark',s:7,e:7}],'29 AD','Clean and Unclean'],
-      [[{b:'Matthew',s:16,e:16},{b:'Mark',s:8,e:8},{b:'Luke',s:9,e:9}],'29 AD','Peter\'s Confession'],
-      [[{b:'Matthew',s:17,e:17},{b:'Mark',s:9,e:9},{b:'Luke',s:9,e:9}],'29 AD','Transfiguration'],
-      [[{b:'Matthew',s:18,e:18}],'29 AD','Greatest in Kingdom'],
-      [[{b:'Luke',s:10,e:10}],'29 AD','Sends Out Seventy-two'],
-      [[{b:'John',s:7,e:8}],'29 AD','Feast of Tabernacles'],
-      [[{b:'John',s:9,e:10}],'29 AD','Man Born Blind, Good Shepherd'],
-      [[{b:'Luke',s:12,e:16}],'30 AD','More Parables'],
-      [[{b:'Luke',s:17,e:17}],'30 AD','Ten Lepers, Coming Kingdom'],
-      [[{b:'John',s:11,e:11}],'30 AD','Raises Lazarus'],
-      [[{b:'Matthew',s:19,e:20},{b:'Mark',s:10,e:10},{b:'Luke',s:18,e:18}],'30 AD','Final Journey to Jerusalem'],
-      [[{b:'Matthew',s:21,e:21},{b:'Mark',s:11,e:11},{b:'Luke',s:19,e:19},{b:'John',s:12,e:12}],'30 AD','Triumphal Entry'],
-      [[{b:'Matthew',s:22,e:25},{b:'Mark',s:12,e:13},{b:'Luke',s:20,e:21}],'30 AD','Closing Ministry in Jerusalem'],
-      [[{b:'Matthew',s:26,e:26},{b:'Mark',s:14,e:14},{b:'Luke',s:22,e:22},{b:'John',s:13,e:13}],'30 AD','Thursday Before Passover'],
-      [[{b:'John',s:14,e:17}],'30 AD','Farewell Discourse'],
-      [[{b:'Matthew',s:26,e:27},{b:'Mark',s:14,e:15},{b:'Luke',s:22,e:23},{b:'John',s:18,e:19}],'30 AD','Betrayal, Trial, Crucifixion'],
-      [[{b:'Matthew',s:28,e:28},{b:'Mark',s:16,e:16},{b:'Luke',s:24,e:24},{b:'John',s:20,e:21}],'30 AD','Resurrection']
+      [[{b:'John',s:1,e:2}],'27 AD','Jesus Calls His First Disciples and the Wedding at Cana - Andrew, Peter, Philip, and Nathanael follow Jesus; His first sign at Cana reveals His glory as He turns water into wine (Matthew 4:18; Mark 1:16; Luke 5; John 2)'],
+      [[{b:'John',s:3,e:4}],'27 AD','Jesus Teaches Nicodemus and the Samaritan Woman - The Lord reveals the new birth to a religious leader and living water to an outcast woman, showing salvation is by grace through faith (John 3-4)'],
+      [[{b:'Matthew',s:4,e:5},{b:'Mark',s:1,e:2},{b:'Luke',s:5,e:5}],'27 AD','Jesus Ministers in Galilee and Calls His Disciples - Healing the sick and casting out demons, Jesus demonstrates His authority and calls sinners to follow Him as fishers of men (Matthew 8; Mark 2; Luke 4:14)'],
+      [[{b:'Matthew',s:5,e:7}],'27 AD','The Sermon on the Mount - Jesus delivers His kingdom manifesto, teaching the Beatitudes, the Lord\'s Prayer, and the true meaning of the Law as love for God and neighbor (Matthew 5-7)'],
+      [[{b:'Luke',s:11,e:11}],'28 AD','Instructions on Prayer - Jesus teaches His disciples how to pray with the model prayer, persistence, and faith that the Father gives good gifts to His children (Luke 11)'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:2,e:2},{b:'Luke',s:4,e:5}],'28 AD','Jesus Ministers in Galilee - Through healings, exorcisms, and forgiveness of sins, Jesus demonstrates His divine authority and compassion for the suffering multitudes (Matthew 8-9; Mark 2; Luke 4-5)'],
+      [[{b:'John',s:5,e:5}],'28 AD','Healing at the Pool of Bethesda - On the Sabbath, Jesus heals a paralytic who had waited 38 years, then defends His authority as the Son who works as the Father works (John 5)'],
+      [[{b:'Matthew',s:12,e:12},{b:'Mark',s:3,e:3},{b:'Luke',s:6,e:6}],'28 AD','Jesus Lord of the Sabbath - Confronting religious legalism, Jesus declares Himself Lord of the Sabbath and demonstrates that the Sabbath was made for man\'s benefit, not bondage (Matthew 12; Mark 3; Luke 6)'],
+      [[{b:'Matthew',s:11,e:11},{b:'Luke',s:7,e:7}],'28 AD','Jesus Answers John\'s Disciples - From prison, John the Baptist seeks confirmation of Jesus\' identity; Jesus points to His works fulfilling Isaiah\'s messianic prophecies (Matthew 11; Luke 7)'],
+      [[{b:'Matthew',s:13,e:13},{b:'Mark',s:4,e:4},{b:'Luke',s:8,e:8}],'28 AD','Jesus Speaks Many Parables - The Sower, the Mustard Seed, and other parables reveal the mysteries of the kingdom to those with ears to hear while concealing truth from the proud (Matthew 13; Mark 4; Luke 8)'],
+      [[{b:'Matthew',s:8,e:9},{b:'Mark',s:5,e:5},{b:'Luke',s:8,e:8}],'28 AD','Jesus Heals a Demoniac and a Paralytic - The Gadarene demoniac is delivered and the paralytic forgiven and healed, demonstrating Jesus\' power over Satan and sin (Matthew 8:28; Mark 5; Luke 8:26; Matthew 9)'],
+      [[{b:'Matthew',s:10,e:10},{b:'Mark',s:6,e:6}],'29 AD','Jesus Sends Out His Twelve Apostles - Commissioning His disciples with authority over unclean spirits and sickness, Jesus sends them to proclaim the kingdom is at hand (Matthew 10; Mark 6)'],
+      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6}],'29 AD','John the Baptist Beheaded - Herod Antipas, manipulated by Herodias, executes the faithful forerunner whose ministry prepared the way for Christ; John\'s disciples bury him (Matthew 14; Mark 6:14)'],
+      [[{b:'Matthew',s:14,e:14},{b:'Mark',s:6,e:6},{b:'Luke',s:9,e:9},{b:'John',s:6,e:6}],'29 AD','Jesus Feeds the Five Thousand - With five loaves and two fish, Jesus miraculously feeds the multitude, revealing Himself as the Bread of Life who satisfies the hungry soul (Matthew 14:15; Mark 6:30; Luke 9; John 6)'],
+      [[{b:'Matthew',s:15,e:15},{b:'Mark',s:7,e:7}],'29 AD','Teachings on Clean and Unclean - Jesus confronts the tradition of the elders, teaching that defilement comes from within the heart, not from external observances (Matthew 15; Mark 7)'],
+      [[{b:'Matthew',s:16,e:16},{b:'Mark',s:8,e:8},{b:'Luke',s:9,e:9}],'29 AD','Peter\'s Confession of Christ - At Caesarea Philippi, Peter confesses Jesus as the Christ, the Son of the living God; Jesus reveals His coming death and resurrection (Matthew 16; Mark 8; Luke 9:18)'],
+      [[{b:'Matthew',s:17,e:17},{b:'Mark',s:9,e:9},{b:'Luke',s:9,e:9}],'29 AD','The Transfiguration - Jesus reveals His divine glory to Peter, James, and John as Moses and Elijah appear, and the Father declares Jesus as His beloved Son (Matthew 17; Mark 9; Luke 9:28)'],
+      [[{b:'Matthew',s:18,e:18}],'29 AD','The Greatest and Least in the Kingdom - Jesus teaches on humility, childlike faith, forgiveness, and the Father\'s pursuit of the lost sheep (Matthew 18)'],
+      [[{b:'Luke',s:10,e:10}],'29 AD','Jesus Sends Out the Seventy-two - Commissioning seventy-two disciples to harvest souls, Jesus teaches on the cost of discipleship and the Good Samaritan\'s love (Luke 10)'],
+      [[{b:'John',s:7,e:8}],'29 AD','Jesus Teaches at the Feast of Tabernacles - During the feast, Jesus offers living water to all who thirst and declares Himself the Light of the World (John 7-8)'],
+      [[{b:'John',s:9,e:10}],'29 AD','Jesus Heals the Man Born Blind and the Good Shepherd - Restoring sight to one born blind, Jesus reveals Himself as the Good Shepherd who lays down His life for the sheep (John 9-10)'],
+      [[{b:'Luke',s:12,e:16}],'30 AD','Jesus Speaks More Parables - The Rich Fool, the Prodigal Son, the Unjust Steward, and other parables teach about wealth, repentance, and God\'s kingdom priorities (Luke 12-16)'],
+      [[{b:'Luke',s:17,e:17}],'30 AD','Jesus Cleanses Ten Lepers - Ten lepers are healed but only one Samaritan returns to give thanks; Jesus teaches on the coming kingdom and the day of the Son of Man (Luke 17)'],
+      [[{b:'John',s:11,e:11}],'30 AD','Jesus Raises Lazarus from the Dead - At Bethany, Jesus declares Himself the Resurrection and the Life and raises His friend after four days in the tomb, foreshadowing His own resurrection (John 11)'],
+      [[{b:'Matthew',s:19,e:20},{b:'Mark',s:10,e:10},{b:'Luke',s:18,e:18}],'30 AD','Final Journey to Jerusalem - Teaching on divorce, wealth, and servanthood, Jesus sets His face toward Jerusalem where He will suffer, die, and rise again (Matthew 19-20; Mark 10; Luke 18)'],
+      [[{b:'Matthew',s:21,e:21},{b:'Mark',s:11,e:11},{b:'Luke',s:19,e:19},{b:'John',s:12,e:12}],'30 AD','The Triumphal Entry - Riding on a donkey, Jesus enters Jerusalem as crowds cry "Hosanna," fulfilling Zechariah\'s prophecy of Zion\'s humble King (Matthew 21; Mark 11; Luke 19; John 12)'],
+      [[{b:'Matthew',s:22,e:25},{b:'Mark',s:12,e:13},{b:'Luke',s:20,e:21}],'30 AD','Closing Ministry in Jerusalem - Jesus debates the religious leaders, pronounces woes on the scribes and Pharisees, and teaches on the end times, His return, and watching for the kingdom (Matthew 22-25; Mark 12-13; Luke 20-21)'],
+      [[{b:'Matthew',s:26,e:26},{b:'Mark',s:14,e:14},{b:'Luke',s:22,e:22},{b:'John',s:13,e:13}],'30 AD','Thursday Before Passover - Preparing the Upper Room, Jesus washes His disciples\' feet and institutes the Lord\'s Supper, saying "This is My body... this is My blood" (Matthew 26; Mark 14; Luke 22; John 13)'],
+      [[{b:'John',s:14,e:17}],'30 AD','Jesus Comforts His Disciples, the True Vine, and the Spirit\'s Coming - The Upper Room Discourse: Jesus promises the Father\'s house, another Helper, peace, and abiding in the Vine (John 14-17)'],
+      [[{b:'Matthew',s:26,e:27},{b:'Mark',s:14,e:15},{b:'Luke',s:22,e:23},{b:'John',s:18,e:19}],'30 AD','Jesus\' Betrayal, Trial, and Crucifixion - In Gethsemane Jesus prays; betrayed, tried, and condemned, He bears our sins on the cross, crying "It is finished" (Matthew 26-27; Mark 14-15; Luke 22-23; John 18-19)'],
+      [[{b:'Matthew',s:28,e:28},{b:'Mark',s:16,e:16},{b:'Luke',s:24,e:24},{b:'John',s:20,e:21}],'30 AD','Jesus\' Resurrection - On the third day, the empty tomb proclaims His victory over death; the risen Lord appears to Mary, the disciples, and sends them to make disciples of all nations (Matthew 28; Mark 16; Luke 24; John 20-21)']
     ];
     gospelReadings.forEach(r => {
       const passages: any[] = r[0].map((p: any) => ({ book: p.b, chapterStart: p.s, chapterEnd: p.e }));
       readings.push(this.createReading(day++, passages, 'Gospels', r[1] as string, r[2] as string));
     });
 
-    // === ACTS + EPISTLES INTERLEAVED (51 readings to total 85 NT) ===
+    // === ACTS + EPISTLES INTERLEAVED (47 readings to total 84 NT with 37 Gospels) ===
     // Following BibleHub's historical order: epistles inserted when they were written
 
     // Acts 1-2: Ascension and Pentecost
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 1, chapterEnd: 1 }], 'Early Church', '30 AD', 'Ascension, Matthias Chosen'));
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 2, chapterEnd: 2 }], 'Early Church', '30 AD', 'Pentecost'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 1, chapterEnd: 1 }], 'Early Church', '30 AD', 'The Ascension and Matthias Chosen by Lot - Forty days after His resurrection, Jesus ascends to the Father\'s right hand; the disciples replace Judas with Matthias (Acts 1)'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 2, chapterEnd: 2 }], 'Early Church', '30 AD', 'The Holy Spirit Comes at Pentecost - The promised Spirit descends with wind and fire; Peter preaches and three thousand souls are baptized into the new covenant community (Acts 2)'));
 
     // Acts 3-4: Peter Heals and Preaches
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 3, chapterEnd: 4 }], 'Early Church', '30 AD', 'Peter Heals, Preaches, Arrested'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 3, chapterEnd: 4 }], 'Early Church', '30 AD', 'Peter Heals the Lame Man and Preaches - At the Temple gate, Peter heals in Jesus\' name; arrested by the Sanhedrin, he boldly proclaims salvation in no other name (Acts 3-4)'));
 
     // Acts 5: Ananias/Sapphira, Apostles Heal
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 5, chapterEnd: 5 }], 'Early Church', '30 AD', 'Ananias/Sapphira, Apostles Heal'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 5, chapterEnd: 5 }], 'Early Church', '30 AD', 'Believers Share All, Ananias and Sapphira - The early church demonstrates radical generosity; Ananias and Sapphira fall dead for lying to the Holy Spirit; the apostles perform many signs (Acts 4:32-5)'));
 
     // Acts 6-7: Stephen's Martyrdom
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 6, chapterEnd: 7 }], 'Early Church', '31 AD', 'Stephen\'s Speech and Martyrdom'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 6, chapterEnd: 7 }], 'Early Church', '31 AD', 'Stephen\'s Speech, Stoning and Death - The first Christian martyr, filled with the Spirit, gives a masterful defense of the faith before being stoned, with Saul consenting (Acts 6-7)'));
 
     // Acts 8: Saul Persecutes, Philip
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 8, chapterEnd: 8 }], 'Early Church', '31 AD', 'Saul Persecutes, Philip in Samaria, Ethiopian'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 8, chapterEnd: 8 }], 'Early Church', '31 AD', 'Saul Persecutes the Church, Philip in Samaria - Severe persecution scatters believers; Philip preaches in Samaria and leads the Ethiopian eunuch to faith in Christ (Acts 8)'));
 
     // Acts 9: Saul's Conversion
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 9, chapterEnd: 9 }], 'Early Church', '34 AD', 'Saul\'s Conversion'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 9, chapterEnd: 9 }], 'Early Church', '34 AD', 'Saul\'s Conversion on the Damascus Road - The persecutor of the church meets the risen Christ and is transformed into the apostle to the Gentiles (Acts 9)'));
 
     // Acts 10-11: Peter Preaches to Gentiles
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 10, chapterEnd: 11 }], 'Early Church', '37-42 AD', 'Cornelius, Gentiles, Barnabas Sent'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 10, chapterEnd: 11 }], 'Early Church', '37-42 AD', 'Peter Preaches to the Gentiles, Barnabas Sent to Antioch - Through Cornelius, God shows the gospel is for all nations; the church grows among Gentiles at Antioch (Acts 10-11:22)'));
 
     // Acts 12: Peter Freed, Herod Dies
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 12, chapterEnd: 12 }], 'Early Church', '42-44 AD', 'Peter Freed from Prison, Herod Dies'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 12, chapterEnd: 12 }], 'Early Church', '42-44 AD', 'Peter Led from Prison by the Angel, Herod Agrippa Dies - God miraculously frees Peter; the arrogant Herod is struck down by an angel, giving glory to God (Acts 12)'));
 
     // JAMES (45 AD) - First epistle, written after Acts 12
-    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '45 AD', 'James: Faith and Works'));
+    readings.push(this.createReading(day++, [{ book: 'James', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '45 AD', 'James Writes His Letter (45 AD) - The Lord\'s brother writes to the scattered Jewish Christians, teaching that faith without works is dead and the tongue must be tamed (James 1-5)'));
 
     // Acts 13-14: First Missionary Journey
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 13, chapterEnd: 14 }], 'Early Church', '48 AD', 'First Missionary Journey'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 13, chapterEnd: 14 }], 'Early Church', '48 AD', 'Paul\'s First Missionary Journey (48 AD) - Sent by the Antioch church, Paul and Barnabas preach in Cyprus and Asia Minor, establishing churches among Gentiles (Acts 13-14)'));
 
     // Acts 15: Jerusalem Council
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 15, chapterEnd: 15 }], 'Early Church', '48 AD', 'Jerusalem Council'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 15, chapterEnd: 15 }], 'Early Church', '48 AD', 'The Council at Jerusalem (48 AD) - The apostles and elders gather to decide whether Gentile believers must be circumcised; they affirm salvation by grace through faith alone (Acts 15)'));
 
     // GALATIANS (49 AD) - Written after Jerusalem Council
-    readings.push(this.createReading(day++, [{ book: 'Galatians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '49 AD', 'Galatians: Freedom in Christ'));
+    readings.push(this.createReading(day++, [{ book: 'Galatians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '49 AD', 'Paul Writes to the Galatians (49 AD) - Defending justification by faith, Paul warns against returning to bondage and proclaims liberty in Christ (Galatians 1-6)'));
 
     // Acts 16: Second Journey - Philippi
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 16, chapterEnd: 16 }], 'Early Church', '49 AD', 'Philippi: Lydia, Jailer'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 16, chapterEnd: 16 }], 'Early Church', '49 AD', 'Paul in Philippi (49 AD) - Lydia\'s heart is opened; Paul and Silas are beaten and jailed; the Philippian jailer believes and is baptized with his household (Acts 16)'));
 
     // 1 THESSALONIANS (51 AD) - Written from Corinth
-    readings.push(this.createReading(day++, [{ book: '1 Thessalonians', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '51 AD', '1 Thessalonians: His Coming'));
+    readings.push(this.createReading(day++, [{ book: '1 Thessalonians', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '51 AD', 'Paul Writes to the Thessalonians (51 AD) - Encouraging the persecuted church, Paul teaches on the Lord\'s coming and exhorts holy living and watchfulness (1 Thessalonians 1-5)'));
 
     // 2 THESSALONIANS (52 AD)
-    readings.push(this.createReading(day++, [{ book: '2 Thessalonians', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '52 AD', '2 Thessalonians: Standing Firm'));
+    readings.push(this.createReading(day++, [{ book: '2 Thessalonians', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '52 AD', 'Paul Writes Again to the Thessalonians (52 AD) - Correcting misunderstandings about the day of the Lord, Paul urges steadfastness and diligent work (2 Thessalonians 1-3)'));
 
     // Acts 17-18: Thessalonica, Athens, Corinth
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 17, chapterEnd: 18 }], 'Early Church', '51 AD', 'Thessalonica, Athens, Corinth'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 17, chapterEnd: 18 }], 'Early Church', '51 AD', 'Paul in Thessalonica, Berea, Athens (51 AD) - Some believe while others persecute; at Athens Paul preaches to the philosophers about the unknown God (Acts 17-18)'));
 
     // 1 CORINTHIANS (54 AD) - From Ephesus
-    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '54 AD', '1 Cor 1-8: Wisdom and Purity'));
-    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '54 AD', '1 Cor 9-16: Body and Love'));
+    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '54 AD', 'Paul Writes to the Corinthians: Part 1 (54 AD) - Addressing divisions and immorality, Paul teaches on wisdom, the Lord\'s Supper, and spiritual gifts (1 Corinthians 1-8)'));
+    readings.push(this.createReading(day++, [{ book: '1 Corinthians', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '54 AD', 'Paul Writes to the Corinthians: Part 2 (54 AD) - Paul defends his apostleship and delivers the sublime chapter on love and the resurrection (1 Corinthians 9-16)'));
 
     // Acts 19-20: Ephesus, Farewell
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 19, chapterEnd: 20 }], 'Early Church', '54-57 AD', 'Ephesus, Farewell to Ephesian Elders'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 19, chapterEnd: 20 }], 'Early Church', '54-57 AD', 'Paul in Ephesus, Farewell to Ephesian Elders (54-57 AD) - Mighty works in Ephesus; Paul\'s emotional farewell warning of savage wolves who will attack the flock (Acts 19-20)'));
 
     // 2 CORINTHIANS (57 AD) - From Macedonia
-    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 1, chapterEnd: 7 }], 'Epistle', '57 AD', '2 Cor 1-7: Comfort in Suffering'));
-    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 8, chapterEnd: 13 }], 'Epistle', '57 AD', '2 Cor 8-13: Generosity and Defense'));
+    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 1, chapterEnd: 7 }], 'Epistle', '57 AD', 'Paul Writes Again to the Corinthians: Part 1 (57 AD) - Paul explains his suffering and God\'s comfort, the new covenant ministry, and reconciliation with the church (2 Corinthians 1-7)'));
+    readings.push(this.createReading(day++, [{ book: '2 Corinthians', chapterStart: 8, chapterEnd: 13 }], 'Epistle', '57 AD', 'Paul Writes Again to the Corinthians: Part 2 (57 AD) - Paul teaches on generous giving and defends his apostleship against the "super-apostles" (2 Corinthians 8-13)'));
 
     // ROMANS (57 AD) - From Corinth
-    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '57 AD', 'Romans 1-8: Justified by Faith'));
-    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '57 AD', 'Romans 9-16: Israel and Christian Living'));
+    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 1, chapterEnd: 8 }], 'Epistle', '57 AD', 'Paul Writes to the Romans: Part 1 (57 AD) - The gospel\'s power for salvation; justification by faith alone; life in the Spirit (Romans 1-8)'));
+    readings.push(this.createReading(day++, [{ book: 'Romans', chapterStart: 9, chapterEnd: 16 }], 'Epistle', '57 AD', 'Paul Writes to the Romans: Part 2 (57 AD) - Israel\'s hardening and future salvation; practical Christian living and love (Romans 9-16)'));
 
     // Acts 21-23: Arrest in Jerusalem
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 21, chapterEnd: 23 }], 'Early Church', '59 AD', 'Arrest in Jerusalem, Defense Before Council'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 21, chapterEnd: 23 }], 'Early Church', '59 AD', 'Paul Returns to Jerusalem, Arrested (59 AD) - Paul is seized by the mob; he defends himself before the Sanhedrin and is taken to Caesarea for trial (Acts 21-23)'));
 
     // Acts 24-26: Caesarea, Festus, Agrippa
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 24, chapterEnd: 26 }], 'Early Church', '60-62 AD', 'Caesarea, Festus and Agrippa'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 24, chapterEnd: 26 }], 'Early Church', '60-62 AD', 'Paul Imprisoned in Caesarea, Before Festus and Agrippa (60-62 AD) - Paul testifies before governors and kings, appealing to Caesar as Agrippa is almost persuaded (Acts 24-26)'));
 
     // Acts 27-28: Voyage to Rome
-    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 27, chapterEnd: 28 }], 'Early Church', '62 AD', 'Voyage to Rome, Shipwreck, Preaches at Rome'));
+    readings.push(this.createReading(day++, [{ book: 'Acts', chapterStart: 27, chapterEnd: 28 }], 'Early Church', '62 AD', 'Paul Sails for Rome, Shipwreck, Preaches at Rome (62 AD) - Through storm and shipwreck, God preserves Paul; in Rome he preaches the kingdom unhindered (Acts 27-28)'));
 
     // PRISON EPISTLES (62 AD) - Written from Rome
-    readings.push(this.createReading(day++, [{ book: 'Ephesians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '62 AD', 'Ephesians: One in Christ'));
-    readings.push(this.createReading(day++, [{ book: 'Philippians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Philippians: Joy in Christ'));
-    readings.push(this.createReading(day++, [{ book: 'Colossians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Colossians: Christ Supreme'));
-    readings.push(this.createReading(day++, [{ book: 'Philemon', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '62 AD', 'Philemon: Forgiveness'));
+    readings.push(this.createReading(day++, [{ book: 'Ephesians', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '62 AD', 'Paul Writes to the Ephesians (62 AD) - The mystery of the gospel: Jew and Gentile united in one body; spiritual blessings in Christ; the armor of God (Ephesians 1-6)'));
+    readings.push(this.createReading(day++, [{ book: 'Philippians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Paul Writes to the Philippians (62 AD) - From prison, Paul writes a letter of joy, exalting Christ\'s humiliation and exaltation and pressing toward the prize (Philippians 1-4)'));
+    readings.push(this.createReading(day++, [{ book: 'Colossians', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '62 AD', 'Paul Writes to the Colossians (62 AD) - Christ is the image of the invisible God, preeminent over all; warning against philosophy and asceticism (Colossians 1-4)'));
+    readings.push(this.createReading(day++, [{ book: 'Philemon', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '62 AD', 'Paul Writes to Philemon (62 AD) - Paul intercedes for the runaway slave Onesimus, appealing to Philemon to receive him as a brother in Christ (Philemon)'));
 
     // 1 TIMOTHY (63 AD) - After release from Rome
-    readings.push(this.createReading(day++, [{ book: '1 Timothy', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '63 AD', '1 Timothy: Church Order'));
+    readings.push(this.createReading(day++, [{ book: '1 Timothy', chapterStart: 1, chapterEnd: 6 }], 'Epistle', '63 AD', 'Paul Writes to Timothy (63 AD) - Instructions on church leadership, prayer, and fighting the good fight of faith as Paul\'s beloved son in the ministry (1 Timothy 1-6)'));
 
     // 1 PETER (64 AD) - Before Nero's persecution intensifies
-    readings.push(this.createReading(day++, [{ book: '1 Peter', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '64 AD', '1 Peter: Living Hope'));
+    readings.push(this.createReading(day++, [{ book: '1 Peter', chapterStart: 1, chapterEnd: 5 }], 'Epistle', '64 AD', 'Peter Writes His First Letter (64 AD) - To the scattered elect, Peter teaches on living hope through Christ\'s resurrection and holy conduct in suffering (1 Peter 1-5)'));
 
     // TITUS (66 AD)
-    readings.push(this.createReading(day++, [{ book: 'Titus', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '66 AD', 'Titus: Sound Doctrine'));
+    readings.push(this.createReading(day++, [{ book: 'Titus', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '66 AD', 'Paul Writes to Titus (66 AD) - Instructions for appointing elders and teaching sound doctrine in Crete; how believers should live and wait for Christ\'s appearing (Titus 1-3)'));
 
     // 2 TIMOTHY (67 AD) - Paul's final letter before martyrdom
-    readings.push(this.createReading(day++, [{ book: '2 Timothy', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '67 AD', '2 Timothy: Faithful to the End'));
+    readings.push(this.createReading(day++, [{ book: '2 Timothy', chapterStart: 1, chapterEnd: 4 }], 'Epistle', '67 AD', 'Paul Writes Again to Timothy (67 AD) - The aged apostle\'s final letter: endure hardship, preach the Word, and keep the faith as Paul finishes his race (2 Timothy 1-4)'));
 
     // 2 PETER (67 AD)
-    readings.push(this.createReading(day++, [{ book: '2 Peter', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '67 AD', '2 Peter: Knowledge and Warning'));
+    readings.push(this.createReading(day++, [{ book: '2 Peter', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '67 AD', 'Peter Writes His Second Letter (67 AD) - Peter exhorts believers to grow in grace and knowledge, warning against false teachers and remembering the day of the Lord (2 Peter 1-3)'));
 
     // HEBREWS (68 AD) - Before Jerusalem's destruction (BibleHub shows as one reading)
-    readings.push(this.createReading(day++, [{ book: 'Hebrews', chapterStart: 1, chapterEnd: 13 }], 'Epistle', '68 AD', 'Hebrews: Better Priest, New Covenant'));
+    readings.push(this.createReading(day++, [{ book: 'Hebrews', chapterStart: 1, chapterEnd: 13 }], 'Epistle', '68 AD', 'Letter to the Hebrews (68 AD) - Christ is superior to angels, Moses, and the Levitical priests; the new covenant\'s better promises; faith\'s hall of fame (Hebrews 1-13)'));
 
     // JUDE (68 AD)
-    readings.push(this.createReading(day++, [{ book: 'Jude', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '68 AD', 'Jude: Contend for the Faith'));
+    readings.push(this.createReading(day++, [{ book: 'Jude', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '68 AD', 'Jude Writes His Letter (68 AD) - A call to contend earnestly for the faith against ungodly men who creep in unnoticed, turning grace into licentiousness (Jude)'));
 
     // JOHANNINE EPISTLES (90-94 AD)
-    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '90 AD', '1 John 1-3: Walking in the Light'));
-    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 4, chapterEnd: 5 }], 'Epistle', '90 AD', '1 John 4-5: Love One Another'));
-    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '92 AD', '2 John: Walk in Truth'));
-    readings.push(this.createReading(day++, [{ book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '94 AD', '3 John: Hospitality and Truth'));
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 1, chapterEnd: 3 }], 'Epistle', '90 AD', 'John Writes His First Letter: Part 1 (90 AD) - Fellowship with the Father and Son; walking in the light; the world\'s hatred and the children of God (1 John 1-3)'));
+    readings.push(this.createReading(day++, [{ book: '1 John', chapterStart: 4, chapterEnd: 5 }], 'Epistle', '90 AD', 'John Writes His First Letter: Part 2 (90 AD) - God is love; testing the spirits; faith\'s victory over the world through the Son of God (1 John 4-5)'));
+    readings.push(this.createReading(day++, [{ book: '2 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '92 AD', 'John Writes His Second Letter (92 AD) - Walking in truth and love; warning against receiving false teachers who deny Christ\'s coming in the flesh (2 John)'));
+    readings.push(this.createReading(day++, [{ book: '3 John', chapterStart: 1, chapterEnd: 1 }], 'Epistle', '94 AD', 'John Writes His Third Letter (94 AD) - Commending Gaius for his hospitality and warning against Diotrephes who loves preeminence (3 John)'));
 
     // REVELATION (95 AD) - Patmos vision (BibleHub shows as one reading)
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 3 }], 'Apocalypse', '95 AD', 'Revelation 1-3: Letters to Churches'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 4, chapterEnd: 8 }], 'Apocalypse', '95 AD', 'Revelation 4-8: Throne, Seals, Trumpets Begin'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 9, chapterEnd: 14 }], 'Apocalypse', '95 AD', 'Revelation 9-14: Trumpets, Dragon, Beasts'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 15, chapterEnd: 18 }], 'Apocalypse', '95 AD', 'Revelation 15-18: Bowls and Babylon'));
-    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 19, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'Revelation 19-22: Return and New Creation'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 1, chapterEnd: 3 }], 'Apocalypse', '95 AD', 'John\'s Revelation on Patmos: Part 1 (95 AD) - The glorified Christ among the lampstands; letters to the seven churches commending, correcting, and calling to overcome (Revelation 1-3)'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 4, chapterEnd: 8 }], 'Apocalypse', '95 AD', 'John\'s Revelation on Patmos: Part 2 (95 AD) - The throne room of heaven; the Lamb opens the seals; the sealed 144,000 and the great multitude; the seventh seal and first trumpets (Revelation 4-8)'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 9, chapterEnd: 14 }], 'Apocalypse', '95 AD', 'John\'s Revelation on Patmos: Part 3 (95 AD) - The woes; the mighty angel and little scroll; the two witnesses; the woman, the dragon, and the beasts (Revelation 9-14)'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 15, chapterEnd: 18 }], 'Apocalypse', '95 AD', 'John\'s Revelation on Patmos: Part 4 (95 AD) - The seven bowls of wrath; the harlot Babylon and her fall; the call to come out of her (Revelation 15-18)'));
+    readings.push(this.createReading(day++, [{ book: 'Revelation', chapterStart: 19, chapterEnd: 22 }], 'Apocalypse', '95 AD', 'John\'s Revelation on Patmos: Part 5 (95 AD) - The marriage supper of the Lamb; the King returns; the beast defeated; the new heaven and new earth; the river of life and final invitation (Revelation 19-22)'));
 
     // Redistribute NT readings to fill gap days (1-to-1 mapping)
     const ntReadings = readings.slice(otReadingCount);

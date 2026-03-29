@@ -319,7 +319,7 @@ export class ApocryphaReadingProvider {
 
     // Fill any remaining days with reflection readings
     while (readings.length < 365) {
-      const day = readings.length + 1;
+      const day: number = readings.length + 1;
       readings.push({
         day,
         date: `2025-01-${day.toString().padStart(2, '0')}`,
