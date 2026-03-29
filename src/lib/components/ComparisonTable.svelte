@@ -6,6 +6,9 @@
 	export let plans;
 	export let sortedDays;
 
+	// Dropdown state for Logos/BLB toggle
+	let selectedAcademicProvider = 'logos'; // 'logos' or 'blb'
+
 	// Modal state
 	let showModal = false;
 	let modalCommentary = '';
@@ -111,6 +114,18 @@
 		};
 		return labels[textType] || textType;
 	}
+
+	// Get the currently selected academic reading
+	$: academicReading = (day) => {
+		if (selectedAcademicProvider === 'logos') {
+			return plans.logos?.dailyReadings.find(r => r.day === day);
+		} else {
+			return plans.blb?.dailyReadings.find(r => r.day === day);
+		}
+	};
+
+	// Get the CSS class for the academic provider cell
+	$: academicCellClass = selectedAcademicProvider === 'logos' ? 'plan-cell plan-logos' : 'plan-cell plan-blb';
 </script>
 
 <div class="comparison-table-wrapper">
@@ -118,15 +133,22 @@
 		<thead>
 			<tr>
 				<th>Day</th>
-				<th>
-					<a href="https://www.logos.com/grow/nook-chronological-bible-reading-plan/" target="_blank" rel="noopener" class="provider-link">
-						Logos Academic
-					</a>
-				</th>
-				<th>
-					<a href="https://www.blueletterbible.org/dailyreading/" target="_blank" rel="noopener" class="provider-link">
-						Blue Letter Bible
-					</a>
+				<th class="academic-provider-header">
+					<div class="provider-selector">
+						<select bind:value={selectedAcademicProvider} class="provider-dropdown">
+							<option value="logos">Logos Academic</option>
+							<option value="blb">Blue Letter Bible</option>
+						</select>
+						{#if selectedAcademicProvider === 'logos'}
+							<a href="https://www.logos.com/grow/nook-chronological-bible-reading-plan/" target="_blank" rel="noopener" class="provider-external-link" title="Open Logos Academic">
+								↗
+							</a>
+						{:else}
+							<a href="https://www.blueletterbible.org/dailyreading/" target="_blank" rel="noopener" class="provider-external-link" title="Open Blue Letter Bible">
+								↗
+							</a>
+						{/if}
+					</div>
 				</th>
 				<th>
 					<a href="https://biblehub.com/timeline/" target="_blank" rel="noopener" class="provider-link">
@@ -146,28 +168,19 @@
 				{@const blbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
 				{@const biblehubReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
 				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
+				{@const currentAcademicReading = selectedAcademicProvider === 'logos' ? logosReading : blbReading}
 
 				<tr class="day-row">
 					<td class="day-cell">
 						<strong>Day {day}</strong>
 					</td>
-					<td class="plan-cell plan-logos">
-						{@html logosReading ? renderPlanReading(logosReading, plans.logos) : '<span class="no-reading">No reading</span>'}
-						{#if logosReading?.commentary}
+					<td class={academicCellClass}>
+						{@html currentAcademicReading ? renderPlanReading(currentAcademicReading, selectedAcademicProvider === 'logos' ? plans.logos : plans.blb) : '<span class="no-reading">No reading</span>'}
+						{#if currentAcademicReading?.commentary}
 							<CommentButton
-								commentary={logosReading.commentary}
-								provider="logos"
-								onClick={() => openCommentModal(logosReading.commentary, 'logos', day)}
-							/>
-						{/if}
-					</td>
-					<td class="plan-cell plan-blb">
-						{@html blbReading ? renderPlanReading(blbReading, plans.blb) : '<span class="no-reading">No reading</span>'}
-						{#if blbReading?.commentary}
-							<CommentButton
-								commentary={blbReading.commentary}
-								provider="blb"
-								onClick={() => openCommentModal(blbReading.commentary, 'blb', day)}
+								commentary={currentAcademicReading.commentary}
+								provider={selectedAcademicProvider}
+								onClick={() => openCommentModal(currentAcademicReading.commentary, selectedAcademicProvider, day)}
 							/>
 						{/if}
 					</td>
@@ -209,6 +222,50 @@
 	/* Additional styles specific to this component can go here */
 	.comparison-table {
 		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+
+	.academic-provider-header {
+		min-width: 200px;
+	}
+
+	.provider-selector {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.provider-dropdown {
+		padding: 0.4rem 0.75rem;
+		border: 1px solid #bdc3c7;
+		border-radius: 6px;
+		background: white;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: #2c3e50;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		outline: none;
+	}
+
+	.provider-dropdown:hover {
+		border-color: #3498db;
+	}
+
+	.provider-dropdown:focus {
+		border-color: #3498db;
+		box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+	}
+
+	.provider-external-link {
+		color: #3498db;
+		text-decoration: none;
+		font-size: 1rem;
+		transition: color 0.2s ease;
+	}
+
+	.provider-external-link:hover {
+		color: #2980b9;
+		text-decoration: none;
 	}
 
 	.plan-cell {
