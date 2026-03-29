@@ -125,7 +125,8 @@
 				logosPlan.metadata.totalDays,
 				blbPlan.metadata.totalDays,
 				apocryphaPlan.metadata.totalDays,
-				biblehubInterleavedPlan.metadata.totalDays,\n\t\t\t\tbiblehubChronologicalPlan.metadata.totalDays
+				biblehubInterleavedPlan.metadata.totalDays,
+					biblehubChronologicalPlan.metadata.totalDays
 			);
 			maxMonth = Math.ceil(maxDays / 31);
 

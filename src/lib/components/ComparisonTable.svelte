@@ -236,20 +236,12 @@
 	}
 
 	.academic-provider-header {
-
-		.biblehub-provider-header {
-			min-width: 200px;
-		}
 		min-width: 200px;
-
-		.biblehub-provider-header {
-			min-width: 200px;
-		}
 	}
 
-		.biblehub-provider-header {
-			min-width: 200px;
-		}
+	.biblehub-provider-header {
+		min-width: 200px;
+	}
 
 	.provider-selector {
 		display: flex;

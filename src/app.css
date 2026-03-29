@@ -337,12 +337,12 @@
 }
 
 .testament.old {
-  background: var(--esv-color);
+  background: var(--logos-color);
   color: white;
 }
 
 .testament.new {
-  background: var(--logos-color);
+  background: var(--esv-color);
   color: white;
 }
 
