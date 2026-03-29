@@ -67,7 +67,7 @@
 	const canons = [
 		{
 			tradition: 'Protestant',
-			color: '#3498db',
+			color: '#2c3e50',
 			oldTestament: 39,
 			newTestament: 27,
 			apocrypha: 0,
@@ -369,7 +369,7 @@
 	}
 
 	.nav-btn.active {
-		background: #3498db;
+		background: #2c3e50;
 		color: white;
 	}
 
@@ -395,7 +395,7 @@
 	section h2 {
 		color: #2c3e50;
 		margin-bottom: 1.5rem;
-		border-bottom: 2px solid #3498db;
+		border-bottom: 2px solid #2c3e50;
 		padding-bottom: 0.5rem;
 	}
 
@@ -406,7 +406,7 @@
 
 	.key-distinction {
 		background: #e8f4fd;
-		border-left: 4px solid #3498db;
+		border-left: 4px solid #2c3e50;
 		padding: 1.5rem;
 		margin-top: 1.5rem;
 		border-radius: 0 8px 8px 0;
@@ -414,7 +414,7 @@
 
 	.key-distinction h3 {
 		margin: 0 0 0.5rem 0;
-		color: #2980b9;
+		color: #1a252f;
 	}
 
 	.resource-links {
@@ -590,7 +590,7 @@
 		top: 0;
 		bottom: 0;
 		width: 3px;
-		background: #3498db;
+		background: #2c3e50;
 	}
 
 	.timeline-item {
@@ -606,15 +606,15 @@
 		top: 0.5rem;
 		width: 12px;
 		height: 12px;
-		background: #3498db;
+		background: #2c3e50;
 		border-radius: 50%;
 		border: 3px solid white;
-		box-shadow: 0 0 0 3px #3498db;
+		box-shadow: 0 0 0 3px #2c3e50;
 	}
 
 	.timeline-period {
 		font-weight: bold;
-		color: #3498db;
+		color: #2c3e50;
 		margin-bottom: 0.25rem;
 	}
 
@@ -640,7 +640,7 @@
 		background: #f8f9fa;
 		padding: 1rem 1.5rem;
 		border-radius: 8px;
-		border-left: 3px solid #3498db;
+		border-left: 3px solid #2c3e50;
 	}
 
 	.term-card h4 {

@@ -46,7 +46,7 @@
 		},
 		{
 			name: 'Logos Academic',
-			color: '#3498db',
+			color: '#2c3e50',
 			methodology: 'Conservative dating with configurable parameters and academic framework',
 			denomination: 'Interdenominational Academic',
 			sources: 'Logos.com Academic Resources',
@@ -252,40 +252,7 @@
 </footer>
 
 <style>
-	.bible360-header {
-		background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-		color: white;
-		padding: 2rem;
-		text-align: center;
-	}
-
-	.bible360-nav {
-		background: white;
-		padding: 1rem;
-		border-bottom: 1px solid #e0e0e0;
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-	}
-
-	.nav-btn {
-		padding: 0.5rem 1rem;
-		text-decoration: none;
-		color: #666;
-		border-radius: 4px;
-		transition: all 0.3s ease;
-	}
-
-	.nav-btn.active {
-		background: #3498db;
-		color: white;
-	}
-
-	.bible360-content {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem;
-	}
+	/* Page-specific styles only - global styles in app.css */
 
 	.about-container {
 		display: flex;
@@ -303,7 +270,7 @@
 	section h2 {
 		color: #2c3e50;
 		margin-bottom: 1.5rem;
-		border-bottom: 2px solid #3498db;
+		border-bottom: 2px solid #2c3e50;
 		padding-bottom: 0.5rem;
 	}
 
@@ -390,7 +357,7 @@
 	}
 
 	.contact-info a {
-		color: #3498db;
+		color: #2c3e50;
 		text-decoration: none;
 	}
 
@@ -398,19 +365,7 @@
 		text-decoration: underline;
 	}
 
-	.bible360-footer {
-		background: #2c3e50;
-		color: white;
-		text-align: center;
-		padding: 2rem;
-		margin-top: 3rem;
-	}
-
 	@media (max-width: 768px) {
-		.bible360-content {
-			padding: 1rem;
-		}
-
 		section {
 			padding: 1.5rem;
 		}

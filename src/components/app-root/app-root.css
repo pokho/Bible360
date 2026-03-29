@@ -15,7 +15,7 @@
 }
 
 .bible360-header {
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, #2c3e50, #1a252f);
   color: white;
   padding: 2rem 1rem;
   text-align: center;
@@ -59,13 +59,13 @@
 }
 
 .nav-btn:hover {
-  background: #3498db;
+  background: #2c3e50;
   color: white;
   transform: translateY(-2px);
 }
 
 .nav-btn.active {
-  background: #3498db;
+  background: #2c3e50;
   color: white;
 }
 
@@ -128,7 +128,7 @@
 }
 
 .legend-color.plan-logos {
-  background: #3498db;
+  background: #34495e;
 }
 
 .legend-color.plan-blb {
@@ -146,7 +146,7 @@
 .source-link {
   margin-left: 0.5rem;
   text-decoration: none;
-  color: #3498db;
+  color: #2c3e50;
   font-size: 0.8rem;
 }
 
@@ -186,7 +186,7 @@
 }
 
 .provider-link:hover {
-  color: #3498db;
+  color: #2c3e50;
   text-decoration: underline;
 }
 
@@ -238,7 +238,7 @@
 }
 
 .plan-logos {
-  border-left: 3px solid #3498db;
+  border-left: 3px solid #2c3e50;
 }
 
 .plan-blb {
@@ -314,7 +314,7 @@
 }
 
 .testament.new {
-  background: #3498db;
+  background: #34495e;
   color: white;
 }
 
@@ -392,7 +392,7 @@
   color: #2c3e50;
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
-  border-bottom: 2px solid #3498db;
+  border-bottom: 2px solid #2c3e50;
   padding-bottom: 0.5rem;
 }
 
@@ -418,8 +418,8 @@
 
 .config-select:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.2);
 }
 
 .checkbox-label {
@@ -471,10 +471,10 @@
 }
 
 .config-preview {
-  background: #e8f4fd;
+  background: #f8f9fa;
   border-radius: 8px;
   padding: 1.5rem;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #2c3e50;
   margin-top: 2rem;
 }
 
@@ -494,7 +494,7 @@
   background: white;
   padding: 1rem;
   border-radius: 6px;
-  border: 1px solid #3498db;
+  border: 1px solid #2c3e50;
 }
 
 .summary-item strong {
@@ -588,15 +588,15 @@
 }
 
 .source-links a {
-  color: #3498db;
+  color: #2c3e50;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  background: rgba(52, 152, 219, 0.1);
+  background: rgba(44, 62, 80, 0.1);
 }
 
 .source-links a:hover {
-  background: rgba(52, 152, 219, 0.2);
+  background: rgba(44, 62, 80, 0.2);
   text-decoration: underline;
 }
 
@@ -616,7 +616,7 @@
   width: 80px;
   text-align: center;
   background: #34495e;
-  border: 2px solid #3498db;
+  border: 2px solid #2c3e50;
   color: white;
   border-radius: 6px;
   padding: 0.5rem;

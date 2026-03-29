@@ -6,7 +6,7 @@
   // Provider-specific colors matching existing color scheme
   const providerColors = {
     'biblehub': '#27ae60',
-    'logos': '#3498db',
+    'logos': '#2c3e50',
     'blb': '#9b59b6',
     'apocrypha': '#e67e22'
   };

@@ -64,8 +64,8 @@
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
-  background: #3498db;
-  border-color: #3498db;
+  background: #2c3e50;
+  border-color: #2c3e50;
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
@@ -104,7 +104,7 @@
 }
 
 .radio-label:hover {
-  border-color: #3498db;
+  border-color: #2c3e50;
   background: #f8f9fa;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .radio-label input[type="radio"]:checked + .radio-mark {
-  border-color: #3498db;
+  border-color: #2c3e50;
 }
 
 .radio-label input[type="radio"]:checked + .radio-mark::after {
@@ -135,7 +135,7 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background: #3498db;
+  background: #2c3e50;
   border-radius: 50%;
 }
 
@@ -198,15 +198,15 @@
 }
 
 .info-box {
-  background: #e8f4fd;
-  border: 1px solid #bee5eb;
+  background: #f8f9fa;
+  border: 1px solid #bdc3c7;
   border-radius: 8px;
   padding: 1.5rem;
 }
 
 .info-box h4 {
   margin: 0 0 1rem 0;
-  color: #0c5460;
+  color: #2c3e50;
   font-size: 1.1rem;
   font-weight: 600;
 }
@@ -214,7 +214,7 @@
 .info-content p {
   margin: 0 0 1rem 0;
   line-height: 1.6;
-  color: #0c5460;
+  color: #34495e;
 }
 
 .info-content p:last-child {
@@ -222,7 +222,7 @@
 }
 
 .info-content strong {
-  color: #0c5460;
+  color: #2c3e50;
   font-weight: 600;
 }
 

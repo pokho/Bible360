@@ -44,7 +44,7 @@
 				logos: {
 					provider: logosPlan.provider,
 					dailyReadings: logosPlan.dailyReadings,
-					color: '#3498db',
+					color: '#2c3e50',
 					sourceUrl: 'https://www.logos.com/grow/nook-chronological-bible-reading-plan/'
 				},
 				blb: {
@@ -75,7 +75,7 @@
 					methodology: 'Conservative dating with historical-critical approach and scholarly academic methodology for comprehensive study.',
 					totalDays: logosPlan.metadata.totalDays,
 					apocryphaSupport: 'Full (Catholic/Orthodox)',
-					color: '#3498db'
+					color: '#2c3e50'
 				},
 				{
 					name: 'Blue Letter Bible',
@@ -311,11 +311,11 @@
 	}
 
 	.month-btn.active {
-		background: #007bff;
+		background: #2c3e50;
 		color: white;
-		border-color: #007bff;
+		border-color: #2c3e50;
 		transform: translateY(-1px);
-		box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+		box-shadow: 0 2px 4px rgba(44, 62, 80, 0.3);
 	}
 
 	.month-info {

@@ -249,7 +249,7 @@
 	}
 
 	.passage-link {
-		color: #007bff;
+		color: #2c3e50;
 		text-decoration: none;
 		font-weight: 500;
 	}
@@ -283,7 +283,7 @@
 	.text-type-deuterocanonical {
 		background: #e8f4fd;
 		color: #1a5276;
-		border: 1px solid #3498db;
+		border: 1px solid #2c3e50;
 	}
 
 	.text-type-pseudepigrapha {

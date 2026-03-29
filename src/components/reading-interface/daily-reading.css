@@ -7,8 +7,8 @@
 }
 
 .daily-reading.active {
-  border-color: #3498db;
-  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+  border-color: #2c3e50;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.15);
 }
 
 .daily-reading.completed {
@@ -17,7 +17,7 @@
 }
 
 .daily-reading.compact {
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #2c3e50;
 }
 
 .reading-header {
@@ -164,8 +164,8 @@
 
 .historical-context {
   padding: 1rem;
-  background: #f0f8ff;
-  border-left: 4px solid #3498db;
+  background: #f8f9fa;
+  border-left: 4px solid #2c3e50;
 }
 
 .historical-context h4 {
@@ -221,8 +221,8 @@
 
 .reading-notes textarea:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.2);
 }
 
 .reading-features {

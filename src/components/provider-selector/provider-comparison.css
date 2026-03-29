@@ -30,8 +30,8 @@
 }
 
 .provider-card:hover {
-  border-color: #3498db;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+  border-color: #2c3e50;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
   transform: translateY(-2px);
 }
 
@@ -107,7 +107,7 @@
 .select-btn {
   width: 100%;
   padding: 0.75rem;
-  background: #3498db;
+  background: #2c3e50;
   color: white;
   border: none;
   border-radius: 6px;
@@ -121,7 +121,7 @@
 }
 
 .select-btn:hover {
-  background: #2980b9;
+  background: #1a252f;
 }
 
 .provider-card.selected .select-btn:hover {
@@ -133,7 +133,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #2c3e50;
 }
 
 .comparison-note p {

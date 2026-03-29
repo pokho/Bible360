@@ -2,10 +2,10 @@
 /* Based on original StencilJS styles adapted for Svelte */
 
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2980b9;
+  --primary-color: #2c3e50;
+  --secondary-color: #1a252f;
   --esv-color: #e74c3c;
-  --logos-color: #3498db;
+  --logos-color: #2c3e50;
   --blb-color: #9b59b6;
   --apocrypha-color: #e67e22;
   --biblehub-color: #27ae60;
@@ -60,6 +60,7 @@
   transition: all 0.3s ease;
   font-size: 0.95rem;
   text-decoration: none;
+  display: inline-block;
 }
 
 .nav-btn:hover {
