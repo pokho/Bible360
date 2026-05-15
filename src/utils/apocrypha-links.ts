@@ -127,10 +127,10 @@ const URL_CONFIGS: Record<string, ApocryphaUrlConfig> = {
     fallbackUrl: 'https://www.earlychristianwritings.com/'
   },
   'Jubilees': {
-    baseUrl: 'https://sacred-texts.com/bib/apo/',
-    pathPattern: 'jubilees.htm',
+    baseUrl: 'https://sacred-texts.com/bib/jub/',
+    pathPattern: 'index.htm',
     requiresChapter: false,
-    fallbackUrl: 'https://www.earlychristianwritings.com/'
+    fallbackUrl: 'https://www.earlychristianwritings.com/jubilees.html'
   },
   'Testament of the Twelve Patriarchs': {
     baseUrl: 'https://sacred-texts.com/bib/apo/',
