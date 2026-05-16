@@ -235,16 +235,16 @@ NOAH AS A TYPE OF CHRIST: Noah was "righteous" and "found favor" (grace) in God'
 
     // Days 5-14: Job (42 chapters, ~4/day)
     const jobDescriptions = [
-      'Job\'s righteousness, Satan\'s challenge, and the arrival of his friends who initially sit in silence',
-      'First Cycle of Debate - Eliphaz\'s first speech and Job\'s response, beginning the theological debate',
-      'Second Cycle of Debate - Bildad and Zophar speak, with Job\'s passionate defense of his integrity',
-      'Third Cycle of Debate - More intense debate as Job cries out for a mediator and his friends grow harsher',
-      'Job\'s Oath of Innocence - Job\'s oath of innocence and his lament of days gone by',
-      'Elihu\'s Wisdom - The young Elihu speaks with divine insight, preparing for God\'s appearance',
-      'God\'s First Speech - God speaks from the whirlwind, questioning Job about creation and natural order',
-      'God\'s Second Speech - God challenges Job\'s wisdom with questions about Behemoth and Leviathan',
-      'Job\'s Humility and Restoration - Job is humbled, repents, and his fortunes begin to be restored',
-      'Job\'s Final Blessing - Job\'s fortunes are fully restored, his family is blessed, and he dies in old age'
+      'Prologue: Job Tested — Satan challenges Job\'s integrity; Job loses everything yet refuses to curse God; his friends arrive and sit in silence',
+      'First Cycle of Dialogues — Eliphaz counsels Job, Job responds in anguish, Bildad appeals to tradition',
+      'First Cycle of Dialogues — Job responds to Bildad, Zophar speaks, and Job longs for wisdom',
+      'Second Cycle of Dialogues — Job argues with his friends, Eliphaz accuses him, and Job protests his innocence',
+      'Second Cycle of Dialogues — Job despairs, Bildad and Zophar rebuke him, and Job maintains his hope in a Redeemer',
+      'Third Cycle of Dialogues — Job refutes retribution theology, Eliphaz condemns him, and Job longs to find God',
+      'Third Cycle of Dialogues and the Poem on Wisdom — Bildad\'s brief reply, Job\'s closing defense, and a meditation on where true wisdom is found',
+      'Job\'s Final Monologue and Elihu Begins — Job recalls his former honor, protests his innocence with an oath, and the young Elihu steps forward',
+      'Elihu\'s Speeches — Elihu argues God\'s justice, discipline, and majesty, preparing the way for the LORD\'s answer',
+      'The LORD\'s Speeches and Epilogue: Job Restored — God speaks from the whirlwind, Job repents, and his fortunes are doubly restored'
     ];
     const jobDays = [[1,4],[5,8],[9,12],[13,16],[17,20],[21,24],[25,28],[29,32],[33,37],[38,42]];
     jobDays.forEach((ch, i) => readings.push(this.createReading(day++,
