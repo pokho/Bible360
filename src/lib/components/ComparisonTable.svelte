@@ -221,6 +221,84 @@
 	</table>
 </div>
 
+<!-- Mobile card layout (hidden on desktop, shown via CSS below 768px) -->
+<div class="mobile-cards">
+	<div class="mobile-provider-selectors">
+		<div class="mobile-selector-group">
+			<label for="mobile-academic-select">Academic:</label>
+			<select id="mobile-academic-select" bind:value={selectedAcademicProvider} class="provider-dropdown">
+				<option value="logos">Logos Academic</option>
+				<option value="blb">Blue Letter Bible</option>
+			</select>
+		</div>
+		<div class="mobile-selector-group">
+			<label for="mobile-biblehub-select">BibleHub:</label>
+			<select id="mobile-biblehub-select" bind:value={selectedBiblehubProvider} class="provider-dropdown">
+				<option value="interleaved">Interleaved</option>
+				<option value="chronological">Chronological</option>
+			</select>
+		</div>
+	</div>
+
+	{#each sortedDays as day}
+		{@const mobileLogosReading = plans.logos?.dailyReadings.find(r => r.day === day)}
+		{@const mobileBlbReading = plans.blb?.dailyReadings.find(r => r.day === day)}
+		{@const mobileBiblehubInterleavedReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
+		{@const mobileBiblehubChronologicalReading = plans.biblehubChronological?.dailyReadings.find(r => r.day === day)}
+		{@const mobileApocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
+		{@const mobileAcademicReading = selectedAcademicProvider === 'logos' ? mobileLogosReading : mobileBlbReading}
+		{@const mobileBiblehubReading = selectedBiblehubProvider === 'interleaved' ? mobileBiblehubInterleavedReading : mobileBiblehubChronologicalReading}
+
+		<div class="day-card">
+			<div class="day-card-header">
+				<strong>Day {day}</strong>
+			</div>
+
+			<div class="provider-section {selectedAcademicProvider === 'logos' ? 'plan-logos' : 'plan-blb'}">
+				<div class="provider-label">
+					{selectedAcademicProvider === 'logos' ? 'Logos Academic' : 'Blue Letter Bible'}
+				</div>
+				{@html mobileAcademicReading ? renderPlanReading(mobileAcademicReading, selectedAcademicProvider === 'logos' ? plans.logos : plans.blb) : '<span class="no-reading">No reading</span>'}
+				{#if mobileAcademicReading?.commentary}
+					<CommentButton
+						commentary={mobileAcademicReading.commentary}
+						provider={selectedAcademicProvider}
+						onClick={() => openCommentModal(mobileAcademicReading.commentary, selectedAcademicProvider, day)}
+					/>
+				{/if}
+			</div>
+
+			<div class="provider-section plan-biblehub">
+				<div class="provider-label">
+					{selectedBiblehubProvider === 'interleaved' ? 'BibleHub Interleaved' : 'BibleHub Chronological'}
+				</div>
+				{@html mobileBiblehubReading ? renderPlanReading(mobileBiblehubReading, selectedBiblehubProvider === 'interleaved' ? plans.biblehub : plans.biblehubChronological) : '<span class="no-reading">No reading</span>'}
+				{#if mobileBiblehubReading?.commentary}
+					<CommentButton
+						commentary={mobileBiblehubReading.commentary}
+						provider={selectedBiblehubProvider === 'interleaved' ? 'biblehub' : 'biblehubChronological'}
+						onClick={() => openCommentModal(mobileBiblehubReading.commentary, selectedBiblehubProvider === 'interleaved' ? 'biblehub' : 'biblehubChronological', day)}
+					/>
+				{/if}
+			</div>
+
+			<div class="provider-section plan-apocrypha">
+				<div class="provider-label">
+					Apocrypha & Pseudepigrapha
+				</div>
+				{@html mobileApocryphaReading ? renderPlanReading(mobileApocryphaReading, plans.apocrypha) : '<span class="no-reading">No reading</span>'}
+				{#if mobileApocryphaReading?.commentary}
+					<CommentButton
+						commentary={mobileApocryphaReading.commentary}
+						provider="apocrypha"
+						onClick={() => openCommentModal(mobileApocryphaReading.commentary, 'apocrypha', day)}
+					/>
+				{/if}
+			</div>
+		</div>
+	{/each}
+</div>
+
 <CommentModal
 	isOpen={showModal}
 	commentary={modalCommentary}
