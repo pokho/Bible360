@@ -2,6 +2,7 @@ import type { ReadingPlan, DailyReading, BiblePassage, HistoricalContext, PlanMe
 import { PDFParserService } from '../../services/pdf-parser.service';
 import type { ParsedReadingPlan } from '../../services/pdf-parser.service';
 import { generateBiblehubHref } from '../../utils/biblehub-utils';
+import { bibleBookThemes } from './bible-book-themes';
 
 export class LogosAcademicProvider {
   private pdfParserService: PDFParserService;
@@ -24,14 +25,19 @@ export class LogosAcademicProvider {
   }
 
   private convertToReadingPlan(parsedPlan: ParsedReadingPlan): ReadingPlan {
-    const dailyReadings: DailyReading[] = parsedPlan.dailyReadings.map((reading, index) => ({
-      day: reading.day,
-      date: reading.date,
-      passages: this.convertPassages(reading.passages),
-      readingTimeMinutes: this.calculateReadingTime(reading.passages),
-      apocryphaIncluded: this.hasApocrypha(reading.passages),
-      historicalContext: reading.historicalContext
-    }));
+    const dailyReadings: DailyReading[] = parsedPlan.dailyReadings.map((reading, index) => {
+      const ctx = reading.historicalContext;
+      const book = reading.passages[0]?.book;
+      const theme = book ? bibleBookThemes[book] : undefined;
+      return {
+        day: reading.day,
+        date: reading.date,
+        passages: this.convertPassages(reading.passages),
+        readingTimeMinutes: this.calculateReadingTime(reading.passages),
+        apocryphaIncluded: this.hasApocrypha(reading.passages),
+        historicalContext: ctx && theme ? { ...ctx, description: ctx.description + ' ' + theme } : ctx
+      };
+    });
 
     return {
       provider: 'logos-academic',

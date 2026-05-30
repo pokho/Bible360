@@ -9,6 +9,7 @@
   --blb-color: #9b59b6;
   --apocrypha-color: #e67e22;
   --biblehub-color: #27ae60;
+  --quran-color: #1a7a4c;
   --text-color: #2c3e50;
   --background-color: #f8f9fa;
   --border-color: #ecf0f1;
@@ -183,6 +184,10 @@
   background: var(--biblehub-color);
 }
 
+.legend-color.plan-quran {
+  background: var(--quran-color);
+}
+
 .provider-link {
   margin-left: 0.5rem;
   text-decoration: none;
@@ -281,6 +286,10 @@
   border-left: 3px solid var(--biblehub-color);
 }
 
+.plan-quran {
+  border-left: 3px solid var(--quran-color);
+}
+
 .reading-content {
   line-height: 1.4;
 }
@@ -348,6 +357,16 @@
 
 .testament.apocryphal {
   background: var(--apocrypha-color);
+  color: white;
+}
+
+.testament.meccan {
+  background: var(--quran-color);
+  color: white;
+}
+
+.testament.medinan {
+  background: #2d6a4f;
   color: white;
 }
 
@@ -544,6 +563,10 @@
 
   .provider-section.plan-apocrypha {
     border-left-color: var(--apocrypha-color);
+  }
+
+  .provider-section.plan-quran {
+    border-left-color: var(--quran-color);
   }
 
   .provider-label {

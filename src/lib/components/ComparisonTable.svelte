@@ -12,6 +12,9 @@
 	// Dropdown state for BibleHub toggle
 	let selectedBiblehubProvider = 'interleaved'; // 'interleaved' or 'chronological'
 
+	// Dropdown state for Quran toggle
+	let selectedQuranProvider = 'egyptian'; // 'egyptian' or 'noldeke'
+
 	// Modal state
 	let showModal = false;
 	let modalCommentary = '';
@@ -44,11 +47,20 @@
 		const passagesHtml = reading.passages.map(passage => {
 			const testamentClass = passage.testament === 'old' ? 'old' :
 								  passage.testament === 'new' ? 'new' :
-								  passage.testament === 'apocryphal' ? 'apocryphal' : '';
+								  passage.testament === 'apocryphal' ? 'apocryphal' :
+								  passage.testament === 'meccan' ? 'meccan' :
+								  passage.testament === 'medinan' ? 'medinan' : '';
 
+			let passageLabel;
+			if (passage.verseStart != null) {
+				// Quran-style: show surah name with verse range
+				passageLabel = `${passage.book} ${passage.verseStart}${passage.verseEnd && passage.verseEnd !== passage.verseStart ? '-' + passage.verseEnd : ''}`;
+			} else {
+				passageLabel = `${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}`;
+			}
 			const passageContent = passage.href
-				? `<a href="${passage.href}" target="_blank" rel="noopener" class="passage-link">${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}</a>`
-				: `<span>${passage.book} ${passage.chapterStart}${passage.chapterEnd && passage.chapterEnd !== passage.chapterStart ? '-' + passage.chapterEnd : ''}</span>`;
+				? `<a href="${passage.href}" target="_blank" rel="noopener" class="passage-link">${passageLabel}</a>`
+				: `<span>${passageLabel}</span>`;
 
 			return `
 				<div class="passage">
@@ -101,7 +113,9 @@
 		const labels = {
 			'old': 'OT',
 			'new': 'NT',
-			'apocryphal': 'APO'
+			'apocryphal': 'APO',
+			'meccan': 'MEC',
+			'medinan': 'MED'
 		};
 		return labels[testament] || testament;
 	}
@@ -169,6 +183,17 @@
 						Apocrypha & Pseudepigrapha
 					</a>
 				</th>
+				<th class="quran-provider-header">
+					<div class="provider-selector">
+						<select bind:value={selectedQuranProvider} class="provider-dropdown">
+							<option value="egyptian">Quran (Egyptian)</option>
+							<option value="noldeke">Quran (Noldeke)</option>
+						</select>
+						<a href="https://quran.com/" target="_blank" rel="noopener" class="provider-external-link" title="Open Quran.com">
+							↗
+						</a>
+					</div>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -178,8 +203,11 @@
 				{@const biblehubInterleavedReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
 				{@const biblehubChronologicalReading = plans.biblehubChronological?.dailyReadings.find(r => r.day === day)}
 				{@const apocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
+				{@const quranEgyptianReading = plans.quranEgyptian?.dailyReadings.find(r => r.day === day)}
+				{@const quranNoldekeReading = plans.quranNoldeke?.dailyReadings.find(r => r.day === day)}
 				{@const currentAcademicReading = selectedAcademicProvider === 'logos' ? logosReading : blbReading}
 				{@const currentBiblehubReading = selectedBiblehubProvider === 'interleaved' ? biblehubInterleavedReading : biblehubChronologicalReading}
+				{@const currentQuranReading = selectedQuranProvider === 'egyptian' ? quranEgyptianReading : quranNoldekeReading}
 
 				<tr class="day-row">
 					<td class="day-cell">
@@ -215,6 +243,9 @@
 							/>
 						{/if}
 					</td>
+					<td class="plan-cell plan-quran">
+						{@html currentQuranReading ? renderPlanReading(currentQuranReading, selectedQuranProvider === 'egyptian' ? plans.quranEgyptian : plans.quranNoldeke) : '<span class="no-reading">No reading</span>'}
+					</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -238,6 +269,13 @@
 				<option value="chronological">Chronological</option>
 			</select>
 		</div>
+		<div class="mobile-selector-group">
+			<label for="mobile-quran-select">Quran:</label>
+			<select id="mobile-quran-select" bind:value={selectedQuranProvider} class="provider-dropdown">
+				<option value="egyptian">Egyptian</option>
+				<option value="noldeke">Noldeke</option>
+			</select>
+		</div>
 	</div>
 
 	{#each sortedDays as day}
@@ -246,8 +284,11 @@
 		{@const mobileBiblehubInterleavedReading = plans.biblehub?.dailyReadings.find(r => r.day === day)}
 		{@const mobileBiblehubChronologicalReading = plans.biblehubChronological?.dailyReadings.find(r => r.day === day)}
 		{@const mobileApocryphaReading = plans.apocrypha?.dailyReadings.find(r => r.day === day)}
+		{@const mobileQuranEgyptianReading = plans.quranEgyptian?.dailyReadings.find(r => r.day === day)}
+		{@const mobileQuranNoldekeReading = plans.quranNoldeke?.dailyReadings.find(r => r.day === day)}
 		{@const mobileAcademicReading = selectedAcademicProvider === 'logos' ? mobileLogosReading : mobileBlbReading}
 		{@const mobileBiblehubReading = selectedBiblehubProvider === 'interleaved' ? mobileBiblehubInterleavedReading : mobileBiblehubChronologicalReading}
+		{@const mobileQuranReading = selectedQuranProvider === 'egyptian' ? mobileQuranEgyptianReading : mobileQuranNoldekeReading}
 
 		<div class="day-card">
 			<div class="day-card-header">
@@ -295,6 +336,13 @@
 					/>
 				{/if}
 			</div>
+
+			<div class="provider-section plan-quran">
+				<div class="provider-label">
+					{selectedQuranProvider === 'egyptian' ? 'Quran (Egyptian Standard)' : 'Quran (Noldeke)'}
+				</div>
+				{@html mobileQuranReading ? renderPlanReading(mobileQuranReading, selectedQuranProvider === 'egyptian' ? plans.quranEgyptian : plans.quranNoldeke) : '<span class="no-reading">No reading</span>'}
+			</div>
 		</div>
 	{/each}
 </div>
@@ -318,6 +366,10 @@
 	}
 
 	.biblehub-provider-header {
+		min-width: 200px;
+	}
+
+	.quran-provider-header {
 		min-width: 200px;
 	}
 

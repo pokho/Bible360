@@ -1,5 +1,6 @@
 import type { ReadingPlan, BiblePassage } from '../../types/reading-plans';
 import { generateApocryphaUrl } from '../../utils/apocrypha-links';
+import { bibleBookThemes } from './bible-book-themes';
 
 /**
  * Text type categories for non-canonical texts:
@@ -305,7 +306,7 @@ export class ApocryphaReadingProvider {
             historicalContext: {
               period,
               approximateDate: date,
-              description,
+              description: description + (bibleBookThemes[book] ? ' ' + bibleBookThemes[book] : ''),
               parallelEvents: []
             },
             readingTimeMinutes: 20,

@@ -1,5 +1,5 @@
 export interface ReadingPlan {
-  provider: 'blue-letter-bible' | 'esv' | 'logos' | 'apocrypha' | 'biblehub';
+  provider: 'blue-letter-bible' | 'esv' | 'logos' | 'apocrypha' | 'biblehub' | 'quran-egyptian' | 'quran-noldeke';
   methodology: ChronologicalMethodology;
   dailyReadings: DailyReading[];
   metadata: PlanMetadata;
@@ -39,7 +39,7 @@ export interface BiblePassage {
   verseStart?: number;
   verseEnd?: number;
   isApocryphal?: boolean;
-  testament: 'old' | 'new' | 'apocryphal';
+  testament: 'old' | 'new' | 'apocryphal' | 'meccan' | 'medinan';
   parallelEvents?: string[];
   href?: string; // Optional href for clickable links
 }

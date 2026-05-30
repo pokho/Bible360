@@ -6,6 +6,8 @@
 	import { BiblehubReadingProvider } from '../data/reading-providers/biblehub-interleaved';
 	import { BiblehubChronologicalProvider } from '../data/reading-providers/biblehub-chronological';
 	import { ApocryphaReadingProvider } from '../data/reading-providers/apocrypha-chronological';
+	import { QuranEgyptianProvider } from '../data/reading-providers/quran-egyptian';
+	import { QuranNoldekeProvider } from '../data/reading-providers/quran-noldeke';
 
 	$: plans = {};
 	$: sortedDays = [];
@@ -32,14 +34,18 @@
 			const biblehubInterleavedProvider = new BiblehubReadingProvider();
 			const biblehubChronologicalProvider = new BiblehubChronologicalProvider();
 			const apocryphaProvider = new ApocryphaReadingProvider();
+			const quranEgyptianProvider = new QuranEgyptianProvider();
+			const quranNoldekeProvider = new QuranNoldekeProvider();
 
 			// Load data from all providers in parallel
-			const [logosPlan, blbPlan, biblehubInterleavedPlan, biblehubChronologicalPlan, apocryphaPlan] = await Promise.all([
+			const [logosPlan, blbPlan, biblehubInterleavedPlan, biblehubChronologicalPlan, apocryphaPlan, quranEgyptianPlan, quranNoldekePlan] = await Promise.all([
 				logosProvider.loadReadingPlan(),
 				blbProvider.loadReadingPlan(),
 				biblehubInterleavedProvider.loadReadingPlan(),
 				biblehubChronologicalProvider.loadReadingPlan(),
-				apocryphaProvider.loadReadingPlan()
+				apocryphaProvider.loadReadingPlan(),
+				quranEgyptianProvider.loadReadingPlan(),
+				quranNoldekeProvider.loadReadingPlan()
 			]);
 
 			// Create plans object with loaded data
@@ -73,6 +79,18 @@
 					dailyReadings: biblehubChronologicalPlan.dailyReadings,
 					color: '#16a085',
 					sourceUrl: 'https://biblehub.com/timeline/'
+				},
+				quranEgyptian: {
+					provider: quranEgyptianPlan.provider,
+					dailyReadings: quranEgyptianPlan.dailyReadings,
+					color: '#1a7a4c',
+					sourceUrl: 'https://quran.com/'
+				},
+				quranNoldeke: {
+					provider: quranNoldekePlan.provider,
+					dailyReadings: quranNoldekePlan.dailyReadings,
+					color: '#2d6a4f',
+					sourceUrl: 'https://quran.com/'
 				}
 			};
 
@@ -117,6 +135,22 @@
 					totalDays: apocryphaPlan.metadata.totalDays,
 					apocryphaSupport: 'Complete Academic Coverage (Scholarly References)',
 					color: '#e67e22'
+				},
+				{
+					name: 'Quran (Egyptian Standard)',
+					key: 'quranEgyptian',
+					methodology: 'Chronological Quran reading following the 1924 Egyptian Standard edition order. Meccan surahs first, then Medinan.',
+					totalDays: quranEgyptianPlan.metadata.totalDays,
+					apocryphaSupport: 'N/A (Islamic Scripture)',
+					color: '#1a7a4c'
+				},
+				{
+					name: 'Quran (Noldeke)',
+					key: 'quranNoldeke',
+					methodology: 'Western academic chronology by Theodor Noldeke (1860s). Surah-level ordering that diverges from Egyptian Standard.',
+					totalDays: quranNoldekePlan.metadata.totalDays,
+					apocryphaSupport: 'N/A (Islamic Scripture)',
+					color: '#2d6a4f'
 				}
 			];
 
